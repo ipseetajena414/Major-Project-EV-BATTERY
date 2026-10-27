@@ -1,0 +1,303 @@
+{
+  "audit_metadata": {
+    "title": "Member 1 Master Table Final Independent Validation",
+    "project": "Autonomous Multi-Agent EV Battery Life & Range Predictor",
+    "timestamp": "2026-10-27T19:55:00+05:30",
+    "status": "VERIFIED_AND_LOCKED",
+    "deliverable_contact": "Cleaned .parquet telemetry stream matching blueprint contract"
+  },
+  "file_checksums_sha256": {
+    "master_table.parquet": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+    "master_table.csv": "9e23792615b2f08692944680d041957f776428b7563a90b214b77ee74629895b"
+  },
+  "summary_metrics": {
+    "total_rows": 515270,
+    "total_columns": 13,
+    "schema": [
+      "chemistry",
+      "dataset_id",
+      "cell_id",
+      "protocol_id",
+      "cycle_id",
+      "time_sec",
+      "voltage_v",
+      "current_a",
+      "temp_c",
+      "capacity_ah",
+      "soh_pct",
+      "quality_flag",
+      "source_file"
+    ],
+    "schema_conformity": true,
+    "chemistry_row_counts": {
+      "LFP": 338133,
+      "NMC": 135436,
+      "Na-ion": 41701
+    },
+    "duplicate_keys_count": 0,
+    "impossible_values": {
+      "voltage_out_of_sane_range_0_to_6V": 0,
+      "current_out_of_sane_range_pm_50A": 0,
+      "temp_out_of_sane_range_m50_to_100C": 0,
+      "soh_out_of_sane_range_0_to_150pct": 0
+    }
+  },
+  "dataset_level_validation": {
+    "LFP_MultiStat_B1": {
+      "chemistry": "LFP",
+      "total_rows": 4789,
+      "cells": [
+        "BATTERY_1"
+      ],
+      "cell_count": 1,
+      "cycles_count": 1,
+      "null_counts": {
+        "chemistry": 0,
+        "dataset_id": 0,
+        "cell_id": 0,
+        "protocol_id": 0,
+        "cycle_id": 0,
+        "time_sec": 0,
+        "voltage_v": 0,
+        "current_a": 0,
+        "temp_c": 4789,
+        "capacity_ah": 0,
+        "soh_pct": 0,
+        "quality_flag": 0,
+        "source_file": 0
+      },
+      "quality_flag_distribution": {
+        "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;ok": 4789
+      },
+      "ranges": {
+        "voltage_v": [
+          2.509045,
+          3.650635
+        ],
+        "current_a": [
+          -0.624585,
+          0.6260101
+        ],
+        "temp_c": null,
+        "capacity_ah": [
+          1.202223,
+          1.202223
+        ],
+        "soh_pct": [
+          96.178,
+          96.178
+        ]
+      }
+    },
+    "LFP_MultiStat_B5": {
+      "chemistry": "LFP",
+      "total_rows": 333344,
+      "cells": [
+        "BATTERY_5"
+      ],
+      "cell_count": 1,
+      "cycles_count": 250,
+      "null_counts": {
+        "chemistry": 0,
+        "dataset_id": 0,
+        "cell_id": 0,
+        "protocol_id": 0,
+        "cycle_id": 0,
+        "time_sec": 0,
+        "voltage_v": 0,
+        "current_a": 0,
+        "temp_c": 333344,
+        "capacity_ah": 0,
+        "soh_pct": 625,
+        "quality_flag": 0,
+        "source_file": 0
+      },
+      "quality_flag_distribution": {
+        "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;CHARGE_BALANCE_DISCREPANCY": 333301,
+        "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;CHARGE_BALANCE_DISCREPANCY;VOLTAGE_OUT_OF_BOUNDS": 43
+      },
+      "ranges": {
+        "voltage_v": [
+          2.49469,
+          3.5953
+        ],
+        "current_a": [
+          -0.6254089,
+          -0.6243774
+        ],
+        "temp_c": null,
+        "capacity_ah": [
+          0.5428382,
+          1.196897
+        ],
+        "soh_pct": [
+          90.91437,
+          95.75172
+        ]
+      }
+    },
+    "NASA_Ames_PCoE": {
+      "chemistry": "NMC",
+      "total_rows": 135436,
+      "cells": [
+        "B0005",
+        "B0006",
+        "B0018"
+      ],
+      "cell_count": 3,
+      "cycles_count": 168,
+      "null_counts": {
+        "chemistry": 0,
+        "dataset_id": 0,
+        "cell_id": 0,
+        "protocol_id": 0,
+        "cycle_id": 0,
+        "time_sec": 0,
+        "voltage_v": 0,
+        "current_a": 0,
+        "temp_c": 0,
+        "capacity_ah": 0,
+        "soh_pct": 0,
+        "quality_flag": 0,
+        "source_file": 0
+      },
+      "quality_flag_distribution": {
+        "VALID": 135436
+      },
+      "ranges": {
+        "voltage_v": [
+          2.1206980945954057,
+          4.222920057935785
+        ],
+        "current_a": [
+          -2.029098489464331,
+          0.014305956605835403
+        ],
+        "temp_c": [
+          22.35025648802666,
+          42.0075404495327
+        ],
+        "capacity_ah": [
+          1.15381833159625,
+          2.035337591005598
+        ],
+        "soh_pct": [
+          57.6909165798125,
+          101.7668795502799
+        ]
+      }
+    },
+    "Zenodo_IonTech_NaIon": {
+      "chemistry": "Na-ion",
+      "total_rows": 41701,
+      "cells": [
+        "NA-ion_270040-1-1-64",
+        "NA-ion_270040-1-2-63",
+        "NA-ion_270040-1-3-62",
+        "NA-ion_270040-1-4-61"
+      ],
+      "cell_count": 4,
+      "cycles_count": 25,
+      "null_counts": {
+        "chemistry": 0,
+        "dataset_id": 0,
+        "cell_id": 0,
+        "protocol_id": 0,
+        "cycle_id": 0,
+        "time_sec": 0,
+        "voltage_v": 0,
+        "current_a": 0,
+        "temp_c": 41701,
+        "capacity_ah": 0,
+        "soh_pct": 0,
+        "quality_flag": 0,
+        "source_file": 0
+      },
+      "quality_flag_distribution": {
+        "TEMP_UNMEASURED": 41701
+      },
+      "ranges": {
+        "voltage_v": [
+          1.9991,
+          4.0004
+        ],
+        "current_a": [
+          -5.800386,
+          5.8005161
+        ],
+        "temp_c": null,
+        "capacity_ah": [
+          0.7862877,
+          0.9099805
+        ],
+        "soh_pct": [
+          78.62877,
+          90.99804999999999
+        ]
+      }
+    }
+  },
+  "dataset_governance_register": {
+    "NASA_Ames_PCoE": {
+      "status": "INCLUDED_AND_VERIFIED",
+      "chemistry": "NMC",
+      "raw_archive_present": true,
+      "source_path": "DATA/archive (4).zip",
+      "notes": "Complete discharge cycles for B0005, B0006, B0018. Genuine thermistor readings. Ground truth Ah capacity and SOH vs 2.0 Ah rated."
+    },
+    "Zenodo_IonTech_NaIon": {
+      "status": "INCLUDED_AND_VERIFIED",
+      "chemistry": "Na-ion",
+      "raw_archive_present": true,
+      "source_path": "DATA/NA-ion.zip",
+      "notes": "4 benchmark cells sampled across cycles. Temperature is strictly NULL (unmeasured in physical experiment). Zero artificial values invented."
+    },
+    "LFP_MultiStat_B1": {
+      "status": "INCLUDED_WITH_CONDITIONS",
+      "chemistry": "LFP",
+      "raw_archive_present": true,
+      "source_path": "DATA/B1_Discharge0.5C_Charge0.5C(1).zip",
+      "audit_path": "AUDIT/B1_LFP_Audit_Output.zip",
+      "notes": "Raw header says I(A/cm2) with Area=0; numeric values match 0.625 A protocol. Flagged as CURRENT_UNIT_UNDERDETERMINED. Temperature unmeasured."
+    },
+    "LFP_MultiStat_B2": {
+      "status": "EXCLUDED_FROM_TELEMETRY_STREAM_REUSED_EXPORT",
+      "chemistry": "LFP",
+      "raw_archive_present": false,
+      "audit_path": "DATA/B2_LFP_Member1_audit.zip",
+      "notes": "Raw XLSX files missing from workspace. Pre-calculated cycle_features.parquet and qv_curves.parquet are available in exports."
+    },
+    "LFP_MultiStat_B3": {
+      "status": "EXCLUDED_FROM_MASTER_STREAM",
+      "chemistry": "LFP",
+      "raw_archive_present": true,
+      "source_path": "DATA/B3_Discharge2C_Charge0.5C (1).zip",
+      "audit_path": "AUDIT/Existing_Audits_Available_B3_B4 (1).zip",
+      "notes": "Raw data and cycle summary audit exist. Excluded from master telemetry stream to prevent data redundancy and memory explosion."
+    },
+    "LFP_MultiStat_B4": {
+      "status": "EXCLUDED_AND_BLOCKED",
+      "chemistry": "LFP",
+      "raw_archive_present": true,
+      "source_path": "DATA/B4_Discharge3C_Charge0.5C (1).zip",
+      "audit_path": "AUDIT/Existing_Audits_Available_B3_B4 (1).zip",
+      "notes": "Metrics blocked. Audit reports metrics_status: NOT_CALCULATED due to conflict between header A/cm2 and 3C (3.75A) protocol. MUST NOT BE USED AS GROUND TRUTH."
+    },
+    "LFP_MultiStat_B5": {
+      "status": "INCLUDED_WITH_CONDITIONS",
+      "chemistry": "LFP",
+      "raw_archive_present": true,
+      "source_path": "DATA/B5_Discharge0.5C_Charge1C (1).zip",
+      "audit_path": "AUDIT/B5.zip",
+      "notes": "Clean telemetry included. Severe charge balance distortion (Q_dis > Q_chg in 99.7% of cycles). Capacity and SOH marked conditional."
+    },
+    "LFP_MultiStat_B6": {
+      "status": "EXCLUDED_RAW_DATA_MISSING",
+      "chemistry": "LFP",
+      "raw_archive_present": false,
+      "source_path": "MISSING (B6_Discharge0.5C_Charge2C.zip not in workspace)",
+      "audit_path": "AUDIT/LFP_B6_Audit_Package (1).zip",
+      "notes": "Raw XLSX zip is completely missing. Audit package contains external summaries only and is NOT raw data verification."
+    }
+  }
+}

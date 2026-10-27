@@ -1,0 +1,13 @@
+# Large raw datasets (>100MB) excluded due to GitHub upload ceilings
+DATA/
+AUDIT/B5.zip
+backup_member1/
+
+# Large CSV (97.7 MB) - full telemetry is preserved and committed in master_table.parquet (8.8 MB)
+master_table.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyd
+.ipynb_checkpoints/

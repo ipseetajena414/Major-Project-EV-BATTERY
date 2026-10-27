@@ -1,0 +1,81 @@
+{
+  "total_rows": 515270,
+  "columns": [
+    "chemistry",
+    "dataset_id",
+    "cell_id",
+    "protocol_id",
+    "cycle_id",
+    "time_sec",
+    "voltage_v",
+    "current_a",
+    "temp_c",
+    "capacity_ah",
+    "soh_pct",
+    "quality_flag",
+    "source_file"
+  ],
+  "schema_conformity": true,
+  "chemistry_breakdown": {
+    "LFP": 338133,
+    "NMC": 135436,
+    "Na-ion": 41701
+  },
+  "dataset_breakdown": {
+    "LFP_MultiStat_B5": 333344,
+    "NASA_Ames_PCoE": 135436,
+    "Zenodo_IonTech_NaIon": 41701,
+    "LFP_MultiStat_B1": 4789
+  },
+  "cell_breakdown": {
+    "BATTERY_5": 333344,
+    "B0005": 50285,
+    "B0006": 50285,
+    "B0018": 34866,
+    "NA-ion_270040-1-1-64": 17803,
+    "NA-ion_270040-1-3-62": 9480,
+    "NA-ion_270040-1-2-63": 7346,
+    "NA-ion_270040-1-4-61": 7072,
+    "BATTERY_1": 4789
+  },
+  "null_counts": {
+    "chemistry": 0,
+    "dataset_id": 0,
+    "cell_id": 0,
+    "protocol_id": 0,
+    "cycle_id": 0,
+    "time_sec": 0,
+    "voltage_v": 0,
+    "current_a": 0,
+    "temp_c": 379834,
+    "capacity_ah": 0,
+    "soh_pct": 625,
+    "quality_flag": 0,
+    "source_file": 0
+  },
+  "quality_flag_distribution": {
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;CHARGE_BALANCE_DISCREPANCY": 333301,
+    "VALID": 135436,
+    "TEMP_UNMEASURED": 41701,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;ok": 4789,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;CHARGE_BALANCE_DISCREPANCY;VOLTAGE_OUT_OF_BOUNDS": 43
+  },
+  "ranges": {
+    "voltage_min": 1.9991,
+    "voltage_max": 4.222920057935785,
+    "current_min": -5.800386,
+    "current_max": 5.8005161,
+    "temp_min": 22.35025648802666,
+    "temp_max": 42.0075404495327,
+    "capacity_min": 0.5428382,
+    "capacity_max": 2.035337591005598,
+    "soh_min": 57.6909165798125,
+    "soh_max": 101.7668795502799
+  },
+  "duplicate_keys_count": 0,
+  "impossible_values_check": {
+    "voltage_impossible (<0V or >6V)": 0,
+    "temp_impossible (<-50C or >100C)": 0,
+    "soh_impossible (<0% or >150%)": 0
+  }
+}
