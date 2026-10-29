@@ -14,7 +14,7 @@ load_dotenv()
 
 # ---------------- LLM ----------------
 USE_LLM = bool(os.getenv("GOOGLE_API_KEY"))   # on automatically when a key is in .env; otherwise templated text
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")    # Google AI Studio model name
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")    # Google AI Studio model name
 LLM_EVERY_N_BLOCKS = 20              # only call the LLM every N blocks to save free-tier quota
 
 # ---------------- Range engine (Member 3) ----------------
