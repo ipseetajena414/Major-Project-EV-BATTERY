@@ -1,0 +1,35 @@
+{
+  "vehicle_name": "Tata Curvv.ev 55 kWh - Partially Sourced Reference",
+  "nominal_pack_energy_kwh": 55.0,
+  "usable_energy_fraction": 0.9,
+  "vehicle_mass_kg": 2100.0,
+  "drag_coefficient_cd": 0.28,
+  "frontal_area_m2": 2.3,
+  "rolling_resistance_coefficient_crr": 0.01,
+  "air_density_kg_m3": 1.225,
+  "drivetrain_efficiency": 0.9,
+  "regen_efficiency": 0.6,
+  "max_regen_power_kw": 50.0,
+  "auxiliary_power_kw": 0.5,
+  "hvac_power_kw_default": 0.25,
+  "rotational_inertia_factor": 1.05,
+  "rated_range_km_reference": 502.0,
+  "provenance": {
+    "status": "PARTIALLY_SOURCED_UNCALIBRATED",
+    "manufacturer_source": "https://ev.tata.cars/curvv/ev.html",
+    "retrieved_date": "2026-10-29",
+    "sourced_fields": {
+      "nominal_pack_energy_kwh": "55 kWh battery pack, Tata.ev official website",
+      "rated_range_km_reference": "502 km certified range, Tata.ev official website"
+    },
+    "assumptions": [
+      "Usable energy fraction of 0.90 is illustrative",
+      "Vehicle mass of 2100 kg is an inherited placeholder, not a verified kerb mass",
+      "Drag coefficient and frontal area are unverified assumptions",
+      "Rolling resistance and drivetrain efficiency are unverified assumptions",
+      "Regenerative braking parameters are unverified assumptions",
+      "Auxiliary load, HVAC load and rotational inertia factor are illustrative"
+    ],
+    "note": "For pipeline testing only. Primary reference vehicle for Member 3 and Member 4 simulation. Sourced values verified against Tata.ev official specifications."
+  }
+}

@@ -1,0 +1,6050 @@
+{
+  "climate": "hot",
+  "model_provenance": {
+    "degradation": {
+      "source": "assumed coefficients (config.CHEMISTRIES), not learned from data",
+      "status": "placeholder",
+      "why_not_member2": "Member 2's schema marks temperature, C-rate and SOC features as BLOCKED; its models predict next-record SOH from discharge-curve statistics"
+    },
+    "range": {
+      "source": "member3.range_calculator.RangeCalculator",
+      "vehicle_name": "Tata Curvv.ev 55 kWh - Partially Sourced Reference",
+      "vehicle_config_file": "tata_curvv_ev_55kwh_partial_reference.json",
+      "nominal_pack_energy_kwh": 55.0,
+      "usable_energy_fraction": 0.9,
+      "rated_range_km_reference": 502.0,
+      "drive_cycle": "udds_city.csv",
+      "engine_limitations": [
+        "Range is extrapolated from this cycle's energy per distance.",
+        "SOH is approximated as a linear multiplier on usable pack energy.",
+        "HVAC load mode: EMPIRICAL_COOLING_DEMAND (0.61 kW).",
+        "Validate against vehicle-specific consumption/range before making real-world claims."
+      ],
+      "status": "PARTIALLY_SOURCED_UNCALIBRATED",
+      "vehicle_provenance": {
+        "status": "PARTIALLY_SOURCED_UNCALIBRATED",
+        "manufacturer_source": "https://ev.tata.cars/curvv/ev.html",
+        "retrieved_date": "2026-10-29",
+        "sourced_fields": {
+          "nominal_pack_energy_kwh": "55 kWh battery pack, Tata.ev official website",
+          "rated_range_km_reference": "502 km certified range, Tata.ev official website"
+        },
+        "assumptions": [
+          "Usable energy fraction of 0.90 is illustrative",
+          "Vehicle mass of 2100 kg is an inherited placeholder, not a verified kerb mass",
+          "Drag coefficient and frontal area are unverified assumptions",
+          "Rolling resistance and drivetrain efficiency are unverified assumptions",
+          "Regenerative braking parameters are unverified assumptions",
+          "Auxiliary load, HVAC load and rotational inertia factor are illustrative"
+        ],
+        "note": "For pipeline testing only. Do not present the calculated range as a validated Tata Curvv.ev prediction. Obtain and verify missing parameters before vehicle-specific calibration."
+      }
+    },
+    "end_of_life_soh_pct": 70.0
+  },
+  "vehicle_config": "tata_curvv_ev_55kwh_partial_reference.json",
+  "drive_cycle": "udds_city.csv",
+  "summary": [
+    {
+      "chemistry": "NMC",
+      "scenario": "unrestricted",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 1.6,
+      "eol_reached": true,
+      "final_soh": 67.5,
+      "final_range_km": 170.9,
+      "thermal_stress_hours": 190.0,
+      "fast_charge_count": 480,
+      "bms_decisions": {
+        "approve": 16,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "NMC",
+      "scenario": "bms_supervised",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 2.9,
+      "eol_reached": true,
+      "final_soh": 69.31,
+      "final_range_km": 205.2,
+      "thermal_stress_hours": 1140.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 29,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "NMC",
+      "scenario": "soc_20_80",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 2.6,
+      "eol_reached": true,
+      "final_soh": 68.5,
+      "final_range_km": 173.4,
+      "thermal_stress_hours": 184.8,
+      "fast_charge_count": 780,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 26,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "NMC",
+      "scenario": "precondition_only",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 2.1,
+      "eol_reached": true,
+      "final_soh": 68.01,
+      "final_range_km": 172.2,
+      "thermal_stress_hours": 20.9,
+      "fast_charge_count": 630,
+      "bms_decisions": {
+        "approve": 21,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "NMC",
+      "scenario": "full_protection",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 4.9,
+      "eol_reached": true,
+      "final_soh": 69.6,
+      "final_range_km": 206.1,
+      "thermal_stress_hours": 0.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 49,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "LFP",
+      "scenario": "unrestricted",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 4.5,
+      "eol_reached": true,
+      "final_soh": 69.04,
+      "final_range_km": 160.4,
+      "thermal_stress_hours": 498.7,
+      "fast_charge_count": 1350,
+      "bms_decisions": {
+        "approve": 45,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "LFP",
+      "scenario": "bms_supervised",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 6.6,
+      "eol_reached": true,
+      "final_soh": 69.81,
+      "final_range_km": 176.7,
+      "thermal_stress_hours": 2660.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 66,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "LFP",
+      "scenario": "soc_20_80",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 5.5,
+      "eol_reached": true,
+      "final_soh": 69.37,
+      "final_range_km": 161.1,
+      "thermal_stress_hours": 381.6,
+      "fast_charge_count": 1650,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 55,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "LFP",
+      "scenario": "precondition_only",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 5.5,
+      "eol_reached": true,
+      "final_soh": 69.65,
+      "final_range_km": 161.8,
+      "thermal_stress_hours": 83.6,
+      "fast_charge_count": 1650,
+      "bms_decisions": {
+        "approve": 55,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "LFP",
+      "scenario": "full_protection",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 8.5,
+      "eol_reached": true,
+      "final_soh": 69.79,
+      "final_range_km": 162.1,
+      "thermal_stress_hours": 0.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 85,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Sodium-ion",
+      "scenario": "unrestricted",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 2.9,
+      "eol_reached": true,
+      "final_soh": 69.96,
+      "final_range_km": 207.2,
+      "thermal_stress_hours": 313.5,
+      "fast_charge_count": 870,
+      "bms_decisions": {
+        "approve": 29,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Sodium-ion",
+      "scenario": "bms_supervised",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 4.4,
+      "eol_reached": true,
+      "final_soh": 69.6,
+      "final_range_km": 153.8,
+      "thermal_stress_hours": 1805.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 44,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Sodium-ion",
+      "scenario": "soc_20_80",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 3.7,
+      "eol_reached": true,
+      "final_soh": 69.63,
+      "final_range_km": 193.7,
+      "thermal_stress_hours": 257.4,
+      "fast_charge_count": 1110,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 37,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Sodium-ion",
+      "scenario": "precondition_only",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 3.5,
+      "eol_reached": true,
+      "final_soh": 69.06,
+      "final_range_km": 160.4,
+      "thermal_stress_hours": 51.3,
+      "fast_charge_count": 1050,
+      "bms_decisions": {
+        "approve": 35,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Sodium-ion",
+      "scenario": "full_protection",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 5.7,
+      "eol_reached": true,
+      "final_soh": 69.73,
+      "final_range_km": 193.9,
+      "thermal_stress_hours": 0.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 57,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Solid-State",
+      "scenario": "unrestricted",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 7.3,
+      "eol_reached": true,
+      "final_soh": 69.93,
+      "final_range_km": 154.6,
+      "thermal_stress_hours": 800.8,
+      "fast_charge_count": 2190,
+      "bms_decisions": {
+        "approve": 73,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Solid-State",
+      "scenario": "bms_supervised",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 9.4,
+      "eol_reached": true,
+      "final_soh": 69.76,
+      "final_range_km": 154.2,
+      "thermal_stress_hours": 3705.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 94,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Solid-State",
+      "scenario": "soc_20_80",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 9.3,
+      "eol_reached": true,
+      "final_soh": 69.99,
+      "final_range_km": 154.7,
+      "thermal_stress_hours": 634.2,
+      "fast_charge_count": 2790,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 93,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Solid-State",
+      "scenario": "precondition_only",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 8.4,
+      "eol_reached": true,
+      "final_soh": 69.72,
+      "final_range_km": 154.1,
+      "thermal_stress_hours": 125.4,
+      "fast_charge_count": 2520,
+      "bms_decisions": {
+        "approve": 84,
+        "modify": 0,
+        "reject": 0
+      }
+    },
+    {
+      "chemistry": "Solid-State",
+      "scenario": "full_protection",
+      "climate": "hot",
+      "vehicle": "tata_curvv_ev_55kwh_partial_reference.json",
+      "drive_cycle": "udds_city.csv",
+      "years_to_eol": 12.5,
+      "eol_reached": true,
+      "final_soh": 69.7,
+      "final_range_km": 161.9,
+      "thermal_stress_hours": 0.0,
+      "fast_charge_count": 0,
+      "bms_decisions": {
+        "approve": 0,
+        "modify": 125,
+        "reject": 0
+      }
+    }
+  ],
+  "curves": {
+    "NMC": {
+      "unrestricted": [
+        {
+          "year": 0.1,
+          "soh": 98.603,
+          "range_km": 249.6
+        },
+        {
+          "year": 0.2,
+          "soh": 96.73,
+          "range_km": 224.7
+        },
+        {
+          "year": 0.3,
+          "soh": 94.386,
+          "range_km": 208.6
+        },
+        {
+          "year": 0.4,
+          "soh": 92.751,
+          "range_km": 205.0
+        },
+        {
+          "year": 0.5,
+          "soh": 90.878,
+          "range_km": 211.1
+        },
+        {
+          "year": 0.6,
+          "soh": 88.851,
+          "range_km": 224.9
+        },
+        {
+          "year": 0.7,
+          "soh": 87.602,
+          "range_km": 243.6
+        },
+        {
+          "year": 0.8,
+          "soh": 86.178,
+          "range_km": 255.2
+        },
+        {
+          "year": 0.9,
+          "soh": 84.469,
+          "range_km": 250.1
+        },
+        {
+          "year": 1.0,
+          "soh": 83.185,
+          "range_km": 231.3
+        },
+        {
+          "year": 1.1,
+          "soh": 81.319,
+          "range_km": 205.9
+        },
+        {
+          "year": 1.2,
+          "soh": 78.66,
+          "range_km": 182.7
+        },
+        {
+          "year": 1.3,
+          "soh": 76.471,
+          "range_km": 169.0
+        },
+        {
+          "year": 1.4,
+          "soh": 73.592,
+          "range_km": 162.7
+        },
+        {
+          "year": 1.5,
+          "soh": 70.017,
+          "range_km": 162.6
+        },
+        {
+          "year": 1.6,
+          "soh": 67.503,
+          "range_km": 170.9
+        }
+      ],
+      "bms_supervised": [
+        {
+          "year": 0.1,
+          "soh": 99.182,
+          "range_km": 251.1
+        },
+        {
+          "year": 0.2,
+          "soh": 98.269,
+          "range_km": 228.3
+        },
+        {
+          "year": 0.3,
+          "soh": 97.294,
+          "range_km": 215.1
+        },
+        {
+          "year": 0.4,
+          "soh": 96.319,
+          "range_km": 212.9
+        },
+        {
+          "year": 0.5,
+          "soh": 95.406,
+          "range_km": 221.6
+        },
+        {
+          "year": 0.6,
+          "soh": 94.588,
+          "range_km": 239.4
+        },
+        {
+          "year": 0.7,
+          "soh": 93.597,
+          "range_km": 260.3
+        },
+        {
+          "year": 0.8,
+          "soh": 92.682,
+          "range_km": 274.5
+        },
+        {
+          "year": 0.9,
+          "soh": 91.768,
+          "range_km": 271.7
+        },
+        {
+          "year": 1.0,
+          "soh": 90.777,
+          "range_km": 252.4
+        },
+        {
+          "year": 1.1,
+          "soh": 89.959,
+          "range_km": 227.7
+        },
+        {
+          "year": 1.2,
+          "soh": 89.046,
+          "range_km": 206.8
+        },
+        {
+          "year": 1.3,
+          "soh": 88.071,
+          "range_km": 194.7
+        },
+        {
+          "year": 1.4,
+          "soh": 87.096,
+          "range_km": 192.5
+        },
+        {
+          "year": 1.5,
+          "soh": 86.183,
+          "range_km": 200.2
+        },
+        {
+          "year": 1.6,
+          "soh": 85.365,
+          "range_km": 216.1
+        },
+        {
+          "year": 1.7,
+          "soh": 84.374,
+          "range_km": 234.6
+        },
+        {
+          "year": 1.8,
+          "soh": 83.429,
+          "range_km": 247.1
+        },
+        {
+          "year": 1.9,
+          "soh": 82.437,
+          "range_km": 244.1
+        },
+        {
+          "year": 2.0,
+          "soh": 81.311,
+          "range_km": 226.1
+        },
+        {
+          "year": 2.1,
+          "soh": 80.332,
+          "range_km": 203.4
+        },
+        {
+          "year": 2.2,
+          "soh": 79.192,
+          "range_km": 184.0
+        },
+        {
+          "year": 2.3,
+          "soh": 77.915,
+          "range_km": 172.2
+        },
+        {
+          "year": 2.4,
+          "soh": 76.571,
+          "range_km": 169.2
+        },
+        {
+          "year": 2.5,
+          "soh": 75.248,
+          "range_km": 174.8
+        },
+        {
+          "year": 2.6,
+          "soh": 74.011,
+          "range_km": 187.4
+        },
+        {
+          "year": 2.7,
+          "soh": 72.44,
+          "range_km": 201.5
+        },
+        {
+          "year": 2.8,
+          "soh": 70.912,
+          "range_km": 210.0
+        },
+        {
+          "year": 2.9,
+          "soh": 69.31,
+          "range_km": 205.2
+        }
+      ],
+      "soc_20_80": [
+        {
+          "year": 0.1,
+          "soh": 99.158,
+          "range_km": 251.0
+        },
+        {
+          "year": 0.2,
+          "soh": 98.027,
+          "range_km": 227.7
+        },
+        {
+          "year": 0.3,
+          "soh": 96.611,
+          "range_km": 213.5
+        },
+        {
+          "year": 0.4,
+          "soh": 95.625,
+          "range_km": 211.4
+        },
+        {
+          "year": 0.5,
+          "soh": 94.494,
+          "range_km": 219.5
+        },
+        {
+          "year": 0.6,
+          "soh": 93.27,
+          "range_km": 236.1
+        },
+        {
+          "year": 0.7,
+          "soh": 92.517,
+          "range_km": 257.3
+        },
+        {
+          "year": 0.8,
+          "soh": 91.658,
+          "range_km": 271.4
+        },
+        {
+          "year": 0.9,
+          "soh": 90.626,
+          "range_km": 268.4
+        },
+        {
+          "year": 1.0,
+          "soh": 89.872,
+          "range_km": 249.9
+        },
+        {
+          "year": 1.1,
+          "soh": 88.845,
+          "range_km": 224.9
+        },
+        {
+          "year": 1.2,
+          "soh": 87.503,
+          "range_km": 203.3
+        },
+        {
+          "year": 1.3,
+          "soh": 86.516,
+          "range_km": 191.2
+        },
+        {
+          "year": 1.4,
+          "soh": 85.322,
+          "range_km": 188.6
+        },
+        {
+          "year": 1.5,
+          "soh": 83.979,
+          "range_km": 195.1
+        },
+        {
+          "year": 1.6,
+          "soh": 83.091,
+          "range_km": 210.3
+        },
+        {
+          "year": 1.7,
+          "soh": 82.074,
+          "range_km": 228.2
+        },
+        {
+          "year": 1.8,
+          "soh": 80.88,
+          "range_km": 239.5
+        },
+        {
+          "year": 1.9,
+          "soh": 80.028,
+          "range_km": 237.0
+        },
+        {
+          "year": 2.0,
+          "soh": 78.86,
+          "range_km": 219.3
+        },
+        {
+          "year": 2.1,
+          "soh": 77.236,
+          "range_km": 195.5
+        },
+        {
+          "year": 2.2,
+          "soh": 75.919,
+          "range_km": 176.4
+        },
+        {
+          "year": 2.3,
+          "soh": 74.145,
+          "range_km": 163.9
+        },
+        {
+          "year": 2.4,
+          "soh": 71.91,
+          "range_km": 158.9
+        },
+        {
+          "year": 2.5,
+          "soh": 70.329,
+          "range_km": 163.4
+        },
+        {
+          "year": 2.6,
+          "soh": 68.498,
+          "range_km": 173.4
+        }
+      ],
+      "precondition_only": [
+        {
+          "year": 0.1,
+          "soh": 98.904,
+          "range_km": 250.4
+        },
+        {
+          "year": 0.2,
+          "soh": 97.528,
+          "range_km": 226.6
+        },
+        {
+          "year": 0.3,
+          "soh": 95.876,
+          "range_km": 211.9
+        },
+        {
+          "year": 0.4,
+          "soh": 94.684,
+          "range_km": 209.3
+        },
+        {
+          "year": 0.5,
+          "soh": 93.309,
+          "range_km": 216.7
+        },
+        {
+          "year": 0.6,
+          "soh": 91.783,
+          "range_km": 232.3
+        },
+        {
+          "year": 0.7,
+          "soh": 90.746,
+          "range_km": 252.4
+        },
+        {
+          "year": 0.8,
+          "soh": 89.55,
+          "range_km": 265.2
+        },
+        {
+          "year": 0.9,
+          "soh": 88.152,
+          "range_km": 261.0
+        },
+        {
+          "year": 1.0,
+          "soh": 87.114,
+          "range_km": 242.3
+        },
+        {
+          "year": 1.1,
+          "soh": 85.808,
+          "range_km": 217.2
+        },
+        {
+          "year": 1.2,
+          "soh": 84.204,
+          "range_km": 195.6
+        },
+        {
+          "year": 1.3,
+          "soh": 82.961,
+          "range_km": 183.4
+        },
+        {
+          "year": 1.4,
+          "soh": 81.389,
+          "range_km": 179.9
+        },
+        {
+          "year": 1.5,
+          "soh": 79.476,
+          "range_km": 184.6
+        },
+        {
+          "year": 1.6,
+          "soh": 78.057,
+          "range_km": 197.6
+        },
+        {
+          "year": 1.7,
+          "soh": 76.361,
+          "range_km": 212.4
+        },
+        {
+          "year": 1.8,
+          "soh": 74.318,
+          "range_km": 220.1
+        },
+        {
+          "year": 1.9,
+          "soh": 72.747,
+          "range_km": 215.4
+        },
+        {
+          "year": 2.0,
+          "soh": 70.7,
+          "range_km": 196.6
+        },
+        {
+          "year": 2.1,
+          "soh": 68.01,
+          "range_km": 172.2
+        }
+      ],
+      "full_protection": [
+        {
+          "year": 0.1,
+          "soh": 99.462,
+          "range_km": 251.8
+        },
+        {
+          "year": 0.2,
+          "soh": 98.894,
+          "range_km": 229.7
+        },
+        {
+          "year": 0.3,
+          "soh": 98.308,
+          "range_km": 217.3
+        },
+        {
+          "year": 0.4,
+          "soh": 97.722,
+          "range_km": 216.0
+        },
+        {
+          "year": 0.5,
+          "soh": 97.154,
+          "range_km": 225.7
+        },
+        {
+          "year": 0.6,
+          "soh": 96.616,
+          "range_km": 244.6
+        },
+        {
+          "year": 0.7,
+          "soh": 96.107,
+          "range_km": 267.3
+        },
+        {
+          "year": 0.8,
+          "soh": 95.617,
+          "range_km": 283.1
+        },
+        {
+          "year": 0.9,
+          "soh": 95.127,
+          "range_km": 281.7
+        },
+        {
+          "year": 1.0,
+          "soh": 94.618,
+          "range_km": 263.1
+        },
+        {
+          "year": 1.1,
+          "soh": 94.08,
+          "range_km": 238.2
+        },
+        {
+          "year": 1.2,
+          "soh": 93.512,
+          "range_km": 217.2
+        },
+        {
+          "year": 1.3,
+          "soh": 92.926,
+          "range_km": 205.4
+        },
+        {
+          "year": 1.4,
+          "soh": 92.34,
+          "range_km": 204.1
+        },
+        {
+          "year": 1.5,
+          "soh": 91.772,
+          "range_km": 213.2
+        },
+        {
+          "year": 1.6,
+          "soh": 91.234,
+          "range_km": 231.0
+        },
+        {
+          "year": 1.7,
+          "soh": 90.725,
+          "range_km": 252.3
+        },
+        {
+          "year": 1.8,
+          "soh": 90.235,
+          "range_km": 267.2
+        },
+        {
+          "year": 1.9,
+          "soh": 89.745,
+          "range_km": 265.8
+        },
+        {
+          "year": 2.0,
+          "soh": 89.236,
+          "range_km": 248.2
+        },
+        {
+          "year": 2.1,
+          "soh": 88.698,
+          "range_km": 224.5
+        },
+        {
+          "year": 2.2,
+          "soh": 88.13,
+          "range_km": 204.7
+        },
+        {
+          "year": 2.3,
+          "soh": 87.544,
+          "range_km": 193.5
+        },
+        {
+          "year": 2.4,
+          "soh": 86.958,
+          "range_km": 192.2
+        },
+        {
+          "year": 2.5,
+          "soh": 86.39,
+          "range_km": 200.7
+        },
+        {
+          "year": 2.6,
+          "soh": 85.852,
+          "range_km": 217.3
+        },
+        {
+          "year": 2.7,
+          "soh": 85.343,
+          "range_km": 237.3
+        },
+        {
+          "year": 2.8,
+          "soh": 84.853,
+          "range_km": 251.3
+        },
+        {
+          "year": 2.9,
+          "soh": 84.359,
+          "range_km": 249.8
+        },
+        {
+          "year": 3.0,
+          "soh": 83.833,
+          "range_km": 233.1
+        },
+        {
+          "year": 3.1,
+          "soh": 83.261,
+          "range_km": 210.8
+        },
+        {
+          "year": 3.2,
+          "soh": 82.641,
+          "range_km": 192.0
+        },
+        {
+          "year": 3.3,
+          "soh": 81.981,
+          "range_km": 181.2
+        },
+        {
+          "year": 3.4,
+          "soh": 81.3,
+          "range_km": 179.7
+        },
+        {
+          "year": 3.5,
+          "soh": 80.62,
+          "range_km": 187.3
+        },
+        {
+          "year": 3.6,
+          "soh": 79.956,
+          "range_km": 202.4
+        },
+        {
+          "year": 3.7,
+          "soh": 79.311,
+          "range_km": 220.6
+        },
+        {
+          "year": 3.8,
+          "soh": 78.672,
+          "range_km": 233.0
+        },
+        {
+          "year": 3.9,
+          "soh": 78.016,
+          "range_km": 231.0
+        },
+        {
+          "year": 4.0,
+          "soh": 77.318,
+          "range_km": 215.0
+        },
+        {
+          "year": 4.1,
+          "soh": 76.56,
+          "range_km": 193.8
+        },
+        {
+          "year": 4.2,
+          "soh": 75.736,
+          "range_km": 175.9
+        },
+        {
+          "year": 4.3,
+          "soh": 74.86,
+          "range_km": 165.5
+        },
+        {
+          "year": 4.4,
+          "soh": 73.957,
+          "range_km": 163.5
+        },
+        {
+          "year": 4.5,
+          "soh": 73.055,
+          "range_km": 169.7
+        },
+        {
+          "year": 4.6,
+          "soh": 72.174,
+          "range_km": 182.7
+        },
+        {
+          "year": 4.7,
+          "soh": 71.318,
+          "range_km": 198.3
+        },
+        {
+          "year": 4.8,
+          "soh": 70.469,
+          "range_km": 208.7
+        },
+        {
+          "year": 4.9,
+          "soh": 69.599,
+          "range_km": 206.1
+        }
+      ]
+    },
+    "LFP": {
+      "unrestricted": [
+        {
+          "year": 0.1,
+          "soh": 99.484,
+          "range_km": 251.8
+        },
+        {
+          "year": 0.2,
+          "soh": 98.85,
+          "range_km": 229.6
+        },
+        {
+          "year": 0.3,
+          "soh": 98.103,
+          "range_km": 216.8
+        },
+        {
+          "year": 0.4,
+          "soh": 97.518,
+          "range_km": 215.5
+        },
+        {
+          "year": 0.5,
+          "soh": 96.883,
+          "range_km": 225.1
+        },
+        {
+          "year": 0.6,
+          "soh": 96.221,
+          "range_km": 243.6
+        },
+        {
+          "year": 0.7,
+          "soh": 95.748,
+          "range_km": 266.3
+        },
+        {
+          "year": 0.8,
+          "soh": 95.238,
+          "range_km": 282.0
+        },
+        {
+          "year": 0.9,
+          "soh": 94.66,
+          "range_km": 280.3
+        },
+        {
+          "year": 1.0,
+          "soh": 94.188,
+          "range_km": 261.9
+        },
+        {
+          "year": 1.1,
+          "soh": 93.6,
+          "range_km": 236.9
+        },
+        {
+          "year": 1.2,
+          "soh": 92.886,
+          "range_km": 215.8
+        },
+        {
+          "year": 1.3,
+          "soh": 92.301,
+          "range_km": 204.0
+        },
+        {
+          "year": 1.4,
+          "soh": 91.636,
+          "range_km": 202.5
+        },
+        {
+          "year": 1.5,
+          "soh": 90.922,
+          "range_km": 211.2
+        },
+        {
+          "year": 1.6,
+          "soh": 90.407,
+          "range_km": 228.9
+        },
+        {
+          "year": 1.7,
+          "soh": 89.867,
+          "range_km": 249.9
+        },
+        {
+          "year": 1.8,
+          "soh": 89.289,
+          "range_km": 264.4
+        },
+        {
+          "year": 1.9,
+          "soh": 88.843,
+          "range_km": 263.1
+        },
+        {
+          "year": 2.0,
+          "soh": 88.304,
+          "range_km": 245.6
+        },
+        {
+          "year": 2.1,
+          "soh": 87.641,
+          "range_km": 221.9
+        },
+        {
+          "year": 2.2,
+          "soh": 87.082,
+          "range_km": 202.3
+        },
+        {
+          "year": 2.3,
+          "soh": 86.418,
+          "range_km": 191.0
+        },
+        {
+          "year": 2.4,
+          "soh": 85.672,
+          "range_km": 189.4
+        },
+        {
+          "year": 2.5,
+          "soh": 85.113,
+          "range_km": 197.7
+        },
+        {
+          "year": 2.6,
+          "soh": 84.526,
+          "range_km": 214.0
+        },
+        {
+          "year": 2.7,
+          "soh": 83.9,
+          "range_km": 233.3
+        },
+        {
+          "year": 2.8,
+          "soh": 83.428,
+          "range_km": 247.1
+        },
+        {
+          "year": 2.9,
+          "soh": 82.875,
+          "range_km": 245.4
+        },
+        {
+          "year": 3.0,
+          "soh": 82.196,
+          "range_km": 228.6
+        },
+        {
+          "year": 3.1,
+          "soh": 81.603,
+          "range_km": 206.6
+        },
+        {
+          "year": 3.2,
+          "soh": 80.853,
+          "range_km": 187.8
+        },
+        {
+          "year": 3.3,
+          "soh": 79.942,
+          "range_km": 176.7
+        },
+        {
+          "year": 3.4,
+          "soh": 79.198,
+          "range_km": 175.1
+        },
+        {
+          "year": 3.5,
+          "soh": 78.367,
+          "range_km": 182.0
+        },
+        {
+          "year": 3.6,
+          "soh": 77.471,
+          "range_km": 196.1
+        },
+        {
+          "year": 3.7,
+          "soh": 76.809,
+          "range_km": 213.6
+        },
+        {
+          "year": 3.8,
+          "soh": 76.076,
+          "range_km": 225.3
+        },
+        {
+          "year": 3.9,
+          "soh": 75.222,
+          "range_km": 222.8
+        },
+        {
+          "year": 4.0,
+          "soh": 74.503,
+          "range_km": 207.2
+        },
+        {
+          "year": 4.1,
+          "soh": 73.588,
+          "range_km": 186.3
+        },
+        {
+          "year": 4.2,
+          "soh": 72.439,
+          "range_km": 168.3
+        },
+        {
+          "year": 4.3,
+          "soh": 71.461,
+          "range_km": 158.0
+        },
+        {
+          "year": 4.4,
+          "soh": 70.317,
+          "range_km": 155.4
+        },
+        {
+          "year": 4.5,
+          "soh": 69.043,
+          "range_km": 160.4
+        }
+      ],
+      "bms_supervised": [
+        {
+          "year": 0.1,
+          "soh": 99.629,
+          "range_km": 252.2
+        },
+        {
+          "year": 0.2,
+          "soh": 99.228,
+          "range_km": 230.5
+        },
+        {
+          "year": 0.3,
+          "soh": 98.805,
+          "range_km": 218.4
+        },
+        {
+          "year": 0.4,
+          "soh": 98.381,
+          "range_km": 217.5
+        },
+        {
+          "year": 0.5,
+          "soh": 97.98,
+          "range_km": 227.6
+        },
+        {
+          "year": 0.6,
+          "soh": 97.609,
+          "range_km": 247.1
+        },
+        {
+          "year": 0.7,
+          "soh": 97.201,
+          "range_km": 270.3
+        },
+        {
+          "year": 0.8,
+          "soh": 96.816,
+          "range_km": 286.7
+        },
+        {
+          "year": 0.9,
+          "soh": 96.431,
+          "range_km": 285.6
+        },
+        {
+          "year": 1.0,
+          "soh": 96.023,
+          "range_km": 267.0
+        },
+        {
+          "year": 1.1,
+          "soh": 95.652,
+          "range_km": 242.1
+        },
+        {
+          "year": 1.2,
+          "soh": 95.251,
+          "range_km": 221.3
+        },
+        {
+          "year": 1.3,
+          "soh": 94.827,
+          "range_km": 209.6
+        },
+        {
+          "year": 1.4,
+          "soh": 94.404,
+          "range_km": 208.7
+        },
+        {
+          "year": 1.5,
+          "soh": 94.003,
+          "range_km": 218.4
+        },
+        {
+          "year": 1.6,
+          "soh": 93.632,
+          "range_km": 237.0
+        },
+        {
+          "year": 1.7,
+          "soh": 93.223,
+          "range_km": 259.3
+        },
+        {
+          "year": 1.8,
+          "soh": 92.839,
+          "range_km": 274.9
+        },
+        {
+          "year": 1.9,
+          "soh": 92.454,
+          "range_km": 273.8
+        },
+        {
+          "year": 2.0,
+          "soh": 92.045,
+          "range_km": 256.0
+        },
+        {
+          "year": 2.1,
+          "soh": 91.675,
+          "range_km": 232.1
+        },
+        {
+          "year": 2.2,
+          "soh": 91.273,
+          "range_km": 212.0
+        },
+        {
+          "year": 2.3,
+          "soh": 90.85,
+          "range_km": 200.8
+        },
+        {
+          "year": 2.4,
+          "soh": 90.427,
+          "range_km": 199.9
+        },
+        {
+          "year": 2.5,
+          "soh": 90.025,
+          "range_km": 209.1
+        },
+        {
+          "year": 2.6,
+          "soh": 89.657,
+          "range_km": 227.0
+        },
+        {
+          "year": 2.7,
+          "soh": 89.248,
+          "range_km": 248.2
+        },
+        {
+          "year": 2.8,
+          "soh": 88.864,
+          "range_km": 263.1
+        },
+        {
+          "year": 2.9,
+          "soh": 88.479,
+          "range_km": 262.0
+        },
+        {
+          "year": 3.0,
+          "soh": 88.07,
+          "range_km": 244.9
+        },
+        {
+          "year": 3.1,
+          "soh": 87.7,
+          "range_km": 222.0
+        },
+        {
+          "year": 3.2,
+          "soh": 87.298,
+          "range_km": 202.8
+        },
+        {
+          "year": 3.3,
+          "soh": 86.875,
+          "range_km": 192.0
+        },
+        {
+          "year": 3.4,
+          "soh": 86.452,
+          "range_km": 191.1
+        },
+        {
+          "year": 3.5,
+          "soh": 86.05,
+          "range_km": 199.9
+        },
+        {
+          "year": 3.6,
+          "soh": 85.682,
+          "range_km": 216.9
+        },
+        {
+          "year": 3.7,
+          "soh": 85.273,
+          "range_km": 237.1
+        },
+        {
+          "year": 3.8,
+          "soh": 84.888,
+          "range_km": 251.4
+        },
+        {
+          "year": 3.9,
+          "soh": 84.501,
+          "range_km": 250.2
+        },
+        {
+          "year": 4.0,
+          "soh": 84.082,
+          "range_km": 233.8
+        },
+        {
+          "year": 4.1,
+          "soh": 83.693,
+          "range_km": 211.9
+        },
+        {
+          "year": 4.2,
+          "soh": 83.264,
+          "range_km": 193.4
+        },
+        {
+          "year": 4.3,
+          "soh": 82.801,
+          "range_km": 183.0
+        },
+        {
+          "year": 4.4,
+          "soh": 82.328,
+          "range_km": 182.0
+        },
+        {
+          "year": 4.5,
+          "soh": 81.87,
+          "range_km": 190.2
+        },
+        {
+          "year": 4.6,
+          "soh": 81.44,
+          "range_km": 206.2
+        },
+        {
+          "year": 4.7,
+          "soh": 80.953,
+          "range_km": 225.1
+        },
+        {
+          "year": 4.8,
+          "soh": 80.486,
+          "range_km": 238.3
+        },
+        {
+          "year": 4.9,
+          "soh": 80.009,
+          "range_km": 236.9
+        },
+        {
+          "year": 5.0,
+          "soh": 79.491,
+          "range_km": 221.1
+        },
+        {
+          "year": 5.1,
+          "soh": 79.012,
+          "range_km": 200.0
+        },
+        {
+          "year": 5.2,
+          "soh": 78.482,
+          "range_km": 182.3
+        },
+        {
+          "year": 5.3,
+          "soh": 77.911,
+          "range_km": 172.2
+        },
+        {
+          "year": 5.4,
+          "soh": 77.328,
+          "range_km": 170.9
+        },
+        {
+          "year": 5.5,
+          "soh": 76.762,
+          "range_km": 178.3
+        },
+        {
+          "year": 5.6,
+          "soh": 76.232,
+          "range_km": 193.0
+        },
+        {
+          "year": 5.7,
+          "soh": 75.632,
+          "range_km": 210.3
+        },
+        {
+          "year": 5.8,
+          "soh": 75.056,
+          "range_km": 222.3
+        },
+        {
+          "year": 5.9,
+          "soh": 74.467,
+          "range_km": 220.5
+        },
+        {
+          "year": 6.0,
+          "soh": 73.829,
+          "range_km": 205.3
+        },
+        {
+          "year": 6.1,
+          "soh": 73.237,
+          "range_km": 185.4
+        },
+        {
+          "year": 6.2,
+          "soh": 72.584,
+          "range_km": 168.6
+        },
+        {
+          "year": 6.3,
+          "soh": 71.88,
+          "range_km": 158.9
+        },
+        {
+          "year": 6.4,
+          "soh": 71.161,
+          "range_km": 157.3
+        },
+        {
+          "year": 6.5,
+          "soh": 70.463,
+          "range_km": 163.7
+        },
+        {
+          "year": 6.6,
+          "soh": 69.805,
+          "range_km": 176.7
+        }
+      ],
+      "soc_20_80": [
+        {
+          "year": 0.1,
+          "soh": 99.58,
+          "range_km": 252.1
+        },
+        {
+          "year": 0.2,
+          "soh": 99.063,
+          "range_km": 230.1
+        },
+        {
+          "year": 0.3,
+          "soh": 98.454,
+          "range_km": 217.6
+        },
+        {
+          "year": 0.4,
+          "soh": 97.977,
+          "range_km": 216.6
+        },
+        {
+          "year": 0.5,
+          "soh": 97.46,
+          "range_km": 226.4
+        },
+        {
+          "year": 0.6,
+          "soh": 96.92,
+          "range_km": 245.3
+        },
+        {
+          "year": 0.7,
+          "soh": 96.535,
+          "range_km": 268.5
+        },
+        {
+          "year": 0.8,
+          "soh": 96.119,
+          "range_km": 284.6
+        },
+        {
+          "year": 0.9,
+          "soh": 95.648,
+          "range_km": 283.2
+        },
+        {
+          "year": 1.0,
+          "soh": 95.263,
+          "range_km": 264.9
+        },
+        {
+          "year": 1.1,
+          "soh": 94.785,
+          "range_km": 239.9
+        },
+        {
+          "year": 1.2,
+          "soh": 94.202,
+          "range_km": 218.8
+        },
+        {
+          "year": 1.3,
+          "soh": 93.725,
+          "range_km": 207.2
+        },
+        {
+          "year": 1.4,
+          "soh": 93.184,
+          "range_km": 206.0
+        },
+        {
+          "year": 1.5,
+          "soh": 92.602,
+          "range_km": 215.1
+        },
+        {
+          "year": 1.6,
+          "soh": 92.182,
+          "range_km": 233.4
+        },
+        {
+          "year": 1.7,
+          "soh": 91.742,
+          "range_km": 255.1
+        },
+        {
+          "year": 1.8,
+          "soh": 91.27,
+          "range_km": 270.3
+        },
+        {
+          "year": 1.9,
+          "soh": 90.908,
+          "range_km": 269.2
+        },
+        {
+          "year": 2.0,
+          "soh": 90.468,
+          "range_km": 251.6
+        },
+        {
+          "year": 2.1,
+          "soh": 89.928,
+          "range_km": 227.6
+        },
+        {
+          "year": 2.2,
+          "soh": 89.473,
+          "range_km": 207.8
+        },
+        {
+          "year": 2.3,
+          "soh": 88.931,
+          "range_km": 196.6
+        },
+        {
+          "year": 2.4,
+          "soh": 88.323,
+          "range_km": 195.2
+        },
+        {
+          "year": 2.5,
+          "soh": 87.868,
+          "range_km": 204.1
+        },
+        {
+          "year": 2.6,
+          "soh": 87.389,
+          "range_km": 221.2
+        },
+        {
+          "year": 2.7,
+          "soh": 86.891,
+          "range_km": 241.6
+        },
+        {
+          "year": 2.8,
+          "soh": 86.528,
+          "range_km": 256.2
+        },
+        {
+          "year": 2.9,
+          "soh": 86.113,
+          "range_km": 255.0
+        },
+        {
+          "year": 3.0,
+          "soh": 85.615,
+          "range_km": 238.1
+        },
+        {
+          "year": 3.1,
+          "soh": 85.195,
+          "range_km": 215.7
+        },
+        {
+          "year": 3.2,
+          "soh": 84.678,
+          "range_km": 196.7
+        },
+        {
+          "year": 3.3,
+          "soh": 84.059,
+          "range_km": 185.8
+        },
+        {
+          "year": 3.4,
+          "soh": 83.558,
+          "range_km": 184.7
+        },
+        {
+          "year": 3.5,
+          "soh": 83.001,
+          "range_km": 192.8
+        },
+        {
+          "year": 3.6,
+          "soh": 82.403,
+          "range_km": 208.6
+        },
+        {
+          "year": 3.7,
+          "soh": 81.965,
+          "range_km": 227.9
+        },
+        {
+          "year": 3.8,
+          "soh": 81.482,
+          "range_km": 241.3
+        },
+        {
+          "year": 3.9,
+          "soh": 80.922,
+          "range_km": 239.6
+        },
+        {
+          "year": 4.0,
+          "soh": 80.454,
+          "range_km": 223.7
+        },
+        {
+          "year": 4.1,
+          "soh": 79.859,
+          "range_km": 202.2
+        },
+        {
+          "year": 4.2,
+          "soh": 79.117,
+          "range_km": 183.8
+        },
+        {
+          "year": 4.3,
+          "soh": 78.49,
+          "range_km": 173.5
+        },
+        {
+          "year": 4.4,
+          "soh": 77.761,
+          "range_km": 171.9
+        },
+        {
+          "year": 4.5,
+          "soh": 76.954,
+          "range_km": 178.8
+        },
+        {
+          "year": 4.6,
+          "soh": 76.354,
+          "range_km": 193.3
+        },
+        {
+          "year": 4.7,
+          "soh": 75.711,
+          "range_km": 210.6
+        },
+        {
+          "year": 4.8,
+          "soh": 75.006,
+          "range_km": 222.1
+        },
+        {
+          "year": 4.9,
+          "soh": 74.45,
+          "range_km": 220.5
+        },
+        {
+          "year": 5.0,
+          "soh": 73.763,
+          "range_km": 205.1
+        },
+        {
+          "year": 5.1,
+          "soh": 72.899,
+          "range_km": 184.5
+        },
+        {
+          "year": 5.2,
+          "soh": 72.15,
+          "range_km": 167.6
+        },
+        {
+          "year": 5.3,
+          "soh": 71.238,
+          "range_km": 157.5
+        },
+        {
+          "year": 5.4,
+          "soh": 70.183,
+          "range_km": 155.1
+        },
+        {
+          "year": 5.5,
+          "soh": 69.368,
+          "range_km": 161.1
+        }
+      ],
+      "precondition_only": [
+        {
+          "year": 0.1,
+          "soh": 99.573,
+          "range_km": 252.1
+        },
+        {
+          "year": 0.2,
+          "soh": 99.076,
+          "range_km": 230.1
+        },
+        {
+          "year": 0.3,
+          "soh": 98.512,
+          "range_km": 217.7
+        },
+        {
+          "year": 0.4,
+          "soh": 98.057,
+          "range_km": 216.7
+        },
+        {
+          "year": 0.5,
+          "soh": 97.56,
+          "range_km": 226.6
+        },
+        {
+          "year": 0.6,
+          "soh": 97.031,
+          "range_km": 245.6
+        },
+        {
+          "year": 0.7,
+          "soh": 96.621,
+          "range_km": 268.7
+        },
+        {
+          "year": 0.8,
+          "soh": 96.174,
+          "range_km": 284.8
+        },
+        {
+          "year": 0.9,
+          "soh": 95.677,
+          "range_km": 283.3
+        },
+        {
+          "year": 1.0,
+          "soh": 95.268,
+          "range_km": 264.9
+        },
+        {
+          "year": 1.1,
+          "soh": 94.79,
+          "range_km": 240.0
+        },
+        {
+          "year": 1.2,
+          "soh": 94.239,
+          "range_km": 218.9
+        },
+        {
+          "year": 1.3,
+          "soh": 93.784,
+          "range_km": 207.3
+        },
+        {
+          "year": 1.4,
+          "soh": 93.275,
+          "range_km": 206.2
+        },
+        {
+          "year": 1.5,
+          "soh": 92.725,
+          "range_km": 215.4
+        },
+        {
+          "year": 1.6,
+          "soh": 92.297,
+          "range_km": 233.6
+        },
+        {
+          "year": 1.7,
+          "soh": 91.839,
+          "range_km": 255.4
+        },
+        {
+          "year": 1.8,
+          "soh": 91.342,
+          "range_km": 270.5
+        },
+        {
+          "year": 1.9,
+          "soh": 90.943,
+          "range_km": 269.3
+        },
+        {
+          "year": 2.0,
+          "soh": 90.484,
+          "range_km": 251.6
+        },
+        {
+          "year": 2.1,
+          "soh": 89.954,
+          "range_km": 227.7
+        },
+        {
+          "year": 2.2,
+          "soh": 89.51,
+          "range_km": 207.9
+        },
+        {
+          "year": 2.3,
+          "soh": 89.001,
+          "range_km": 196.7
+        },
+        {
+          "year": 2.4,
+          "soh": 88.438,
+          "range_km": 195.5
+        },
+        {
+          "year": 2.5,
+          "soh": 87.993,
+          "range_km": 204.4
+        },
+        {
+          "year": 2.6,
+          "soh": 87.516,
+          "range_km": 221.5
+        },
+        {
+          "year": 2.7,
+          "soh": 87.006,
+          "range_km": 242.0
+        },
+        {
+          "year": 2.8,
+          "soh": 86.607,
+          "range_km": 256.5
+        },
+        {
+          "year": 2.9,
+          "soh": 86.16,
+          "range_km": 255.1
+        },
+        {
+          "year": 3.0,
+          "soh": 85.651,
+          "range_km": 238.2
+        },
+        {
+          "year": 3.1,
+          "soh": 85.224,
+          "range_km": 215.7
+        },
+        {
+          "year": 3.2,
+          "soh": 84.727,
+          "range_km": 196.8
+        },
+        {
+          "year": 3.3,
+          "soh": 84.155,
+          "range_km": 186.0
+        },
+        {
+          "year": 3.4,
+          "soh": 83.68,
+          "range_km": 185.0
+        },
+        {
+          "year": 3.5,
+          "soh": 83.148,
+          "range_km": 193.1
+        },
+        {
+          "year": 3.6,
+          "soh": 82.566,
+          "range_km": 209.0
+        },
+        {
+          "year": 3.7,
+          "soh": 82.103,
+          "range_km": 228.3
+        },
+        {
+          "year": 3.8,
+          "soh": 81.587,
+          "range_km": 241.6
+        },
+        {
+          "year": 3.9,
+          "soh": 81.0,
+          "range_km": 239.9
+        },
+        {
+          "year": 4.0,
+          "soh": 80.503,
+          "range_km": 223.9
+        },
+        {
+          "year": 4.1,
+          "soh": 79.91,
+          "range_km": 202.3
+        },
+        {
+          "year": 4.2,
+          "soh": 79.21,
+          "range_km": 184.0
+        },
+        {
+          "year": 4.3,
+          "soh": 78.614,
+          "range_km": 173.8
+        },
+        {
+          "year": 4.4,
+          "soh": 77.932,
+          "range_km": 172.3
+        },
+        {
+          "year": 4.5,
+          "soh": 77.174,
+          "range_km": 179.3
+        },
+        {
+          "year": 4.6,
+          "soh": 76.569,
+          "range_km": 193.8
+        },
+        {
+          "year": 4.7,
+          "soh": 75.904,
+          "range_km": 211.1
+        },
+        {
+          "year": 4.8,
+          "soh": 75.167,
+          "range_km": 222.6
+        },
+        {
+          "year": 4.9,
+          "soh": 74.558,
+          "range_km": 220.8
+        },
+        {
+          "year": 5.0,
+          "soh": 73.844,
+          "range_km": 205.4
+        },
+        {
+          "year": 5.1,
+          "soh": 72.999,
+          "range_km": 184.8
+        },
+        {
+          "year": 5.2,
+          "soh": 72.27,
+          "range_km": 167.9
+        },
+        {
+          "year": 5.3,
+          "soh": 71.416,
+          "range_km": 157.9
+        },
+        {
+          "year": 5.4,
+          "soh": 70.444,
+          "range_km": 155.7
+        },
+        {
+          "year": 5.5,
+          "soh": 69.654,
+          "range_km": 161.8
+        }
+      ],
+      "full_protection": [
+        {
+          "year": 0.1,
+          "soh": 99.692,
+          "range_km": 252.4
+        },
+        {
+          "year": 0.2,
+          "soh": 99.372,
+          "range_km": 230.8
+        },
+        {
+          "year": 0.3,
+          "soh": 99.043,
+          "range_km": 218.9
+        },
+        {
+          "year": 0.4,
+          "soh": 98.715,
+          "range_km": 218.2
+        },
+        {
+          "year": 0.5,
+          "soh": 98.395,
+          "range_km": 228.6
+        },
+        {
+          "year": 0.6,
+          "soh": 98.087,
+          "range_km": 248.3
+        },
+        {
+          "year": 0.7,
+          "soh": 97.792,
+          "range_km": 272.0
+        },
+        {
+          "year": 0.8,
+          "soh": 97.504,
+          "range_km": 288.7
+        },
+        {
+          "year": 0.9,
+          "soh": 97.217,
+          "range_km": 287.9
+        },
+        {
+          "year": 1.0,
+          "soh": 96.922,
+          "range_km": 269.5
+        },
+        {
+          "year": 1.1,
+          "soh": 96.614,
+          "range_km": 244.6
+        },
+        {
+          "year": 1.2,
+          "soh": 96.294,
+          "range_km": 223.7
+        },
+        {
+          "year": 1.3,
+          "soh": 95.965,
+          "range_km": 212.1
+        },
+        {
+          "year": 1.4,
+          "soh": 95.637,
+          "range_km": 211.4
+        },
+        {
+          "year": 1.5,
+          "soh": 95.317,
+          "range_km": 221.4
+        },
+        {
+          "year": 1.6,
+          "soh": 95.009,
+          "range_km": 240.5
+        },
+        {
+          "year": 1.7,
+          "soh": 94.714,
+          "range_km": 263.4
+        },
+        {
+          "year": 1.8,
+          "soh": 94.426,
+          "range_km": 279.6
+        },
+        {
+          "year": 1.9,
+          "soh": 94.139,
+          "range_km": 278.8
+        },
+        {
+          "year": 2.0,
+          "soh": 93.844,
+          "range_km": 261.0
+        },
+        {
+          "year": 2.1,
+          "soh": 93.536,
+          "range_km": 236.8
+        },
+        {
+          "year": 2.2,
+          "soh": 93.216,
+          "range_km": 216.5
+        },
+        {
+          "year": 2.3,
+          "soh": 92.887,
+          "range_km": 205.3
+        },
+        {
+          "year": 2.4,
+          "soh": 92.559,
+          "range_km": 204.6
+        },
+        {
+          "year": 2.5,
+          "soh": 92.239,
+          "range_km": 214.3
+        },
+        {
+          "year": 2.6,
+          "soh": 91.931,
+          "range_km": 232.7
+        },
+        {
+          "year": 2.7,
+          "soh": 91.636,
+          "range_km": 254.8
+        },
+        {
+          "year": 2.8,
+          "soh": 91.348,
+          "range_km": 270.5
+        },
+        {
+          "year": 2.9,
+          "soh": 91.061,
+          "range_km": 269.7
+        },
+        {
+          "year": 3.0,
+          "soh": 90.766,
+          "range_km": 252.4
+        },
+        {
+          "year": 3.1,
+          "soh": 90.458,
+          "range_km": 229.0
+        },
+        {
+          "year": 3.2,
+          "soh": 90.138,
+          "range_km": 209.4
+        },
+        {
+          "year": 3.3,
+          "soh": 89.809,
+          "range_km": 198.5
+        },
+        {
+          "year": 3.4,
+          "soh": 89.481,
+          "range_km": 197.8
+        },
+        {
+          "year": 3.5,
+          "soh": 89.161,
+          "range_km": 207.1
+        },
+        {
+          "year": 3.6,
+          "soh": 88.853,
+          "range_km": 224.9
+        },
+        {
+          "year": 3.7,
+          "soh": 88.558,
+          "range_km": 246.3
+        },
+        {
+          "year": 3.8,
+          "soh": 88.27,
+          "range_km": 261.4
+        },
+        {
+          "year": 3.9,
+          "soh": 87.983,
+          "range_km": 260.5
+        },
+        {
+          "year": 4.0,
+          "soh": 87.688,
+          "range_km": 243.9
+        },
+        {
+          "year": 4.1,
+          "soh": 87.38,
+          "range_km": 221.2
+        },
+        {
+          "year": 4.2,
+          "soh": 87.06,
+          "range_km": 202.2
+        },
+        {
+          "year": 4.3,
+          "soh": 86.731,
+          "range_km": 191.7
+        },
+        {
+          "year": 4.4,
+          "soh": 86.403,
+          "range_km": 191.0
+        },
+        {
+          "year": 4.5,
+          "soh": 86.083,
+          "range_km": 200.0
+        },
+        {
+          "year": 4.6,
+          "soh": 85.775,
+          "range_km": 217.1
+        },
+        {
+          "year": 4.7,
+          "soh": 85.48,
+          "range_km": 237.7
+        },
+        {
+          "year": 4.8,
+          "soh": 85.192,
+          "range_km": 252.3
+        },
+        {
+          "year": 4.9,
+          "soh": 84.905,
+          "range_km": 251.4
+        },
+        {
+          "year": 5.0,
+          "soh": 84.609,
+          "range_km": 235.3
+        },
+        {
+          "year": 5.1,
+          "soh": 84.294,
+          "range_km": 213.4
+        },
+        {
+          "year": 5.2,
+          "soh": 83.962,
+          "range_km": 195.0
+        },
+        {
+          "year": 5.3,
+          "soh": 83.615,
+          "range_km": 184.8
+        },
+        {
+          "year": 5.4,
+          "soh": 83.263,
+          "range_km": 184.0
+        },
+        {
+          "year": 5.5,
+          "soh": 82.912,
+          "range_km": 192.6
+        },
+        {
+          "year": 5.6,
+          "soh": 82.57,
+          "range_km": 209.0
+        },
+        {
+          "year": 5.7,
+          "soh": 82.237,
+          "range_km": 228.7
+        },
+        {
+          "year": 5.8,
+          "soh": 81.907,
+          "range_km": 242.5
+        },
+        {
+          "year": 5.9,
+          "soh": 81.573,
+          "range_km": 241.6
+        },
+        {
+          "year": 6.0,
+          "soh": 81.224,
+          "range_km": 225.9
+        },
+        {
+          "year": 6.1,
+          "soh": 80.854,
+          "range_km": 204.7
+        },
+        {
+          "year": 6.2,
+          "soh": 80.463,
+          "range_km": 186.9
+        },
+        {
+          "year": 6.3,
+          "soh": 80.055,
+          "range_km": 176.9
+        },
+        {
+          "year": 6.4,
+          "soh": 79.64,
+          "range_km": 176.0
+        },
+        {
+          "year": 6.5,
+          "soh": 79.228,
+          "range_km": 184.0
+        },
+        {
+          "year": 6.6,
+          "soh": 78.825,
+          "range_km": 199.5
+        },
+        {
+          "year": 6.7,
+          "soh": 78.433,
+          "range_km": 218.1
+        },
+        {
+          "year": 6.8,
+          "soh": 78.045,
+          "range_km": 231.1
+        },
+        {
+          "year": 6.9,
+          "soh": 77.651,
+          "range_km": 229.9
+        },
+        {
+          "year": 7.0,
+          "soh": 77.24,
+          "range_km": 214.8
+        },
+        {
+          "year": 7.1,
+          "soh": 76.805,
+          "range_km": 194.4
+        },
+        {
+          "year": 7.2,
+          "soh": 76.345,
+          "range_km": 177.3
+        },
+        {
+          "year": 7.3,
+          "soh": 75.865,
+          "range_km": 167.7
+        },
+        {
+          "year": 7.4,
+          "soh": 75.376,
+          "range_km": 166.6
+        },
+        {
+          "year": 7.5,
+          "soh": 74.891,
+          "range_km": 174.0
+        },
+        {
+          "year": 7.6,
+          "soh": 74.418,
+          "range_km": 188.4
+        },
+        {
+          "year": 7.7,
+          "soh": 73.956,
+          "range_km": 205.7
+        },
+        {
+          "year": 7.8,
+          "soh": 73.5,
+          "range_km": 217.7
+        },
+        {
+          "year": 7.9,
+          "soh": 73.036,
+          "range_km": 216.3
+        },
+        {
+          "year": 8.0,
+          "soh": 72.553,
+          "range_km": 201.8
+        },
+        {
+          "year": 8.1,
+          "soh": 72.041,
+          "range_km": 182.4
+        },
+        {
+          "year": 8.2,
+          "soh": 71.499,
+          "range_km": 166.1
+        },
+        {
+          "year": 8.3,
+          "soh": 70.934,
+          "range_km": 156.8
+        },
+        {
+          "year": 8.4,
+          "soh": 70.359,
+          "range_km": 155.5
+        },
+        {
+          "year": 8.5,
+          "soh": 69.788,
+          "range_km": 162.1
+        }
+      ]
+    },
+    "Sodium-ion": {
+      "unrestricted": [
+        {
+          "year": 0.1,
+          "soh": 99.21,
+          "range_km": 251.1
+        },
+        {
+          "year": 0.2,
+          "soh": 98.241,
+          "range_km": 228.2
+        },
+        {
+          "year": 0.3,
+          "soh": 97.099,
+          "range_km": 214.6
+        },
+        {
+          "year": 0.4,
+          "soh": 96.218,
+          "range_km": 212.7
+        },
+        {
+          "year": 0.5,
+          "soh": 95.248,
+          "range_km": 221.3
+        },
+        {
+          "year": 0.6,
+          "soh": 94.218,
+          "range_km": 238.5
+        },
+        {
+          "year": 0.7,
+          "soh": 93.485,
+          "range_km": 260.0
+        },
+        {
+          "year": 0.8,
+          "soh": 92.679,
+          "range_km": 274.4
+        },
+        {
+          "year": 0.9,
+          "soh": 91.761,
+          "range_km": 271.7
+        },
+        {
+          "year": 1.0,
+          "soh": 91.028,
+          "range_km": 253.1
+        },
+        {
+          "year": 1.1,
+          "soh": 90.121,
+          "range_km": 228.1
+        },
+        {
+          "year": 1.2,
+          "soh": 89.022,
+          "range_km": 206.8
+        },
+        {
+          "year": 1.3,
+          "soh": 88.141,
+          "range_km": 194.8
+        },
+        {
+          "year": 1.4,
+          "soh": 87.132,
+          "range_km": 192.6
+        },
+        {
+          "year": 1.5,
+          "soh": 86.033,
+          "range_km": 199.8
+        },
+        {
+          "year": 1.6,
+          "soh": 85.243,
+          "range_km": 215.8
+        },
+        {
+          "year": 1.7,
+          "soh": 84.399,
+          "range_km": 234.7
+        },
+        {
+          "year": 1.8,
+          "soh": 83.452,
+          "range_km": 247.1
+        },
+        {
+          "year": 1.9,
+          "soh": 82.695,
+          "range_km": 244.9
+        },
+        {
+          "year": 2.0,
+          "soh": 81.747,
+          "range_km": 227.3
+        },
+        {
+          "year": 2.1,
+          "soh": 80.539,
+          "range_km": 203.9
+        },
+        {
+          "year": 2.2,
+          "soh": 79.491,
+          "range_km": 184.7
+        },
+        {
+          "year": 2.3,
+          "soh": 78.187,
+          "range_km": 172.8
+        },
+        {
+          "year": 2.4,
+          "soh": 76.63,
+          "range_km": 169.4
+        },
+        {
+          "year": 2.5,
+          "soh": 75.406,
+          "range_km": 175.2
+        },
+        {
+          "year": 2.6,
+          "soh": 74.035,
+          "range_km": 187.4
+        },
+        {
+          "year": 2.7,
+          "soh": 72.512,
+          "range_km": 201.7
+        },
+        {
+          "year": 2.8,
+          "soh": 71.348,
+          "range_km": 211.3
+        },
+        {
+          "year": 2.9,
+          "soh": 69.956,
+          "range_km": 207.2
+        }
+      ],
+      "bms_supervised": [
+        {
+          "year": 0.1,
+          "soh": 99.443,
+          "range_km": 251.7
+        },
+        {
+          "year": 0.2,
+          "soh": 98.847,
+          "range_km": 229.6
+        },
+        {
+          "year": 0.3,
+          "soh": 98.223,
+          "range_km": 217.1
+        },
+        {
+          "year": 0.4,
+          "soh": 97.599,
+          "range_km": 215.7
+        },
+        {
+          "year": 0.5,
+          "soh": 97.002,
+          "range_km": 225.3
+        },
+        {
+          "year": 0.6,
+          "soh": 96.445,
+          "range_km": 244.1
+        },
+        {
+          "year": 0.7,
+          "soh": 95.817,
+          "range_km": 266.5
+        },
+        {
+          "year": 0.8,
+          "soh": 95.22,
+          "range_km": 282.0
+        },
+        {
+          "year": 0.9,
+          "soh": 94.622,
+          "range_km": 280.2
+        },
+        {
+          "year": 1.0,
+          "soh": 93.994,
+          "range_km": 261.4
+        },
+        {
+          "year": 1.1,
+          "soh": 93.437,
+          "range_km": 236.5
+        },
+        {
+          "year": 1.2,
+          "soh": 92.841,
+          "range_km": 215.7
+        },
+        {
+          "year": 1.3,
+          "soh": 92.217,
+          "range_km": 203.8
+        },
+        {
+          "year": 1.4,
+          "soh": 91.593,
+          "range_km": 202.4
+        },
+        {
+          "year": 1.5,
+          "soh": 90.996,
+          "range_km": 211.4
+        },
+        {
+          "year": 1.6,
+          "soh": 90.439,
+          "range_km": 228.9
+        },
+        {
+          "year": 1.7,
+          "soh": 89.811,
+          "range_km": 249.8
+        },
+        {
+          "year": 1.8,
+          "soh": 89.214,
+          "range_km": 264.2
+        },
+        {
+          "year": 1.9,
+          "soh": 88.616,
+          "range_km": 262.4
+        },
+        {
+          "year": 2.0,
+          "soh": 87.988,
+          "range_km": 244.7
+        },
+        {
+          "year": 2.1,
+          "soh": 87.431,
+          "range_km": 221.3
+        },
+        {
+          "year": 2.2,
+          "soh": 86.835,
+          "range_km": 201.7
+        },
+        {
+          "year": 2.3,
+          "soh": 86.211,
+          "range_km": 190.6
+        },
+        {
+          "year": 2.4,
+          "soh": 85.587,
+          "range_km": 189.2
+        },
+        {
+          "year": 2.5,
+          "soh": 84.99,
+          "range_km": 197.4
+        },
+        {
+          "year": 2.6,
+          "soh": 84.435,
+          "range_km": 213.7
+        },
+        {
+          "year": 2.7,
+          "soh": 83.788,
+          "range_km": 233.0
+        },
+        {
+          "year": 2.8,
+          "soh": 83.152,
+          "range_km": 246.2
+        },
+        {
+          "year": 2.9,
+          "soh": 82.496,
+          "range_km": 244.3
+        },
+        {
+          "year": 3.0,
+          "soh": 81.784,
+          "range_km": 227.4
+        },
+        {
+          "year": 3.1,
+          "soh": 81.132,
+          "range_km": 205.4
+        },
+        {
+          "year": 3.2,
+          "soh": 80.412,
+          "range_km": 186.8
+        },
+        {
+          "year": 3.3,
+          "soh": 79.635,
+          "range_km": 176.0
+        },
+        {
+          "year": 3.4,
+          "soh": 78.833,
+          "range_km": 174.2
+        },
+        {
+          "year": 3.5,
+          "soh": 78.039,
+          "range_km": 181.3
+        },
+        {
+          "year": 3.6,
+          "soh": 77.279,
+          "range_km": 195.6
+        },
+        {
+          "year": 3.7,
+          "soh": 76.392,
+          "range_km": 212.4
+        },
+        {
+          "year": 3.8,
+          "soh": 75.521,
+          "range_km": 223.6
+        },
+        {
+          "year": 3.9,
+          "soh": 74.621,
+          "range_km": 221.0
+        },
+        {
+          "year": 4.0,
+          "soh": 73.645,
+          "range_km": 204.8
+        },
+        {
+          "year": 4.1,
+          "soh": 72.752,
+          "range_km": 184.2
+        },
+        {
+          "year": 4.2,
+          "soh": 71.765,
+          "range_km": 166.7
+        },
+        {
+          "year": 4.3,
+          "soh": 70.701,
+          "range_km": 156.3
+        },
+        {
+          "year": 4.4,
+          "soh": 69.601,
+          "range_km": 153.8
+        }
+      ],
+      "soc_20_80": [
+        {
+          "year": 0.1,
+          "soh": 99.382,
+          "range_km": 251.6
+        },
+        {
+          "year": 0.2,
+          "soh": 98.623,
+          "range_km": 229.1
+        },
+        {
+          "year": 0.3,
+          "soh": 97.729,
+          "range_km": 216.0
+        },
+        {
+          "year": 0.4,
+          "soh": 97.04,
+          "range_km": 214.5
+        },
+        {
+          "year": 0.5,
+          "soh": 96.281,
+          "range_km": 223.7
+        },
+        {
+          "year": 0.6,
+          "soh": 95.475,
+          "range_km": 241.7
+        },
+        {
+          "year": 0.7,
+          "soh": 94.901,
+          "range_km": 263.9
+        },
+        {
+          "year": 0.8,
+          "soh": 94.271,
+          "range_km": 279.2
+        },
+        {
+          "year": 0.9,
+          "soh": 93.552,
+          "range_km": 277.0
+        },
+        {
+          "year": 1.0,
+          "soh": 92.978,
+          "range_km": 258.6
+        },
+        {
+          "year": 1.1,
+          "soh": 92.268,
+          "range_km": 233.6
+        },
+        {
+          "year": 1.2,
+          "soh": 91.408,
+          "range_km": 212.3
+        },
+        {
+          "year": 1.3,
+          "soh": 90.719,
+          "range_km": 200.5
+        },
+        {
+          "year": 1.4,
+          "soh": 89.929,
+          "range_km": 198.8
+        },
+        {
+          "year": 1.5,
+          "soh": 89.069,
+          "range_km": 206.9
+        },
+        {
+          "year": 1.6,
+          "soh": 88.451,
+          "range_km": 223.9
+        },
+        {
+          "year": 1.7,
+          "soh": 87.79,
+          "range_km": 244.1
+        },
+        {
+          "year": 1.8,
+          "soh": 87.071,
+          "range_km": 257.8
+        },
+        {
+          "year": 1.9,
+          "soh": 86.525,
+          "range_km": 256.2
+        },
+        {
+          "year": 2.0,
+          "soh": 85.864,
+          "range_km": 238.8
+        },
+        {
+          "year": 2.1,
+          "soh": 85.058,
+          "range_km": 215.3
+        },
+        {
+          "year": 2.2,
+          "soh": 84.396,
+          "range_km": 196.0
+        },
+        {
+          "year": 2.3,
+          "soh": 83.581,
+          "range_km": 184.7
+        },
+        {
+          "year": 2.4,
+          "soh": 82.619,
+          "range_km": 182.6
+        },
+        {
+          "year": 2.5,
+          "soh": 81.873,
+          "range_km": 190.2
+        },
+        {
+          "year": 2.6,
+          "soh": 81.045,
+          "range_km": 205.2
+        },
+        {
+          "year": 2.7,
+          "soh": 80.134,
+          "range_km": 222.9
+        },
+        {
+          "year": 2.8,
+          "soh": 79.446,
+          "range_km": 235.3
+        },
+        {
+          "year": 2.9,
+          "soh": 78.629,
+          "range_km": 232.8
+        },
+        {
+          "year": 3.0,
+          "soh": 77.621,
+          "range_km": 215.9
+        },
+        {
+          "year": 3.1,
+          "soh": 76.76,
+          "range_km": 194.3
+        },
+        {
+          "year": 3.2,
+          "soh": 75.667,
+          "range_km": 175.8
+        },
+        {
+          "year": 3.3,
+          "soh": 74.328,
+          "range_km": 164.3
+        },
+        {
+          "year": 3.4,
+          "soh": 73.247,
+          "range_km": 161.9
+        },
+        {
+          "year": 3.5,
+          "soh": 72.012,
+          "range_km": 167.3
+        },
+        {
+          "year": 3.6,
+          "soh": 70.647,
+          "range_km": 178.8
+        },
+        {
+          "year": 3.7,
+          "soh": 69.635,
+          "range_km": 193.7
+        }
+      ],
+      "precondition_only": [
+        {
+          "year": 0.1,
+          "soh": 99.325,
+          "range_km": 251.4
+        },
+        {
+          "year": 0.2,
+          "soh": 98.537,
+          "range_km": 228.9
+        },
+        {
+          "year": 0.3,
+          "soh": 97.639,
+          "range_km": 215.8
+        },
+        {
+          "year": 0.4,
+          "soh": 96.928,
+          "range_km": 214.2
+        },
+        {
+          "year": 0.5,
+          "soh": 96.14,
+          "range_km": 223.3
+        },
+        {
+          "year": 0.6,
+          "soh": 95.286,
+          "range_km": 241.2
+        },
+        {
+          "year": 0.7,
+          "soh": 94.634,
+          "range_km": 263.2
+        },
+        {
+          "year": 0.8,
+          "soh": 93.911,
+          "range_km": 278.1
+        },
+        {
+          "year": 0.9,
+          "soh": 93.103,
+          "range_km": 275.7
+        },
+        {
+          "year": 1.0,
+          "soh": 92.451,
+          "range_km": 257.1
+        },
+        {
+          "year": 1.1,
+          "soh": 91.688,
+          "range_km": 232.1
+        },
+        {
+          "year": 1.2,
+          "soh": 90.807,
+          "range_km": 210.9
+        },
+        {
+          "year": 1.3,
+          "soh": 90.095,
+          "range_km": 199.1
+        },
+        {
+          "year": 1.4,
+          "soh": 89.292,
+          "range_km": 197.4
+        },
+        {
+          "year": 1.5,
+          "soh": 88.411,
+          "range_km": 205.4
+        },
+        {
+          "year": 1.6,
+          "soh": 87.736,
+          "range_km": 222.1
+        },
+        {
+          "year": 1.7,
+          "soh": 86.998,
+          "range_km": 241.9
+        },
+        {
+          "year": 1.8,
+          "soh": 86.189,
+          "range_km": 255.2
+        },
+        {
+          "year": 1.9,
+          "soh": 85.551,
+          "range_km": 253.3
+        },
+        {
+          "year": 2.0,
+          "soh": 84.813,
+          "range_km": 235.9
+        },
+        {
+          "year": 2.1,
+          "soh": 83.951,
+          "range_km": 212.5
+        },
+        {
+          "year": 2.2,
+          "soh": 83.215,
+          "range_km": 193.3
+        },
+        {
+          "year": 2.3,
+          "soh": 82.335,
+          "range_km": 182.0
+        },
+        {
+          "year": 2.4,
+          "soh": 81.309,
+          "range_km": 179.7
+        },
+        {
+          "year": 2.5,
+          "soh": 80.474,
+          "range_km": 186.9
+        },
+        {
+          "year": 2.6,
+          "soh": 79.527,
+          "range_km": 201.3
+        },
+        {
+          "year": 2.7,
+          "soh": 78.46,
+          "range_km": 218.2
+        },
+        {
+          "year": 2.8,
+          "soh": 77.599,
+          "range_km": 229.8
+        },
+        {
+          "year": 2.9,
+          "soh": 76.592,
+          "range_km": 226.8
+        },
+        {
+          "year": 3.0,
+          "soh": 75.396,
+          "range_km": 209.7
+        },
+        {
+          "year": 3.1,
+          "soh": 74.375,
+          "range_km": 188.3
+        },
+        {
+          "year": 3.2,
+          "soh": 73.14,
+          "range_km": 169.9
+        },
+        {
+          "year": 3.3,
+          "soh": 71.674,
+          "range_km": 158.4
+        },
+        {
+          "year": 3.4,
+          "soh": 70.457,
+          "range_km": 155.7
+        },
+        {
+          "year": 3.5,
+          "soh": 69.058,
+          "range_km": 160.4
+        }
+      ],
+      "full_protection": [
+        {
+          "year": 0.1,
+          "soh": 99.54,
+          "range_km": 252.0
+        },
+        {
+          "year": 0.2,
+          "soh": 99.064,
+          "range_km": 230.1
+        },
+        {
+          "year": 0.3,
+          "soh": 98.578,
+          "range_km": 217.9
+        },
+        {
+          "year": 0.4,
+          "soh": 98.093,
+          "range_km": 216.8
+        },
+        {
+          "year": 0.5,
+          "soh": 97.617,
+          "range_km": 226.8
+        },
+        {
+          "year": 0.6,
+          "soh": 97.156,
+          "range_km": 245.9
+        },
+        {
+          "year": 0.7,
+          "soh": 96.711,
+          "range_km": 269.0
+        },
+        {
+          "year": 0.8,
+          "soh": 96.276,
+          "range_km": 285.1
+        },
+        {
+          "year": 0.9,
+          "soh": 95.841,
+          "range_km": 283.8
+        },
+        {
+          "year": 1.0,
+          "soh": 95.396,
+          "range_km": 265.3
+        },
+        {
+          "year": 1.1,
+          "soh": 94.936,
+          "range_km": 240.3
+        },
+        {
+          "year": 1.2,
+          "soh": 94.46,
+          "range_km": 219.4
+        },
+        {
+          "year": 1.3,
+          "soh": 93.974,
+          "range_km": 207.7
+        },
+        {
+          "year": 1.4,
+          "soh": 93.489,
+          "range_km": 206.6
+        },
+        {
+          "year": 1.5,
+          "soh": 93.013,
+          "range_km": 216.1
+        },
+        {
+          "year": 1.6,
+          "soh": 92.553,
+          "range_km": 234.3
+        },
+        {
+          "year": 1.7,
+          "soh": 92.108,
+          "range_km": 256.1
+        },
+        {
+          "year": 1.8,
+          "soh": 91.673,
+          "range_km": 271.5
+        },
+        {
+          "year": 1.9,
+          "soh": 91.237,
+          "range_km": 270.2
+        },
+        {
+          "year": 2.0,
+          "soh": 90.793,
+          "range_km": 252.5
+        },
+        {
+          "year": 2.1,
+          "soh": 90.332,
+          "range_km": 228.7
+        },
+        {
+          "year": 2.2,
+          "soh": 89.856,
+          "range_km": 208.7
+        },
+        {
+          "year": 2.3,
+          "soh": 89.371,
+          "range_km": 197.5
+        },
+        {
+          "year": 2.4,
+          "soh": 88.885,
+          "range_km": 196.5
+        },
+        {
+          "year": 2.5,
+          "soh": 88.409,
+          "range_km": 205.4
+        },
+        {
+          "year": 2.6,
+          "soh": 87.949,
+          "range_km": 222.6
+        },
+        {
+          "year": 2.7,
+          "soh": 87.504,
+          "range_km": 243.3
+        },
+        {
+          "year": 2.8,
+          "soh": 87.069,
+          "range_km": 257.8
+        },
+        {
+          "year": 2.9,
+          "soh": 86.634,
+          "range_km": 256.5
+        },
+        {
+          "year": 3.0,
+          "soh": 86.189,
+          "range_km": 239.7
+        },
+        {
+          "year": 3.1,
+          "soh": 85.729,
+          "range_km": 217.0
+        },
+        {
+          "year": 3.2,
+          "soh": 85.253,
+          "range_km": 198.0
+        },
+        {
+          "year": 3.3,
+          "soh": 84.767,
+          "range_km": 187.4
+        },
+        {
+          "year": 3.4,
+          "soh": 84.275,
+          "range_km": 186.3
+        },
+        {
+          "year": 3.5,
+          "soh": 83.781,
+          "range_km": 194.6
+        },
+        {
+          "year": 3.6,
+          "soh": 83.291,
+          "range_km": 210.8
+        },
+        {
+          "year": 3.7,
+          "soh": 82.806,
+          "range_km": 230.3
+        },
+        {
+          "year": 3.8,
+          "soh": 82.319,
+          "range_km": 243.8
+        },
+        {
+          "year": 3.9,
+          "soh": 81.822,
+          "range_km": 242.3
+        },
+        {
+          "year": 4.0,
+          "soh": 81.302,
+          "range_km": 226.1
+        },
+        {
+          "year": 4.1,
+          "soh": 80.751,
+          "range_km": 204.4
+        },
+        {
+          "year": 4.2,
+          "soh": 80.167,
+          "range_km": 186.2
+        },
+        {
+          "year": 4.3,
+          "soh": 79.556,
+          "range_km": 175.8
+        },
+        {
+          "year": 4.4,
+          "soh": 78.93,
+          "range_km": 174.5
+        },
+        {
+          "year": 4.5,
+          "soh": 78.3,
+          "range_km": 181.9
+        },
+        {
+          "year": 4.6,
+          "soh": 77.675,
+          "range_km": 196.6
+        },
+        {
+          "year": 4.7,
+          "soh": 77.056,
+          "range_km": 214.3
+        },
+        {
+          "year": 4.8,
+          "soh": 76.437,
+          "range_km": 226.3
+        },
+        {
+          "year": 4.9,
+          "soh": 75.803,
+          "range_km": 224.5
+        },
+        {
+          "year": 5.0,
+          "soh": 75.14,
+          "range_km": 209.0
+        },
+        {
+          "year": 5.1,
+          "soh": 74.437,
+          "range_km": 188.4
+        },
+        {
+          "year": 5.2,
+          "soh": 73.693,
+          "range_km": 171.2
+        },
+        {
+          "year": 5.3,
+          "soh": 72.915,
+          "range_km": 161.2
+        },
+        {
+          "year": 5.4,
+          "soh": 72.116,
+          "range_km": 159.4
+        },
+        {
+          "year": 5.5,
+          "soh": 71.313,
+          "range_km": 165.7
+        },
+        {
+          "year": 5.6,
+          "soh": 70.517,
+          "range_km": 178.5
+        },
+        {
+          "year": 5.7,
+          "soh": 69.728,
+          "range_km": 193.9
+        }
+      ]
+    },
+    "Solid-State": {
+      "unrestricted": [
+        {
+          "year": 0.1,
+          "soh": 99.672,
+          "range_km": 252.3
+        },
+        {
+          "year": 0.2,
+          "soh": 99.294,
+          "range_km": 230.7
+        },
+        {
+          "year": 0.3,
+          "soh": 98.872,
+          "range_km": 218.5
+        },
+        {
+          "year": 0.4,
+          "soh": 98.513,
+          "range_km": 217.7
+        },
+        {
+          "year": 0.5,
+          "soh": 98.136,
+          "range_km": 228.0
+        },
+        {
+          "year": 0.6,
+          "soh": 97.747,
+          "range_km": 247.4
+        },
+        {
+          "year": 0.7,
+          "soh": 97.438,
+          "range_km": 271.0
+        },
+        {
+          "year": 0.8,
+          "soh": 97.112,
+          "range_km": 287.6
+        },
+        {
+          "year": 0.9,
+          "soh": 96.758,
+          "range_km": 286.5
+        },
+        {
+          "year": 1.0,
+          "soh": 96.448,
+          "range_km": 268.2
+        },
+        {
+          "year": 1.1,
+          "soh": 96.09,
+          "range_km": 243.2
+        },
+        {
+          "year": 1.2,
+          "soh": 95.681,
+          "range_km": 222.3
+        },
+        {
+          "year": 1.3,
+          "soh": 95.322,
+          "range_km": 210.7
+        },
+        {
+          "year": 1.4,
+          "soh": 94.932,
+          "range_km": 209.8
+        },
+        {
+          "year": 1.5,
+          "soh": 94.523,
+          "range_km": 219.6
+        },
+        {
+          "year": 1.6,
+          "soh": 94.195,
+          "range_km": 238.4
+        },
+        {
+          "year": 1.7,
+          "soh": 93.857,
+          "range_km": 261.0
+        },
+        {
+          "year": 1.8,
+          "soh": 93.502,
+          "range_km": 276.9
+        },
+        {
+          "year": 1.9,
+          "soh": 93.204,
+          "range_km": 276.0
+        },
+        {
+          "year": 2.0,
+          "soh": 92.866,
+          "range_km": 258.3
+        },
+        {
+          "year": 2.1,
+          "soh": 92.478,
+          "range_km": 234.1
+        },
+        {
+          "year": 2.2,
+          "soh": 92.131,
+          "range_km": 214.0
+        },
+        {
+          "year": 2.3,
+          "soh": 91.741,
+          "range_km": 202.8
+        },
+        {
+          "year": 2.4,
+          "soh": 91.319,
+          "range_km": 201.8
+        },
+        {
+          "year": 2.5,
+          "soh": 90.972,
+          "range_km": 211.3
+        },
+        {
+          "year": 2.6,
+          "soh": 90.614,
+          "range_km": 229.4
+        },
+        {
+          "year": 2.7,
+          "soh": 90.247,
+          "range_km": 251.0
+        },
+        {
+          "year": 2.8,
+          "soh": 89.949,
+          "range_km": 266.4
+        },
+        {
+          "year": 2.9,
+          "soh": 89.623,
+          "range_km": 265.4
+        },
+        {
+          "year": 3.0,
+          "soh": 89.256,
+          "range_km": 248.2
+        },
+        {
+          "year": 3.1,
+          "soh": 88.927,
+          "range_km": 225.1
+        },
+        {
+          "year": 3.2,
+          "soh": 88.55,
+          "range_km": 205.7
+        },
+        {
+          "year": 3.3,
+          "soh": 88.127,
+          "range_km": 194.8
+        },
+        {
+          "year": 3.4,
+          "soh": 87.769,
+          "range_km": 194.0
+        },
+        {
+          "year": 3.5,
+          "soh": 87.391,
+          "range_km": 203.0
+        },
+        {
+          "year": 3.6,
+          "soh": 87.003,
+          "range_km": 220.2
+        },
+        {
+          "year": 3.7,
+          "soh": 86.693,
+          "range_km": 241.1
+        },
+        {
+          "year": 3.8,
+          "soh": 86.368,
+          "range_km": 255.8
+        },
+        {
+          "year": 3.9,
+          "soh": 86.013,
+          "range_km": 254.7
+        },
+        {
+          "year": 4.0,
+          "soh": 85.704,
+          "range_km": 238.3
+        },
+        {
+          "year": 4.1,
+          "soh": 85.346,
+          "range_km": 216.0
+        },
+        {
+          "year": 4.2,
+          "soh": 84.936,
+          "range_km": 197.3
+        },
+        {
+          "year": 4.3,
+          "soh": 84.577,
+          "range_km": 186.9
+        },
+        {
+          "year": 4.4,
+          "soh": 84.178,
+          "range_km": 186.1
+        },
+        {
+          "year": 4.5,
+          "soh": 83.75,
+          "range_km": 194.5
+        },
+        {
+          "year": 4.6,
+          "soh": 83.4,
+          "range_km": 211.1
+        },
+        {
+          "year": 4.7,
+          "soh": 83.034,
+          "range_km": 230.9
+        },
+        {
+          "year": 4.8,
+          "soh": 82.642,
+          "range_km": 244.7
+        },
+        {
+          "year": 4.9,
+          "soh": 82.307,
+          "range_km": 243.7
+        },
+        {
+          "year": 5.0,
+          "soh": 81.92,
+          "range_km": 227.8
+        },
+        {
+          "year": 5.1,
+          "soh": 81.468,
+          "range_km": 206.2
+        },
+        {
+          "year": 5.2,
+          "soh": 81.056,
+          "range_km": 188.3
+        },
+        {
+          "year": 5.3,
+          "soh": 80.584,
+          "range_km": 178.1
+        },
+        {
+          "year": 5.4,
+          "soh": 80.062,
+          "range_km": 177.0
+        },
+        {
+          "year": 5.5,
+          "soh": 79.623,
+          "range_km": 185.0
+        },
+        {
+          "year": 5.6,
+          "soh": 79.163,
+          "range_km": 200.4
+        },
+        {
+          "year": 5.7,
+          "soh": 78.681,
+          "range_km": 218.8
+        },
+        {
+          "year": 5.8,
+          "soh": 78.283,
+          "range_km": 231.8
+        },
+        {
+          "year": 5.9,
+          "soh": 77.841,
+          "range_km": 230.5
+        },
+        {
+          "year": 6.0,
+          "soh": 77.333,
+          "range_km": 215.1
+        },
+        {
+          "year": 6.1,
+          "soh": 76.871,
+          "range_km": 194.6
+        },
+        {
+          "year": 6.2,
+          "soh": 76.329,
+          "range_km": 177.3
+        },
+        {
+          "year": 6.3,
+          "soh": 75.711,
+          "range_km": 167.3
+        },
+        {
+          "year": 6.4,
+          "soh": 75.175,
+          "range_km": 166.2
+        },
+        {
+          "year": 6.5,
+          "soh": 74.6,
+          "range_km": 173.3
+        },
+        {
+          "year": 6.6,
+          "soh": 73.996,
+          "range_km": 187.3
+        },
+        {
+          "year": 6.7,
+          "soh": 73.505,
+          "range_km": 204.4
+        },
+        {
+          "year": 6.8,
+          "soh": 72.979,
+          "range_km": 216.1
+        },
+        {
+          "year": 6.9,
+          "soh": 72.398,
+          "range_km": 214.4
+        },
+        {
+          "year": 7.0,
+          "soh": 71.88,
+          "range_km": 199.9
+        },
+        {
+          "year": 7.1,
+          "soh": 71.272,
+          "range_km": 180.4
+        },
+        {
+          "year": 7.2,
+          "soh": 70.562,
+          "range_km": 163.9
+        },
+        {
+          "year": 7.3,
+          "soh": 69.928,
+          "range_km": 154.6
+        }
+      ],
+      "bms_supervised": [
+        {
+          "year": 0.1,
+          "soh": 99.733,
+          "range_km": 252.5
+        },
+        {
+          "year": 0.2,
+          "soh": 99.451,
+          "range_km": 231.0
+        },
+        {
+          "year": 0.3,
+          "soh": 99.159,
+          "range_km": 219.2
+        },
+        {
+          "year": 0.4,
+          "soh": 98.866,
+          "range_km": 218.5
+        },
+        {
+          "year": 0.5,
+          "soh": 98.584,
+          "range_km": 229.0
+        },
+        {
+          "year": 0.6,
+          "soh": 98.318,
+          "range_km": 248.9
+        },
+        {
+          "year": 0.7,
+          "soh": 98.035,
+          "range_km": 272.6
+        },
+        {
+          "year": 0.8,
+          "soh": 97.764,
+          "range_km": 289.5
+        },
+        {
+          "year": 0.9,
+          "soh": 97.493,
+          "range_km": 288.7
+        },
+        {
+          "year": 1.0,
+          "soh": 97.211,
+          "range_km": 270.3
+        },
+        {
+          "year": 1.1,
+          "soh": 96.944,
+          "range_km": 245.4
+        },
+        {
+          "year": 1.2,
+          "soh": 96.662,
+          "range_km": 224.5
+        },
+        {
+          "year": 1.3,
+          "soh": 96.369,
+          "range_km": 213.0
+        },
+        {
+          "year": 1.4,
+          "soh": 96.077,
+          "range_km": 212.4
+        },
+        {
+          "year": 1.5,
+          "soh": 95.795,
+          "range_km": 222.5
+        },
+        {
+          "year": 1.6,
+          "soh": 95.528,
+          "range_km": 241.8
+        },
+        {
+          "year": 1.7,
+          "soh": 95.246,
+          "range_km": 264.9
+        },
+        {
+          "year": 1.8,
+          "soh": 94.975,
+          "range_km": 281.2
+        },
+        {
+          "year": 1.9,
+          "soh": 94.703,
+          "range_km": 280.4
+        },
+        {
+          "year": 2.0,
+          "soh": 94.421,
+          "range_km": 262.6
+        },
+        {
+          "year": 2.1,
+          "soh": 94.155,
+          "range_km": 238.3
+        },
+        {
+          "year": 2.2,
+          "soh": 93.872,
+          "range_km": 218.1
+        },
+        {
+          "year": 2.3,
+          "soh": 93.58,
+          "range_km": 206.8
+        },
+        {
+          "year": 2.4,
+          "soh": 93.288,
+          "range_km": 206.2
+        },
+        {
+          "year": 2.5,
+          "soh": 93.006,
+          "range_km": 216.0
+        },
+        {
+          "year": 2.6,
+          "soh": 92.74,
+          "range_km": 234.8
+        },
+        {
+          "year": 2.7,
+          "soh": 92.457,
+          "range_km": 257.1
+        },
+        {
+          "year": 2.8,
+          "soh": 92.186,
+          "range_km": 273.0
+        },
+        {
+          "year": 2.9,
+          "soh": 91.915,
+          "range_km": 272.2
+        },
+        {
+          "year": 3.0,
+          "soh": 91.633,
+          "range_km": 254.8
+        },
+        {
+          "year": 3.1,
+          "soh": 91.366,
+          "range_km": 231.3
+        },
+        {
+          "year": 3.2,
+          "soh": 91.084,
+          "range_km": 211.6
+        },
+        {
+          "year": 3.3,
+          "soh": 90.792,
+          "range_km": 200.7
+        },
+        {
+          "year": 3.4,
+          "soh": 90.499,
+          "range_km": 200.0
+        },
+        {
+          "year": 3.5,
+          "soh": 90.217,
+          "range_km": 209.6
+        },
+        {
+          "year": 3.6,
+          "soh": 89.951,
+          "range_km": 227.7
+        },
+        {
+          "year": 3.7,
+          "soh": 89.669,
+          "range_km": 249.4
+        },
+        {
+          "year": 3.8,
+          "soh": 89.398,
+          "range_km": 264.7
+        },
+        {
+          "year": 3.9,
+          "soh": 89.126,
+          "range_km": 263.9
+        },
+        {
+          "year": 4.0,
+          "soh": 88.844,
+          "range_km": 247.1
+        },
+        {
+          "year": 4.1,
+          "soh": 88.577,
+          "range_km": 224.2
+        },
+        {
+          "year": 4.2,
+          "soh": 88.295,
+          "range_km": 205.1
+        },
+        {
+          "year": 4.3,
+          "soh": 88.003,
+          "range_km": 194.5
+        },
+        {
+          "year": 4.4,
+          "soh": 87.711,
+          "range_km": 193.9
+        },
+        {
+          "year": 4.5,
+          "soh": 87.428,
+          "range_km": 203.1
+        },
+        {
+          "year": 4.6,
+          "soh": 87.162,
+          "range_km": 220.6
+        },
+        {
+          "year": 4.7,
+          "soh": 86.88,
+          "range_km": 241.6
+        },
+        {
+          "year": 4.8,
+          "soh": 86.609,
+          "range_km": 256.5
+        },
+        {
+          "year": 4.9,
+          "soh": 86.338,
+          "range_km": 255.7
+        },
+        {
+          "year": 5.0,
+          "soh": 86.056,
+          "range_km": 239.3
+        },
+        {
+          "year": 5.1,
+          "soh": 85.789,
+          "range_km": 217.2
+        },
+        {
+          "year": 5.2,
+          "soh": 85.507,
+          "range_km": 198.6
+        },
+        {
+          "year": 5.3,
+          "soh": 85.214,
+          "range_km": 188.4
+        },
+        {
+          "year": 5.4,
+          "soh": 84.922,
+          "range_km": 187.7
+        },
+        {
+          "year": 5.5,
+          "soh": 84.639,
+          "range_km": 196.6
+        },
+        {
+          "year": 5.6,
+          "soh": 84.367,
+          "range_km": 213.6
+        },
+        {
+          "year": 5.7,
+          "soh": 84.076,
+          "range_km": 233.8
+        },
+        {
+          "year": 5.8,
+          "soh": 83.791,
+          "range_km": 248.1
+        },
+        {
+          "year": 5.9,
+          "soh": 83.502,
+          "range_km": 247.3
+        },
+        {
+          "year": 6.0,
+          "soh": 83.198,
+          "range_km": 231.4
+        },
+        {
+          "year": 6.1,
+          "soh": 82.905,
+          "range_km": 209.9
+        },
+        {
+          "year": 6.2,
+          "soh": 82.592,
+          "range_km": 191.9
+        },
+        {
+          "year": 6.3,
+          "soh": 82.262,
+          "range_km": 181.8
+        },
+        {
+          "year": 6.4,
+          "soh": 81.927,
+          "range_km": 181.1
+        },
+        {
+          "year": 6.5,
+          "soh": 81.598,
+          "range_km": 189.5
+        },
+        {
+          "year": 6.6,
+          "soh": 81.283,
+          "range_km": 205.8
+        },
+        {
+          "year": 6.7,
+          "soh": 80.945,
+          "range_km": 225.1
+        },
+        {
+          "year": 6.8,
+          "soh": 80.615,
+          "range_km": 238.7
+        },
+        {
+          "year": 6.9,
+          "soh": 80.28,
+          "range_km": 237.7
+        },
+        {
+          "year": 7.0,
+          "soh": 79.927,
+          "range_km": 222.3
+        },
+        {
+          "year": 7.1,
+          "soh": 79.588,
+          "range_km": 201.5
+        },
+        {
+          "year": 7.2,
+          "soh": 79.225,
+          "range_km": 184.0
+        },
+        {
+          "year": 7.3,
+          "soh": 78.842,
+          "range_km": 174.3
+        },
+        {
+          "year": 7.4,
+          "soh": 78.454,
+          "range_km": 173.4
+        },
+        {
+          "year": 7.5,
+          "soh": 78.073,
+          "range_km": 181.4
+        },
+        {
+          "year": 7.6,
+          "soh": 77.709,
+          "range_km": 196.7
+        },
+        {
+          "year": 7.7,
+          "soh": 77.317,
+          "range_km": 215.0
+        },
+        {
+          "year": 7.8,
+          "soh": 76.935,
+          "range_km": 227.8
+        },
+        {
+          "year": 7.9,
+          "soh": 76.547,
+          "range_km": 226.7
+        },
+        {
+          "year": 8.0,
+          "soh": 76.137,
+          "range_km": 211.7
+        },
+        {
+          "year": 8.1,
+          "soh": 75.745,
+          "range_km": 191.7
+        },
+        {
+          "year": 8.2,
+          "soh": 75.323,
+          "range_km": 175.0
+        },
+        {
+          "year": 8.3,
+          "soh": 74.88,
+          "range_km": 165.5
+        },
+        {
+          "year": 8.4,
+          "soh": 74.43,
+          "range_km": 164.5
+        },
+        {
+          "year": 8.5,
+          "soh": 73.989,
+          "range_km": 171.9
+        },
+        {
+          "year": 8.6,
+          "soh": 73.565,
+          "range_km": 186.2
+        },
+        {
+          "year": 8.7,
+          "soh": 73.111,
+          "range_km": 203.3
+        },
+        {
+          "year": 8.8,
+          "soh": 72.668,
+          "range_km": 215.2
+        },
+        {
+          "year": 8.9,
+          "soh": 72.218,
+          "range_km": 213.9
+        },
+        {
+          "year": 9.0,
+          "soh": 71.744,
+          "range_km": 199.5
+        },
+        {
+          "year": 9.1,
+          "soh": 71.288,
+          "range_km": 180.5
+        },
+        {
+          "year": 9.2,
+          "soh": 70.8,
+          "range_km": 164.5
+        },
+        {
+          "year": 9.3,
+          "soh": 70.286,
+          "range_km": 155.4
+        },
+        {
+          "year": 9.4,
+          "soh": 69.764,
+          "range_km": 154.2
+        }
+      ],
+      "soc_20_80": [
+        {
+          "year": 0.1,
+          "soh": 99.743,
+          "range_km": 252.5
+        },
+        {
+          "year": 0.2,
+          "soh": 99.448,
+          "range_km": 231.0
+        },
+        {
+          "year": 0.3,
+          "soh": 99.117,
+          "range_km": 219.1
+        },
+        {
+          "year": 0.4,
+          "soh": 98.837,
+          "range_km": 218.5
+        },
+        {
+          "year": 0.5,
+          "soh": 98.541,
+          "range_km": 228.9
+        },
+        {
+          "year": 0.6,
+          "soh": 98.237,
+          "range_km": 248.7
+        },
+        {
+          "year": 0.7,
+          "soh": 97.995,
+          "range_km": 272.5
+        },
+        {
+          "year": 0.8,
+          "soh": 97.74,
+          "range_km": 289.4
+        },
+        {
+          "year": 0.9,
+          "soh": 97.462,
+          "range_km": 288.6
+        },
+        {
+          "year": 1.0,
+          "soh": 97.22,
+          "range_km": 270.4
+        },
+        {
+          "year": 1.1,
+          "soh": 96.94,
+          "range_km": 245.4
+        },
+        {
+          "year": 1.2,
+          "soh": 96.619,
+          "range_km": 224.4
+        },
+        {
+          "year": 1.3,
+          "soh": 96.339,
+          "range_km": 212.9
+        },
+        {
+          "year": 1.4,
+          "soh": 96.034,
+          "range_km": 212.3
+        },
+        {
+          "year": 1.5,
+          "soh": 95.713,
+          "range_km": 222.3
+        },
+        {
+          "year": 1.6,
+          "soh": 95.457,
+          "range_km": 241.6
+        },
+        {
+          "year": 1.7,
+          "soh": 95.192,
+          "range_km": 264.7
+        },
+        {
+          "year": 1.8,
+          "soh": 94.915,
+          "range_km": 281.1
+        },
+        {
+          "year": 1.9,
+          "soh": 94.682,
+          "range_km": 280.4
+        },
+        {
+          "year": 2.0,
+          "soh": 94.417,
+          "range_km": 262.6
+        },
+        {
+          "year": 2.1,
+          "soh": 94.113,
+          "range_km": 238.2
+        },
+        {
+          "year": 2.2,
+          "soh": 93.842,
+          "range_km": 218.0
+        },
+        {
+          "year": 2.3,
+          "soh": 93.536,
+          "range_km": 206.7
+        },
+        {
+          "year": 2.4,
+          "soh": 93.205,
+          "range_km": 206.0
+        },
+        {
+          "year": 2.5,
+          "soh": 92.934,
+          "range_km": 215.9
+        },
+        {
+          "year": 2.6,
+          "soh": 92.654,
+          "range_km": 234.5
+        },
+        {
+          "year": 2.7,
+          "soh": 92.366,
+          "range_km": 256.9
+        },
+        {
+          "year": 2.8,
+          "soh": 92.133,
+          "range_km": 272.8
+        },
+        {
+          "year": 2.9,
+          "soh": 91.879,
+          "range_km": 272.1
+        },
+        {
+          "year": 3.0,
+          "soh": 91.591,
+          "range_km": 254.7
+        },
+        {
+          "year": 3.1,
+          "soh": 91.334,
+          "range_km": 231.2
+        },
+        {
+          "year": 3.2,
+          "soh": 91.039,
+          "range_km": 211.5
+        },
+        {
+          "year": 3.3,
+          "soh": 90.708,
+          "range_km": 200.5
+        },
+        {
+          "year": 3.4,
+          "soh": 90.427,
+          "range_km": 199.9
+        },
+        {
+          "year": 3.5,
+          "soh": 90.132,
+          "range_km": 209.4
+        },
+        {
+          "year": 3.6,
+          "soh": 89.828,
+          "range_km": 227.4
+        },
+        {
+          "year": 3.7,
+          "soh": 89.586,
+          "range_km": 249.1
+        },
+        {
+          "year": 3.8,
+          "soh": 89.331,
+          "range_km": 264.5
+        },
+        {
+          "year": 3.9,
+          "soh": 89.053,
+          "range_km": 263.7
+        },
+        {
+          "year": 4.0,
+          "soh": 88.811,
+          "range_km": 247.0
+        },
+        {
+          "year": 4.1,
+          "soh": 88.531,
+          "range_km": 224.1
+        },
+        {
+          "year": 4.2,
+          "soh": 88.21,
+          "range_km": 204.9
+        },
+        {
+          "year": 4.3,
+          "soh": 87.93,
+          "range_km": 194.4
+        },
+        {
+          "year": 4.4,
+          "soh": 87.625,
+          "range_km": 193.7
+        },
+        {
+          "year": 4.5,
+          "soh": 87.304,
+          "range_km": 202.8
+        },
+        {
+          "year": 4.6,
+          "soh": 87.047,
+          "range_km": 220.4
+        },
+        {
+          "year": 4.7,
+          "soh": 86.783,
+          "range_km": 241.3
+        },
+        {
+          "year": 4.8,
+          "soh": 86.505,
+          "range_km": 256.2
+        },
+        {
+          "year": 4.9,
+          "soh": 86.272,
+          "range_km": 255.5
+        },
+        {
+          "year": 5.0,
+          "soh": 86.008,
+          "range_km": 239.2
+        },
+        {
+          "year": 5.1,
+          "soh": 85.704,
+          "range_km": 217.0
+        },
+        {
+          "year": 5.2,
+          "soh": 85.432,
+          "range_km": 198.5
+        },
+        {
+          "year": 5.3,
+          "soh": 85.127,
+          "range_km": 188.2
+        },
+        {
+          "year": 5.4,
+          "soh": 84.796,
+          "range_km": 187.4
+        },
+        {
+          "year": 5.5,
+          "soh": 84.522,
+          "range_km": 196.3
+        },
+        {
+          "year": 5.6,
+          "soh": 84.235,
+          "range_km": 213.2
+        },
+        {
+          "year": 5.7,
+          "soh": 83.935,
+          "range_km": 233.4
+        },
+        {
+          "year": 5.8,
+          "soh": 83.689,
+          "range_km": 247.8
+        },
+        {
+          "year": 5.9,
+          "soh": 83.417,
+          "range_km": 247.0
+        },
+        {
+          "year": 6.0,
+          "soh": 83.105,
+          "range_km": 231.1
+        },
+        {
+          "year": 6.1,
+          "soh": 82.822,
+          "range_km": 209.7
+        },
+        {
+          "year": 6.2,
+          "soh": 82.492,
+          "range_km": 191.6
+        },
+        {
+          "year": 6.3,
+          "soh": 82.117,
+          "range_km": 181.5
+        },
+        {
+          "year": 6.4,
+          "soh": 81.793,
+          "range_km": 180.8
+        },
+        {
+          "year": 6.5,
+          "soh": 81.447,
+          "range_km": 189.2
+        },
+        {
+          "year": 6.6,
+          "soh": 81.085,
+          "range_km": 205.3
+        },
+        {
+          "year": 6.7,
+          "soh": 80.793,
+          "range_km": 224.7
+        },
+        {
+          "year": 6.8,
+          "soh": 80.481,
+          "range_km": 238.3
+        },
+        {
+          "year": 6.9,
+          "soh": 80.136,
+          "range_km": 237.3
+        },
+        {
+          "year": 7.0,
+          "soh": 79.831,
+          "range_km": 222.0
+        },
+        {
+          "year": 7.1,
+          "soh": 79.474,
+          "range_km": 201.2
+        },
+        {
+          "year": 7.2,
+          "soh": 79.059,
+          "range_km": 183.6
+        },
+        {
+          "year": 7.3,
+          "soh": 78.69,
+          "range_km": 173.9
+        },
+        {
+          "year": 7.4,
+          "soh": 78.282,
+          "range_km": 173.0
+        },
+        {
+          "year": 7.5,
+          "soh": 77.846,
+          "range_km": 180.8
+        },
+        {
+          "year": 7.6,
+          "soh": 77.492,
+          "range_km": 196.2
+        },
+        {
+          "year": 7.7,
+          "soh": 77.121,
+          "range_km": 214.5
+        },
+        {
+          "year": 7.8,
+          "soh": 76.727,
+          "range_km": 227.2
+        },
+        {
+          "year": 7.9,
+          "soh": 76.391,
+          "range_km": 226.2
+        },
+        {
+          "year": 8.0,
+          "soh": 76.006,
+          "range_km": 211.4
+        },
+        {
+          "year": 8.1,
+          "soh": 75.555,
+          "range_km": 191.3
+        },
+        {
+          "year": 8.2,
+          "soh": 75.147,
+          "range_km": 174.6
+        },
+        {
+          "year": 8.3,
+          "soh": 74.682,
+          "range_km": 165.1
+        },
+        {
+          "year": 8.4,
+          "soh": 74.169,
+          "range_km": 163.9
+        },
+        {
+          "year": 8.5,
+          "soh": 73.741,
+          "range_km": 171.3
+        },
+        {
+          "year": 8.6,
+          "soh": 73.293,
+          "range_km": 185.5
+        },
+        {
+          "year": 8.7,
+          "soh": 72.825,
+          "range_km": 202.5
+        },
+        {
+          "year": 8.8,
+          "soh": 72.441,
+          "range_km": 214.5
+        },
+        {
+          "year": 8.9,
+          "soh": 72.015,
+          "range_km": 213.3
+        },
+        {
+          "year": 9.0,
+          "soh": 71.528,
+          "range_km": 198.9
+        },
+        {
+          "year": 9.1,
+          "soh": 71.087,
+          "range_km": 180.0
+        },
+        {
+          "year": 9.2,
+          "soh": 70.572,
+          "range_km": 163.9
+        },
+        {
+          "year": 9.3,
+          "soh": 69.987,
+          "range_km": 154.7
+        }
+      ],
+      "precondition_only": [
+        {
+          "year": 0.1,
+          "soh": 99.71,
+          "range_km": 252.4
+        },
+        {
+          "year": 0.2,
+          "soh": 99.39,
+          "range_km": 230.9
+        },
+        {
+          "year": 0.3,
+          "soh": 99.042,
+          "range_km": 218.9
+        },
+        {
+          "year": 0.4,
+          "soh": 98.739,
+          "range_km": 218.2
+        },
+        {
+          "year": 0.5,
+          "soh": 98.419,
+          "range_km": 228.6
+        },
+        {
+          "year": 0.6,
+          "soh": 98.085,
+          "range_km": 248.3
+        },
+        {
+          "year": 0.7,
+          "soh": 97.802,
+          "range_km": 272.0
+        },
+        {
+          "year": 0.8,
+          "soh": 97.503,
+          "range_km": 288.7
+        },
+        {
+          "year": 0.9,
+          "soh": 97.182,
+          "range_km": 287.8
+        },
+        {
+          "year": 1.0,
+          "soh": 96.899,
+          "range_km": 269.5
+        },
+        {
+          "year": 1.1,
+          "soh": 96.587,
+          "range_km": 244.5
+        },
+        {
+          "year": 1.2,
+          "soh": 96.244,
+          "range_km": 223.6
+        },
+        {
+          "year": 1.3,
+          "soh": 95.942,
+          "range_km": 212.1
+        },
+        {
+          "year": 1.4,
+          "soh": 95.617,
+          "range_km": 211.3
+        },
+        {
+          "year": 1.5,
+          "soh": 95.273,
+          "range_km": 221.3
+        },
+        {
+          "year": 1.6,
+          "soh": 94.983,
+          "range_km": 240.4
+        },
+        {
+          "year": 1.7,
+          "soh": 94.679,
+          "range_km": 263.3
+        },
+        {
+          "year": 1.8,
+          "soh": 94.358,
+          "range_km": 279.4
+        },
+        {
+          "year": 1.9,
+          "soh": 94.08,
+          "range_km": 278.6
+        },
+        {
+          "year": 2.0,
+          "soh": 93.776,
+          "range_km": 260.8
+        },
+        {
+          "year": 2.1,
+          "soh": 93.441,
+          "range_km": 236.5
+        },
+        {
+          "year": 2.2,
+          "soh": 93.144,
+          "range_km": 216.4
+        },
+        {
+          "year": 2.3,
+          "soh": 92.819,
+          "range_km": 205.2
+        },
+        {
+          "year": 2.4,
+          "soh": 92.47,
+          "range_km": 204.4
+        },
+        {
+          "year": 2.5,
+          "soh": 92.173,
+          "range_km": 214.1
+        },
+        {
+          "year": 2.6,
+          "soh": 91.861,
+          "range_km": 232.5
+        },
+        {
+          "year": 2.7,
+          "soh": 91.534,
+          "range_km": 254.6
+        },
+        {
+          "year": 2.8,
+          "soh": 91.257,
+          "range_km": 270.2
+        },
+        {
+          "year": 2.9,
+          "soh": 90.957,
+          "range_km": 269.3
+        },
+        {
+          "year": 3.0,
+          "soh": 90.631,
+          "range_km": 252.0
+        },
+        {
+          "year": 3.1,
+          "soh": 90.341,
+          "range_km": 228.7
+        },
+        {
+          "year": 3.2,
+          "soh": 90.021,
+          "range_km": 209.1
+        },
+        {
+          "year": 3.3,
+          "soh": 89.672,
+          "range_km": 198.2
+        },
+        {
+          "year": 3.4,
+          "soh": 89.37,
+          "range_km": 197.5
+        },
+        {
+          "year": 3.5,
+          "soh": 89.05,
+          "range_km": 206.9
+        },
+        {
+          "year": 3.6,
+          "soh": 88.716,
+          "range_km": 224.6
+        },
+        {
+          "year": 3.7,
+          "soh": 88.433,
+          "range_km": 245.9
+        },
+        {
+          "year": 3.8,
+          "soh": 88.134,
+          "range_km": 261.0
+        },
+        {
+          "year": 3.9,
+          "soh": 87.813,
+          "range_km": 260.0
+        },
+        {
+          "year": 4.0,
+          "soh": 87.53,
+          "range_km": 243.4
+        },
+        {
+          "year": 4.1,
+          "soh": 87.218,
+          "range_km": 220.8
+        },
+        {
+          "year": 4.2,
+          "soh": 86.875,
+          "range_km": 201.8
+        },
+        {
+          "year": 4.3,
+          "soh": 86.573,
+          "range_km": 191.4
+        },
+        {
+          "year": 4.4,
+          "soh": 86.248,
+          "range_km": 190.6
+        },
+        {
+          "year": 4.5,
+          "soh": 85.904,
+          "range_km": 199.5
+        },
+        {
+          "year": 4.6,
+          "soh": 85.614,
+          "range_km": 216.7
+        },
+        {
+          "year": 4.7,
+          "soh": 85.31,
+          "range_km": 237.2
+        },
+        {
+          "year": 4.8,
+          "soh": 84.989,
+          "range_km": 251.7
+        },
+        {
+          "year": 4.9,
+          "soh": 84.711,
+          "range_km": 250.9
+        },
+        {
+          "year": 5.0,
+          "soh": 84.402,
+          "range_km": 234.7
+        },
+        {
+          "year": 5.1,
+          "soh": 84.057,
+          "range_km": 212.8
+        },
+        {
+          "year": 5.2,
+          "soh": 83.744,
+          "range_km": 194.5
+        },
+        {
+          "year": 5.3,
+          "soh": 83.398,
+          "range_km": 184.3
+        },
+        {
+          "year": 5.4,
+          "soh": 83.019,
+          "range_km": 183.5
+        },
+        {
+          "year": 5.5,
+          "soh": 82.69,
+          "range_km": 192.1
+        },
+        {
+          "year": 5.6,
+          "soh": 82.34,
+          "range_km": 208.4
+        },
+        {
+          "year": 5.7,
+          "soh": 81.967,
+          "range_km": 227.9
+        },
+        {
+          "year": 5.8,
+          "soh": 81.644,
+          "range_km": 241.8
+        },
+        {
+          "year": 5.9,
+          "soh": 81.291,
+          "range_km": 240.7
+        },
+        {
+          "year": 6.0,
+          "soh": 80.901,
+          "range_km": 225.0
+        },
+        {
+          "year": 6.1,
+          "soh": 80.547,
+          "range_km": 203.9
+        },
+        {
+          "year": 6.2,
+          "soh": 80.151,
+          "range_km": 186.2
+        },
+        {
+          "year": 6.3,
+          "soh": 79.713,
+          "range_km": 176.2
+        },
+        {
+          "year": 6.4,
+          "soh": 79.325,
+          "range_km": 175.3
+        },
+        {
+          "year": 6.5,
+          "soh": 78.908,
+          "range_km": 183.3
+        },
+        {
+          "year": 6.6,
+          "soh": 78.465,
+          "range_km": 198.6
+        },
+        {
+          "year": 6.7,
+          "soh": 78.084,
+          "range_km": 217.1
+        },
+        {
+          "year": 6.8,
+          "soh": 77.674,
+          "range_km": 230.0
+        },
+        {
+          "year": 6.9,
+          "soh": 77.228,
+          "range_km": 228.7
+        },
+        {
+          "year": 7.0,
+          "soh": 76.828,
+          "range_km": 213.7
+        },
+        {
+          "year": 7.1,
+          "soh": 76.38,
+          "range_km": 193.4
+        },
+        {
+          "year": 7.2,
+          "soh": 75.879,
+          "range_km": 176.3
+        },
+        {
+          "year": 7.3,
+          "soh": 75.43,
+          "range_km": 166.7
+        },
+        {
+          "year": 7.4,
+          "soh": 74.939,
+          "range_km": 165.6
+        },
+        {
+          "year": 7.5,
+          "soh": 74.412,
+          "range_km": 172.9
+        },
+        {
+          "year": 7.6,
+          "soh": 73.958,
+          "range_km": 187.2
+        },
+        {
+          "year": 7.7,
+          "soh": 73.474,
+          "range_km": 204.3
+        },
+        {
+          "year": 7.8,
+          "soh": 72.956,
+          "range_km": 216.0
+        },
+        {
+          "year": 7.9,
+          "soh": 72.499,
+          "range_km": 214.7
+        },
+        {
+          "year": 8.0,
+          "soh": 71.992,
+          "range_km": 200.2
+        },
+        {
+          "year": 8.1,
+          "soh": 71.425,
+          "range_km": 180.8
+        },
+        {
+          "year": 8.2,
+          "soh": 70.913,
+          "range_km": 164.7
+        },
+        {
+          "year": 8.3,
+          "soh": 70.343,
+          "range_km": 155.5
+        },
+        {
+          "year": 8.4,
+          "soh": 69.723,
+          "range_km": 154.1
+        }
+      ],
+      "full_protection": [
+        {
+          "year": 0.1,
+          "soh": 99.79,
+          "range_km": 252.6
+        },
+        {
+          "year": 0.2,
+          "soh": 99.575,
+          "range_km": 231.3
+        },
+        {
+          "year": 0.3,
+          "soh": 99.356,
+          "range_km": 219.6
+        },
+        {
+          "year": 0.4,
+          "soh": 99.138,
+          "range_km": 219.1
+        },
+        {
+          "year": 0.5,
+          "soh": 98.923,
+          "range_km": 229.8
+        },
+        {
+          "year": 0.6,
+          "soh": 98.713,
+          "range_km": 249.9
+        },
+        {
+          "year": 0.7,
+          "soh": 98.509,
+          "range_km": 273.9
+        },
+        {
+          "year": 0.8,
+          "soh": 98.308,
+          "range_km": 291.1
+        },
+        {
+          "year": 0.9,
+          "soh": 98.107,
+          "range_km": 290.5
+        },
+        {
+          "year": 1.0,
+          "soh": 97.902,
+          "range_km": 272.3
+        },
+        {
+          "year": 1.1,
+          "soh": 97.693,
+          "range_km": 247.3
+        },
+        {
+          "year": 1.2,
+          "soh": 97.477,
+          "range_km": 226.4
+        },
+        {
+          "year": 1.3,
+          "soh": 97.259,
+          "range_km": 215.0
+        },
+        {
+          "year": 1.4,
+          "soh": 97.04,
+          "range_km": 214.5
+        },
+        {
+          "year": 1.5,
+          "soh": 96.825,
+          "range_km": 224.9
+        },
+        {
+          "year": 1.6,
+          "soh": 96.615,
+          "range_km": 244.6
+        },
+        {
+          "year": 1.7,
+          "soh": 96.411,
+          "range_km": 268.1
+        },
+        {
+          "year": 1.8,
+          "soh": 96.21,
+          "range_km": 284.9
+        },
+        {
+          "year": 1.9,
+          "soh": 96.009,
+          "range_km": 284.3
+        },
+        {
+          "year": 2.0,
+          "soh": 95.805,
+          "range_km": 266.4
+        },
+        {
+          "year": 2.1,
+          "soh": 95.595,
+          "range_km": 242.0
+        },
+        {
+          "year": 2.2,
+          "soh": 95.38,
+          "range_km": 221.6
+        },
+        {
+          "year": 2.3,
+          "soh": 95.161,
+          "range_km": 210.3
+        },
+        {
+          "year": 2.4,
+          "soh": 94.943,
+          "range_km": 209.9
+        },
+        {
+          "year": 2.5,
+          "soh": 94.728,
+          "range_km": 220.0
+        },
+        {
+          "year": 2.6,
+          "soh": 94.518,
+          "range_km": 239.3
+        },
+        {
+          "year": 2.7,
+          "soh": 94.314,
+          "range_km": 262.3
+        },
+        {
+          "year": 2.8,
+          "soh": 94.113,
+          "range_km": 278.7
+        },
+        {
+          "year": 2.9,
+          "soh": 93.912,
+          "range_km": 278.1
+        },
+        {
+          "year": 3.0,
+          "soh": 93.707,
+          "range_km": 260.6
+        },
+        {
+          "year": 3.1,
+          "soh": 93.498,
+          "range_km": 236.7
+        },
+        {
+          "year": 3.2,
+          "soh": 93.282,
+          "range_km": 216.7
+        },
+        {
+          "year": 3.3,
+          "soh": 93.064,
+          "range_km": 205.7
+        },
+        {
+          "year": 3.4,
+          "soh": 92.845,
+          "range_km": 205.2
+        },
+        {
+          "year": 3.5,
+          "soh": 92.63,
+          "range_km": 215.2
+        },
+        {
+          "year": 3.6,
+          "soh": 92.42,
+          "range_km": 234.0
+        },
+        {
+          "year": 3.7,
+          "soh": 92.216,
+          "range_km": 256.4
+        },
+        {
+          "year": 3.8,
+          "soh": 92.015,
+          "range_km": 272.5
+        },
+        {
+          "year": 3.9,
+          "soh": 91.814,
+          "range_km": 271.9
+        },
+        {
+          "year": 4.0,
+          "soh": 91.61,
+          "range_km": 254.8
+        },
+        {
+          "year": 4.1,
+          "soh": 91.4,
+          "range_km": 231.4
+        },
+        {
+          "year": 4.2,
+          "soh": 91.185,
+          "range_km": 211.8
+        },
+        {
+          "year": 4.3,
+          "soh": 90.966,
+          "range_km": 201.1
+        },
+        {
+          "year": 4.4,
+          "soh": 90.748,
+          "range_km": 200.6
+        },
+        {
+          "year": 4.5,
+          "soh": 90.532,
+          "range_km": 210.3
+        },
+        {
+          "year": 4.6,
+          "soh": 90.323,
+          "range_km": 228.6
+        },
+        {
+          "year": 4.7,
+          "soh": 90.118,
+          "range_km": 250.6
+        },
+        {
+          "year": 4.8,
+          "soh": 89.918,
+          "range_km": 266.3
+        },
+        {
+          "year": 4.9,
+          "soh": 89.717,
+          "range_km": 265.7
+        },
+        {
+          "year": 5.0,
+          "soh": 89.512,
+          "range_km": 248.9
+        },
+        {
+          "year": 5.1,
+          "soh": 89.303,
+          "range_km": 226.1
+        },
+        {
+          "year": 5.2,
+          "soh": 89.087,
+          "range_km": 206.9
+        },
+        {
+          "year": 5.3,
+          "soh": 88.869,
+          "range_km": 196.4
+        },
+        {
+          "year": 5.4,
+          "soh": 88.65,
+          "range_km": 195.9
+        },
+        {
+          "year": 5.5,
+          "soh": 88.435,
+          "range_km": 205.4
+        },
+        {
+          "year": 5.6,
+          "soh": 88.225,
+          "range_km": 223.3
+        },
+        {
+          "year": 5.7,
+          "soh": 88.021,
+          "range_km": 244.8
+        },
+        {
+          "year": 5.8,
+          "soh": 87.82,
+          "range_km": 260.1
+        },
+        {
+          "year": 5.9,
+          "soh": 87.619,
+          "range_km": 259.5
+        },
+        {
+          "year": 6.0,
+          "soh": 87.415,
+          "range_km": 243.1
+        },
+        {
+          "year": 6.1,
+          "soh": 87.205,
+          "range_km": 220.8
+        },
+        {
+          "year": 6.2,
+          "soh": 86.99,
+          "range_km": 202.1
+        },
+        {
+          "year": 6.3,
+          "soh": 86.771,
+          "range_km": 191.8
+        },
+        {
+          "year": 6.4,
+          "soh": 86.553,
+          "range_km": 191.3
+        },
+        {
+          "year": 6.5,
+          "soh": 86.337,
+          "range_km": 200.6
+        },
+        {
+          "year": 6.6,
+          "soh": 86.128,
+          "range_km": 218.0
+        },
+        {
+          "year": 6.7,
+          "soh": 85.923,
+          "range_km": 238.9
+        },
+        {
+          "year": 6.8,
+          "soh": 85.722,
+          "range_km": 253.8
+        },
+        {
+          "year": 6.9,
+          "soh": 85.522,
+          "range_km": 253.3
+        },
+        {
+          "year": 7.0,
+          "soh": 85.317,
+          "range_km": 237.3
+        },
+        {
+          "year": 7.1,
+          "soh": 85.107,
+          "range_km": 215.4
+        },
+        {
+          "year": 7.2,
+          "soh": 84.892,
+          "range_km": 197.2
+        },
+        {
+          "year": 7.3,
+          "soh": 84.672,
+          "range_km": 187.2
+        },
+        {
+          "year": 7.4,
+          "soh": 84.45,
+          "range_km": 186.7
+        },
+        {
+          "year": 7.5,
+          "soh": 84.228,
+          "range_km": 195.7
+        },
+        {
+          "year": 7.6,
+          "soh": 84.01,
+          "range_km": 212.7
+        },
+        {
+          "year": 7.7,
+          "soh": 83.795,
+          "range_km": 233.0
+        },
+        {
+          "year": 7.8,
+          "soh": 83.581,
+          "range_km": 247.5
+        },
+        {
+          "year": 7.9,
+          "soh": 83.365,
+          "range_km": 246.9
+        },
+        {
+          "year": 8.0,
+          "soh": 83.143,
+          "range_km": 231.2
+        },
+        {
+          "year": 8.1,
+          "soh": 82.912,
+          "range_km": 209.9
+        },
+        {
+          "year": 8.2,
+          "soh": 82.673,
+          "range_km": 192.0
+        },
+        {
+          "year": 8.3,
+          "soh": 82.428,
+          "range_km": 182.2
+        },
+        {
+          "year": 8.4,
+          "soh": 82.179,
+          "range_km": 181.6
+        },
+        {
+          "year": 8.5,
+          "soh": 81.931,
+          "range_km": 190.3
+        },
+        {
+          "year": 8.6,
+          "soh": 81.687,
+          "range_km": 206.8
+        },
+        {
+          "year": 8.7,
+          "soh": 81.447,
+          "range_km": 226.5
+        },
+        {
+          "year": 8.8,
+          "soh": 81.208,
+          "range_km": 240.5
+        },
+        {
+          "year": 8.9,
+          "soh": 80.966,
+          "range_km": 239.8
+        },
+        {
+          "year": 9.0,
+          "soh": 80.718,
+          "range_km": 224.5
+        },
+        {
+          "year": 9.1,
+          "soh": 80.46,
+          "range_km": 203.7
+        },
+        {
+          "year": 9.2,
+          "soh": 80.193,
+          "range_km": 186.3
+        },
+        {
+          "year": 9.3,
+          "soh": 79.918,
+          "range_km": 176.6
+        },
+        {
+          "year": 9.4,
+          "soh": 79.641,
+          "range_km": 176.0
+        },
+        {
+          "year": 9.5,
+          "soh": 79.364,
+          "range_km": 184.4
+        },
+        {
+          "year": 9.6,
+          "soh": 79.091,
+          "range_km": 200.2
+        },
+        {
+          "year": 9.7,
+          "soh": 78.822,
+          "range_km": 219.2
+        },
+        {
+          "year": 9.8,
+          "soh": 78.555,
+          "range_km": 232.6
+        },
+        {
+          "year": 9.9,
+          "soh": 78.285,
+          "range_km": 231.8
+        },
+        {
+          "year": 10.0,
+          "soh": 78.008,
+          "range_km": 216.9
+        },
+        {
+          "year": 10.1,
+          "soh": 77.72,
+          "range_km": 196.7
+        },
+        {
+          "year": 10.2,
+          "soh": 77.421,
+          "range_km": 179.8
+        },
+        {
+          "year": 10.3,
+          "soh": 77.114,
+          "range_km": 170.4
+        },
+        {
+          "year": 10.4,
+          "soh": 76.804,
+          "range_km": 169.8
+        },
+        {
+          "year": 10.5,
+          "soh": 76.494,
+          "range_km": 177.7
+        },
+        {
+          "year": 10.6,
+          "soh": 76.189,
+          "range_km": 192.9
+        },
+        {
+          "year": 10.7,
+          "soh": 75.889,
+          "range_km": 211.0
+        },
+        {
+          "year": 10.8,
+          "soh": 75.591,
+          "range_km": 223.8
+        },
+        {
+          "year": 10.9,
+          "soh": 75.289,
+          "range_km": 222.9
+        },
+        {
+          "year": 11.0,
+          "soh": 74.979,
+          "range_km": 208.5
+        },
+        {
+          "year": 11.1,
+          "soh": 74.657,
+          "range_km": 189.0
+        },
+        {
+          "year": 11.2,
+          "soh": 74.323,
+          "range_km": 172.6
+        },
+        {
+          "year": 11.3,
+          "soh": 73.98,
+          "range_km": 163.5
+        },
+        {
+          "year": 11.4,
+          "soh": 73.633,
+          "range_km": 162.8
+        },
+        {
+          "year": 11.5,
+          "soh": 73.287,
+          "range_km": 170.2
+        },
+        {
+          "year": 11.6,
+          "soh": 72.946,
+          "range_km": 184.7
+        },
+        {
+          "year": 11.7,
+          "soh": 72.611,
+          "range_km": 201.9
+        },
+        {
+          "year": 11.8,
+          "soh": 72.277,
+          "range_km": 214.0
+        },
+        {
+          "year": 11.9,
+          "soh": 71.94,
+          "range_km": 213.0
+        },
+        {
+          "year": 12.0,
+          "soh": 71.593,
+          "range_km": 199.1
+        },
+        {
+          "year": 12.1,
+          "soh": 71.234,
+          "range_km": 180.3
+        },
+        {
+          "year": 12.2,
+          "soh": 70.86,
+          "range_km": 164.6
+        },
+        {
+          "year": 12.3,
+          "soh": 70.477,
+          "range_km": 155.8
+        },
+        {
+          "year": 12.4,
+          "soh": 70.089,
+          "range_km": 154.9
+        },
+        {
+          "year": 12.5,
+          "soh": 69.703,
+          "range_km": 161.9
+        }
+      ]
+    }
+  },
+  "guidelines": "Battery preservation guidelines (from simulation results):\n- NMC: unrestricted fast charging reaches end-of-life in 1.6 yrs; best strategy 'full_protection' gives 4.9 yrs (+3.3 yrs).\n- LFP: unrestricted fast charging reaches end-of-life in 4.5 yrs; best strategy 'full_protection' gives 8.5 yrs (+4.0 yrs).\n- Sodium-ion: unrestricted fast charging reaches end-of-life in 2.9 yrs; best strategy 'full_protection' gives 5.7 yrs (+2.8 yrs).\n- Solid-State: unrestricted fast charging reaches end-of-life in 7.3 yrs; best strategy 'full_protection' gives 12.5 yrs (+5.2 yrs).\n- Keep SOC between 20% and 80% for daily use.\n- Avoid DC fast charging when cell temperature would exceed 35C; cap charge rate at 1.5C.\n- Pre-condition the pack before fast charging in hot or cold weather."
+}
