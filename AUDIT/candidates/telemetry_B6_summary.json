@@ -1,0 +1,47 @@
+{
+  "dataset": "B6",
+  "dataset_id": "LFP_MultiStat_B6",
+  "zip": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\DATA\\B6_Discharge0.5C_Charge2C.zip",
+  "workbooks_read": 19,
+  "sheets_read": 1704,
+  "label_records": 1702,
+  "labels_matched_to_sheets": 1702,
+  "labels_without_raw_sheet": [],
+  "labels_without_raw_sheet_count": 0,
+  "label_misses": [
+    "cycle_0700.xlsx::Sheet18|empty",
+    "cycle_0700.xlsx::Sheet17|unlabelled"
+  ],
+  "label_miss_count": 2,
+  "rows_written": 170101,
+  "cycles_in_output": 1702,
+  "phase_counts": {
+    "charge": 85051,
+    "discharge": 85050
+  },
+  "label_status_counts": {
+    "CONDITIONAL": 169651,
+    "BLOCKED": 450
+  },
+  "quality_flag_counts": {
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;CYCLE_ID_RECONSTRUCTED": 169651,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;PARTIAL_DISCHARGE;CYCLE_ID_RECONSTRUCTED": 450
+  },
+  "capacity_non_null_cycles": 1697,
+  "soh_range": [
+    81.69893814111114,
+    99.65291180777676
+  ],
+  "voltage_range": [
+    2.494214,
+    3.771692
+  ],
+  "current_range": [
+    -0.6261994,
+    2.406726
+  ],
+  "duplicate_cycle_time_rows": 0,
+  "output": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\AUDIT\\candidates\\telemetry_B6.parquet",
+  "current_spike_rows": 0,
+  "voltage_spike_rows": 0
+}

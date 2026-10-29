@@ -1,0 +1,1054 @@
+{
+  "metadata": {
+    "title": "Member 1 - LFP B1-B5 source investigation and validation readiness",
+    "timestamp_utc": "2026-10-29T10:39:59.240054+00:00",
+    "canonical_dataset_modified": false,
+    "notes": "Read-only. Source counts come from the archives themselves; one cycle per raw cell is re-derived and compared with the audit tables."
+  },
+  "guardrails": {
+    "master_table_sha256": {
+      "parquet": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+      "csv": "9e23792615b2f08692944680d041957f776428b7563a90b214b77ee74629895b"
+    },
+    "hashes_match_expected": true,
+    "attachments_match_expected": true,
+    "workspace_archives_match_expected": true,
+    "writes_confined_to": "AUDIT\\member1_audit_outputs",
+    "member2_artifacts_modified": false
+  },
+  "attachments_reconciled": {
+    "note": "The B1 audit, B3/B4/B5 raw and B6 audit archives supplied with this request are byte-identical to the workspace copies; no new raw data was introduced.",
+    "archive_hashes": {
+      "B1_AUDIT": {
+        "path": "AUDIT\\B1_LFP_Audit_Output.zip",
+        "sha256": "05bb6258f6965d9b5e2d27aabcd2706a78129d1cb9873389cf18d5150ad4e85e",
+        "matches_expected": true
+      },
+      "B3_RAW": {
+        "path": "DATA\\B3_Discharge2C_Charge0.5C (1).zip",
+        "sha256": "aff29ebec7befc8a14589e9b8b33beff83c3e30164b4f2c766202e4308d29bb2",
+        "matches_expected": true
+      },
+      "B4_RAW": {
+        "path": "DATA\\B4_Discharge3C_Charge0.5C (1).zip",
+        "sha256": "a17779c495f2fdd60ea588bc5763f1e32b05e5da069a46abda05f1009af098c6",
+        "matches_expected": true
+      },
+      "B5_RAW": {
+        "path": "DATA\\B5_Discharge0.5C_Charge1C (1).zip",
+        "sha256": "f3d6b1ef56992f57530e17ce2d4c98cf21de4f59f0c866d27d0921dae1287b3b",
+        "matches_expected": true
+      },
+      "B6_AUDIT": {
+        "path": "AUDIT\\LFP_B6_Audit_Package (1).zip",
+        "sha256": "96b5fef5905b948e21ea62f8d109d6e056c51088327d5efa1eee99c4c433878e",
+        "matches_expected": true
+      }
+    }
+  },
+  "workspace_archive_hashes": {
+    "B1_RAW": {
+      "path": "DATA\\B1_Discharge0.5C_Charge0.5C(1).zip",
+      "sha256": "fe04aec9b706aa8228dc327240f5132b992fc940de8dd64df969262908f85a5f",
+      "matches_expected": true
+    },
+    "B2_DERIVED": {
+      "path": "DATA\\B2_LFP_Member1_audit.zip",
+      "sha256": "54cd6113506e7b11b5147739d24b412b3b279f0c356e63bcf67de544a8ce169d",
+      "matches_expected": true
+    }
+  },
+  "raw_inventories": {
+    "B1": {
+      "archive": "DATA\\B1_Discharge0.5C_Charge0.5C(1).zip",
+      "workbook_count": 19,
+      "cycle_sheet_count": 1460,
+      "workbooks": {
+        "Cycle_0050.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0100.xlsx": {
+          "sheets": 61,
+          "cycle_sheets": 50
+        },
+        "Cycle_0150.xlsx": {
+          "sheets": 54,
+          "cycle_sheets": 50
+        },
+        "Cycle_0200.xlsx": {
+          "sheets": 33,
+          "cycle_sheets": 30
+        },
+        "Cycle_0250.xlsx": {
+          "sheets": 54,
+          "cycle_sheets": 50
+        },
+        "Cycle_0300.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0350.xlsx": {
+          "sheets": 54,
+          "cycle_sheets": 50
+        },
+        "Cycle_0400.xlsx": {
+          "sheets": 54,
+          "cycle_sheets": 50
+        },
+        "Cycle_0500.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0600.xlsx": {
+          "sheets": 104,
+          "cycle_sheets": 100
+        },
+        "Cycle_0700.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0800.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0900.xlsx": {
+          "sheets": 104,
+          "cycle_sheets": 100
+        },
+        "Cycle_1000.xlsx": {
+          "sheets": 104,
+          "cycle_sheets": 100
+        },
+        "Cycle_1100.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1200.xlsx": {
+          "sheets": 104,
+          "cycle_sheets": 100
+        },
+        "Cycle_1300.xlsx": {
+          "sheets": 105,
+          "cycle_sheets": 80
+        },
+        "Cycle_1400.xlsx": {
+          "sheets": 104,
+          "cycle_sheets": 100
+        },
+        "Cycle_1500.xlsx": {
+          "sheets": 104,
+          "cycle_sheets": 100
+        }
+      }
+    },
+    "B3": {
+      "archive": "DATA\\B3_Discharge2C_Charge0.5C (1).zip",
+      "workbook_count": 25,
+      "cycle_sheet_count": 1979,
+      "workbooks": {
+        "Cycle_0050.xlsx": {
+          "sheets": 52,
+          "cycle_sheets": 50
+        },
+        "Cycle_0100.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0150.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0200.xlsx": {
+          "sheets": 52,
+          "cycle_sheets": 50
+        },
+        "Cycle_0250.xlsx": {
+          "sheets": 32,
+          "cycle_sheets": 29
+        },
+        "Cycle_0300.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0350.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0400.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0450.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0500.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0600.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0700.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0800.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0900.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1000.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1100.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1200.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1300.xlsx": {
+          "sheets": 102,
+          "cycle_sheets": 100
+        },
+        "Cycle_1400.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1500.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1600.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1700.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1800.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1900.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_2000.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        }
+      }
+    },
+    "B4": {
+      "archive": "DATA\\B4_Discharge3C_Charge0.5C (1).zip",
+      "workbook_count": 21,
+      "cycle_sheet_count": 1577,
+      "workbooks": {
+        "Cycle_0050.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0100.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0150.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0200.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0250.xlsx": {
+          "sheets": 31,
+          "cycle_sheets": 28
+        },
+        "Cycle_0300.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0350.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0400.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0450.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0500.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0600.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0700.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0800.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0900.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1000.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1100.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1200.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 99
+        },
+        "Cycle_1300.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1400.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1500.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1600.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        }
+      }
+    },
+    "B5": {
+      "archive": "DATA\\B5_Discharge0.5C_Charge1C (1).zip",
+      "workbook_count": 17,
+      "cycle_sheet_count": 1491,
+      "workbooks": {
+        "Cycle_0050.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0100.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0150.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0200.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0250.xlsx": {
+          "sheets": 53,
+          "cycle_sheets": 50
+        },
+        "Cycle_0400.xlsx": {
+          "sheets": 153,
+          "cycle_sheets": 150
+        },
+        "Cycle_0500.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0600.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0700.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0800.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_0900.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1000.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1100.xlsx": {
+          "sheets": 101,
+          "cycle_sheets": 99
+        },
+        "Cycle_1200.xlsx": {
+          "sheets": 104,
+          "cycle_sheets": 92
+        },
+        "Cycle_1300.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1400.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        },
+        "Cycle_1500.xlsx": {
+          "sheets": 103,
+          "cycle_sheets": 100
+        }
+      }
+    }
+  },
+  "independent_sample_verification": {
+    "B1": {
+      "source": "DATA/B1_Discharge0.5C_Charge0.5C(1).zip::Cycle_1500.xlsx::Run01_Un1Ch7_Step2_Cycle001",
+      "derived": {
+        "rows": 13993,
+        "t_start_s": 31.0,
+        "t_end_s": 14024.0,
+        "discharge": {
+          "samples": 6366,
+          "duration_s": 6366.0,
+          "v_start": 3.596997,
+          "v_end": 2.494421,
+          "v_min": 2.494421,
+          "v_max": 3.596997,
+          "capacity_ah": 1.1029078230833333,
+          "mean_abs_current_a": 0.6236990159754948
+        },
+        "charge": {
+          "samples": 7627,
+          "duration_s": 7626.0,
+          "v_start": 2.888977,
+          "v_end": 3.651208,
+          "v_min": 2.888977,
+          "v_max": 3.651269,
+          "capacity_ah": 1.0980694647416667,
+          "mean_abs_current_a": 0.518334970727678
+        }
+      },
+      "audit_checkpoint": 1500,
+      "audit_global_cycle_est": 1401,
+      "audit_capacity_ah": 1.102908,
+      "audit_soh_pct": 88.233,
+      "audit_quality_flag": "ok",
+      "delta_capacity_ah": -1.7691666664987338e-07
+    },
+    "B3": {
+      "source": "DATA/B3_Discharge2C_Charge0.5C (1).zip::Cycle_0050.xlsx::Run01_Un1Ch2_Step2_Cycle10",
+      "derived": {
+        "rows": 8773,
+        "t_start_s": 72238.0,
+        "t_end_s": 81010.0,
+        "discharge": {
+          "samples": 1680,
+          "duration_s": 1679.0,
+          "v_start": 3.344421,
+          "v_end": 2.496826,
+          "v_min": 2.496826,
+          "v_max": 3.344421,
+          "capacity_ah": 1.1654912330555556,
+          "mean_abs_current_a": 2.4989683970238095
+        },
+        "charge": {
+          "samples": 7093,
+          "duration_s": 7092.0,
+          "v_start": 2.866077,
+          "v_end": 3.651038,
+          "v_min": 2.866077,
+          "v_max": 3.651465,
+          "capacity_ah": 1.1732873443819443,
+          "mean_abs_current_a": 0.5955391577766812
+        }
+      },
+      "audit_cycle_index": 10,
+      "audit_capacity_ah": 1.1654912330555556,
+      "audit_soh_pct": 93.23929864444445,
+      "audit_quality_tier": "A",
+      "delta_capacity_ah": 0.0
+    },
+    "B4": {
+      "source": "DATA/B4_Discharge3C_Charge0.5C (1).zip::Cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle10",
+      "derived": {
+        "rows": 8358,
+        "t_start_s": 70338.0,
+        "t_end_s": 78695.0,
+        "discharge": {
+          "samples": 1140,
+          "duration_s": 1139.0,
+          "v_start": 3.245593,
+          "v_end": 2.497559,
+          "v_min": 2.497559,
+          "v_max": 3.245593,
+          "capacity_ah": 1.1864182094444444,
+          "mean_abs_current_a": 3.749872687719299
+        },
+        "charge": {
+          "samples": 7218,
+          "duration_s": 7217.0,
+          "v_start": 2.825293,
+          "v_end": 3.651001,
+          "v_min": 2.825293,
+          "v_max": 3.651623,
+          "capacity_ah": 1.190372860723611,
+          "mean_abs_current_a": 0.5937471278124133
+        }
+      },
+      "audit_capacity_ah": null,
+      "audit_note": "B4 audit computed no capacity (blanket block on current-unit and phase segmentation); this raw re-derivation shows the discharge is complete to 2.4976 V and yields a physically plausible 3C capacity."
+    }
+  },
+  "master_table_facts": {
+    "rows": 515270,
+    "columns": [
+      "chemistry",
+      "dataset_id",
+      "cell_id",
+      "protocol_id",
+      "cycle_id",
+      "time_sec",
+      "voltage_v",
+      "current_a",
+      "temp_c",
+      "capacity_ah",
+      "soh_pct",
+      "quality_flag",
+      "source_file"
+    ],
+    "datasets": {
+      "LFP_MultiStat_B1": {
+        "rows": 4789,
+        "observed_cycle_ids": 1,
+        "cell_cycle_pairs": 1,
+        "labelled_cell_cycle_pairs": 1,
+        "soh_null_rows": 0
+      },
+      "LFP_MultiStat_B5": {
+        "rows": 333344,
+        "observed_cycle_ids": 250,
+        "cell_cycle_pairs": 250,
+        "labelled_cell_cycle_pairs": 249,
+        "soh_null_rows": 625
+      },
+      "NASA_Ames_PCoE": {
+        "rows": 135436,
+        "observed_cycle_ids": 168,
+        "cell_cycle_pairs": 468,
+        "labelled_cell_cycle_pairs": 468,
+        "soh_null_rows": 0
+      },
+      "Zenodo_IonTech_NaIon": {
+        "rows": 41701,
+        "observed_cycle_ids": 25,
+        "cell_cycle_pairs": 100,
+        "labelled_cell_cycle_pairs": 100,
+        "soh_null_rows": 0
+      }
+    },
+    "b5_cycle_blocks": [
+      [
+        1,
+        100
+      ],
+      [
+        151,
+        200
+      ],
+      [
+        401,
+        500
+      ]
+    ],
+    "b5_missing_cycle_ids": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      260,
+      261,
+      262,
+      263,
+      264,
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272,
+      273,
+      274,
+      275,
+      276,
+      277,
+      278,
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286,
+      287,
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      294,
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319,
+      320,
+      321,
+      322,
+      323,
+      324,
+      325,
+      326,
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400
+    ],
+    "b5_labelled_cycles": 249,
+    "b5_next_observed_record_pairs": 248,
+    "b5_null_soh_cycles": [
+      40
+    ],
+    "b5_null_soh_rows": 625
+  },
+  "b5_facts": {
+    "audit_cycle_rows": 1499,
+    "audit_labelled_soh": 1492,
+    "audit_excluded_cycles": [
+      40,
+      583,
+      749,
+      890,
+      1099,
+      1108,
+      1290
+    ],
+    "capacity_ground_truth_values": [
+      "NO"
+    ],
+    "paired_cycles": 1498,
+    "cycles_with_qdis_gt_qchg": 1488,
+    "ce_median": 1.027787,
+    "ce_min": 0.9995722,
+    "ce_max": 1.045464
+  },
+  "b2_facts": {
+    "dataset": "LFP 18650 (1250 mAh) cell 'BATTERY 2', 1C discharge / 0.5C charge ageing",
+    "raw_workbooks_referenced": 20,
+    "raw_bytes_referenced": 381209935,
+    "raw_integrity_rows": 20,
+    "derived_cycles": 1506,
+    "cycles_in_analysis": 1496,
+    "soh_rated_min": 0.8554380936225255,
+    "soh_rated_max": 0.9668109364112218,
+    "soh_fraction_semantics": "soh_rated is 0-1; multiply by 100 for percent",
+    "channels": {
+      "8": 998,
+      "2": 508
+    },
+    "channel_change_cycle": 999,
+    "qv_curves_shape": [
+      1506,
+      3
+    ],
+    "splits": {
+      "strategy": "contiguous cycle blocks (no shuffling) over in_analysis cycles",
+      "train": {
+        "cycles": [
+          1,
+          1053
+        ],
+        "n": 1047
+      },
+      "val": {
+        "cycles": [
+          1054,
+          1279
+        ],
+        "n": 224
+      },
+      "test": {
+        "cycles": [
+          1280,
+          1506
+        ],
+        "n": 225
+      },
+      "note": "also recommended: leave-one-workbook-out cross validation, because each workbook is a separate recording session and shares a common capacity offset."
+    },
+    "label_derived_columns": [
+      "q_rated_ah",
+      "q_discharge_ah",
+      "q_charge_ah",
+      "soh_rated",
+      "soh_initial_ref",
+      "soh_slope_per_100cyc"
+    ],
+    "verification_checks": 14,
+    "verification_all_passed": true
+  },
+  "b4_coverage_gap": {
+    "raw_workbooks": 21,
+    "audited_workbooks": 16,
+    "unaudited_workbooks": [
+      "Cycle_0150.xlsx",
+      "Cycle_0200.xlsx",
+      "Cycle_0250.xlsx",
+      "Cycle_0300.xlsx",
+      "Cycle_0350.xlsx"
+    ],
+    "audited_cycle_sheets": 1350,
+    "audited_complete_discharges": 1347,
+    "audited_no_discharge": 3,
+    "raw_median_abs_discharge_current_a": -3.749536,
+    "raw_median_charge_current_a": 0.625885
+  },
+  "b6_out_of_scope_note": {
+    "scope": "OUT_OF_SCOPE for the B1-B5 brief; recorded because the audit package was attached",
+    "raw_input_zip": "B6_Discharge0.5C_Charge2C.zip",
+    "raw_input_size_bytes": 368836614,
+    "raw_present_in_workspace": false,
+    "referenced_workbooks": 19,
+    "cycle_like_sheets": 1702,
+    "complete_discharge_labels": 1697,
+    "label_semantics": "conditional capacity/SOH relative to B6 metadata nominal capacity",
+    "finding": "Raw B6 workbooks are absent; only the external audit package exists. It cannot be used as verified raw data, but it indicates B6 would add ~1,697 conditional cycle labels if the raw archive were supplied."
+  },
+  "coverage_rows": [
+    {
+      "cell_id": "BATTERY_1",
+      "dataset_id": "LFP_MultiStat_B1",
+      "source_path": "DATA/B1_Discharge0.5C_Charge0.5C(1).zip; AUDIT/B1_LFP_Audit_Output.zip",
+      "source_status": "SOURCE_VERIFIED_MASTER_PARTIAL",
+      "source_verified": "YES - 19 workbooks / 1,460 cycle sheets recounted; one raw cycle re-derived and matched the audit to 1e-6 Ah",
+      "raw_data_available": "YES",
+      "derived_data_available": "YES - 1,460-row cycle table, 1,456 capacity/SOH labels",
+      "row_count": 4789,
+      "observed_cycle_count": 1,
+      "labelled_cycle_count": 1,
+      "soh_provenance": "capacity_ah / 1.25 Ah rated; audit-computed, conditional on current-unit interpretation",
+      "current_unit_status": "VALUES_ARE_AMPERES; header I(A/cm2) with Surface Area=0 is a label error (verified against 0.625 A protocol)",
+      "voltage_available": "YES",
+      "current_available": "YES",
+      "time_available": "YES (1 Hz source; master rows sampled every 3rd)",
+      "temperature_available": "NO - Aux Count 0; no thermal channel in any workbook",
+      "data_quality_issues": "Master ingests only a staging sample: 4,789 rows from cycle 2 of checkpoint 50, while the source has 1,460 cycle sheets and 1,456 labels. 110 labels carry an underdetermined cycle offset (108 alone, 2 combined with other flags); 4 cycles have no capacity label; master mixes charge and discharge rows. BOL reference is first observed, not true BOL.",
+      "independent_validation_suitability": "POTENTIALLY_SUITABLE_AFTER_VERIFICATION",
+      "blocker": "Master coverage (1/1,460 cycles); no unit attestation; no measured BOL reference",
+      "recommended_action": "Candidate re-ingestion of all 1,460 cycles from raw with per-cycle labels; verify current unit; use contiguous splits"
+    },
+    {
+      "cell_id": "BATTERY_2",
+      "dataset_id": "LFP_MultiStat_B2",
+      "source_path": "NOT_IN_WORKSPACE (raw workbooks absent); DATA/B2_LFP_Member1_audit.zip (derived)",
+      "source_status": "ONLY_DERIVED_DATA_AVAILABLE",
+      "source_verified": "PARTIAL - derived tables verified internally (7+ checks, per-file SHA-256 list); raw not available to re-derive",
+      "raw_data_available": "NO",
+      "derived_data_available": "YES - cycle_features 1,506x255, qv_curves, contiguous splits",
+      "row_count": 0,
+      "observed_cycle_count": 0,
+      "labelled_cycle_count": 0,
+      "soh_provenance": "q_discharge_ah / 1.250 Ah rated; audited export; soh_rated is a 0-1 fraction",
+      "current_unit_status": "VERIFIED_AMPERES (BioLogic I / A)",
+      "voltage_available": "NO raw telemetry; 101-point Q-V curves only",
+      "current_available": "NO raw telemetry; cycle-level current summaries only",
+      "time_available": "NO raw telemetry; cycle-level durations only",
+      "temperature_available": "NO - not measured",
+      "data_quality_issues": "Master: absent; derived: 1,506 cycles, 1,496 in analysis, SOH 0.855-0.967. 10 invalid cycles; instrument channel changes Un1Ch8->Un1Ch2 at cycle 999 (998 vs 508 cycles) with a ~0.9% capacity step; 160 cycles have inferred provenance; label columns q_discharge_ah / soh_rated must never be features.",
+      "independent_validation_suitability": "SUITABLE_FOR_INDEPENDENT_VALIDATION",
+      "blocker": "None for cycle-level validation; raw absent limits bespoke telemetry features",
+      "recommended_action": "Use provided contiguous splits and cycle_index; exclude 999-1015 or model channel as covariate; multiply SOH by 100; do not use label columns as inputs"
+    },
+    {
+      "cell_id": "BATTERY_3",
+      "dataset_id": "LFP_MultiStat_B3",
+      "source_path": "DATA/B3_Discharge2C_Charge0.5C (1).zip; AUDIT/Existing_Audits_Available_B3_B4 (1).zip",
+      "source_status": "SOURCE_VERIFIED_NOT_INGESTED",
+      "source_verified": "YES - 25 workbooks / 1,979 cycle sheets recounted; one raw cycle re-derived and matched Qdis to 1e-6 Ah",
+      "raw_data_available": "YES",
+      "derived_data_available": "YES - 1,979-row cycle summary with 1,971 SOH labels (1,973 Qdis values)",
+      "row_count": 0,
+      "observed_cycle_count": 0,
+      "labelled_cycle_count": 0,
+      "soh_provenance": "Qdis_Ah / 1.25 Ah rated; secondary retention vs first 2C cycle; audit-computed",
+      "current_unit_status": "VALUES_ARE_AMPERES; audit states the A/cm2 header is a unit-label error (2.499 A matches 2.5 A setpoint)",
+      "voltage_available": "YES",
+      "current_available": "YES",
+      "time_available": "YES (1 Hz)",
+      "temperature_available": "NO - Aux Count 0",
+      "data_quality_issues": "Master: absent; source: 1,979 cycles across 25 workbooks, 1,971 labels. Cycles 201-221 absent (a 29-cycle workbook implies 21 withheld); 8 tier-X cycles (6 no discharge, 2 interrupted); 4 instrument channels, so physical cell identity is unproven; CE median 0.983 (physically plausible).",
+      "independent_validation_suitability": "POTENTIALLY_SUITABLE_AFTER_VERIFICATION",
+      "blocker": "Not ingested; no unit attestation; cell identity across channels unproven; no measured BOL",
+      "recommended_action": "Priority independent cell: candidate extraction of all 1,979 cycles, unit/identity attestation, then chronological validation"
+    },
+    {
+      "cell_id": "BATTERY_4",
+      "dataset_id": "LFP_MultiStat_B4",
+      "source_path": "DATA/B4_Discharge3C_Charge0.5C (1).zip; AUDIT/Existing_Audits_Available_B3_B4 (1).zip (partial)",
+      "source_status": "SOURCE_VERIFIED_AUDIT_INCOMPLETE",
+      "source_verified": "YES for raw inventory (21 workbooks / 1,577 cycle sheets); audit covers only 16 workbooks; one raw cycle re-derived",
+      "raw_data_available": "YES",
+      "derived_data_available": "PARTIAL - descriptive 1,382-row audit; no capacity/SOH labels computed",
+      "row_count": 0,
+      "observed_cycle_count": 0,
+      "labelled_cycle_count": 0,
+      "soh_provenance": "Derivable as Qdis/1.25 Ah, but not computed: audit blocks capacity on unit and phase grounds",
+      "current_unit_status": "VALUES_ARE_AMPERES; negative-current median -3.7495 A and positive median +0.6259 A match the 3C/0.5C protocol; header still says A/cm2",
+      "voltage_available": "YES",
+      "current_available": "YES",
+      "time_available": "YES (1 Hz)",
+      "temperature_available": "NO - Aux Count 0",
+      "data_quality_issues": "Master: absent; source: 21 workbooks / 1,577 cycle sheets, but the audit covers 16 workbooks / 1,350 cycle sheets; Cycles 0150-0350 are unaudited. 3 no-discharge sheets, 1 charge excursion to 3.887 V (Cycle_1000, cycle 86), no phase labels (sign-based segmentation required). The audit's blanket block is stricter than the data.",
+      "independent_validation_suitability": "POTENTIALLY_SUITABLE_AFTER_VERIFICATION",
+      "blocker": "No computed labels; 5 workbooks unaudited; unit/phase attestation outstanding",
+      "recommended_action": "Re-audit all 21 workbooks with sign-based segmentation; compute Qdis/SOH; verify against raw samples; then assess"
+    },
+    {
+      "cell_id": "BATTERY_5",
+      "dataset_id": "LFP_MultiStat_B5",
+      "source_path": "DATA/B5_Discharge0.5C_Charge1C (1).zip; AUDIT/B5.zip",
+      "source_status": "SOURCE_VERIFIED_MASTER_PARTIAL_CONDITIONAL",
+      "source_verified": "YES - 17 workbooks / 1,491 cycle sheets recounted; source audit 1,499 records",
+      "raw_data_available": "YES",
+      "derived_data_available": "YES - clean telemetry parquet + 1,499-row cycle summary",
+      "row_count": 333344,
+      "observed_cycle_count": 250,
+      "labelled_cycle_count": 249,
+      "soh_provenance": "capacity / 1.25 Ah rated, but audit sets capacity_ground_truth=NO for every cycle",
+      "current_unit_status": "VALUES_ARE_AMPERES; header I(A/cm2) with Surface Area=0 (same label error)",
+      "voltage_available": "YES",
+      "current_available": "YES",
+      "time_available": "YES (1 Hz source; master samples every 5th discharge row)",
+      "temperature_available": "NO - Aux Count 0",
+      "data_quality_issues": "Master: 333,344 rows / 250 cycles from 4 of 17 workbooks; 249 labels; cycle 40 missing (625 rows); blocks 101-150 and 201-400 absent by design. Qdis>Qchg in 1488/1498 paired cycles (CE median 1.0278); 43 discharge rows dip below the 2.5 V cutoff (min 2.4947 V); 7 source cycles excluded (only cycle 40 falls in ingested blocks).",
+      "independent_validation_suitability": "BLOCKED_BY_LABEL_QUALITY",
+      "blocker": "Absolute capacity is not ground truth; charge-balance discrepancy; single cell already used for training",
+      "recommended_action": "Keep as conditional training/evaluation cell; do not use as the independent validation cell; keep cycle 40 excluded"
+    }
+  ],
+  "feature_rows_count": 70
+}

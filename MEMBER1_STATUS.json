@@ -1,0 +1,294 @@
+{
+  "generated_utc": "2026-10-29",
+  "member": 1,
+  "task": "complete data pipeline, B1-B6 audit, master table candidate and Member 2 handoff",
+  "canonical_baseline": {
+    "parquet": "master_table.parquet",
+    "parquet_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+    "csv": "master_table.csv",
+    "csv_sha256": "9e23792615b2f08692944680d041957f776428b7563a90b214b77ee74629895b",
+    "rows": 515270,
+    "unchanged_after_run": true,
+    "modified": false
+  },
+  "candidate_master": {
+    "parquet": "master_table_candidate.parquet",
+    "parquet_sha256": "4b1ec1348d6b179eb103616fe30dc6de94fceec3e9273f6e33990fbb060feb21",
+    "csv": "master_table_candidate.csv",
+    "csv_sha256": "0ffe404bc931c08903f3c0ddf915ff19793f70f28be5054b5d200c30f8b50657",
+    "rows": 1148003,
+    "columns": 13,
+    "schema_conformity": true,
+    "duplicate_keys": 0,
+    "promoted": false,
+    "promotion_decision": "DELIVERED_FOR_REVIEW_NOT_PROMOTED",
+    "review_signoff": "PENDING_NO_FORMAL_REVIEWER"
+  },
+  "datasets": {
+    "LFP_MultiStat_B1": {
+      "chemistry": "LFP",
+      "status": "CONDITIONAL",
+      "target_status": "CONDITIONAL",
+      "raw_verified": true,
+      "workbooks": 19,
+      "cycle_tabs": 1460,
+      "candidate_cycles": 1460,
+      "candidate_rows": 145901,
+      "cycles_with_capacity": 1456,
+      "candidate_export": "AUDIT/candidates/B1_candidate_cycle_labels.csv",
+      "telemetry": "AUDIT/candidates/telemetry_B1.parquet",
+      "quality_notes": [
+        "canonical cycle-collapse bug repaired (cycle 2 label now 1.220155 Ah / 97.612%, not 1.202223 / 96.178)",
+        "110 cycle offsets underdetermined",
+        "4 partial-discharge cycles blocked",
+        "current header A/cm2 with surface area 0; values are amperes"
+      ]
+    },
+    "LFP_MultiStat_B2": {
+      "chemistry": "LFP",
+      "status": "CONDITIONAL",
+      "target_status": "CONDITIONAL",
+      "raw_verified": true,
+      "workbooks": 20,
+      "cycle_tabs": 1506,
+      "candidate_cycles": 1505,
+      "candidate_rows": 150172,
+      "cycles_with_capacity": 1502,
+      "candidate_export": "AUDIT/candidates/B2_candidate_cycle_labels.csv",
+      "telemetry": "AUDIT/candidates/telemetry_B2.parquet",
+      "channel_mask": "AUDIT/candidates/B2_channel_transition_mask.csv",
+      "quality_notes": [
+        "1,506 feature rows x 255 columns, 1,506 x 3 Q-V curves verified",
+        "1,496 analysis-eligible, 10 invalid cycles",
+        "channel Un1Ch8 -> Un1Ch2 at cycle 999, window 999-1015",
+        "soh_rated is a 0-1 fraction; primary treatment EXCLUDE window, sensitivity channel covariate",
+        "no temperature"
+      ]
+    },
+    "LFP_MultiStat_B3": {
+      "chemistry": "LFP",
+      "status": "CONDITIONAL",
+      "target_status": "CONDITIONAL",
+      "raw_verified": true,
+      "workbooks": 25,
+      "cycle_tabs": 1979,
+      "candidate_cycles": 1979,
+      "candidate_rows": 197441,
+      "cycles_with_capacity": 1973,
+      "candidate_export": "AUDIT/candidates/B3_candidate_cycle_labels.csv",
+      "telemetry": "AUDIT/candidates/telemetry_B3.parquet",
+      "quality_notes": [
+        "missing cycle ids 201-221 confirmed",
+        "4 instrument channels documented, physical cell identity undocumented",
+        "8 quality-X and 3 quality-B cycles",
+        "sample 1.165491 Ah reproduced"
+      ]
+    },
+    "LFP_MultiStat_B4": {
+      "chemistry": "LFP",
+      "status": "CONDITIONAL",
+      "target_status": "BLOCKED",
+      "raw_verified": true,
+      "workbooks": 21,
+      "cycle_tabs": 1577,
+      "candidate_cycles": 1577,
+      "candidate_rows": 157501,
+      "cycles_with_capacity": 0,
+      "candidate_export": "AUDIT/candidates/B4_candidate_cycle_labels.csv",
+      "telemetry": "AUDIT/candidates/telemetry_B4.parquet",
+      "quality_notes": [
+        "capacity_ah and soh_pct intentionally null; no synthetic ground truth",
+        "5 previously unaudited checkpoints read (150, 200, 250, 300, 350)",
+        "current unit and phase boundaries unresolved",
+        "cycle ids reconstructed from tab order"
+      ]
+    },
+    "LFP_MultiStat_B5": {
+      "chemistry": "LFP",
+      "status": "CONDITIONAL",
+      "target_status": "CONDITIONAL",
+      "raw_verified": true,
+      "workbooks": 17,
+      "cycle_tabs": 1498,
+      "candidate_cycles": 1498,
+      "candidate_rows": 149750,
+      "cycles_with_capacity": 1497,
+      "candidate_export": "AUDIT/candidates/B5_candidate_cycle_labels.csv",
+      "telemetry": "AUDIT/candidates/telemetry_B5.parquet",
+      "quality_notes": [
+        "canonical had 4 of 17 workbooks and 250 cycles",
+        "historical audit overcounted by 1: File List tab misclassified as a cycle",
+        "cycle 40 interrupted at 0.5428382 Ah",
+        "Qdis > Qchg in 1,488 of 1,497 comparable cycles",
+        "capacity_ground_truth = NO for all cycles"
+      ]
+    },
+    "LFP_MultiStat_B6": {
+      "chemistry": "LFP",
+      "status": "CONDITIONAL",
+      "target_status": "CONDITIONAL",
+      "raw_verified": true,
+      "workbooks": 19,
+      "cycle_tabs": 1702,
+      "candidate_cycles": 1702,
+      "candidate_rows": 170101,
+      "cycles_with_capacity": 1697,
+      "candidate_export": "AUDIT/candidates/B6_candidate_cycle_chronology.csv",
+      "telemetry": "AUDIT/candidates/telemetry_B6.parquet",
+      "quality_notes": [
+        "chronology reconstructed from Date/Time and File List; 0 mismatches",
+        "16 generic cycle tabs recovered in Cycle_0700.xlsx",
+        "5 unlabelled screen failures",
+        "current unit underdetermined; no temperature"
+      ]
+    },
+    "NASA_Ames_PCoE": {
+      "chemistry": "NMC",
+      "status": "VERIFIED",
+      "target_status": "VERIFIED",
+      "raw_verified": true,
+      "workbooks": 3,
+      "cycle_tabs": 468,
+      "candidate_cycles": 468,
+      "candidate_rows": 135436,
+      "cycles_with_capacity": 468,
+      "source": "PRESERVED_FROM_CANONICAL",
+      "quality_notes": [
+        "3 of 48 cells used in canonical build",
+        "measured voltage/current/temperature and direct capacity",
+        "rated capacity 2.0 Ah"
+      ]
+    },
+    "Zenodo_IonTech_NaIon": {
+      "chemistry": "Na-ion",
+      "status": "VERIFIED",
+      "target_status": "VERIFIED",
+      "raw_verified": true,
+      "workbooks": 4,
+      "cycle_tabs": 100,
+      "candidate_cycles": 100,
+      "candidate_rows": 41701,
+      "cycles_with_capacity": 100,
+      "source": "PRESERVED_FROM_CANONICAL",
+      "quality_notes": [
+        "4 of 65 cells x 25 cycles in canonical build",
+        "direct discharge capacity and per-cell nominal capacity",
+        "temperature not measured"
+      ]
+    }
+  },
+  "leakage_controls": {
+    "manifest": "AUDIT/MEMBER1_FEATURE_TARGET_MANIFEST.csv",
+    "target_columns": [
+      "q_discharge_ah",
+      "soh_rated"
+    ],
+    "derived_leakage_columns": [
+      "soh_initial_ref",
+      "soh_slope_per_100cyc",
+      "q_fade_rate_ah_per_100cyc",
+      "coulombic_efficiency"
+    ],
+    "b2_transition_mask": "AUDIT/candidates/B2_channel_transition_mask.csv"
+  },
+  "tests": {
+    "suites": {
+      "AUDIT/test_member1_pipeline.py": {
+        "total": 36,
+        "passed": 36,
+        "failed": 0
+      },
+      "AUDIT/test_member1_audit.py": {
+        "total": 18,
+        "passed": 18,
+        "failed": 0
+      },
+      "AUDIT/test_soh_recovery.py": {
+        "total": 19,
+        "passed": 19,
+        "failed": 0
+      },
+      "AUDIT/test_lfp_b1_b5_inventory.py": {
+        "total": 32,
+        "passed": 32,
+        "failed": 0
+      },
+      "AUDIT/test_lfp_b2_b6_followup.py": {
+        "total": 27,
+        "passed": 27,
+        "failed": 0
+      }
+    },
+    "total": 132,
+    "passed": 132,
+    "failed": 0,
+    "executed_this_session": true,
+    "command": "python AUDIT/test_member1_pipeline.py (and the four suites above)"
+  },
+  "raw_dependencies": {
+    "in_repository": [
+      "DATA/B1_Discharge0.5C_Charge0.5C(1).zip",
+      "DATA/B2_Discharge1C_Charge0.5C.zip",
+      "DATA/B2_LFP_Member1_audit.zip",
+      "DATA/B3_Discharge2C_Charge0.5C (1).zip",
+      "DATA/B4_Discharge3C_Charge0.5C (1).zip",
+      "DATA/B5_Discharge0.5C_Charge1C (1).zip",
+      "DATA/B6_Discharge0.5C_Charge2C.zip",
+      "DATA/NA-ion.zip",
+      "DATA/archive (4).zip",
+      "AUDIT/B1_LFP_Audit_Output.zip",
+      "AUDIT/B5.zip",
+      "AUDIT/Existing_Audits_Available_B3_B4 (1).zip",
+      "AUDIT/LFP_B6_Audit_Package (1).zip"
+    ],
+    "outside_checkout": [],
+    "handoff_required": "None for the current checkout. DATA/ is gitignored, so a fresh clone must restore the raw archives from approved storage before rerunning.",
+    "full_table_reproducible_from_repo": true,
+    "non_lfp_reproducible_from_repo": true,
+    "full_table_reproducible_in_current_checkout": true,
+    "reproducible_from_fresh_clone": false,
+    "fresh_clone_reason": "All raw archives are present in DATA/ but DATA/ is excluded from Git by .gitignore (size policy)."
+  },
+  "constraints_honoured": {
+    "branches_switched": false,
+    "files_staged": false,
+    "committed": false,
+    "pushed": false,
+    "canonical_overwritten": false,
+    "production_artifacts_overwritten": false,
+    "member2_model_trained_or_promoted": false,
+    "member2_api_modified": false,
+    "member3_range_calculator_modified": false,
+    "synthetic_rows_created": false,
+    "labels_fabricated": false
+  },
+  "deliverables": {
+    "MEMBER1_FINAL_DATA_PIPELINE_REPORT.md": "root",
+    "MEMBER1_SOURCE_INVENTORY.csv": "AUDIT/",
+    "MEMBER1_SOURCE_TRACEABILITY.csv": "AUDIT/",
+    "MEMBER1_DATASET_COVERAGE.csv": "AUDIT/",
+    "MEMBER1_DATA_QUALITY_REPORT.md": "root",
+    "MEMBER1_FEATURE_TARGET_MANIFEST.csv": "AUDIT/",
+    "MEMBER1_TARGET_DEFINITIONS.csv": "AUDIT/",
+    "B1-B6_candidate_exports": "AUDIT/candidates/",
+    "master_table_candidate.parquet": "root",
+    "master_table_candidate.csv": "root",
+    "master_table_candidate_validation.json": "root",
+    "master_table_candidate_manifest.csv": "root",
+    "MEMBER1_MASTER_TABLE_COMPARISON.md": "root",
+    "MEMBER1_MEMBER2_HANDOFF_CONTRACT.md": "root",
+    "MEMBER2_MEMBER3_INTERFACE_DATA_CONTRACT.md": "root",
+    "MEMBER1_REPRODUCIBLE_COMMANDS.md": "root",
+    "MEMBER1_STATUS.json": "root",
+    "MEMBER1_CHANGELOG.md": "root",
+    "MEMBER1_B1_CYCLE1300_GAP_EVIDENCE.json": "AUDIT/"
+  },
+  "b1_gap": {
+    "cycles": "1201-1220",
+    "ascii_cycle_exports_found": 20,
+    "export_index_cycles_listed": 21,
+    "labels_available": 0,
+    "decision": "RETAIN_GAP_NOT_INTEGRATED",
+    "evidence": "AUDIT/MEMBER1_B1_CYCLE1300_GAP_EVIDENCE.json"
+  }
+}

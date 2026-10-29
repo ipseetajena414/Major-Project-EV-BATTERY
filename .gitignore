@@ -6,6 +6,12 @@ backup_member1/
 # Large CSV (97.7 MB) - full telemetry is preserved and committed in master_table.parquet (8.8 MB)
 master_table.csv
 
+# Candidate CSV (215 MB) exceeds GitHub's 100 MB ceiling; the parquet is the authoritative artefact
+master_table_candidate.csv
+
+# Transient per-dataset build logs
+AUDIT/candidates/log_*.txt
+
 # Python
 __pycache__/
 *.pyc

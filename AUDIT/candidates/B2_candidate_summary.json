@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "title": "B2 candidate cycle labels, raw workbooks verified byte-identical",
+    "canonical_dataset_modified": false,
+    "raw_archive": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\DATA\\B2_Discharge1C_Charge0.5C.zip",
+    "raw_sha256": "b75c36d96abd2ae17858eda570dd6627ef06433bd88ac55faf73d688cbc10279",
+    "derived_archive": "DATA\\B2_LFP_Member1_audit.zip",
+    "derived_sha256": "54cd6113506e7b11b5147739d24b412b3b279f0c356e63bcf67de544a8ce169d",
+    "candidate_output": "AUDIT\\candidates\\B2_candidate_cycle_labels.csv"
+  },
+  "raw_manifest": {
+    "workbooks": 20,
+    "all_hashes_match": true,
+    "all_sizes_match": true,
+    "missing_from_raw": [],
+    "extra_in_raw": []
+  },
+  "spot_checks": [
+    {
+      "cycle_index": 50,
+      "source_file": "Cycle_0050",
+      "worksheet": "Run01_Un1Ch8_Step2_Cycle50",
+      "raw_q_discharge_ah": 1.194911,
+      "table_q_discharge_ah": 1.194911,
+      "abs_diff_ah": 5e-09,
+      "matches": true
+    },
+    {
+      "cycle_index": 1506,
+      "source_file": "Cycle_1600",
+      "worksheet": "Run01_Un1Ch2_Step2_Cycle91",
+      "raw_q_discharge_ah": 1.070049,
+      "table_q_discharge_ah": 1.070049,
+      "abs_diff_ah": 6e-09,
+      "matches": true
+    }
+  ],
+  "rows": 1506,
+  "label_status_counts": {
+    "conditional_nominal_soh": 1496,
+    "excluded_flagged": 10
+  },
+  "in_analysis": 1496,
+  "in_analysis_soh_rated_pct_range": [
+    85.54380936225256,
+    96.68109364112219
+  ],
+  "in_analysis_soh_initial_ref_pct_range": [
+    88.63333692029235,
+    100.17285891756403
+  ],
+  "excluded_outlier_note": "The global minimum SOH (7.02%, cycle 1411) is an incomplete discharge already flagged valid_cycle=False / in_analysis=False; it is excluded from the ranges above.",
+  "limitations": [
+    "SOH is nominal-capacity based, identical definition to B5/B6.",
+    "No temperature channel; channel switch at cycle 999 is a measurement artefact.",
+    "Labels are cycle-level and must be grouped by cycle_index before joining telemetry."
+  ]
+}

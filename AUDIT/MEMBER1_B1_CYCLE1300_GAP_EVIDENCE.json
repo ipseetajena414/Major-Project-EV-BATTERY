@@ -1,0 +1,207 @@
+{
+  "artifact": "B1 Cycle_1300 generic-tab evidence",
+  "source_archive": "DATA/B1_Discharge0.5C_Charge0.5C(1).zip",
+  "source_member": "B1_Discharge0.5C_Charge0.5C/Cycle_1300.xlsx",
+  "question": "Do cycles 1201-1220 exist in the supplied raw data?",
+  "inventory": {
+    "worksheets_in_workbook": 105,
+    "step2_cycle_tabs": 80,
+    "generic_sheets": 22,
+    "generic_cycle_export_tabs": 20,
+    "generic_ocv_tab": "Sheet22",
+    "generic_index_tab": "Sheet23"
+  },
+  "export_index": {
+    "entries": 22,
+    "cycles_listed": 21,
+    "cycle_names": [
+      "Run01_Un1Ch7_OCV",
+      "Run01_Un1Ch7_Step2_Cycle001",
+      "Run01_Un1Ch7_Step2_Cycle002",
+      "Run01_Un1Ch7_Step2_Cycle003",
+      "Run01_Un1Ch7_Step2_Cycle004",
+      "Run01_Un1Ch7_Step2_Cycle005",
+      "Run01_Un1Ch7_Step2_Cycle006",
+      "Run01_Un1Ch7_Step2_Cycle007",
+      "Run01_Un1Ch7_Step2_Cycle008",
+      "Run01_Un1Ch7_Step2_Cycle009",
+      "Run01_Un1Ch7_Step2_Cycle010",
+      "Run01_Un1Ch7_Step2_Cycle011",
+      "Run01_Un1Ch7_Step2_Cycle012",
+      "Run01_Un1Ch7_Step2_Cycle013",
+      "Run01_Un1Ch7_Step2_Cycle014",
+      "Run01_Un1Ch7_Step2_Cycle015",
+      "Run01_Un1Ch7_Step2_Cycle016",
+      "Run01_Un1Ch7_Step2_Cycle017",
+      "Run01_Un1Ch7_Step2_Cycle018",
+      "Run01_Un1Ch7_Step2_Cycle019",
+      "Run01_Un1Ch7_Step2_Cycle020",
+      "Run01_Un1Ch7_Step2_Cycle021"
+    ]
+  },
+  "generic_cycle_exports": [
+    {
+      "sheet": "Sheet21",
+      "date": "23/09/2025",
+      "time": "08:57:29",
+      "numeric_rows": 78,
+      "max_row": 13641
+    },
+    {
+      "sheet": "Sheet20",
+      "date": "23/09/2025",
+      "time": "12:42:47",
+      "numeric_rows": 78,
+      "max_row": 13557
+    },
+    {
+      "sheet": "Sheet19",
+      "date": "23/09/2025",
+      "time": "16:26:40",
+      "numeric_rows": 78,
+      "max_row": 13511
+    },
+    {
+      "sheet": "Sheet18",
+      "date": "23/09/2025",
+      "time": "20:09:48",
+      "numeric_rows": 78,
+      "max_row": 13493
+    },
+    {
+      "sheet": "Sheet17",
+      "date": "23/09/2025",
+      "time": "23:52:37",
+      "numeric_rows": 78,
+      "max_row": 13477
+    },
+    {
+      "sheet": "Sheet16",
+      "date": "24/09/2025",
+      "time": "03:35:11",
+      "numeric_rows": 78,
+      "max_row": 13471
+    },
+    {
+      "sheet": "Sheet15",
+      "date": "24/09/2025",
+      "time": "07:17:38",
+      "numeric_rows": 78,
+      "max_row": 13462
+    },
+    {
+      "sheet": "Sheet14",
+      "date": "24/09/2025",
+      "time": "10:59:57",
+      "numeric_rows": 78,
+      "max_row": 13452
+    },
+    {
+      "sheet": "Sheet13",
+      "date": "24/09/2025",
+      "time": "14:42:05",
+      "numeric_rows": 78,
+      "max_row": 13446
+    },
+    {
+      "sheet": "Sheet12",
+      "date": "24/09/2025",
+      "time": "18:24:09",
+      "numeric_rows": 78,
+      "max_row": 13444
+    },
+    {
+      "sheet": "Sheet11",
+      "date": "24/09/2025",
+      "time": "22:06:09",
+      "numeric_rows": 78,
+      "max_row": 13443
+    },
+    {
+      "sheet": "Sheet10",
+      "date": "25/09/2025",
+      "time": "01:48:09",
+      "numeric_rows": 78,
+      "max_row": 13435
+    },
+    {
+      "sheet": "Sheet9",
+      "date": "25/09/2025",
+      "time": "05:30:01",
+      "numeric_rows": 78,
+      "max_row": 13439
+    },
+    {
+      "sheet": "Sheet8",
+      "date": "25/09/2025",
+      "time": "09:11:57",
+      "numeric_rows": 78,
+      "max_row": 13436
+    },
+    {
+      "sheet": "Sheet7",
+      "date": "25/09/2025",
+      "time": "12:53:50",
+      "numeric_rows": 78,
+      "max_row": 13429
+    },
+    {
+      "sheet": "Sheet6",
+      "date": "25/09/2025",
+      "time": "16:35:35",
+      "numeric_rows": 78,
+      "max_row": 13425
+    },
+    {
+      "sheet": "Sheet5",
+      "date": "25/09/2025",
+      "time": "20:17:18",
+      "numeric_rows": 78,
+      "max_row": 13428
+    },
+    {
+      "sheet": "Sheet4",
+      "date": "25/09/2025",
+      "time": "23:59:02",
+      "numeric_rows": 78,
+      "max_row": 13428
+    },
+    {
+      "sheet": "Sheet3",
+      "date": "26/09/2025",
+      "time": "03:40:47",
+      "numeric_rows": 78,
+      "max_row": 13427
+    },
+    {
+      "sheet": "Sheet2",
+      "date": "26/09/2025",
+      "time": "07:22:30",
+      "numeric_rows": 78,
+      "max_row": 13427
+    }
+  ],
+  "timestamp_chain": {
+    "cycle_1200_last_step2": "2025-09-18T00:34:38",
+    "generic_first": "2025-09-23T08:57:29",
+    "generic_last": "2025-09-26T07:22:30",
+    "cycle_1300_first_step2": "2025-09-26T13:51:06"
+  },
+  "findings": [
+    "20 complete ASCII cycle exports exist (Sheet21..Sheet2), timestamps 2025-09-23 08:57 to 2025-09-26 07:22, each ~13,400 one-second samples.",
+    "Their timestamps match export-index cycles Cycle001..Cycle020 exactly.",
+    "The export index lists 21 cycles (Cycle001..Cycle021); Cycle021 (2025-09-26 11:04) has no generic data tab.",
+    "Cycle_1200 ends at global cycle 1200 on 2025-09-18; Cycle_1300 Step2 begins with 80 tabs on 2025-09-26 13:51.",
+    "20 generic + 80 Step2 = 100 cycles in the 1200->1300 checkpoint block, consistent with global IDs 1201-1220 and 1221-1300.",
+    "No audited capacity or SOH label exists for any generic tab; the B1 feasibility table covers only Step2 tabs."
+  ],
+  "decision": "RETAIN_GAP_NOT_INTEGRATED",
+  "rationale": "Physical cycles are present, but the 21-entry index vs 20 data tabs leaves a one-cycle ambiguity in the global ID mapping, and no audited capacity/SOH labels exist. Assigning 1201-1220 would be a reconstruction, not a verified label. The 20 tabs remain excluded from B1 candidate labels and telemetry; no capacity, SOH, timestamp or cycle ID was invented.",
+  "impact_on_candidate": {
+    "b1_candidate_cycles": 1460,
+    "b1_candidate_rows": 145901,
+    "b1_capacity_labelled_cycles": 1456,
+    "generic_tabs_in_candidate": 0,
+    "cycle_ids_1201_to_1220_present": false
+  }
+}

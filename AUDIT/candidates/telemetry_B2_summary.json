@@ -1,0 +1,48 @@
+{
+  "dataset": "B2",
+  "dataset_id": "LFP_MultiStat_B2",
+  "zip": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\DATA\\B2_Discharge1C_Charge0.5C.zip",
+  "workbooks_read": 20,
+  "sheets_read": 1506,
+  "label_records": 1506,
+  "labels_matched_to_sheets": 1506,
+  "labels_without_raw_sheet": [],
+  "labels_without_raw_sheet_count": 0,
+  "label_misses": [],
+  "label_miss_count": 0,
+  "rows_written": 150172,
+  "cycles_in_output": 1505,
+  "phase_counts": {
+    "discharge": 75100,
+    "charge": 75072
+  },
+  "label_status_counts": {
+    "CONDITIONAL": 149600,
+    "INVALID_CYCLE": 572
+  },
+  "quality_flag_counts": {
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED": 149600,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE": 519,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE;CHANNEL_TRANSITION": 50,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE;CHANNEL_TRANSITION;CURRENT_OUT_OF_PROTOCOL_BOUNDS": 1,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE;VOLTAGE_OUT_OF_PROTOCOL_BOUNDS": 1,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE;CURRENT_OUT_OF_PROTOCOL_BOUNDS;VOLTAGE_OUT_OF_PROTOCOL_BOUNDS": 1
+  },
+  "capacity_non_null_cycles": 1502,
+  "soh_range": [
+    7.021550546752082,
+    96.68109364112219
+  ],
+  "voltage_range": [
+    2.489368,
+    4.347412
+  ],
+  "current_range": [
+    -4.038269,
+    0.627185
+  ],
+  "duplicate_cycle_time_rows": 0,
+  "output": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\AUDIT\\candidates\\telemetry_B2.parquet",
+  "current_spike_rows": 2,
+  "voltage_spike_rows": 2
+}

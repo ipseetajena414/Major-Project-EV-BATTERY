@@ -1,0 +1,164 @@
+{
+  "metadata": {
+    "title": "B6 candidate cycle chronology reconstructed from instrument timestamps",
+    "canonical_dataset_modified": false,
+    "raw_archive": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\DATA\\B6_Discharge0.5C_Charge2C.zip",
+    "raw_sha256": "25fe5a2417d68334eed59667c162db6851e1970a2109e523caf91dd11484b97a",
+    "audit_package": "AUDIT\\LFP_B6_Audit_Package (1).zip",
+    "audit_sha256": "96b5fef5905b948e21ea62f8d109d6e056c51088327d5efa1eee99c4c433878e",
+    "candidate_output": "AUDIT\\candidates\\B6_candidate_cycle_chronology.csv"
+  },
+  "cycle_rows": 1702,
+  "source_files": 19,
+  "checkpoints": [
+    50,
+    100,
+    150,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1600,
+    1700
+  ],
+  "timestamp_reconciliation": {
+    "sheets_with_both_sources": 1620,
+    "sheets_with_header_only": 82,
+    "sheets_with_file_list_only": 0,
+    "sheets_without_any_timestamp": 0,
+    "header_vs_file_list_mismatches": 0,
+    "mismatch_examples": []
+  },
+  "candidate_order_validation": {
+    "orderable_sheets": 1702,
+    "unorderable_sheets": 0,
+    "duplicate_timestamps": 0,
+    "backwards_timestamps_in_candidate_order": 0,
+    "backwards_examples": [],
+    "checkpoint_regressions_in_candidate_order": 0,
+    "checkpoint_regression_examples": [],
+    "non_contiguous_checkpoint_blocks": {},
+    "within_workbook_tab_order_backwards": 0,
+    "generic_sheet_positions": [
+      [
+        602,
+        "Cycle_0700.xlsx",
+        "Sheet16",
+        "2025-07-17T10:04:36"
+      ],
+      [
+        603,
+        "Cycle_0700.xlsx",
+        "Sheet15",
+        "2025-07-17T11:54:20"
+      ],
+      [
+        604,
+        "Cycle_0700.xlsx",
+        "Sheet14",
+        "2025-07-17T14:19:13"
+      ],
+      [
+        605,
+        "Cycle_0700.xlsx",
+        "Sheet13",
+        "2025-07-17T16:43:45"
+      ],
+      [
+        606,
+        "Cycle_0700.xlsx",
+        "Sheet12",
+        "2025-07-17T19:08:52"
+      ],
+      [
+        607,
+        "Cycle_0700.xlsx",
+        "Sheet11",
+        "2025-07-17T21:33:37"
+      ],
+      [
+        608,
+        "Cycle_0700.xlsx",
+        "Sheet10",
+        "2025-07-17T23:58:27"
+      ],
+      [
+        609,
+        "Cycle_0700.xlsx",
+        "Sheet9",
+        "2025-07-18T02:23:24"
+      ],
+      [
+        610,
+        "Cycle_0700.xlsx",
+        "Sheet8",
+        "2025-07-18T04:48:29"
+      ],
+      [
+        611,
+        "Cycle_0700.xlsx",
+        "Sheet7",
+        "2025-07-18T07:13:34"
+      ],
+      [
+        612,
+        "Cycle_0700.xlsx",
+        "Sheet6",
+        "2025-07-18T09:38:31"
+      ],
+      [
+        613,
+        "Cycle_0700.xlsx",
+        "Sheet5",
+        "2025-07-18T12:03:19"
+      ],
+      [
+        614,
+        "Cycle_0700.xlsx",
+        "Sheet4",
+        "2025-07-18T14:28:07"
+      ],
+      [
+        615,
+        "Cycle_0700.xlsx",
+        "Sheet3",
+        "2025-07-18T16:52:51"
+      ],
+      [
+        616,
+        "Cycle_0700.xlsx",
+        "Sheet2",
+        "2025-07-18T19:17:41"
+      ],
+      [
+        617,
+        "Cycle_0700.xlsx",
+        "Sheet1",
+        "2025-07-18T21:42:11"
+      ]
+    ]
+  },
+  "labels": {
+    "conditional_nominal_soh": 1697,
+    "unlabelled_screen_failed": 5,
+    "soh_min_pct": 81.69893814111114,
+    "soh_median_pct": 87.9880063011106,
+    "soh_max_pct": 99.65291180777676
+  },
+  "interpretation_limits": [
+    "Candidate order only: derived from logger Date/Time fields, not an audited global cycle id.",
+    "SOH is capacity vs 1.25 Ah rated nominal, not retention against measured beginning-of-life.",
+    "Current values are amperes under a blank A/cm2 header with Surface Area 0 (conditional).",
+    "No temperature channel exists in these workbooks."
+  ]
+}

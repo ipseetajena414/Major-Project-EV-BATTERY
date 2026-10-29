@@ -1,0 +1,153 @@
+{
+  "candidate_rows": 1148003,
+  "candidate_columns": [
+    "chemistry",
+    "dataset_id",
+    "cell_id",
+    "protocol_id",
+    "cycle_id",
+    "time_sec",
+    "voltage_v",
+    "current_a",
+    "temp_c",
+    "capacity_ah",
+    "soh_pct",
+    "quality_flag",
+    "source_file"
+  ],
+  "schema_conformity": true,
+  "per_dataset": [
+    {
+      "dataset_id": "LFP_MultiStat_B1",
+      "rows": 145901,
+      "cells": 1,
+      "cell_cycles": 1460,
+      "cell_cycles_with_capacity": 1456,
+      "source": "REBUILT_FROM_RAW"
+    },
+    {
+      "dataset_id": "LFP_MultiStat_B2",
+      "rows": 150172,
+      "cells": 1,
+      "cell_cycles": 1505,
+      "cell_cycles_with_capacity": 1502,
+      "source": "REBUILT_FROM_RAW"
+    },
+    {
+      "dataset_id": "LFP_MultiStat_B3",
+      "rows": 197441,
+      "cells": 1,
+      "cell_cycles": 1979,
+      "cell_cycles_with_capacity": 1973,
+      "source": "REBUILT_FROM_RAW"
+    },
+    {
+      "dataset_id": "LFP_MultiStat_B4",
+      "rows": 157501,
+      "cells": 1,
+      "cell_cycles": 1577,
+      "cell_cycles_with_capacity": 0,
+      "source": "REBUILT_FROM_RAW"
+    },
+    {
+      "dataset_id": "LFP_MultiStat_B5",
+      "rows": 149750,
+      "cells": 1,
+      "cell_cycles": 1498,
+      "cell_cycles_with_capacity": 1497,
+      "source": "REBUILT_FROM_RAW"
+    },
+    {
+      "dataset_id": "LFP_MultiStat_B6",
+      "rows": 170101,
+      "cells": 1,
+      "cell_cycles": 1702,
+      "cell_cycles_with_capacity": 1697,
+      "source": "REBUILT_FROM_RAW"
+    },
+    {
+      "dataset_id": "NASA_Ames_PCoE",
+      "rows": 135436,
+      "cells": 3,
+      "cell_cycles": 468,
+      "cell_cycles_with_capacity": 468,
+      "source": "PRESERVED_FROM_CANONICAL"
+    },
+    {
+      "dataset_id": "Zenodo_IonTech_NaIon",
+      "rows": 41701,
+      "cells": 4,
+      "cell_cycles": 100,
+      "cell_cycles_with_capacity": 100,
+      "source": "PRESERVED_FROM_CANONICAL"
+    }
+  ],
+  "canonical_rows": 515270,
+  "canonical_rows_dropped_lfp": 338133,
+  "canonical_rows_preserved_non_lfp": 177137,
+  "canonical_parquet_sha256_unchanged": true,
+  "canonical_csv_sha256_unchanged": true,
+  "duplicate_keys": 0,
+  "null_counts": {
+    "chemistry": 0,
+    "dataset_id": 0,
+    "cell_id": 0,
+    "protocol_id": 0,
+    "cycle_id": 0,
+    "time_sec": 0,
+    "voltage_v": 0,
+    "current_a": 0,
+    "temp_c": 1012567,
+    "capacity_ah": 158744,
+    "soh_pct": 159444,
+    "quality_flag": 0,
+    "source_file": 0
+  },
+  "ranges": {
+    "voltage_v": [
+      1.9991,
+      4.347412
+    ],
+    "current_a": [
+      -5.800386,
+      5.8005161
+    ],
+    "temp_c": [
+      22.35025648802666,
+      42.0075404495327
+    ],
+    "capacity_ah": [
+      0.08776938183440103,
+      2.035337591005598
+    ],
+    "soh_pct": [
+      7.021550546752082,
+      101.7668795502799
+    ]
+  },
+  "impossible_values": {
+    "voltage_lt_0_or_gt_6": 0,
+    "temp_lt_-50_or_gt_100": 0,
+    "soh_lt_0_or_gt_150": 0,
+    "capacity_lt_0": 0
+  },
+  "quality_flag_top": {
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED": 478402,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;CYCLE_ID_RECONSTRUCTED": 172551,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;NO_AUDITED_LABEL;UNLABELED;CYCLE_ID_RECONSTRUCTED": 157501,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;CAPACITY_GROUND_TRUTH_NO;CYCLE_ID_RECONSTRUCTED": 149200,
+    "VALID": 135436,
+    "TEMP_UNMEASURED": 41701,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;OFFSET_UNDERDETERMINED;CYCLE_ID_RECONSTRUCTED": 11000,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;PARTIAL_DISCHARGE;CAPACITY_GROUND_TRUTH_NO;CYCLE_ID_RECONSTRUCTED": 550,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE": 519,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;PARTIAL_DISCHARGE;CYCLE_ID_RECONSTRUCTED": 450,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;PARTIAL_DISCHARGE": 350,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;NO_DISCHARGE_CAPACITY": 288,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE;CHANNEL_TRANSITION": 50,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE;CHANNEL_TRANSITION;CURRENT_OUT_OF_PROTOCOL_BOUNDS": 1,
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;INVALID_CYCLE;VOLTAGE_OUT_OF_PROTOCOL_BOUNDS": 1
+  },
+  "candidate_parquet_sha256": "4b1ec1348d6b179eb103616fe30dc6de94fceec3e9273f6e33990fbb060feb21",
+  "candidate_csv_sha256": "0ffe404bc931c08903f3c0ddf915ff19793f70f28be5054b5d200c30f8b50657"
+}

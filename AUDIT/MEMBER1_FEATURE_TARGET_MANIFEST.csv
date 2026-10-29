@@ -1,0 +1,256 @@
+column,role,same_cycle_leakage,notes
+cycle_index,METADATA,NO,Identity/provenance; not a model input.
+file_id,METADATA,NO,Identity/provenance; not a model input.
+sheet,METADATA,NO,Identity/provenance; not a model input.
+session_in_workbook,METADATA,NO,Identity/provenance; not a model input.
+session_global,METADATA,NO,Identity/provenance; not a model input.
+timestamp,METADATA,NO,Identity/provenance; not a model input.
+channel,METADATA,NO,Identity/provenance; not a model input.
+provenance,METADATA,NO,Identity/provenance; not a model input.
+valid_cycle,METADATA,NO,Identity/provenance; not a model input.
+in_analysis,METADATA,NO,Identity/provenance; not a model input.
+max_overlap_frac,QUALITY_CONTROL,NO,Validity/overlap screen.
+charge_c_rate,PERMITTED_INPUT,NO,Protocol setpoint; known before the cycle.
+discharge_c_rate,PERMITTED_INPUT,NO,Protocol setpoint; known before the cycle.
+q_rated_ah,PERMITTED_INPUT,NO,Protocol/nominal constants.
+v_upper_v,PERMITTED_INPUT,NO,Protocol/nominal constants.
+v_lower_v,PERMITTED_INPUT,NO,Protocol/nominal constants.
+q_discharge_ah,TARGET,YES,Same-cycle discharge capacity in Ah; never an input for a capacity/SOH target.
+q_charge_ah,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+soh_rated,TARGET,YES,q_discharge_ah / 1.25 Ah as a 0-1 fraction; multiply by 100 for percent.
+soh_initial_ref,TARGET_DERIVED_LEAKAGE,YES,Normalised by the first valid cycle; leaks trajectory-wide information.
+coulombic_efficiency,TARGET_DERIVED,YES,"q_discharge_ah / q_charge_ah, so it embeds the target."
+energy_efficiency,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_energy_wh,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_energy_wh,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_mean_discharge,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_mean_charge,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+cycle_duration_s,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_duration_s,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_duration_s,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_cv_fraction,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_cv_terminated,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_reached_cutoff,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_discharge_start,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_discharge_end,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_discharge_min,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_charge_start,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_charge_end,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+v_charge_max,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+dcir_proxy_ohm,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+polarisation_ohm,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+q_fade_rate_ah_per_100cyc,TARGET_DERIVED_LEAKAGE,YES,Fitted capacity fade rate; contains future-cycle information.
+soh_slope_per_100cyc,TARGET_DERIVED_LEAKAGE,YES,Fitted over a cycle window; contains future-cycle information.
+discharge_v_at_10pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_v_at_25pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_v_at_50pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_v_at_75pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_v_at_90pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_v_at_10pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_v_at_25pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_v_at_50pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_v_at_75pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+charge_v_at_90pct,CONDITIONAL_INPUT,REVIEW,Same-cycle summary statistic; confirm it cannot reconstruct q_discharge_ah.
+discharge_qv_0,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_1,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_2,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_3,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_4,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_5,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_6,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_7,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_8,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_9,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_10,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_11,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_12,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_13,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_14,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_15,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_16,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_17,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_18,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_19,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_20,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_21,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_22,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_23,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_24,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_25,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_26,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_27,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_28,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_29,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_30,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_31,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_32,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_33,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_34,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_35,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_36,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_37,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_38,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_39,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_40,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_41,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_42,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_43,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_44,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_45,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_46,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_47,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_48,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_49,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_50,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_51,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_52,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_53,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_54,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_55,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_56,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_57,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_58,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_59,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_60,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_61,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_62,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_63,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_64,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_65,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_66,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_67,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_68,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_69,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_70,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_71,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_72,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_73,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_74,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_75,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_76,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_77,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_78,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_79,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_80,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_81,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_82,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_83,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_84,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_85,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_86,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_87,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_88,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_89,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_90,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_91,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_92,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_93,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_94,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_95,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_96,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_97,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_98,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_99,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+discharge_qv_100,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_0,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_1,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_2,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_3,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_4,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_5,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_6,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_7,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_8,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_9,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_10,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_11,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_12,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_13,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_14,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_15,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_16,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_17,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_18,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_19,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_20,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_21,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_22,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_23,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_24,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_25,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_26,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_27,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_28,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_29,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_30,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_31,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_32,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_33,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_34,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_35,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_36,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_37,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_38,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_39,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_40,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_41,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_42,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_43,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_44,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_45,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_46,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_47,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_48,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_49,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_50,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_51,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_52,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_53,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_54,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_55,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_56,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_57,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_58,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_59,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_60,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_61,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_62,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_63,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_64,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_65,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_66,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_67,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_68,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_69,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_70,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_71,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_72,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_73,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_74,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_75,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_76,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_77,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_78,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_79,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_80,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_81,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_82,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_83,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_84,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_85,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_86,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_87,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_88,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_89,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_90,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_91,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_92,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_93,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_94,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_95,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_96,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_97,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_98,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_99,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+charge_qv_100,PERMITTED_INPUT,NO,Same-cycle measured Q-V curve point.
+ce_reliable,METADATA,NO,Identity/provenance; not a model input.

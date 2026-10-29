@@ -1,0 +1,9 @@
+dataset_id,target_name,formula,units,status,notes
+LFP_MultiStat_B1,soh_pct_nominal_1.25Ah,capacity / 1.25 Ah x 100,%,CONDITIONAL,110 cycles have underdetermined offsets; current header underdetermined
+LFP_MultiStat_B2,soh_rated,q_discharge_ah / 1.25 Ah (0-1 fraction),fraction,CONDITIONAL,Multiply by 100 for percent; 10 invalid cycles; channel transition at 999
+LFP_MultiStat_B3,SOH_vs_nominal_1.25Ah_pct,Qdis_Ah / 1.25 Ah x 100,%,CONDITIONAL,Channel/cell identity undocumented; 21 missing cycle ids; 8 quality-X cycles
+LFP_MultiStat_B4,capacity_ah,not derived,Ah,BLOCKED,Current unit and phase boundaries unresolved; no audited target
+LFP_MultiStat_B5,soh_nominal_pct_CONDITIONAL_1.25Ah_rated,capacity / 1.25 Ah x 100,%,CONDITIONAL,"capacity_ground_truth=NO; Qdis>Qchg in 1,488 cycles; cycle 40 partial"
+LFP_MultiStat_B6,soh_nominal_pct_conditional,capacity / 1.25 Ah x 100,%,CONDITIONAL,Chronology reconstructed from headers/File List; current unit underdetermined
+NASA_Ames_PCoE,soh_pct,capacity / 2.0 Ah x 100,%,VERIFIED,Direct measured capacity; measured temperature available
+Zenodo_IonTech_NaIon,soh_pct,capacity / nominal_capacity_in_Ah x 100,%,VERIFIED,Nominal capacity per cell; temperature not measured

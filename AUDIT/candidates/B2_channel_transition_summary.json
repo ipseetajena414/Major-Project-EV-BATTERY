@@ -1,0 +1,31 @@
+{
+  "total_feature_rows": 1506,
+  "in_analysis": 1496,
+  "invalid_cycles": 10,
+  "channel_counts": {
+    "8.0": 998,
+    "2.0": 508
+  },
+  "transition_cycle_first_channel2": 999,
+  "transition_window_cycles": 17,
+  "treatment_exclusion": {
+    "cycles": 1480,
+    "removed_eligible": 16,
+    "chronological_70_15_15": [
+      1036,
+      222,
+      222
+    ],
+    "note": "cycles 999-1015 removed; 999 is already invalid, 1000-1015 are eligible"
+  },
+  "treatment_channel_covariate": {
+    "cycles": 1496,
+    "chronological_70_15_15": [
+      1047,
+      224,
+      225
+    ],
+    "note": "retain all valid cycles and pass instrument channel as a covariate"
+  },
+  "recommendation": "EXCLUDE primary; report channel-covariate sensitivity. Member 2 decides."
+}

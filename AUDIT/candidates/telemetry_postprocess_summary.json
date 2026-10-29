@@ -1,0 +1,38 @@
+{
+  "B1": {
+    "rows": 145901,
+    "current_spike_rows": 1,
+    "voltage_spike_rows": 1,
+    "current_spike_cycles": 1
+  },
+  "B2": {
+    "rows": 150172,
+    "current_spike_rows": 2,
+    "voltage_spike_rows": 2,
+    "current_spike_cycles": 2
+  },
+  "B3": {
+    "rows": 197441,
+    "current_spike_rows": 0,
+    "voltage_spike_rows": 0,
+    "current_spike_cycles": 0
+  },
+  "B4": {
+    "rows": 157501,
+    "current_spike_rows": 0,
+    "voltage_spike_rows": 0,
+    "current_spike_cycles": 0
+  },
+  "B5": {
+    "rows": 149750,
+    "current_spike_rows": 0,
+    "voltage_spike_rows": 0,
+    "current_spike_cycles": 0
+  },
+  "B6": {
+    "rows": 170101,
+    "current_spike_rows": 0,
+    "voltage_spike_rows": 0,
+    "current_spike_cycles": 0
+  }
+}

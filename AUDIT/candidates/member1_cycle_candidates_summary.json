@@ -1,0 +1,120 @@
+{
+  "B1": {
+    "cycles": 1460,
+    "capacity_non_null": 1456,
+    "blocked_partial": 4,
+    "offset_underdetermined": 110,
+    "missing_cycle_ids": "151-170 (Cycle_0200 has 30 tabs), 1201-1220 (Cycle_1300 has 80 tabs)",
+    "cycle_id_min": 1,
+    "cycle_id_max": 1500
+  },
+  "B3": {
+    "cycles": 1979,
+    "capacity_non_null": 1973,
+    "quality_tiers": {
+      "A": 1968,
+      "X": 8,
+      "B": 3
+    },
+    "channels": {
+      "Un1Ch2": 879,
+      "Un1Ch8": 500,
+      "Un1Ch1": 500,
+      "Un1Ch6": 100
+    },
+    "missing_cycle_ids": [
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221
+    ],
+    "capacity_range": [
+      0.2381240684722222,
+      1.1657233165277778
+    ],
+    "soh_range": [
+      78.13860585555555,
+      93.25786532222222
+    ]
+  },
+  "B4": {
+    "cycles": 1577,
+    "workbooks": 21,
+    "capacity_non_null": 0,
+    "old_audit_coverage": "1,382 rows from 16 checkpoints; 1,350 sheets (historical)",
+    "new_coverage": "1577 tabs across 21 workbooks"
+  },
+  "B5": {
+    "cycles_exported": 1498,
+    "audit_rows_dropped_as_non_cycle": 1,
+    "dropped_rows": [
+      {
+        "source_file": "Cycle_1200.xlsx",
+        "worksheet": "File List",
+        "global_cycle_id_nominal_checkpoint": "1108"
+      }
+    ],
+    "capacity_ground_truth_yes": 0,
+    "partial_discharge_cycles": 6,
+    "cycle40": [
+      {
+        "worksheet": "Run01_Un1Ch1_Step2_Cycle40",
+        "discharge_capacity_ah_conditional": "0.5428382",
+        "dis_complete": "False",
+        "quality_flags": "DISCHARGE_INTERRUPTED"
+      }
+    ],
+    "capacity_range": [
+      0.2884506,
+      1.196897
+    ]
+  },
+  "B2": {
+    "total_feature_rows": 1506,
+    "in_analysis": 1496,
+    "invalid_cycles": 10,
+    "channel_counts": {
+      "8.0": 998,
+      "2.0": 508
+    },
+    "transition_cycle_first_channel2": 999,
+    "transition_window_cycles": 17,
+    "treatment_exclusion": {
+      "cycles": 1480,
+      "removed_eligible": 16,
+      "chronological_70_15_15": [
+        1036,
+        222,
+        222
+      ],
+      "note": "cycles 999-1015 removed; 999 is already invalid, 1000-1015 are eligible"
+    },
+    "treatment_channel_covariate": {
+      "cycles": 1496,
+      "chronological_70_15_15": [
+        1047,
+        224,
+        225
+      ],
+      "note": "retain all valid cycles and pass instrument channel as a covariate"
+    },
+    "recommendation": "EXCLUDE primary; report channel-covariate sensitivity. Member 2 decides."
+  }
+}

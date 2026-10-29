@@ -1,0 +1,23 @@
+{
+  "supersedes": [
+    "MEMBER1_LFP_B1_B5_COVERAGE_MATRIX.csv",
+    "MEMBER1_LFP_FEATURE_READINESS_MATRIX.csv"
+  ],
+  "coverage_rows": 6,
+  "feature_rows": 85,
+  "cells": [
+    "BATTERY_1",
+    "BATTERY_2",
+    "BATTERY_3",
+    "BATTERY_4",
+    "BATTERY_5",
+    "BATTERY_6"
+  ],
+  "changes": [
+    "B2: raw archive verified byte-identical; status upgraded",
+    "B6: added as a candidate independent cell with reconstructed chronology",
+    "B2: 13 feature rows updated for raw availability",
+    "B6: 15 feature rows added"
+  ],
+  "rule": "Earlier B1-B5 files are preserved unchanged; every changed/new row is marked."
+}

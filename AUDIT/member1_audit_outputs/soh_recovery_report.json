@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "title": "Member 1 - Missing / questionable SOH label recovery audit",
+    "project": "Autonomous Multi-Agent EV Battery Life & Range Predictor",
+    "timestamp_utc": "2026-10-29T10:18:52.240519+00:00",
+    "canonical_dataset_modified": false,
+    "method_notes": "Read-only. Every recovered value comes from a direct lookup in an authoritative audit table for the exact cycle; no interpolation, no forward/backward fill, no synthetic measurements."
+  },
+  "guardrails": {
+    "master_table_parquet_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+    "master_table_csv_sha256": "9e23792615b2f08692944680d041957f776428b7563a90b214b77ee74629895b",
+    "parquet_hash_expected": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+    "csv_hash_expected": "9e23792615b2f08692944680d041957f776428b7563a90b214b77ee74629895b",
+    "hashes_match_expected": true,
+    "interpolation_used": false,
+    "forward_fill_used": false,
+    "fabricated_values": 0,
+    "writes_confined_to": "AUDIT\\member1_audit_outputs"
+  },
+  "scope": {
+    "cycles_enumerated": 819,
+    "cycles_with_missing_soh_rows_in_master": 625,
+    "missing_soh_cycles": [
+      40
+    ],
+    "label_state_counts": {
+      "CONDITIONAL_SOURCE_CAVEAT": 249,
+      "MISSING_NOT_RECOVERABLE": 1,
+      "QUESTIONABLE_RECOVERED_WITH_CONDITIONS": 1,
+      "VALID_DEFINITIONAL": 107,
+      "VALID_MEASURED": 461
+    },
+    "issue_type_counts": {
+      "NONE": 461,
+      "CHARGE_BALANCE_DISCREPANCY": 249,
+      "SOH_VS_RATED_NOT_MEASURED_BOL": 100,
+      "SOH_ABOVE_100PCT_DUE_TO_RATED_BASELINE": 7,
+      "LABEL_CYCLE_MISMATCH": 1,
+      "PARTIAL_DISCHARGE": 1
+    },
+    "recovered_cycles": 1,
+    "not_recoverable_cycles": 1
+  },
+  "usable_cycle_counts": {
+    "before": {
+      "total_cycles": 819,
+      "usable_as_target": 817,
+      "by_dataset": {
+        "LFP_MultiStat_B1": 0,
+        "LFP_MultiStat_B5": 249,
+        "NASA_Ames_PCoE": 468,
+        "Zenodo_IonTech_NaIon": 100
+      },
+      "by_tier": {
+        "CONDITIONAL": 249,
+        "HIGH": 568,
+        "INVALID": 2
+      }
+    },
+    "after": {
+      "total_cycles": 819,
+      "usable_as_target": 818,
+      "by_dataset": {
+        "LFP_MultiStat_B1": 1,
+        "LFP_MultiStat_B5": 249,
+        "NASA_Ames_PCoE": 468,
+        "Zenodo_IonTech_NaIon": 100
+      },
+      "by_tier": {
+        "CONDITIONAL": 250,
+        "HIGH": 568,
+        "INVALID": 1
+      }
+    },
+    "delta_usable": 1,
+    "high_confidence_before": 568,
+    "high_confidence_after": 568,
+    "explanation": "The single B1 cycle moves from INVALID to CONDITIONAL because its label was repaired to the audited value for the telemetry's own cycle. No value is promoted to HIGH. B5 cycle 40 stays excluded."
+  },
+  "investigations": {
+    "LFP_MultiStat_B5::BATTERY_5::cycle_40": {
+      "target": "LFP_MultiStat_B5::BATTERY_5::cycle_40",
+      "summary_row_count_for_cycle": 1,
+      "cycle_status": "DISCHARGE_INTERRUPTED",
+      "discharge_complete": false,
+      "discharge_rows_audit": 3129,
+      "discharge_i_mean_a": 0.6247498,
+      "discharge_v_start_v": 3.593518,
+      "discharge_v_end_v": 3.212842,
+      "partial_capacity_trapz_ah": 0.5428382,
+      "partial_capacity_samplehold_ah": 0.5430117,
+      "legacy_proxy_ah": 0.5432292,
+      "conditional_capacity_ah": null,
+      "conditional_soh_pct": null,
+      "capacity_ground_truth": "NO",
+      "capacity_status": "NOT_CALCULATED_INCOMPLETE_DISCHARGE",
+      "modelling_use_capacity_soh": "EXCLUDE",
+      "summary_content_sha1": "064e53c3db59779fe1868c8807020c0a1a4837b8",
+      "neighbouring_full_cycle_median_ah": 1.190925,
+      "partial_fraction_of_neighbour_median": 0.45581224678296284,
+      "raw_workbook": {
+        "available": true,
+        "source_archive": "B5_Discharge0.5C_Charge1C (1).zip",
+        "source_member": "B5_Discharge0.5C_Charge1C/Cycle_0050.xlsx",
+        "source_sha256": "3d4d2e3237c08a9c74d99039a0197d03dda8972e65e8d552bfddae9de2516a3a",
+        "worksheet": "Run01_Un1Ch1_Step2_Cycle40",
+        "protocol_metadata": {
+          "exp_title": "Charge Cycle",
+          "protocol": "[Charge->Discharge,x50,Charge CC: 1.25 A, CV: 3.65 V, XI: 0.025 A,Time: 18000 Sec,Discharge CC: 0.625 A, XV: 2.5 V,Time: 18000 Sec][default]",
+          "current_header": "I(A/cm2)"
+        },
+        "numeric_rows": 7008,
+        "discharge_rows": 3129,
+        "discharge_t_start_s": 419354.0,
+        "discharge_t_end_s": 422482.0,
+        "discharge_duration_s": 3128.0,
+        "voltage_start_v": 3.593518,
+        "voltage_end_v": 3.212842,
+        "voltage_min_v": 3.212842,
+        "samples_at_or_below_cutoff": 0,
+        "fraction_at_or_below_cutoff": 0.0,
+        "mean_abs_current_a": 0.6247497781399808,
+        "partial_capacity_trapz_ah": 0.5428381613472222,
+        "partial_capacity_samplehold_ah": 0.5428381134444444,
+        "record_ends_at_last_discharge_row": true
+      },
+      "recovered_capacity_ah": null,
+      "recovered_soh_pct": null,
+      "recovery_status": "NOT_RECOVERABLE",
+      "reason": "No complete discharge exists for this cycle. The raw worksheet's discharge segment ends at 3.2128 V after 3128 s (3129 rows) with 0 samples at or below the 2.5 V cutoff; the workbook record ends there. The audit records DISCHARGE_INTERRUPTED, dis_complete=False, capacity_ground_truth=NO, modelling_use_capacity_soh=EXCLUDE and a NaN conditional capacity/SOH. No second measurement of cycle 40 exists (1 summary row). The 0.5428 Ah value is partial throughput, not a cell capacity, so SOH cannot be derived without inventing the missing ~55% of the discharge.",
+      "what_would_make_it_recoverable": "A repeat/complete discharge for this cycle (or the original lab record of the full 0.625 A CC discharge to the 2.5 V cutoff) with the same cell state and protocol; alternatively a documented, authoritative full-discharge capacity measurement for this exact cycle. None exists in the workspace.",
+      "source_artifact": "B5_Discharge0.5C_Charge1C (1).zip::B5_Discharge0.5C_Charge1C/Cycle_0050.xlsx + AUDIT/B5.zip::B5_Cycle_Summary.csv"
+    },
+    "LFP_MultiStat_B1::BATTERY_1::cycle_2": {
+      "target": "LFP_MultiStat_B1::BATTERY_1::cycle_2",
+      "telemetry_checkpoint": 50,
+      "telemetry_global_cycle_est": 2,
+      "master_capacity_ah": 1.202223,
+      "master_soh_pct": 96.178,
+      "recovered_capacity_ah": 1.220155,
+      "recovered_soh_pct": 97.612,
+      "collapsed_checkpoint_last_cycle_est": 50,
+      "collapsed_checkpoint_last_cycle_capacity_ah": 1.202223,
+      "cycle_offset_confidence": "VERIFIED",
+      "discharge_segment_complete": true,
+      "capacity_status": "COMPUTED_VERIFIED_WITH_CONDITIONS",
+      "soh_status": "COMPUTED",
+      "feasibility_overall": "FEASIBLE",
+      "current_unit_status": "UNDERDETERMINED_TOTAL_AMPERES_PLAUSIBLE",
+      "cycle_level_quality_flag": "ok",
+      "cycle_level_formula_id": "F1;F2;F3",
+      "source_artifact": "AUDIT/B1_LFP_Audit_Output.zip::B1_LFP_Audit_Output/LFP_capacity_soh_feasibility.csv (checkpoint_label=50, global_cycle_est=2)",
+      "recovery_status": "RECOVERED_WITH_CONDITIONS",
+      "tier_after_recovery": "CONDITIONAL",
+      "method": "Direct lookup of the audited per-cycle computed value for the telemetry's VERIFIED global cycle index; no interpolation, no scaling, no use of neighbouring cycles. Replaces the label that the builder collapsed from the checkpoint's last cycle.",
+      "reason": "Telemetry rows carry global_cycle_est=2 (checkpoint 50); the audit computes 1.220155 Ah / 97.612% for that cycle with a complete discharge, cycle_offset_confidence=VERIFIED and feasibility=FEASIBLE. The master label 1.202223 Ah belongs to est=50 of the same checkpoint, i.e. a different cycle. The recovered label is CONDITIONAL, not HIGH, because the workbook current header (I(A/cm2), Surface Area=0) leaves total amperes underdetermined."
+    }
+  },
+  "definitional_cases": {
+    "NASA_Ames_PCoE_soh_above_100pct": {
+      "cycles": 7,
+      "cells": [
+        "B0006"
+      ],
+      "action": "retained; soh is referenced to the 2.0 Ah rating, not measured BOL"
+    },
+    "Zenodo_IonTech_NaIon_soh_below_100pct_from_first_cycle": {
+      "cycles": 100,
+      "action": "retained; soh is referenced to the 1.0 Ah rating, not measured BOL"
+    }
+  },
+  "coverage_extension_not_performed": {
+    "note": "B5 cycles 101-150 and 201-400 are absent from the master by ingestion design, not missing labels. The audit summary contains computed conditional values for them, so they could be ingested later, but that requires a deliberate coverage decision and a rebuild; it is outside this recovery audit and is NOT counted in the usable-cycle numbers.",
+    "candidate_cycles_in_source": 250,
+    "counted_as_recovery": false
+  },
+  "member2_eligibility_impact": {
+    "usable_targets_before": 817,
+    "usable_targets_after": 818,
+    "change": "+1 conditional cycle (LFP_MultiStat_B1); no HIGH promotion",
+    "high_confidence_targets": 568,
+    "conditional_targets": 250,
+    "excluded_targets": 1,
+    "guidance": "B1 may be used only as a CONDITIONAL/auxiliary target with the current-unit caveat, never as ground truth and never for thermal features. B5 cycle 40 must stay excluded from capacity/SOH training."
+  },
+  "files": {
+    "log": "AUDIT\\member1_audit_outputs\\soh_recovery_log.csv",
+    "report": "AUDIT\\member1_audit_outputs\\soh_recovery_report.json"
+  }
+}

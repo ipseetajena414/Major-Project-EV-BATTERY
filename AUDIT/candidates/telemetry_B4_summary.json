@@ -1,0 +1,93 @@
+{
+  "dataset": "B4",
+  "dataset_id": "LFP_MultiStat_B4",
+  "zip": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\DATA\\B4_Discharge3C_Charge0.5C (1).zip",
+  "workbooks_read": 21,
+  "sheets_read": 1577,
+  "label_records": 0,
+  "labels_matched_to_sheets": 0,
+  "labels_without_raw_sheet": [],
+  "labels_without_raw_sheet_count": 0,
+  "label_misses": [
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle01|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle02|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle03|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle04|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle05|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle06|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle07|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle08|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle09|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle10|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle11|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle12|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle13|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle14|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle15|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle16|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle17|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle18|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle19|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle20|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle21|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle22|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle23|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle24|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle25|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle26|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle27|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle28|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle29|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle30|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle31|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle32|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle33|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle34|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle35|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle36|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle37|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle38|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle39|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle40|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle41|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle42|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle43|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle44|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle45|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle46|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle47|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle48|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle49|unlabelled",
+    "cycle_0050.xlsx::Run01_Un1Ch6_Step2_Cycle50|unlabelled"
+  ],
+  "label_miss_count": 1577,
+  "rows_written": 157501,
+  "cycles_in_output": 1577,
+  "phase_counts": {
+    "charge": 78801,
+    "discharge": 78700
+  },
+  "label_status_counts": {
+    "UNLABELED": 157501
+  },
+  "quality_flag_counts": {
+    "TEMP_UNMEASURED;CURRENT_UNIT_UNDERDETERMINED;NO_AUDITED_LABEL;UNLABELED;CYCLE_ID_RECONSTRUCTED": 157501
+  },
+  "capacity_non_null_cycles": 0,
+  "soh_range": [
+    null,
+    null
+  ],
+  "voltage_range": [
+    2.488757,
+    3.887305
+  ],
+  "current_range": [
+    -3.751209,
+    0.9445831
+  ],
+  "duplicate_cycle_time_rows": 0,
+  "output": "C:\\Users\\KIIT0001\\Desktop\\MAJOR PROJ 2\\AUDIT\\candidates\\telemetry_B4.parquet",
+  "current_spike_rows": 0,
+  "voltage_spike_rows": 0
+}
