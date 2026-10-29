@@ -1,0 +1,16 @@
+feature,family,description,source_columns,units,derivation,trust_level,used_in_primary_model
+current_soh_pct,state,SOH of the cycle at which the prediction is made,soh_pct,percent,cycle-level label read at time t; the only label-derived input,derived_from_cycle_label,True
+cycle_position,time,0-based position of the cycle in that cell's record,cycle_id,cycles,cumulative count of observed cycles per cell,derived_from_measured_index,True
+chg_duration_frac,time,charge-phase duration divided by total cycle duration,"time_sec, current_a",fraction,phase split by sign(current_a); duration = phase time span,derived_from_measured,True
+chg_v_mean,voltage,mean voltage while current_a > 0,"voltage_v, current_a",V,arithmetic mean over charge-phase rows,derived_from_measured,True
+dis_v_mean,voltage,mean voltage while current_a < 0,"voltage_v, current_a",V,arithmetic mean over discharge-phase rows,derived_from_measured,True
+chg_v_q50,voltage,median voltage while current_a > 0,"voltage_v, current_a",V,median over charge-phase rows,derived_from_measured,True
+dis_v_q50,voltage,median voltage while current_a < 0,"voltage_v, current_a",V,median over discharge-phase rows,derived_from_measured,True
+chg_v_slope_norm,voltage,fitted voltage change across the charge phase,"voltage_v, time_sec, current_a",V,"OLS slope vs elapsed time inside phase, multiplied by phase span",derived_from_measured,True
+dis_v_slope_norm,voltage,fitted voltage change across the discharge phase,"voltage_v, time_sec, current_a",V,"OLS slope vs elapsed time inside phase, multiplied by phase span",derived_from_measured,True
+chg_v_range,voltage,max minus min voltage during charge,"voltage_v, current_a",V,peak-to-peak over charge-phase rows,derived_from_measured,True
+dis_v_range,voltage,max minus min voltage during discharge,"voltage_v, current_a",V,peak-to-peak over discharge-phase rows,derived_from_measured,True
+transition_voltage,voltage,voltage at the final charge-phase row before discharge starts,"voltage_v, current_a, time_sec",V,last voltage with current_a > 0 in the cycle,derived_from_measured,True
+v_mean_diff,voltage,chg_v_mean minus dis_v_mean (sensitivity only),"voltage_v, current_a",V,exact linear combination of retained features,derived_from_measured,False
+v_q50_diff,voltage,chg_v_q50 minus dis_v_q50 (sensitivity only),"voltage_v, current_a",V,exact linear combination of retained features,derived_from_measured,False
+v_slope_diff,voltage,chg_v_slope_norm minus dis_v_slope_norm (sensitivity only),"voltage_v, time_sec, current_a",V,exact linear combination of retained features,derived_from_measured,False

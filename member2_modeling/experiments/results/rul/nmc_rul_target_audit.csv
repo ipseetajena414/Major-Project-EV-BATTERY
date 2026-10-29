@@ -1,0 +1,4 @@
+cell_id,n_cycles,cycle_id_min,cycle_id_max,cycle_ids_contiguous,null_soh,soh_first,soh_min,soh_max,soh_last,first_crossing_position,first_crossing_cycle_id,first_crossing_soh,sustained3_crossing_position,sustained3_crossing_cycle_id,last_below_position,last_below_cycle_id,below_runs,cycles_above_eol_after_first_crossing,n_pre_threshold,n_post_threshold,n_pre_if_sustained3
+B0005,168,1,168,True,0,92.82437104090788,64.37262610689703,92.82437104090788,66.25396643214678,74,75,79.5184615700164,74,75,167,168,2,1,74,94,74
+B0006,168,1,168,True,0,101.7668795502799,57.6909165798125,101.7668795502799,59.283761639646784,62,63,79.94856072013991,62,63,167,168,1,0,62,106,62
+B0018,132,1,132,True,0,92.75022603955408,67.05257203202424,92.75022603955408,67.05257203202424,44,45,79.77319346847828,58,59,131,132,2,13,44,88,58

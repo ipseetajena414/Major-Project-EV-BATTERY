@@ -1,0 +1,243 @@
+{
+  "project": "Autonomous Multi-Agent EV Battery Life & Range Predictor",
+  "module": "Member 2 \u2014 SOH Prediction & RUL Estimation",
+  "created": "2026-10-29T13:46:30.813622",
+  "parquet_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+  "prediction_horizon_cycles": 1,
+  "prediction_horizon_semantics": "Positional shift by 1 observed cycle record. The target is the SOH of the next observed record, not necessarily the next physical cycle. For B5, observed transitions include 100->151 (difference 51) and 200->401 (difference 201); the label filter also creates 39->41 (difference 2) because cycle_id=40 has a null SOH label.",
+  "eol_threshold_pct": 80.0,
+  "chronological_split": {
+    "train": 0.6,
+    "val": 0.2,
+    "test": 0.2
+  },
+  "model_readiness": {
+    "overall_status": "research_stage_not_production_ready",
+    "benchmark_warning": "The persistence baseline outperforms every reported learned SOH model. Do not describe any model as production-ready.",
+    "uncertainty_quantification": "none",
+    "calibration": "none",
+    "models": {
+      "nmc_lgbm": {
+        "status": "experimental_research_stage",
+        "test_n": 95,
+        "test_mae": 7.967825591621112,
+        "persistence_mae": 0.5040182599936701,
+        "note": "Higher MAE than persistence."
+      },
+      "lfp_lgbm": {
+        "status": "experimental_research_stage_conditional_labels",
+        "test_n": 51,
+        "test_mae": 0.9255954487453399,
+        "persistence_mae": 0.1312990196078441,
+        "note": "Higher MAE than persistence. The test subset contains only adjacent observed cycle-ID pairs (0 gap-crossing pairs)."
+      },
+      "nmc_bilstm": {
+        "status": "experimental_research_stage",
+        "test_n": 83,
+        "test_mae": 4.917288780212402,
+        "persistence_mae": 0.4474,
+        "note": "Higher MAE than persistence on the identical 83-row subset. Not served by Member2Predictor."
+      },
+      "nmc_rul_lgbm": {
+        "status": "unvalidated_pre_eol",
+        "test_n": 97,
+        "test_mae": 0.05881325805418289,
+        "note": "All 97 test targets are post-EOL (RUL=0); no pre-EOL forecasting capability is established."
+      }
+    }
+  },
+  "evaluation_results": {
+    "nmc_lgbm_test": {
+      "label": "NMC LightGBM Test",
+      "n": 95,
+      "mae": 7.967825591621112,
+      "rmse": 8.693241919824324,
+      "r2": -5.087237464485719,
+      "mape_pct": 12.460923819443416
+    },
+    "nmc_lgbm_val": {
+      "label": "NMC LightGBM Val",
+      "n": 92,
+      "mae": 3.5827162378259145,
+      "rmse": 4.033796060519274,
+      "r2": -2.910300665770599,
+      "mape_pct": 5.185641632251054
+    },
+    "nmc_persistence_test": {
+      "label": "NMC Persistence Test",
+      "n": 95,
+      "mae": 0.5040182599936701,
+      "rmse": 0.8669116170819162,
+      "r2": 0.9394650262478144,
+      "mape_pct": 0.7568979223140432
+    },
+    "lfp_lgbm_test": {
+      "label": "LFP LightGBM Test",
+      "n": 51,
+      "mae": 0.9255954487453399,
+      "rmse": 0.9532895652565427,
+      "r2": -14.502180482321064,
+      "mape_pct": 1.0127322725660477
+    },
+    "lfp_lgbm_val": {
+      "label": "LFP LightGBM Val",
+      "n": 49,
+      "mae": 0.9033239369824551,
+      "rmse": 0.9362628899592619,
+      "r2": -10.798879276581928,
+      "mape_pct": 0.9889002374969437
+    },
+    "lfp_persistence_test": {
+      "label": "LFP Persistence Test",
+      "n": 51,
+      "mae": 0.1312990196078441,
+      "rmse": 0.14728131905688982,
+      "r2": 0.6299687179107297,
+      "mape_pct": 0.1435565630618582
+    },
+    "nmc_bilstm_test": {
+      "label": "NMC BiLSTM Test",
+      "n": 83,
+      "mae": 4.917288780212402,
+      "rmse": 5.734727562816438,
+      "r2": -1.829089641571045,
+      "mape_pct": 7.804959297180176
+    },
+    "nmc_bilstm_val": {
+      "label": "NMC BiLSTM Val",
+      "n": 80,
+      "mae": 1.3067635297775269,
+      "rmse": 1.6334938197537154,
+      "r2": 0.2198580503463745,
+      "mape_pct": 1.9017666578292847
+    },
+    "nmc_rul_test": {
+      "label": "NMC RUL Test",
+      "n": 97,
+      "mae": 0.05881325805418289,
+      "rmse": 0.08206716277235918,
+      "r2": 0.0,
+      "mape_pct": null,
+      "status": "UNVALIDATED FOR PRE-EOL FORECASTING",
+      "evaluation_note": "100% of test cycles occur post-80% EOL (ground truth RUL=0.0). Test set has zero target variance. MAE=0.0588 reflects baseline post-EOL behavior, not validated degradation forecasting."
+    },
+    "nmc_identical_sequence_comparison_n83": {
+      "evaluation_protocol": "Exact identical 83 test sequence cycles (chronological holdout)",
+      "persistence": {"mae": 0.4474, "rmse": 0.7006, "r2": 0.9578},
+      "nmc_bilstm": {"mae": 4.9173, "rmse": 5.7347, "r2": -1.8291},
+      "nmc_lgbm": {"mae": 8.3767, "rmse": 9.0229, "r2": -6.0034},
+      "note": "BiLSTM outperforms LightGBM on identical inputs due to continuous representation, but both underperform persistence due to chronological domain shift."
+    }
+  },
+  "supported_chemistries": {
+    "NMC": {
+      "soh_prediction": true,
+      "rul_estimation": "UNVALIDATED (Post-EOL test only)",
+      "thermal_features": true,
+      "status": "experimental_research_stage",
+      "cells_trained_on": [
+        "B0005",
+        "B0006",
+        "B0018"
+      ],
+      "total_cycles": 468,
+      "model_ready_pairs": 465
+    },
+    "LFP": {
+      "soh_prediction": true,
+      "rul_estimation": false,
+      "thermal_features": false,
+      "status": "experimental_research_stage_conditional_labels",
+      "cells_trained_on": [
+        "BATTERY_5"
+      ],
+      "total_cycles": 250,
+      "labeled_cycles": 249,
+      "model_ready_pairs": 248,
+      "caveats": [
+        "250 observed cycle IDs in cell B5 form three contiguous blocks: 1-100, 151-200 and 401-500. IDs 101-150 (50 IDs) and 201-400 (200 IDs) are absent, i.e. 250 missing IDs between the observed minimum and maximum.",
+        "cycle_id=40 has a null SOH label (625 rows). The pipeline drops it, leaving 249 labelled cycles and 248 model-ready input->target pairs; this creates a 39->41 gap-crossing pair.",
+        "The two raw structural transitions 100->151 (difference 51) and 200->401 (difference 201) survive the filters. Targets are the next observed record, not necessarily the next physical cycle.",
+        "SOH labels CONDITIONAL (documented charge-balance discrepancy; 36.3% SOH transitions increase)",
+        "Learned SOH model underperforms persistence baseline: test MAE 0.9256 vs 0.1313 (n=51, adjacent observed pairs only)",
+        "B1 excluded (1 cycle)"
+      ]
+    },
+    "Na-ion": {
+      "soh_prediction": false,
+      "rul_estimation": false,
+      "thermal_features": false,
+      "reason": "100 cycles across 4 cells (25 cycles each). SOH ranges: Cell 64 (78.63%-79.22%), Cell 63 (88.60%-89.90%), Cell 62 (87.58%-88.55%), Cell 61 (90.35%-91.00%). Minimal intra-cell fade (delta <= 1.3%). Excluded from model training."
+    }
+  },
+  "files": {
+    "nmc_lgbm_model.joblib": "LightGBM model for NMC future-cycle SOH prediction",
+    "lfp_lgbm_model.joblib": "LightGBM model for LFP future-cycle SOH prediction",
+    "nmc_rul_lgbm_model.joblib": "LightGBM model for NMC RUL estimation (if trained)",
+    "nmc_bilstm_model.pt": "PyTorch BiLSTM model for NMC SOH sequence prediction",
+    "scaler_nmc.joblib": "StandardScaler fitted on NMC training features",
+    "scaler_lfp.joblib": "StandardScaler fitted on LFP training features",
+    "scaler_nmc_seq.joblib": "StandardScaler for BiLSTM sequence features",
+    "feature_schema.json": "Complete feature schema with definitions and blocked features",
+    "model_manifest.json": "This file \u2014 metadata, metrics, and integration instructions",
+    "predictor.py": "Python inference API for Member 4 integration"
+  },
+  "dependencies": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "lightgbm": "4.7.0",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "torch": "2.15.0+cpu",
+    "pyarrow": "26.0.0"
+  },
+  "sample_io": {
+    "chemistry": "NMC",
+    "model": "nmc_lgbm",
+    "input_features": {
+      "ah_throughput": 1.3888379012957872,
+      "avg_power_w": 6.01337101312883,
+      "current_soh_pct": 69.30557575767696,
+      "discharge_time_s": 2901.25,
+      "dvdt_max": 0.03600720189186203,
+      "dvdt_mean": -0.00021680444181595144,
+      "dvdt_min": -0.021004871037930944,
+      "dvdt_std": 0.002618102552643589,
+      "energy_wh": 4.846192403288893,
+      "i_max": 0.0021180176276842364,
+      "i_mean": -1.7260471943596487,
+      "i_min": -2.01575998810726,
+      "i_std": 0.7029280466636602,
+      "n_samples": 309.0,
+      "temp_end": 35.37656984223691,
+      "temp_max": 41.248795355864885,
+      "temp_mean": 33.88841975386692,
+      "temp_min": 24.843079939814473,
+      "temp_range": 16.405715416050413,
+      "temp_rise": 10.533489902422438,
+      "temp_start": 24.843079939814473,
+      "temp_std": 4.172985355606769,
+      "v_delta": -0.6199157838842582,
+      "v_end": 3.5804307189370586,
+      "v_max": 4.200346502821317,
+      "v_mean": 3.4886823636752826,
+      "v_min": 2.6949138502817815,
+      "v_q10": 3.217110779088385,
+      "v_q25": 3.3717677434823314,
+      "v_q50": 3.4889311142333312,
+      "v_q75": 3.6231291948403586,
+      "v_q90": 3.7849703011143956,
+      "v_range": 1.5054326525395352,
+      "v_slope": -0.6225582871273861,
+      "v_start": 4.200346502821317,
+      "v_std": 0.2305166507714859,
+      "v_time_integral": 10120.148953057913
+    },
+    "predicted_soh_pct": 74.9645,
+    "actual_soh_pct": 68.4925,
+    "horizon_cycles": 1,
+    "target_semantics": "SOH of the next observed cycle record (positional shift 1), not necessarily the next physical cycle.",
+    "model_status": "experimental_research_stage"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "chemistry": "Na-ion",
+  "dataset_id": "Zenodo_IonTech_NaIon",
+  "protocol_id": "NaIon_Standard_Cycling",
+  "parquet": "C:\\Users\\KIIT\\Desktop\\Major project\\Major-Project-EV-BATTERY-git\\master_table.parquet",
+  "parquet_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+  "rows": 41701,
+  "cells": [
+    "NA-ion_270040-1-1-64",
+    "NA-ion_270040-1-2-63",
+    "NA-ion_270040-1-3-62",
+    "NA-ion_270040-1-4-61"
+  ],
+  "n_cells": 4,
+  "n_cycles": 100,
+  "rows_per_cell": {
+    "NA-ion_270040-1-1-64": 17803,
+    "NA-ion_270040-1-2-63": 7346,
+    "NA-ion_270040-1-3-62": 9480,
+    "NA-ion_270040-1-4-61": 7072
+  },
+  "per_cell": [
+    {
+      "cell_id": "NA-ion_270040-1-1-64",
+      "rows": 17803,
+      "cycles": 25,
+      "cycle_min": 1,
+      "cycle_max": 25,
+      "current_min": -2.0003033,
+      "current_max": 2.0003378,
+      "temp_non_null": 0,
+      "voltage_min": 1.9993,
+      "voltage_max": 4.0001
+    },
+    {
+      "cell_id": "NA-ion_270040-1-2-63",
+      "rows": 7346,
+      "cycles": 25,
+      "cycle_min": 1,
+      "cycle_max": 25,
+      "current_min": -5.500742,
+      "current_max": 5.5005631,
+      "temp_non_null": 0,
+      "voltage_min": 1.9991,
+      "voltage_max": 4.0004
+    },
+    {
+      "cell_id": "NA-ion_270040-1-3-62",
+      "rows": 9480,
+      "cycles": 25,
+      "cycle_min": 1,
+      "cycle_max": 25,
+      "current_min": -4.200541,
+      "current_max": 4.2005253,
+      "temp_non_null": 0,
+      "voltage_min": 1.9994,
+      "voltage_max": 4.0001
+    },
+    {
+      "cell_id": "NA-ion_270040-1-4-61",
+      "rows": 7072,
+      "cycles": 25,
+      "cycle_min": 1,
+      "cycle_max": 25,
+      "current_min": -5.800386,
+      "current_max": 5.8005161,
+      "temp_non_null": 0,
+      "voltage_min": 1.9994,
+      "voltage_max": 4.0002
+    }
+  ],
+  "soh_trajectories": [
+    {
+      "cell_id": "NA-ion_270040-1-1-64",
+      "cycles": 25,
+      "soh_first": 79.02409,
+      "soh_last": 78.62877,
+      "soh_change_pp": -0.3953199999999981,
+      "decreasing_steps": 21,
+      "increasing_steps": 3,
+      "flat_steps": 0
+    },
+    {
+      "cell_id": "NA-ion_270040-1-2-63",
+      "cycles": 25,
+      "soh_first": 89.65244,
+      "soh_last": 88.5981,
+      "soh_change_pp": -1.0543399999999963,
+      "decreasing_steps": 23,
+      "increasing_steps": 1,
+      "flat_steps": 0
+    },
+    {
+      "cell_id": "NA-ion_270040-1-3-62",
+      "cycles": 25,
+      "soh_first": 88.06634,
+      "soh_last": 87.57669,
+      "soh_change_pp": -0.4896499999999975,
+      "decreasing_steps": 23,
+      "increasing_steps": 1,
+      "flat_steps": 0
+    },
+    {
+      "cell_id": "NA-ion_270040-1-4-61",
+      "cycles": 25,
+      "soh_first": 90.65956,
+      "soh_last": 90.35298,
+      "soh_change_pp": -0.30657999999999674,
+      "decreasing_steps": 22,
+      "increasing_steps": 2,
+      "flat_steps": 0
+    }
+  ],
+  "rows_per_cycle_min": 282,
+  "rows_per_cycle_max": 716,
+  "missing_values": {
+    "chemistry": 0,
+    "dataset_id": 0,
+    "cell_id": 0,
+    "protocol_id": 0,
+    "cycle_id": 0,
+    "time_sec": 0,
+    "voltage_v": 0,
+    "current_a": 0,
+    "temp_c": 41701,
+    "capacity_ah": 0,
+    "soh_pct": 0,
+    "quality_flag": 0,
+    "source_file": 0,
+    "_row_order": 0
+  },
+  "quality_flags": {
+    "TEMP_UNMEASURED": 41701
+  },
+  "temperature_available": false,
+  "time_monotonicity_violations": 0,
+  "label_broadcast": {
+    "cycles_checked": 100,
+    "cycles_with_nonconstant_soh": 0,
+    "cycles_with_nonconstant_capacity": 0,
+    "max_abs_capacity_minus_soh_over_100": 1.1102230246251565e-16,
+    "max_rows_per_cycle": 716
+  },
+  "duplicates": {
+    "rows": 41701,
+    "within_cycle_duplicate_rows": 0,
+    "cross_cycle_shared_timestamp_rows": 68,
+    "cross_cycle_shared_timestamps": 34,
+    "note": "shared timestamps are cycle-boundary rows (end of cycle N equals start of cycle N+1); no duplicates exist inside a cycle"
+  },
+  "phase_structure": {
+    "cycles_checked": 100,
+    "zero_current_rows": 52,
+    "sign_change_counts": [
+      1
+    ],
+    "failures": []
+  },
+  "units": {
+    "cycles_checked": 100,
+    "discharge_ah_minus_capacity_ah": {
+      "max_abs": 0.004510862277777861,
+      "mean_abs": 0.0014786694866666783
+    },
+    "charge_ah_minus_capacity_ah": {
+      "max_abs": 0.02406304250000002,
+      "mean_abs": 0.001559773423888885
+    },
+    "conclusion": "integrated phase charge matches nominal 1 Ah capacity within ~0.03 Ah, so current_a is amperes and capacity_ah is ampere-hours; the residual is consistent with rounding and boundary rows"
+  },
+  "soh_change_max_pp": 1.0543399999999963,
+  "eol_threshold_pct": 80.0,
+  "cells_at_or_below_eol": [
+    "NA-ion_270040-1-1-64"
+  ]
+}

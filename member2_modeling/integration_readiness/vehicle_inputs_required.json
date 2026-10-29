@@ -1,0 +1,172 @@
+{
+  "document": "Member 3 vehicle-level inputs required for a range estimate",
+  "contract_version": "1.0.0-draft",
+  "status": "requirements_only_no_values_supplied",
+  "warning": "No value in this file is a measured or approved input. The repository contains no vehicle configuration with verified provenance. Do not treat the absence of a value as a default and do not invent one.",
+  "energy_conversion_rule": "Member 2 returns cell-level capacity in Ah. Cell Ah must never be converted to vehicle pack kWh by this project's interface. Pack energy and the usable-energy fraction are Member 3 inputs.",
+  "road_grade_assumption": "A flat-road (grade = 0) assumption must be documented by Member 3 when no measured grade profile is available.",
+  "required_inputs": [
+    {
+      "name": "vehicle_identity",
+      "unit": "text",
+      "owner": "Member 3 (with wider team / OEM documentation)",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Vehicle make/model/year, or a clearly labelled representative vehicle",
+      "notes": "The label must state whether the vehicle is the actual target vehicle or a representative proxy."
+    },
+    {
+      "name": "pack_nominal_energy_kwh",
+      "unit": "kWh",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "OEM specification or measured pack data with citation",
+      "notes": "Pack-level quantity. Not derivable from Member 2 cell Ah without a verified pack topology and series/parallel configuration."
+    },
+    {
+      "name": "pack_usable_energy_kwh",
+      "unit": "kWh",
+      "owner": "Member 3",
+      "required": "one_of",
+      "status": "not_supplied",
+      "source_required": "OEM usable-window specification or measured usable energy with citation",
+      "notes": "Provide this or provide pack_nominal_energy_kwh plus a justified usable_energy_fraction."
+    },
+    {
+      "name": "usable_energy_fraction",
+      "unit": "fraction (0-1)",
+      "owner": "Member 3",
+      "required": "one_of",
+      "status": "not_supplied",
+      "source_required": "Justification for the usable window (e.g. OEM buffer specification)",
+      "notes": "An assumed fraction is a scenario assumption, not a measured value."
+    },
+    {
+      "name": "mass_kg",
+      "unit": "kg",
+      "owner": "Member 3 (with wider team / OEM documentation)",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Curb/test mass with citation",
+      "notes": "State whether the mass includes driver/payload."
+    },
+    {
+      "name": "drag_coefficient_cd",
+      "unit": "dimensionless",
+      "owner": "Member 3 (with wider team / OEM documentation)",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "OEM or wind-tunnel reference",
+      "notes": null
+    },
+    {
+      "name": "frontal_area_m2",
+      "unit": "m^2",
+      "owner": "Member 3 (with wider team / OEM documentation)",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "OEM or measured reference",
+      "notes": null
+    },
+    {
+      "name": "rolling_resistance_coefficient",
+      "unit": "dimensionless",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Published or measured coefficient with road/tire conditions",
+      "notes": null
+    },
+    {
+      "name": "drivetrain_efficiency",
+      "unit": "fraction (0-1)",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Reference efficiency map or documented scenario value",
+      "notes": null
+    },
+    {
+      "name": "regenerative_braking_assumption",
+      "unit": "fraction (0-1) or efficiency",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Documented scenario or measured data",
+      "notes": "Must state whether regeneration is included in the consumption model."
+    },
+    {
+      "name": "drive_cycle_time_s",
+      "unit": "s",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Official/source-attributed cycle (e.g. WLTC, CLTC, EPA) with citation",
+      "notes": "Must align one-to-one with drive_cycle_speed_mps."
+    },
+    {
+      "name": "drive_cycle_speed_mps",
+      "unit": "m/s",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Same source as drive_cycle_time_s",
+      "notes": "Convert published km/h values explicitly; do not mix units."
+    },
+    {
+      "name": "road_grade",
+      "unit": "radians or percent, stated explicitly",
+      "owner": "Member 3",
+      "required": false,
+      "status": "not_supplied",
+      "source_required": "Measured/profile data if available",
+      "notes": "If absent, document the flat-road assumption."
+    },
+    {
+      "name": "ambient_c",
+      "unit": "degC",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Measured ambient value or explicitly documented scenario",
+      "notes": "Passed to the provisional RangeCalculator.estimate(ambient_c=...) argument. Member 2 does not supply it."
+    },
+    {
+      "name": "hvac_power_kw",
+      "unit": "kW",
+      "owner": "Member 3",
+      "required": true,
+      "status": "not_supplied",
+      "source_required": "Measured HVAC load or explicitly documented scenario",
+      "notes": "Passed to the provisional RangeCalculator.estimate(hvac_power_kw=...) argument. Member 2 does not supply it."
+    },
+    {
+      "name": "auxiliary_power_kw",
+      "unit": "kW",
+      "owner": "Member 3",
+      "required": false,
+      "status": "not_supplied",
+      "source_required": "Measured or documented scenario",
+      "notes": "Include only if the range model accounts for non-HVAC auxiliary loads."
+    },
+    {
+      "name": "validation_consumption_kwh_per_km",
+      "unit": "kWh/km",
+      "owner": "Wider team (validation data)",
+      "required": false,
+      "status": "not_supplied",
+      "source_required": "Published or measured vehicle consumption under a comparable cycle",
+      "notes": "Needed to validate the modelled range; absence keeps range estimates unvalidated."
+    },
+    {
+      "name": "validation_range_km",
+      "unit": "km",
+      "owner": "Wider team (validation data)",
+      "required": false,
+      "status": "not_supplied",
+      "source_required": "Published or measured range under a comparable cycle and conditions",
+      "notes": "Needed to validate the modelled range; absence keeps range estimates unvalidated."
+    }
+  ]
+}

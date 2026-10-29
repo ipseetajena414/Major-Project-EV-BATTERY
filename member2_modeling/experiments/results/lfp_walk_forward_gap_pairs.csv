@@ -1,0 +1,4 @@
+cell_id,pair_index,cycle_id,target_cycle_id,cycle_gap,current_soh_pct,target_soh_pct,delta_soh,evaluated_in_fold,evaluation_status
+BATTERY_5,38,39,41,2,94.55091,94.25463,-0.2962799999999959,,train_only
+BATTERY_5,98,100,151,51,93.69711,92.76357,-0.9335399999999936,,train_only
+BATTERY_5,148,200,401,201,92.11158,92.21367,0.1020899999999898,2.0,tested

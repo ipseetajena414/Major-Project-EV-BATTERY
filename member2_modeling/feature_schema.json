@@ -1,0 +1,354 @@
+{
+  "schema_version": "1.0.0",
+  "created": "2026-10-29T13:46:30.813622",
+  "parquet_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+  "task": "future_cycle_soh_prediction",
+  "prediction_horizon_cycles": 1,
+  "prediction_horizon_semantics": "Positional shift by 1 observed cycle record. The target is the SOH of the next observed record, not necessarily the next physical cycle. For B5, 100->151 and 200->401 cross missing-ID gaps, and 39->41 follows the dropped null-label cycle 40.",
+  "models": {
+    "nmc_lgbm": {
+      "chemistry": "NMC",
+      "model_status": "experimental_research_stage",
+      "feature_names": [
+        "ah_throughput",
+        "avg_power_w",
+        "current_soh_pct",
+        "discharge_time_s",
+        "dvdt_max",
+        "dvdt_mean",
+        "dvdt_min",
+        "dvdt_std",
+        "energy_wh",
+        "i_max",
+        "i_mean",
+        "i_min",
+        "i_std",
+        "n_samples",
+        "temp_end",
+        "temp_max",
+        "temp_mean",
+        "temp_min",
+        "temp_range",
+        "temp_rise",
+        "temp_start",
+        "temp_std",
+        "v_delta",
+        "v_end",
+        "v_max",
+        "v_mean",
+        "v_min",
+        "v_q10",
+        "v_q25",
+        "v_q50",
+        "v_q75",
+        "v_q90",
+        "v_range",
+        "v_slope",
+        "v_start",
+        "v_std",
+        "v_time_integral"
+      ],
+      "feature_count": 37,
+      "target": "soh_pct of next observed cycle record (positional shift; not necessarily next physical cycle)",
+      "target_unit": "%",
+      "model_file": "nmc_lgbm_model.joblib",
+      "scaler_file": "scaler_nmc.joblib",
+      "scaler_required": false,
+      "supports_rul": false
+    },
+    "lfp_lgbm": {
+      "chemistry": "LFP",
+      "model_status": "experimental_research_stage_conditional_labels",
+      "feature_names": [
+        "ah_throughput",
+        "avg_power_w",
+        "current_soh_pct",
+        "discharge_time_s",
+        "dvdt_max",
+        "dvdt_mean",
+        "dvdt_min",
+        "dvdt_std",
+        "energy_wh",
+        "i_max",
+        "i_mean",
+        "i_min",
+        "i_std",
+        "n_samples",
+        "v_delta",
+        "v_end",
+        "v_max",
+        "v_mean",
+        "v_min",
+        "v_q10",
+        "v_q25",
+        "v_q50",
+        "v_q75",
+        "v_q90",
+        "v_range",
+        "v_slope",
+        "v_start",
+        "v_std",
+        "v_time_integral"
+      ],
+      "feature_count": 29,
+      "target": "soh_pct of next observed cycle record (positional shift; not necessarily next physical cycle)",
+      "target_unit": "%",
+      "model_file": "lfp_lgbm_model.joblib",
+      "scaler_file": "scaler_lfp.joblib",
+      "scaler_required": false,
+      "supports_rul": false,
+      "caveats": [
+        "B5 SOH labels are CONDITIONAL due to charge-balance discrepancy (36.3% of transitions increase)",
+        "B5 observed IDs form blocks 1-100, 151-200, 401-500; IDs 101-150 and 201-400 are absent",
+        "cycle_id=40 has a null SOH label and is dropped; 249 labelled cycles yield 248 model-ready pairs",
+        "Learned SOH model underperforms the persistence baseline (test MAE 0.9256 vs 0.1313, n=51)"
+      ]
+    },
+    "nmc_rul_lgbm": {
+      "chemistry": "NMC",
+      "model_status": "unvalidated_pre_eol",
+      "feature_names": [
+        "ah_throughput",
+        "avg_power_w",
+        "current_soh_pct",
+        "discharge_time_s",
+        "dvdt_max",
+        "dvdt_mean",
+        "dvdt_min",
+        "dvdt_std",
+        "energy_wh",
+        "i_max",
+        "i_mean",
+        "i_min",
+        "i_std",
+        "n_samples",
+        "temp_end",
+        "temp_max",
+        "temp_mean",
+        "temp_min",
+        "temp_range",
+        "temp_rise",
+        "temp_start",
+        "temp_std",
+        "v_delta",
+        "v_end",
+        "v_max",
+        "v_mean",
+        "v_min",
+        "v_q10",
+        "v_q25",
+        "v_q50",
+        "v_q75",
+        "v_q90",
+        "v_range",
+        "v_slope",
+        "v_start",
+        "v_std",
+        "v_time_integral"
+      ],
+      "feature_count": 37,
+      "target": "rul_cycles (remaining observed cycles to 80% EOL; NMC cycle IDs are contiguous)",
+      "target_unit": "cycles",
+      "eol_threshold_pct": 80.0,
+      "model_file": "nmc_rul_lgbm_model.joblib",
+      "scaler_file": "scaler_nmc.joblib",
+      "scaler_required": false
+    }
+  },
+  "feature_definitions": {
+    "v_mean": {
+      "unit": "V",
+      "description": "Mean discharge voltage",
+      "dtype": "float64"
+    },
+    "v_std": {
+      "unit": "V",
+      "description": "Std dev of discharge voltage",
+      "dtype": "float64"
+    },
+    "v_min": {
+      "unit": "V",
+      "description": "Minimum discharge voltage",
+      "dtype": "float64"
+    },
+    "v_max": {
+      "unit": "V",
+      "description": "Maximum discharge voltage",
+      "dtype": "float64"
+    },
+    "v_range": {
+      "unit": "V",
+      "description": "Voltage range (max - min)",
+      "dtype": "float64"
+    },
+    "v_start": {
+      "unit": "V",
+      "description": "Starting voltage of discharge",
+      "dtype": "float64"
+    },
+    "v_end": {
+      "unit": "V",
+      "description": "Ending voltage of discharge",
+      "dtype": "float64"
+    },
+    "v_delta": {
+      "unit": "V",
+      "description": "Voltage change (end - start)",
+      "dtype": "float64"
+    },
+    "v_q10": {
+      "unit": "V",
+      "description": "10th percentile discharge voltage",
+      "dtype": "float64"
+    },
+    "v_q25": {
+      "unit": "V",
+      "description": "25th percentile discharge voltage",
+      "dtype": "float64"
+    },
+    "v_q50": {
+      "unit": "V",
+      "description": "Median discharge voltage",
+      "dtype": "float64"
+    },
+    "v_q75": {
+      "unit": "V",
+      "description": "75th percentile discharge voltage",
+      "dtype": "float64"
+    },
+    "v_q90": {
+      "unit": "V",
+      "description": "90th percentile discharge voltage",
+      "dtype": "float64"
+    },
+    "i_mean": {
+      "unit": "A",
+      "description": "Mean discharge current",
+      "dtype": "float64"
+    },
+    "i_std": {
+      "unit": "A",
+      "description": "Std dev of discharge current",
+      "dtype": "float64"
+    },
+    "i_min": {
+      "unit": "A",
+      "description": "Min discharge current",
+      "dtype": "float64"
+    },
+    "i_max": {
+      "unit": "A",
+      "description": "Max discharge current",
+      "dtype": "float64"
+    },
+    "discharge_time_s": {
+      "unit": "s",
+      "description": "Total discharge duration",
+      "dtype": "float64"
+    },
+    "n_samples": {
+      "unit": "count",
+      "description": "Number of telemetry samples in discharge",
+      "dtype": "int64"
+    },
+    "ah_throughput": {
+      "unit": "Ah",
+      "description": "Ah throughput (integral |I|*dt)",
+      "dtype": "float64"
+    },
+    "energy_wh": {
+      "unit": "Wh",
+      "description": "Discharge energy (integral V*|I|*dt)",
+      "dtype": "float64"
+    },
+    "avg_power_w": {
+      "unit": "W",
+      "description": "Average discharge power",
+      "dtype": "float64"
+    },
+    "v_slope": {
+      "unit": "V/normalized_t",
+      "description": "Linear voltage slope over normalized time",
+      "dtype": "float64"
+    },
+    "dvdt_mean": {
+      "unit": "V/s",
+      "description": "Mean dV/dt",
+      "dtype": "float64"
+    },
+    "dvdt_std": {
+      "unit": "V/s",
+      "description": "Std dev of dV/dt",
+      "dtype": "float64"
+    },
+    "dvdt_min": {
+      "unit": "V/s",
+      "description": "Min dV/dt",
+      "dtype": "float64"
+    },
+    "dvdt_max": {
+      "unit": "V/s",
+      "description": "Max dV/dt",
+      "dtype": "float64"
+    },
+    "v_time_integral": {
+      "unit": "V\u00b7s",
+      "description": "Area under voltage-time curve",
+      "dtype": "float64"
+    },
+    "current_soh_pct": {
+      "unit": "%",
+      "description": "Current cycle SOH (input for Task C future prediction)",
+      "dtype": "float64"
+    },
+    "temp_mean": {
+      "unit": "\u00b0C",
+      "description": "Mean temperature (NMC only)",
+      "dtype": "float64"
+    },
+    "temp_std": {
+      "unit": "\u00b0C",
+      "description": "Std dev temperature (NMC only)",
+      "dtype": "float64"
+    },
+    "temp_min": {
+      "unit": "\u00b0C",
+      "description": "Min temperature (NMC only)",
+      "dtype": "float64"
+    },
+    "temp_max": {
+      "unit": "\u00b0C",
+      "description": "Max temperature (NMC only)",
+      "dtype": "float64"
+    },
+    "temp_range": {
+      "unit": "\u00b0C",
+      "description": "Temperature range (NMC only)",
+      "dtype": "float64"
+    },
+    "temp_start": {
+      "unit": "\u00b0C",
+      "description": "Start temperature (NMC only)",
+      "dtype": "float64"
+    },
+    "temp_end": {
+      "unit": "\u00b0C",
+      "description": "End temperature (NMC only)",
+      "dtype": "float64"
+    },
+    "temp_rise": {
+      "unit": "\u00b0C",
+      "description": "Temperature rise during discharge (NMC only)",
+      "dtype": "float64"
+    }
+  },
+  "blocked_features": {
+    "mean_temp_c": "BLOCKED \u2014 temp_c is NULL for all non-NMC rows. Available only for NMC chemistry.",
+    "max_c_rate": "BLOCKED \u2014 current_a units are UNDERDETERMINED for LFP. C-rate requires validated (current_a / rated_capacity) with confirmed unit. Not derivable without independent calibration.",
+    "target_soc": "BLOCKED \u2014 no SOC column exists in master_table.parquet. SOC requires cumulative coulomb counting or OCV-SOC lookup table, neither available.",
+    "min_soc": "BLOCKED \u2014 same as target_soc.",
+    "hours_above_80soc_per_cycle": "BLOCKED \u2014 requires SOC time-series, which is not available.",
+    "fast_charge_fraction": "BLOCKED \u2014 requires charge-phase telemetry with validated C-rate thresholds. NASA NMC and LFP B5 contain discharge-only telemetry. Na-ion has mixed phases but current units need validation.",
+    "n_cycles": "SUPPORTED as cycle_position \u2014 available as positional index in the observed cycle list per cell."
+  }
+}

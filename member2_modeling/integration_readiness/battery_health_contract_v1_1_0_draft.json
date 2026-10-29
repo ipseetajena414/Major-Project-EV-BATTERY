@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/member2/battery-health-contract/1.1.0-draft",
+  "title": "Member 2 battery-health result contract (draft)",
+  "description": "Versioned interface contract for Member 2 SOH predictions, quality flags and explicit unsupported/error states. No numeric RUL is exposed and no uncertainty estimate is fabricated. production_ready is intentionally constrained to false. Changes from 1.0.0-draft: subject.cycle_position (contiguous observed index, optional) and soh.current_observed_soh_pct (current measured SOH anchor / persistence baseline) added so a downstream range consumer can anchor on the observed state instead of an extrapolated one.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "status",
+    "production_ready",
+    "subject",
+    "soh",
+    "rul",
+    "capacity",
+    "quality",
+    "errors",
+    "source",
+    "request"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.1.0-draft"
+    },
+    "status": {
+      "enum": ["ok", "ok_experimental", "unsupported", "error"],
+      "description": "ok is reserved for a future validated contract revision; current successful calls are ok_experimental."
+    },
+    "production_ready": {
+      "const": false
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chemistry",
+        "cell_id",
+        "dataset_id",
+        "cycle_id",
+        "cycle_position",
+        "prediction_timestamp"
+      ],
+      "properties": {
+        "chemistry": {"type": ["string", "null"]},
+        "cell_id": {"type": ["string", "null"]},
+        "dataset_id": {"type": ["string", "null"]},
+        "cycle_id": {
+          "type": ["integer", "null"],
+          "description": "Observed cycle record ID exactly as recorded. May be non-contiguous: LFP B5 observed IDs are 1-100, 151-200 and 401-500."
+        },
+        "cycle_position": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "0-based position of this record in the cell's sorted observed cycle list. Contiguous even when cycle_id is not. Caller-supplied; null when not supplied."
+        },
+        "prediction_timestamp": {"type": ["string", "null"]}
+      }
+    },
+    "soh": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "predicted_soh_pct",
+        "current_observed_soh_pct",
+        "unit",
+        "horizon",
+        "model_id",
+        "model_status",
+        "validation_status",
+        "uncertainty"
+      ],
+      "properties": {
+        "status": {"enum": ["ok", "unavailable"]},
+        "predicted_soh_pct": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "current_observed_soh_pct": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Measured SOH of the current cycle record (the model input current_soh_pct). Carrying this value forward is the persistence baseline. Null when unavailable or when no inference was produced."
+        },
+        "unit": {"const": "%"},
+        "horizon": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "unit", "semantics"],
+          "properties": {
+            "value": {"type": ["integer", "null"]},
+            "unit": {"const": "observed_cycle_records"},
+            "semantics": {"type": "string"}
+          }
+        },
+        "model_id": {"type": ["string", "null"]},
+        "model_status": {"type": ["string", "null"]},
+        "validation_status": {"type": "string"},
+        "uncertainty": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": {"const": "not_provided"}
+          }
+        }
+      }
+    },
+    "rul": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "rul_cycles",
+        "unit",
+        "reason",
+        "approved_for_use",
+        "model_id",
+        "model_status"
+      ],
+      "properties": {
+        "status": {"enum": ["unavailable", "available"]},
+        "rul_cycles": {"type": ["number", "null"], "minimum": 0},
+        "unit": {"const": "cycles"},
+        "reason": {"type": "string"},
+        "approved_for_use": {"type": "boolean"},
+        "model_id": {"type": ["string", "null"]},
+        "model_status": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"status": {"const": "available"}}},
+          "then": {
+            "properties": {
+              "rul_cycles": {"type": "number", "minimum": 0},
+              "approved_for_use": {"const": true}
+            }
+          },
+          "else": {
+            "properties": {
+              "rul_cycles": {"type": "null"},
+              "approved_for_use": {"const": false}
+            }
+          }
+        }
+      ]
+    },
+    "capacity": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "capacity_ah",
+            "unit",
+            "reference_capacity_ah",
+            "basis",
+            "validation_status",
+            "is_pack_energy"
+          ],
+          "properties": {
+            "capacity_ah": {"type": "number", "minimum": 0},
+            "unit": {"const": "Ah"},
+            "reference_capacity_ah": {"type": "number", "exclusiveMinimum": 0},
+            "basis": {"const": "derived_soh_pct_times_rated_capacity"},
+            "validation_status": {"const": "not_independently_validated"},
+            "is_pack_energy": {"const": false}
+          }
+        }
+      ]
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quality_flags",
+        "warnings",
+        "checks_passed",
+        "checks_not_performed",
+        "label_provenance"
+      ],
+      "properties": {
+        "quality_flags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "warnings": {"type": "array", "items": {"type": "string"}},
+        "checks_passed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "checks_not_performed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "label_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["soh_labels", "status"],
+          "properties": {
+            "soh_labels": {"type": ["string", "null"]},
+            "status": {"enum": ["observed", "conditional", "not_applicable"]}
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "message"],
+        "properties": {
+          "code": {"type": "string"},
+          "message": {"type": "string"},
+          "field": {"type": "string"}
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "function", "schema_version"],
+      "properties": {
+        "module": {"type": "string"},
+        "function": {"type": "string"},
+        "schema_version": {"type": ["string", "null"]},
+        "model_file": {"type": ["string", "null"]}
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["horizon_cycles"],
+      "properties": {
+        "horizon_cycles": {"type": ["integer", "null"]}
+      }
+    }
+  }
+}
