@@ -12,10 +12,12 @@ _llm = None
 def _get_llm():
     global _llm
     if _llm is None:
+        import os
         from dotenv import load_dotenv
         from langchain_google_genai import ChatGoogleGenerativeAI
         load_dotenv()
-        _llm = ChatGoogleGenerativeAI(model=config.GEMINI_MODEL)
+        key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+        _llm = ChatGoogleGenerativeAI(model=config.GEMINI_MODEL, google_api_key=key)
     return _llm
 
 
