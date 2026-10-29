@@ -1,0 +1,52 @@
+{
+  "artifact_set": "Member 2 SOH predictions consumed by Member 3",
+  "generated_at_utc": "2026-10-29T17:06:27Z",
+  "generation": "Local re-execution of member2_modeling.build_and_train feature pipeline + BiLSTMPredictor (state_dict) + Member2Predictor (served LightGBM) on master_table.parquet cell B0005",
+  "member2_git_ref": "origin/member2",
+  "member2_commit": "b2a2b51a1de8c980cf284439bfe40c46243e98b5",
+  "member2_artifacts_sha256": {
+    "nmc_bilstm_model.pt": "7dcaf0f8b5d22919795024c0c2feeaf4bffa6155758b952fd1dafe5c3d87cf34",
+    "nmc_lgbm_model.joblib": "b3774599f39db1a983263dca38ff3c8f80e178a811e292e9d37b6cc13f172f45",
+    "scaler_nmc_seq.joblib": "2d3a0917ece60b493dbd472ad36adf3a5ce8338a39f803dcc05773b206e6e39d",
+    "feature_schema.json": "989cf8eb9a199f4b7384f9ef28299577d2a589cec93f8da75f49aafccb971a98",
+    "model_manifest.json": "bfdf2d4a8a8ec552774752e833d98a7b0d64f44e2fc2d482a95c1223f2a0b353"
+  },
+  "master_table_parquet_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+  "environment": {
+    "python": "3.14.2",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "lightgbm": "4.7.0",
+    "pyarrow": "26.0.0",
+    "torch": "2.15.0+cpu",
+    "note": "Versions match member2_modeling/model_manifest.json dependencies exactly; installed into an isolated temp venv outside the repository."
+  },
+  "scope": {
+    "cell_id": "B0005",
+    "dataset_id": "NASA_Ames_PCoE",
+    "chemistry": "NMC",
+    "split": "chronological per-cell split, test = final 20% of observed-record pairs",
+    "target_cycles": "139-168 (30 targets from 5-record windows)",
+    "horizon": "1 observed record (positional shift), not necessarily one physical cycle",
+    "unit": "SOH percentage points on 0-100 scale",
+    "level": "cell-level SOH, not pack-level energy"
+  },
+  "reproduced_metrics_b0005_test_n30": {
+    "bilstm_mae_pct": 4.159,
+    "lightgbm_mae_pct": 8.2945,
+    "persistence_mae_pct": 0.3172,
+    "cross_check": "Matches member2_modeling/model_manifest.json per-cell breakdown (BiLSTM 4.16, LightGBM 8.29, persistence 0.32); INTEGRATION_CONTRACT.md section 5.2."
+  },
+  "files": {
+    "member2_nmc_B0005_bilstm_predictions.csv": "6d9e0530b3473d1e584d411f3da93664c1d2f2c3e44dba94dad52615d884b1db",
+    "member2_nmc_B0005_lgbm_predictions.csv": "559c8ab5a6687d4120337a4ce9ab77076e7748b9be2860d0f2345a52a2b82833"
+  },
+  "caveats": [
+    "Both models are experimental/research-stage and underperform a persistence baseline on Member 2's chronological holdout.",
+    "nmc_bilstm is NOT served by Member2Predictor; it was executed through Member 2's own BiLSTMPredictor class and scaler_nmc_seq artifact.",
+    "No uncertainty quantification, calibration, or out-of-distribution check exists.",
+    "SOH values are cell-level; mapping to vehicle pack energy is Member 3's linear approximation, not a validated pack model."
+  ]
+}
