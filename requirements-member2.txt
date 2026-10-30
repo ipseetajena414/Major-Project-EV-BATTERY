@@ -1,0 +1,12 @@
+# Member 2 runtime, pinned to member2_modeling/model_manifest.json -> "dependencies" (the known-good environment
+# the models were trained and exported in). Do NOT downgrade these to satisfy other packages.
+# Manifest Python: 3.12.10
+pandas==3.1.0
+numpy==2.5.4
+lightgbm==4.7.0
+scikit-learn==1.9.1
+joblib==1.6.0
+pyarrow==26.0.0
+# Manifest lists torch 2.15.0+cpu. The version spec below matches both the PyPI build and the +cpu build.
+# Verified here with the PyPI build (2.15.0+cu132), which runs on CPU.
+torch==2.15.0

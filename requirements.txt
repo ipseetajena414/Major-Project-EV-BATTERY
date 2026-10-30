@@ -1,0 +1,3 @@
+# Full environment = Member 2 manifest pins + application pins (kept in separate files on purpose).
+-r requirements-member2.txt
+-r requirements-app.txt

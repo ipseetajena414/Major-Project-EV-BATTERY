@@ -1,0 +1,9 @@
+# Member 5 application + Member 4 simulation dependencies. These are the versions the final tests were run with.
+streamlit==1.66.1
+pypdf==6.21.4
+langgraph==1.2.18
+langchain==1.4.7
+langchain-google-genai==4.4.2
+python-dotenv==1.2.4
+matplotlib==3.11.2
+pytest==9.2.0

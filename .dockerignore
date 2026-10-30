@@ -1,0 +1,14 @@
+.git
+.venv
+__pycache__
+*.pyc
+.env
+DATA/
+AUDIT/
+backup_member1/
+master_table.csv
+master_table_candidate.parquet
+data/rag_index/
+ev_member4/results/
+member2_modeling/experiments/
+.pytest_cache

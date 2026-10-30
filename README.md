@@ -1,5 +1,17 @@
 # Autonomous Multi-Agent EV Battery Life & Range Predictor
 
+
+## Run the integrated app (Member 5)
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py          # http://localhost:8501
+python -m pytest tests -q     # Member 5 integration tests
+```
+
+Docker (not built or tested in the authoring environment): `docker build -t ev-battery . && docker run -p 8501:8501 ev-battery`.
+See `docs/ARCHITECTURE.md`, `docs/INTEGRATION_GUIDE.md` and `docs/RAG_SOURCES.md`. Range figures come from the Member 3 engine with partially sourced/illustrative vehicle inputs, so they are illustrative estimates; the headline "650 km to 550 km" below is a project hypothesis, not a computed result. Learned SOH models are experimental and RUL is not approved.
+
 > **Analyzing Real-World Range Decay ($650\text{ km} \rightarrow 550\text{ km}$) Across NMC, LFP, Sodium-ion & Solid-State Batteries via Open-Source AI Agents & Machine Learning**
 
 ---
