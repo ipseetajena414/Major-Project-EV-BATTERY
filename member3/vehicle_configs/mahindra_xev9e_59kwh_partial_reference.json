@@ -1,0 +1,35 @@
+{
+  "vehicle_name": "Mahindra XEV 9e 59 kWh - Partially Sourced Reference",
+  "nominal_pack_energy_kwh": 59.0,
+  "usable_energy_fraction": 0.9,
+  "vehicle_mass_kg": 2100.0,
+  "drag_coefficient_cd": 0.28,
+  "frontal_area_m2": 2.3,
+  "rolling_resistance_coefficient_crr": 0.01,
+  "air_density_kg_m3": 1.225,
+  "drivetrain_efficiency": 0.9,
+  "regen_efficiency": 0.6,
+  "max_regen_power_kw": 50.0,
+  "auxiliary_power_kw": 0.5,
+  "hvac_power_kw_default": 0.25,
+  "rotational_inertia_factor": 1.05,
+  "rated_range_km_reference": 542.0,
+  "provenance": {
+    "status": "PARTIALLY_SOURCED_UNCALIBRATED",
+    "manufacturer_source": "https://www.mahindraelectricsuv.com (official XEV 9e brochure)",
+    "retrieved_date": "2026-10-29",
+    "sourced_fields": {
+      "nominal_pack_energy_kwh": "59 kWh battery option, Mahindra official XEV 9e brochure",
+      "rated_range_km_reference": "542 km MIDC/ARAI certified range for the 59 kWh pack, Mahindra official brochure"
+    },
+    "assumptions": [
+      "Usable energy fraction of 0.90 is illustrative",
+      "Vehicle mass of 2100 kg is an inherited placeholder, not a verified kerb mass",
+      "Drag coefficient and frontal area are unverified assumptions",
+      "Rolling resistance and drivetrain efficiency are unverified assumptions",
+      "Regenerative braking parameters are unverified assumptions",
+      "Auxiliary load, HVAC load and rotational inertia factor are illustrative"
+    ],
+    "note": "For pipeline testing only. Mahindra also certifies 656 km MIDC with the larger ~79 kWh pack. Do not present the calculated range as a validated Mahindra XEV 9e prediction."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "vehicle_name": "ILLUSTRATIVE_PLACEHOLDER_NOT_A_REAL_VEHICLE",
+  "nominal_pack_energy_kwh": 75.0,
+  "usable_energy_fraction": 0.9,
+  "vehicle_mass_kg": 2100.0,
+  "drag_coefficient_cd": 0.28,
+  "frontal_area_m2": 2.3,
+  "rolling_resistance_coefficient_crr": 0.01,
+  "air_density_kg_m3": 1.225,
+  "drivetrain_efficiency": 0.9,
+  "regen_efficiency": 0.6,
+  "max_regen_power_kw": 50.0,
+  "auxiliary_power_kw": 0.5,
+  "hvac_power_kw_default": 0.25,
+  "rotational_inertia_factor": 1.05,
+  "rated_range_km_reference": 650.0,
+  "provenance": {
+    "status": "ILLUSTRATIVE_ASSUMPTIONS",
+    "note": "Replace every vehicle-specific value with sourced values before presenting results as vehicle-specific."
+  }
+}
