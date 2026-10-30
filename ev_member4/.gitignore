@@ -1,0 +1,30 @@
+# Environment & Secrets
+.env
+.env*.local
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Output directories & generated files
+results/
+*.png
+
+# Operating system / IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# keep the committed sample outputs (they are not regenerated automatically)
+!sample_results/
+!sample_results/**

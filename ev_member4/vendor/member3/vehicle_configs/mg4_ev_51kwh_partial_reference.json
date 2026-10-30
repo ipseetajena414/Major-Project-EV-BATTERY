@@ -1,0 +1,35 @@
+{
+  "vehicle_name": "MG4 EV 51 kWh - Partially Sourced Reference",
+  "nominal_pack_energy_kwh": 51.0,
+  "usable_energy_fraction": 0.9,
+  "vehicle_mass_kg": 2100.0,
+  "drag_coefficient_cd": 0.28,
+  "frontal_area_m2": 2.3,
+  "rolling_resistance_coefficient_crr": 0.01,
+  "air_density_kg_m3": 1.225,
+  "drivetrain_efficiency": 0.9,
+  "regen_efficiency": 0.6,
+  "max_regen_power_kw": 50.0,
+  "auxiliary_power_kw": 0.5,
+  "hvac_power_kw_default": 0.25,
+  "rotational_inertia_factor": 1.05,
+  "rated_range_km_reference": 350.0,
+  "provenance": {
+    "status": "PARTIALLY_SOURCED_UNCALIBRATED",
+    "manufacturer_source": "https://www.mgmotors.com.np/product/mg4-ev",
+    "retrieved_date": "2026-10-29",
+    "sourced_fields": {
+      "nominal_pack_energy_kwh": "51 kWh LFP battery (Standard Range), MG Motor official spec sheet",
+      "rated_range_km_reference": "350 km claimed range for MG4 51 kWh RWD, secondary source (zecar.com listing); the test cycle is not stated and India ARAI certification is pending, so no cycle label is claimed"
+    },
+    "assumptions": [
+      "Usable energy fraction of 0.90 is illustrative",
+      "Vehicle mass of 2100 kg is an inherited placeholder, far above the class; a verified MG4 kerb mass is roughly 1600-1700 kg and must be sourced before calibration",
+      "Drag coefficient and frontal area are unverified assumptions",
+      "Rolling resistance and drivetrain efficiency are unverified assumptions",
+      "Regenerative braking parameters are unverified assumptions",
+      "Auxiliary load, HVAC load and rotational inertia factor are illustrative"
+    ],
+    "note": "For pipeline testing only. MG markets the car globally as MG4 EV (no separate India trim name verified as of the retrieval date); a 64 kWh Long Range variant claims ~450-452 km WLTP. Do not present the calculated range as a validated MG4 EV prediction."
+  }
+}

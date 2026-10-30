@@ -1,0 +1,35 @@
+{
+  "vehicle_name": "Hyundai IONIQ 5 84 kWh (India facelift) - Partially Sourced Reference",
+  "nominal_pack_energy_kwh": 84.0,
+  "usable_energy_fraction": 0.9,
+  "vehicle_mass_kg": 2100.0,
+  "drag_coefficient_cd": 0.28,
+  "frontal_area_m2": 2.3,
+  "rolling_resistance_coefficient_crr": 0.01,
+  "air_density_kg_m3": 1.225,
+  "drivetrain_efficiency": 0.9,
+  "regen_efficiency": 0.6,
+  "max_regen_power_kw": 50.0,
+  "auxiliary_power_kw": 0.5,
+  "hvac_power_kw_default": 0.25,
+  "rotational_inertia_factor": 1.05,
+  "rated_range_km_reference": 690.0,
+  "provenance": {
+    "status": "PARTIALLY_SOURCED_UNCALIBRATED",
+    "manufacturer_source": "https://www.hyundai.com/in/en/find-a-car/ioniq-5/highlights",
+    "retrieved_date": "2026-10-29",
+    "sourced_fields": {
+      "nominal_pack_energy_kwh": "84 kWh battery pack, Hyundai India official IONIQ 5 page (2026 facelift)",
+      "rated_range_km_reference": "690 km ARAI/MIDC certified range, Hyundai India official IONIQ 5 page"
+    },
+    "assumptions": [
+      "Usable energy fraction of 0.90 is illustrative",
+      "Vehicle mass of 2100 kg is an inherited placeholder close to but not a verified kerb mass",
+      "Drag coefficient and frontal area are unverified assumptions; the overview document cites Cd 0.288 / 2.45 m2 for the pre-facelift car without a recorded source",
+      "Rolling resistance and drivetrain efficiency are unverified assumptions",
+      "Regenerative braking parameters are unverified assumptions",
+      "Auxiliary load, HVAC load and rotational inertia factor are illustrative"
+    ],
+    "note": "For pipeline testing only. Pre-facelift India variants used a 72.6 kWh pack. Do not present the calculated range as a validated IONIQ 5 prediction."
+  }
+}
