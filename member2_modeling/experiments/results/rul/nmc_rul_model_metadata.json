@@ -1,0 +1,59 @@
+{
+  "B0005": {
+    "lgbm_pre_eol_fixed200": {
+      "variant": "lgbm_pre_eol_fixed200",
+      "train_rows": 106,
+      "train_pre_rows": 106,
+      "val_rows": 0,
+      "best_iteration": null,
+      "n_estimators": 200
+    },
+    "lgbm_production_protocol": {
+      "variant": "lgbm_production_protocol",
+      "train_rows": 179,
+      "train_pre_rows": 106,
+      "train_post_rows": 73,
+      "val_rows": 59,
+      "best_iteration": 177,
+      "n_estimators": 500
+    }
+  },
+  "B0006": {
+    "lgbm_pre_eol_fixed200": {
+      "variant": "lgbm_pre_eol_fixed200",
+      "train_rows": 118,
+      "train_pre_rows": 118,
+      "val_rows": 0,
+      "best_iteration": null,
+      "n_estimators": 200
+    },
+    "lgbm_production_protocol": {
+      "variant": "lgbm_production_protocol",
+      "train_rows": 179,
+      "train_pre_rows": 118,
+      "train_post_rows": 61,
+      "val_rows": 59,
+      "best_iteration": 192,
+      "n_estimators": 500
+    }
+  },
+  "B0018": {
+    "lgbm_pre_eol_fixed200": {
+      "variant": "lgbm_pre_eol_fixed200",
+      "train_rows": 136,
+      "train_pre_rows": 136,
+      "val_rows": 0,
+      "best_iteration": null,
+      "n_estimators": 200
+    },
+    "lgbm_production_protocol": {
+      "variant": "lgbm_production_protocol",
+      "train_rows": 200,
+      "train_pre_rows": 136,
+      "train_post_rows": 64,
+      "val_rows": 66,
+      "best_iteration": 167,
+      "n_estimators": 500
+    }
+  }
+}
