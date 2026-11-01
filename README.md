@@ -1,150 +1,200 @@
 # Autonomous Multi-Agent EV Battery Life & Range Predictor
 
-> **Analyzing Real-World Range Decay ($650\text{ km} \rightarrow 550\text{ km}$) Across NMC, LFP, Sodium-ion & Solid-State Batteries via Open-Source AI Agents & Machine Learning**
+> **Analyzing real-world range decay (650 km -> 550 km) across NMC, LFP,
+> sodium-ion and solid-state batteries with open-source AI agents and machine
+> learning.**
 
 ---
 
-## 🚀 Project Overview
+## Project overview
 
-Modern electric vehicles (EVs) often experience noticeable degradation in real-world driving range compared to their factory ratings (e.g., $650\text{ km} \rightarrow 550\text{ km}$ or lower) due to chemical degradation, temperature extremes, aggressive DC fast charging (DCFC), and dynamic HVAC thermal loads.
+Modern EVs often lose real-world range relative to their factory rating due to
+chemical degradation, temperature extremes, aggressive DC fast charging and HVAC
+loads. This project combines physics-based battery models, supervised ML and a
+multi-agent advisory layer.
 
-This project implements an end-to-end, multi-agent AI framework coupled with physics-based battery models and supervised machine learning regressors to forecast multi-cycle capacity fade and real-world range drops across multiple battery chemistries:
-- **Lithium-ion (NMC):** NASA Ames Prognostics Center of Excellence (PCoE)
-- **Lithium Iron Phosphate (LFP):** MultiStat 18650 C-rate aging campaigns (B1–B6)
-- **Sodium-ion (Na-ion):** Zenodo / IonTech low-temperature & rate capability cycling
-- **Solid-State & Advanced Chemistries:** Literature-derived RAG & PyBaMM synthesis
+Member 1 owns ingestion, preprocessing and data governance. The active Member 1
+datasets are the three snapshot datasets listed below; the earlier
+NASA/BatteryArchive-derived cell-cycle master table is retired and archived.
 
 ---
 
-## 🏛️ End-to-End Multi-Agent Architecture (5-Team Workload)
+## Architecture (5-team workload)
 
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│ DATA SOURCES: NASA PCoE (NMC) │ MultiStat/Zenodo (LFP) │ IonTech (Na) │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ MEMBER 1: Ingestion & Preprocessing Node [STATUS: COMPLETED]           │
-│ - Sensor noise clipping (2.0V - 4.5V) │ CC/CV slicing │ SOH Extraction │
-│ - Common Master Table Integration: 515,270 validated telemetry rows   │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ Structured Parquet Streams
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ MEMBER 2: Feature Engineering & ML Predictor                           │
-│ - dQ/dV Peak Tracking │ Thermal Stress (T > 35°C) │ High C-rate (1.5C) │
-│ - Models: LightGBM Tabular Regressors & LSTM Sequence Multi-Cycle Fade │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ SOH & Capacity Trajectory
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ MEMBER 3: Real-World Vehicle Dynamics & Range Derivation               │
-│ - Lumped-Parameter Road Loads (Aerodynamic Drag, Rolling Resistance)   │
-│ - HVAC Thermal Penalties (Hot/Cold) │ Real Range: 650 km → 550 km     │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ Pack Telemetry & Degradation State
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ MEMBER 4: Multi-Agent Simulation Sandbox & Advisory                    │
-│ - Driver Persona Agent (Aggressive DCFC) ↔ BMS Supervisor Agent       │
-│ - Prescriptive 20%–80% SOC rules & Dynamic Pre-conditioning Guidelines │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ RAG Queries & Visualization Payload
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│ MEMBER 5: System Integrator, Literature Synthesis (RAG) & UI Lead      │
-│ - ArXiv/ScienceDirect RAG Agent: Solid-State & Sodium-ion Trade-offs  │
-│ - Streamlit Dashboard: Real-time Chemistry, Climate, and Range Sliders │
-└────────────────────────────────────────────────────────────────────────┘
+DATA SOURCES
+  EV failure/pack snapshots | Solid-state cell snapshots | Synthetic lifecycle
+        |
+        v
+MEMBER 1 - Ingestion, cleaning, quality flags, leakage audit, dataset registry
+        |  DATA/processed/*.parquet + *.json
+        v
+MEMBER 2 - Feature engineering and ML models (tabular snapshots)
+        |  SOH / failure / degradation signals
+        v
+MEMBER 3 - Vehicle dynamics, road loads, HVAC penalties, range derivation
+        |  Pack state and range estimates
+        v
+MEMBER 4 - Multi-agent driver/BMS simulation and prescriptive advice
+        |  Simulation results and advisory payloads
+        v
+MEMBER 5 - RAG literature synthesis and Streamlit dashboard
 ```
 
 ---
 
-## 📊 Member 1: Master Table & Telemetry Ingestion Contract
+## Member 1: active datasets
 
-Member 1 delivers the standardized, noise-filtered, unit-verified telemetry stream uniting multi-chemistry laboratory cycling data.
+| Dataset ID | Source file | Rows | Processed columns | Grain | Origin |
+|---|---|---:|---:|---|---|
+| `EV_FAILURE_PREDICTION` | `ev battery_failure prediction Dataset.csv` | 20,000 | 82 | one snapshot per vehicle/pack | source dataset |
+| `SOLID_STATE_TELEMETRY_2026` | `solid_state_ev_battery_telemetry_enriched_2026.csv` | 10,000 | 41 | one snapshot per cell | source dataset |
+| `SYNTHETIC_BATTERY_LIFECYCLE` | `synthetic_battery_lifecycle.csv` | 2,000 | 20 | one snapshot per synthetic battery | synthetic |
 
-### Unified Master Table Schema (13 Columns)
+The three datasets are processed separately. They are **not** merged into a
+cell-cycle master table, because none of them contains a real cell-level
+voltage/current/temperature time series.
 
-| Field Name | Type | Description | Unit / Values |
-|---|---|---|---|
-| `chemistry` | String | Battery chemical family | `'NMC'`, `'LFP'`, `'Na-ion'` |
-| `dataset_id` | String | Testing campaign & source rig identifier | `'NASA_Ames_PCoE'`, `'LFP_MultiStat_B1'`, `'..._B5'`, `'Zenodo_IonTech_NaIon'` |
-| `cell_id` | String | Physical / experimental cell label | `'B0005'`, `'B0006'`, `'B0018'`, `'BATTERY_1'`, `'BATTERY_5'`, etc. |
-| `protocol_id` | String | Operating C-rates & thermal setpoints | e.g. `'NASA_CC_2A_DISCHARGE_24C'`, `'LFP_0.5C_DISCHARGE_1C_CHARGE'` |
-| `cycle_id` | Integer | 1-indexed sequential cycle index | $1, 2, 3, \dots, N$ |
-| `time_sec` | Float | Elapsed time within cycle step | Seconds ($s$) |
-| `voltage_v` | Float | Cell terminal voltage | Volts ($V$) |
-| `current_a` | Float | Applied current (Standard: $<0$ discharge, $>0$ charge) | Amperes ($A$) |
-| `temp_c` | Float | Cell thermistor temperature (Strictly `NULL` if unmeasured) | Degrees Celsius ($^\circ\text{C}$) |
-| `capacity_ah`| Float | Cycle discharge capacity | Ampere-hours ($Ah$) |
-| `soh_pct` | Float | State of Health relative to nominal rated capacity | Percent ($\%$) |
-| `quality_flag`| String | Machine-readable provenance & audit flags | `'VALID'`, `'TEMP_UNMEASURED'`, `'CURRENT_UNIT_UNDERDETERMINED'`, etc. |
-| `source_file`| String | Original raw filename for full audit traceability | `.mat`, `.xlsx`, `.parquet`, `.pkl` |
+### Processed outputs (`DATA/processed/`)
 
-### Integrated Master Table Metrics
+| File | Contents |
+|---|---|
+| `ev_battery_failure_clean.parquet` | EV/pack snapshot dataset |
+| `solid_state_telemetry_clean.parquet` | Solid-state cell snapshot dataset |
+| `synthetic_battery_lifecycle_clean.parquet` | Synthetic lifecycle dataset |
+| `dataset_inventory.json` | Counts, dtypes, missing, duplicates, IDs, chemistry, ranges, sequence checks |
+| `data_quality_report.json` | Cleaning summary, coercions, quality-flag counts, outliers, decisions |
+| `data_dictionary.csv` | 143-column contract with role, unit and missing count |
+| `leakage_audit.json` | Targets, identifiers, allowed features, excluded fields, evidence |
+| `dataset_registry.json` | Active registry, hashes, grain, sequence flags, legacy index |
 
-- **Total Telemetry Rows:** `515,270`
-- **Duplicate Composite Keys `(dataset_id, cell_id, cycle_id, time_sec)`:** `0`
-- **Schema Conformity:** `100% True`
-- **Breakdown by Chemistry:**
-  - **LFP:** 338,133 rows
-  - **NMC:** 135,436 rows
-  - **Na-ion:** 41,701 rows
+Each processed row has 12 added columns: `source_row_id`, `dataset_id`,
+`data_origin`, `source_file`, `chemistry_family`, `missing_field_count`,
+`missing_fields`, `outlier_field_count`, `outlier_fields`, `invalid_field_count`,
+`invalid_fields` and `quality_flag`.
+
+### Targets and leakage
+
+| Dataset | Target | Candidate target |
+|---|---|---|
+| EV | `battery_failure` (binary classification) | `state_of_health`, `battery_health_percent` |
+| Solid-state | `degradation_risk_tier` (4-class, never a feature) | `state_of_health_pct` |
+| Synthetic | `state_of_health` (3-class categorical) | none |
+
+Excluded as leakage or non-measured values:
+
+- EV: `predicted_remaining_life_cycles` (prediction, not RUL),
+  `capacity_loss_percent` (exactly 100 minus `battery_health_percent`), and both
+  SOH labels when the other is the target.
+- Solid-state: `cot_electrochemical_risk_rationale` (restates SOH),
+  `projected_cycle_life_80pct_soh` (projected; below the current cycle for 19.0%
+  of rows), `confidence_score`, `thermal_stability_margin_c` (exact deterministic
+  derivative) and three enriched risk scores.
+- Synthetic: no numeric SOH or RUL exists; none is invented.
+
+Allowed features after exclusions: 56 (EV), 19 (solid-state), 6 (synthetic).
+
+### Sequence availability
+
+All three datasets are snapshot-only:
+
+- EV: one row per `vehicle_id` and per `battery_serial`.
+- Solid-state: one row per `cell_id`.
+- Synthetic: 1,978 `battery_id` values across 2,000 rows, with conflicting
+  electrolyte labels on 11 repeated IDs.
+
+`loader.build_sequences()` raises `NoSequenceDataError` for every dataset. Do not
+train a BiLSTM or other sequence model on these files without new time-series
+data.
+
+### Synthetic data
+
+`synthetic_battery_lifecycle.csv` is generated. Its SOH label is categorical
+only; the pipeline never converts it to a percentage or invents RUL. Keep it
+separate from source datasets (`data_origin == "synthetic"`).
 
 ---
 
-## 🔍 Dataset Governance, Inclusion & Exclusion Register
-
-| Dataset ID | Chemistry | Raw Status | Audit Status | Master Status | Governance Findings & Audit Policies |
-|---|---|---|---|---|---|
-| **`NASA_Ames_PCoE`** | NMC | Present | Verified | **INCLUDED** | Cells B0005, B0006, B0018. Fully instrumented thermistors (22.4°C–42.0°C), voltage (2.0–4.2V), discharge capacity (1.15–2.04 Ah) and SOH (57.7%–101.8%). |
-| **`Zenodo_IonTech_NaIon`** | Na-ion | Present | Verified | **INCLUDED** | 4 benchmark cells. **Zero Data Invention:** Raw pkl explicitly contains `temperature_in_C: None`; temperatures are strictly preserved as `NULL` with `TEMP_UNMEASURED` flag. |
-| **`LFP_MultiStat_B1`** | LFP | Present | Verified | **INCLUDED** | 0.5C dis / 0.5C chg. Current header is `I(A/cm2)` while protocol is 0.625 A; preserved conditionally under `CURRENT_UNIT_UNDERDETERMINED`. Temp unmeasured. |
-| **`LFP_MultiStat_B2`** | LFP | Missing | Verified | **DERIVED EXPORT** | Raw XLSX missing from workspace. Cleaned feature exports (`cycle_features.parquet`, `qv_curves.parquet`) available in `DATA/B2_LFP_Member1_audit.zip`. |
-| **`LFP_MultiStat_B3`** | LFP | Present | Audited | **EXCLUDED** | 2C dis / 0.5C chg. Excluded from master telemetry stream to prevent data redundancy and memory inflation. |
-| **`LFP_MultiStat_B4`** | LFP | Present | Audited | **BLOCKED** | 3C dis / 0.5C chg. Audit marked metrics as `NOT_CALCULATED` due to unresolvable conflict between `A/cm2` header and 3C (3.75A) protocol. **Excluded from ground truth.** |
-| **`LFP_MultiStat_B5`** | LFP | Present | Verified | **INCLUDED** | 0.5C dis / 1C chg. Cleaned telemetry parquets included with `CHARGE_BALANCE_DISCREPANCY` flag ($Q_{\text{dis}} > Q_{\text{chg}}$ in 99.7% cycles). |
-| **`LFP_MultiStat_B6`** | LFP | **MISSING**| Audit only | **BLOCKED** | Physical archive `B6_Discharge0.5C_Charge2C.zip` is completely absent from workspace. External audit summary is not conflated with raw data verification. |
-
----
-
-## 🛠️ Repository Structure
+## Repository structure
 
 ```
-├── README.md                              # Main project documentation & blueprint overview
-├── master_table_build.py                  # Standalone, reproducible master table ingestion pipeline
-├── master_table.parquet                   # Primary 13-column ML telemetry stream (8.8 MB, 515,270 rows)
-├── master_table_final_validation.json     # Automated machine-readable validation metrics & SHA256 hashes
-├── master_table_validation_report.json    # Initial verification summary report
-├── MEMBER1_FINAL_VALIDATION_REPORT.md     # Member 1 comprehensive independent audit & handoff report
-├── MEMBER1_STATUS_REPORT.md               # Member 1 status report
-├── BLUEPRINT OF ENTIRE PROJ/              # System architecture specification & roadmap PDF
-├── FORMULA/                               # Literature formula register & governing equations
-└── AUDIT/                                 # Condition-level audit packages & provenance registers
+├── README.md
+├── docs/DATA_PIPELINE.md                 # Full data contract and cleaning rules
+├── member1_pipeline/                     # Active ingestion pipeline and loader
+│   ├── config.py                         # Dataset specs, roles, ranges, vocabularies
+│   ├── cleaning.py                       # Type coercion, flags, outlier and range checks
+│   ├── audit.py                          # Inventory, quality, dictionary, leakage, registry
+│   ├── build.py                          # Build and validation CLI
+│   └── loader.py                         # Downstream loading interface
+├── DATA/processed/                       # Tracked processed outputs (raw archives stay local)
+├── tests/                                # Pipeline contract tests
+├── legacy/member1/                       # Retired master table artifacts (audit only)
+├── build_master_table.py                 # Deprecated shim -> member1_pipeline.build
+├── AUDIT/                                # Historical audit packages
+├── BLUEPRINT OF ENTIRE PROJ/             # Architecture specification
+└── FORMULA/                              # Literature formula register
 ```
 
 ---
 
-## ⚙️ How to Reproduce Master Table Integration
+## Reproduce
 
-Ensure dependencies are installed:
 ```bash
-pip install pandas pyarrow scipy openpyxl fastparquet
+.venv/Scripts/python.exe -m member1_pipeline.build
+.venv/Scripts/python.exe -m member1_pipeline.build --check
+.venv/Scripts/python.exe -m pytest tests -q
 ```
 
-Execute the deterministic ingestion pipeline:
-```bash
-python master_table_build.py
-```
+Requires pandas, pyarrow and pytest. The build is deterministic, reads raw files
+read-only, drops zero rows, performs no imputation, and re-checks raw SHA-256
+hashes after writing. `--check` verifies the current raw hashes, processed
+hashes, dataset identity, required schema, row/column counts and dtypes against
+`dataset_inventory.json` and `dataset_registry.json`, not just row counts.
 
-The script will ingest raw MAT, PKL, and verified XLSX/Parquet sources, enforce physical sanity bounds, check for duplicates, generate `master_table.parquet`, `master_table.csv`, and output verification statistics.
+Declared integer fields containing fractional values are not rounded; the values
+are preserved, flagged `NON_INTEGER_VALUE`, and listed in `invalid_fields`.
+
+`python build_master_table.py` now prints a deprecation notice and delegates to
+the pipeline. It no longer writes a master table.
 
 ---
 
-## 🤝 Downstream Handoff Contracts
+## Downstream loading
 
-- **Member 2 (Feature Engineering & ML Predictor):** Ingest directly from `master_table.parquet`. When extracting thermal stress features ($T > 35^\circ\text{C}$), filter by `chemistry == 'NMC'` or `temp_c IS NOT NULL`. Do NOT train thermal regressors on Na-ion or LFP datasets.
-- **Member 3 (Vehicle Dynamics & Range Derivation):** Use validated `soh_pct` trajectories to drive the lumped-parameter vehicle road load model ($650\text{ km} \rightarrow 550\text{ km}$).
-- **Member 4 (BMS Advisory):** Restrict charging bounds using the verified protocol C-rates ($0.5\text{C}$ to $2\text{C}$).
+```python
+from member1_pipeline import loader
+
+ev = loader.load_ev_failure()
+solid = loader.load_solid_state()
+synthetic = loader.load_synthetic()
+
+features = loader.feature_columns("EV_FAILURE_PREDICTION")
+targets = loader.target_columns("EV_FAILURE_PREDICTION")
+excluded = loader.excluded_columns("SOLID_STATE_TELEMETRY_2026")
+```
+
+- Load datasets separately; do not fuse different grains.
+- Use the loader's feature/target/excluded helpers instead of hand-picked
+  columns.
+- Solid-state and synthetic temperatures are not cell-level cycle histories;
+  do not train thermal-stress features across datasets.
+- Read `DATA/processed/dataset_registry.json` for counts, hashes, grain and
+  sequence availability.
+
+Member 2's training script and Member 5's `MASTER_TABLE` path still point at the
+retired root `master_table.parquet`. That file is archived. Downstream code must
+switch to `member1_pipeline.loader`, or opt in explicitly with
+`loader.load_legacy_master_table(allow_legacy=True)` for an audit. Member 2-5
+model, range, agent and dashboard code was not modified.
+
+---
+
+## Legacy data
+
+Retired artifacts are preserved in `legacy/member1/` with SHA-256 hashes and
+restore instructions. The archived root parquet had 23,768 rows and 8 columns,
+with hardcoded Na-ion voltage/current and a resistance-derived Na-ion SOH. The
+archived 4,789-row CSV was a partial LFP B1-only build. Neither is an active
+input, and `master_table_build.py` must not be run.
+
+See [docs/DATA_PIPELINE.md](docs/DATA_PIPELINE.md) for the full contract.

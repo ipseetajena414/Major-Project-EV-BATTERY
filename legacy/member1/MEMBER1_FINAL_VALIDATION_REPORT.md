@@ -1,3 +1,7 @@
+> **ARCHIVED — SUPERSEDED.** This report describes the retired 515,270-row
+> cell-cycle master table. It is preserved for traceability only. Active outputs
+> are documented in `README.md` and `docs/DATA_PIPELINE.md`.
+
 # Member 1: Final Validation, Audit Verification & Handoff Report
 
 **Project:** Autonomous Multi-Agent EV Battery Life & Range Predictor  

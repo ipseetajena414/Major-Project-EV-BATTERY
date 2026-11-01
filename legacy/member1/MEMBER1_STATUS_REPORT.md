@@ -1,3 +1,7 @@
+> **ARCHIVED — SUPERSEDED.** This report describes the retired NASA/Na-ion/LFP
+> cell-cycle master table. It is preserved for traceability only. Active outputs
+> are documented in `README.md` and `docs/DATA_PIPELINE.md`.
+
 # Member 1 Deliverable: Dataset Ingestion, Preprocessing Verification, Capacity/SOH Readiness & Master Table Integration
 
 **Project:** Autonomous Multi-Agent EV Battery Life & Range Predictor  

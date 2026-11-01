@@ -1,0 +1,613 @@
+{
+  "datasets": {
+    "EV_FAILURE_PREDICTION": {
+      "candidate_targets": {
+        "battery_health_percent": {
+          "description": "SOH percentage; audited independently of state_of_health. capacity_loss_percent is exactly 100 minus this field.",
+          "evidence": {
+            "abs_diff_gt_1": 8008,
+            "battery_health_percent_missing": 898,
+            "both_present": 18200,
+            "correlation": 0.989756,
+            "exact_equal": 63,
+            "max_abs_diff": 6.22,
+            "only_battery_health_percent": 902,
+            "only_state_of_health": 844,
+            "state_of_health_missing": 956
+          },
+          "task": "regression"
+        },
+        "state_of_health": {
+          "description": "SOH percentage; audited independently of battery_health_percent.",
+          "evidence": {
+            "abs_diff_gt_1": 8008,
+            "battery_health_percent_missing": 898,
+            "both_present": 18200,
+            "correlation": 0.989756,
+            "exact_equal": 63,
+            "max_abs_diff": 6.22,
+            "only_battery_health_percent": 902,
+            "only_state_of_health": 844,
+            "state_of_health_missing": 956
+          },
+          "task": "regression"
+        }
+      },
+      "evidence": {
+        "aging_score_correlation_with_soh": -0.803999,
+        "capacity_loss_relation": {
+          "exact_100_minus_battery_health_percent": 18192,
+          "paired_rows": 18192,
+          "within_0_1": 18192
+        },
+        "predicted_rul": {
+          "correlation_with_aging_score": -0.862625,
+          "correlation_with_cycle_count": -0.606025,
+          "correlation_with_soh": 0.880639,
+          "r2_from_cycle_and_soh": 0.821456,
+          "rows": 17480
+        },
+        "remaining_capacity_vs_implied_pack_ah": {
+          "correlation": 0.915929,
+          "paired_rows": 18132,
+          "ratio_max": 0.391103,
+          "ratio_mean": 0.256065,
+          "ratio_min": 0.118704
+        },
+        "soh_label_comparison": {
+          "abs_diff_gt_1": 8008,
+          "battery_health_percent_missing": 898,
+          "both_present": 18200,
+          "correlation": 0.989756,
+          "exact_equal": 63,
+          "max_abs_diff": 6.22,
+          "only_battery_health_percent": 902,
+          "only_state_of_health": 844,
+          "state_of_health_missing": 956
+        },
+        "thermal_runaway_risk_correlation_with_failure": 0.390162
+      },
+      "excluded_fields": [
+        {
+          "column": "predicted_remaining_life_cycles",
+          "evidence": {
+            "correlation_with_aging_score": -0.862625,
+            "correlation_with_cycle_count": -0.606025,
+            "correlation_with_soh": 0.880639,
+            "r2_from_cycle_and_soh": 0.821456,
+            "rows": 17480
+          },
+          "reason": "Predicted field, not measured RUL; excluded as both an input feature and a ground-truth RUL target.",
+          "role": "excluded_predicted_rul"
+        },
+        {
+          "column": "capacity_loss_percent",
+          "evidence": {
+            "exact_100_minus_battery_health_percent": 18192,
+            "paired_rows": 18192,
+            "within_0_1": 18192
+          },
+          "reason": "Deterministic derivative: exactly 100 minus battery_health_percent where both are present.",
+          "role": "excluded_derived"
+        },
+        {
+          "column": "state_of_health",
+          "evidence": {
+            "abs_diff_gt_1": 8008,
+            "battery_health_percent_missing": 898,
+            "both_present": 18200,
+            "correlation": 0.989756,
+            "exact_equal": 63,
+            "max_abs_diff": 6.22,
+            "only_battery_health_percent": 902,
+            "only_state_of_health": 844,
+            "state_of_health_missing": 956
+          },
+          "reason": "Independent SOH label. If battery_health_percent is the target, this field must not also be a feature.",
+          "role": "target_candidate"
+        },
+        {
+          "column": "battery_health_percent",
+          "evidence": {
+            "abs_diff_gt_1": 8008,
+            "battery_health_percent_missing": 898,
+            "both_present": 18200,
+            "correlation": 0.989756,
+            "exact_equal": 63,
+            "max_abs_diff": 6.22,
+            "only_battery_health_percent": 902,
+            "only_state_of_health": 844,
+            "state_of_health_missing": 956
+          },
+          "reason": "Independent SOH label. If state_of_health is the target, this field must not also be a feature.",
+          "role": "target_candidate"
+        }
+      ],
+      "features_allowed": [
+        "vehicle_brand",
+        "vehicle_model",
+        "vehicle_type",
+        "manufacturing_year",
+        "battery_manufacturer",
+        "battery_chemistry",
+        "battery_capacity_kwh",
+        "drive_type",
+        "odometer_km",
+        "vehicle_age_years",
+        "fleet_or_private",
+        "cycle_count",
+        "state_of_charge",
+        "depth_of_discharge",
+        "cell_voltage_avg",
+        "cell_voltage_std",
+        "pack_voltage",
+        "cell_temperature_avg",
+        "cell_temperature_max",
+        "charge_efficiency",
+        "discharge_efficiency",
+        "charging_cycles_last_month",
+        "fast_charge_ratio",
+        "slow_charge_ratio",
+        "average_charge_power_kw",
+        "average_charging_time",
+        "overnight_charging_ratio",
+        "home_charging_ratio",
+        "charging_interruptions",
+        "overcharge_events",
+        "average_speed",
+        "average_trip_distance",
+        "aggressive_acceleration_score",
+        "hard_braking_score",
+        "regenerative_braking_usage",
+        "highway_driving_ratio",
+        "city_driving_ratio",
+        "daily_distance",
+        "average_ambient_temperature",
+        "maximum_temperature",
+        "minimum_temperature",
+        "humidity",
+        "altitude",
+        "terrain_type",
+        "dust_exposure",
+        "last_service_days",
+        "cooling_system_health",
+        "firmware_updates",
+        "previous_faults",
+        "maintenance_score",
+        "thermal_runaway_risk",
+        "voltage_imbalance",
+        "temperature_variance",
+        "sensor_fault_count",
+        "BMS_warning_count",
+        "abnormal_voltage_events"
+      ],
+      "features_requires_review": [
+        "internal_resistance",
+        "remaining_capacity",
+        "battery_stress_index",
+        "aging_score",
+        "thermal_health_score",
+        "charging_quality_score",
+        "driving_stress_score"
+      ],
+      "identifiers": {
+        "battery_serial": "Entity identifier; never a feature.",
+        "vehicle_id": "Entity identifier; never a feature."
+      },
+      "record_grain": "vehicle_pack_snapshot",
+      "sequence_available": false,
+      "sequence_reason": "Exactly one row per vehicle_id and one row per battery_serial; cycle_count is a single scalar per vehicle, not a repeated cycle history.",
+      "targets": {
+        "battery_failure": {
+          "description": "Binary battery-failure label provided by the source dataset.",
+          "evidence": {
+            "counts": {
+              "0": 18616,
+              "1": 1384
+            },
+            "positive_rate": 0.0692
+          },
+          "task": "classification"
+        }
+      }
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "candidate_targets": {
+        "state_of_health_pct": {
+          "description": "Candidate SOH regression target.",
+          "evidence": {
+            "max": 100.0,
+            "mean": 86.651778,
+            "min": 70.0,
+            "missing": 0
+          },
+          "task": "regression"
+        }
+      },
+      "evidence": {
+        "confidence_correlation_with_soh": 0.30272,
+        "confidence_range": [
+          0.901,
+          0.99
+        ],
+        "projected_before_current_cycle": 1904,
+        "projected_before_current_cycle_pct": 0.1904,
+        "rationale_rows_mentioning_soh": 10000,
+        "rationale_unique_values": 10000,
+        "risk_score_correlations_with_soh": {
+          "dendrite_mitigation_efficiency": 0.33301,
+          "dendrite_penetration_risk": -0.49355,
+          "fast_charge_acceptance_score": 0.189722
+        },
+        "rows_per_cell_max": 1,
+        "thermal_margin_equals_onset_minus_operating": 10000,
+        "tier_soh_summary": {
+          "Accelerated_Degradation_Tier_3": {
+            "count": 3758,
+            "max": 99.21,
+            "mean": 83.459292,
+            "min": 78.0
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "count": 1682,
+            "max": 100.0,
+            "mean": 79.329703,
+            "min": 70.0
+          },
+          "Minimal_Degradation_Tier_1": {
+            "count": 2278,
+            "max": 100.0,
+            "mean": 95.26356,
+            "min": 92.01
+          },
+          "Moderate_Degradation_Tier_2": {
+            "count": 2282,
+            "max": 92.0,
+            "mean": 88.709382,
+            "min": 85.02
+          }
+        },
+        "tier_vs_soh_band": {
+          "Accelerated_Degradation_Tier_3": {
+            "70-80": 711,
+            "80-85": 2127,
+            "85-92": 751,
+            "92-100": 169
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "70-80": 1198,
+            "80-85": 236,
+            "85-92": 138,
+            "92-100": 110
+          },
+          "Minimal_Degradation_Tier_1": {
+            "70-80": 0,
+            "80-85": 0,
+            "85-92": 0,
+            "92-100": 2278
+          },
+          "Moderate_Degradation_Tier_2": {
+            "70-80": 0,
+            "80-85": 0,
+            "85-92": 2282,
+            "92-100": 0
+          }
+        },
+        "unique_cells": 10000
+      },
+      "excluded_fields": [
+        {
+          "column": "degradation_risk_tier",
+          "evidence": {
+            "tier_soh_summary": {
+              "Accelerated_Degradation_Tier_3": {
+                "count": 3758,
+                "max": 99.21,
+                "mean": 83.459292,
+                "min": 78.0
+              },
+              "Critical_Thermal_Risk_Tier_4": {
+                "count": 1682,
+                "max": 100.0,
+                "mean": 79.329703,
+                "min": 70.0
+              },
+              "Minimal_Degradation_Tier_1": {
+                "count": 2278,
+                "max": 100.0,
+                "mean": 95.26356,
+                "min": 92.01
+              },
+              "Moderate_Degradation_Tier_2": {
+                "count": 2282,
+                "max": 92.0,
+                "mean": 88.709382,
+                "min": 85.02
+              }
+            },
+            "tier_vs_soh_band": {
+              "Accelerated_Degradation_Tier_3": {
+                "70-80": 711,
+                "80-85": 2127,
+                "85-92": 751,
+                "92-100": 169
+              },
+              "Critical_Thermal_Risk_Tier_4": {
+                "70-80": 1198,
+                "80-85": 236,
+                "85-92": 138,
+                "92-100": 110
+              },
+              "Minimal_Degradation_Tier_1": {
+                "70-80": 0,
+                "80-85": 0,
+                "85-92": 0,
+                "92-100": 2278
+              },
+              "Moderate_Degradation_Tier_2": {
+                "70-80": 0,
+                "80-85": 0,
+                "85-92": 2282,
+                "92-100": 0
+              }
+            }
+          },
+          "reason": "Risk label derived from SOH and other signals; target leakage for SOH regression.",
+          "role": "target_excluded_as_feature"
+        },
+        {
+          "column": "cot_electrochemical_risk_rationale",
+          "evidence": {
+            "rows_mentioning_soh": 10000,
+            "unique_values": 10000
+          },
+          "reason": "Generated narrative that restates SOH, cycle number and risk tier; text leakage.",
+          "role": "excluded_leakage_text"
+        },
+        {
+          "column": "projected_cycle_life_80pct_soh",
+          "evidence": {
+            "projected_before_current_cycle": 1904,
+            "projected_before_current_cycle_pct": 0.1904
+          },
+          "reason": "Projected value, not observed ground-truth RUL; also inconsistent with the current cycle for some rows.",
+          "role": "excluded_projected_rul"
+        },
+        {
+          "column": "confidence_score",
+          "evidence": {
+            "correlation_with_soh": 0.30272,
+            "range": [
+              0.901,
+              0.99
+            ]
+          },
+          "reason": "Enriched confidence score with undocumented calibration; may encode the target.",
+          "role": "excluded_enriched_confidence"
+        },
+        {
+          "column": "thermal_stability_margin_c",
+          "evidence": {
+            "exact_onset_minus_operating_rows": 10000,
+            "total_rows": 10000
+          },
+          "reason": "Exact deterministic derivative of thermal_runaway_onset_c and operating_temperature_c.",
+          "role": "excluded_derived"
+        },
+        {
+          "column": "dendrite_penetration_risk",
+          "evidence": {
+            "correlation_with_soh": -0.49355
+          },
+          "reason": "Enriched risk score with undocumented derivation; exclude for SOH modeling.",
+          "role": "excluded_enriched_risk_score"
+        },
+        {
+          "column": "fast_charge_acceptance_score",
+          "evidence": {
+            "correlation_with_soh": 0.189722
+          },
+          "reason": "Enriched risk score with undocumented derivation; exclude for SOH modeling.",
+          "role": "excluded_enriched_risk_score"
+        },
+        {
+          "column": "dendrite_mitigation_efficiency",
+          "evidence": {
+            "correlation_with_soh": 0.33301
+          },
+          "reason": "Enriched risk score with undocumented derivation; exclude for SOH modeling.",
+          "role": "excluded_enriched_risk_score"
+        }
+      ],
+      "features_allowed": [
+        "manufacturer",
+        "electrolyte_chemistry",
+        "anode_composition",
+        "cathode_chemistry",
+        "nominal_capacity_ah",
+        "gravimetric_energy_density_wh_kg",
+        "volumetric_energy_density_wh_l",
+        "cycle_number",
+        "charging_c_rate",
+        "discharging_c_rate",
+        "operating_temperature_c",
+        "ambient_temperature_c",
+        "internal_resistance_mohm",
+        "coulombic_efficiency_pct",
+        "stack_pressure_mpa",
+        "thermal_runaway_onset_c",
+        "nominal_voltage_plateau_v",
+        "target_ev_application",
+        "commercial_readiness_level"
+      ],
+      "features_requires_review": [],
+      "identifiers": {
+        "cell_id": "Entity identifier; never a feature."
+      },
+      "record_grain": "cell_snapshot",
+      "sequence_available": false,
+      "sequence_reason": "Exactly one row per cell_id; cycle_number is a single snapshot value per cell, so no chronological history can be reconstructed.",
+      "targets": {
+        "degradation_risk_tier": {
+          "description": "Provided risk tier. It is derived from SOH and other signals, so it is a target for risk classification but never an input feature.",
+          "evidence": {
+            "tier_soh_summary": {
+              "Accelerated_Degradation_Tier_3": {
+                "count": 3758,
+                "max": 99.21,
+                "mean": 83.459292,
+                "min": 78.0
+              },
+              "Critical_Thermal_Risk_Tier_4": {
+                "count": 1682,
+                "max": 100.0,
+                "mean": 79.329703,
+                "min": 70.0
+              },
+              "Minimal_Degradation_Tier_1": {
+                "count": 2278,
+                "max": 100.0,
+                "mean": 95.26356,
+                "min": 92.01
+              },
+              "Moderate_Degradation_Tier_2": {
+                "count": 2282,
+                "max": 92.0,
+                "mean": 88.709382,
+                "min": 85.02
+              }
+            },
+            "tier_vs_soh_band": {
+              "Accelerated_Degradation_Tier_3": {
+                "70-80": 711,
+                "80-85": 2127,
+                "85-92": 751,
+                "92-100": 169
+              },
+              "Critical_Thermal_Risk_Tier_4": {
+                "70-80": 1198,
+                "80-85": 236,
+                "85-92": 138,
+                "92-100": 110
+              },
+              "Minimal_Degradation_Tier_1": {
+                "70-80": 0,
+                "80-85": 0,
+                "85-92": 0,
+                "92-100": 2278
+              },
+              "Moderate_Degradation_Tier_2": {
+                "70-80": 0,
+                "80-85": 0,
+                "85-92": 2282,
+                "92-100": 0
+              }
+            }
+          },
+          "task": "classification"
+        }
+      }
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "candidate_targets": {},
+      "evidence": {
+        "conflicting_metadata_ids": 11,
+        "label_summary": {
+          "Degraded": {
+            "capacity_ah_max": 95.95,
+            "capacity_ah_min": 48.01,
+            "cycle_count_max": 1500,
+            "cycle_count_min": 481,
+            "resistance_mohm_mean": 36.410768,
+            "rows": 703
+          },
+          "End_of_Life": {
+            "capacity_ah_max": 59.97,
+            "capacity_ah_min": 35.1,
+            "cycle_count_max": 1500,
+            "cycle_count_min": 1006,
+            "resistance_mohm_mean": 42.831068,
+            "rows": 103
+          },
+          "Healthy": {
+            "capacity_ah_max": 116.97,
+            "capacity_ah_min": 64.01,
+            "cycle_count_max": 1497,
+            "cycle_count_min": 10,
+            "resistance_mohm_mean": 29.135796,
+            "rows": 1194
+          }
+        },
+        "numeric_soh_column_exists": false,
+        "repeated_ids": 22,
+        "rows_in_repeated_ids": 44,
+        "rows_with_conflicting_metadata": 22,
+        "rul_column_exists": false,
+        "unique_battery_ids": 1978
+      },
+      "excluded_fields": [],
+      "features_allowed": [
+        "electrolyte_type",
+        "cycle_count",
+        "internal_resistance_mohms",
+        "temperature_celsius",
+        "discharge_capacity_ah",
+        "charge_time_mins"
+      ],
+      "features_requires_review": [],
+      "identifiers": {
+        "battery_id": "Entity identifier; never a feature."
+      },
+      "record_grain": "synthetic_battery_snapshot",
+      "sequence_available": false,
+      "sequence_reason": "1,978 battery IDs across 2,000 rows; at most two snapshots per battery, and some repeated IDs carry conflicting electrolyte labels, so no reliable chronological sequence exists.",
+      "targets": {
+        "state_of_health": {
+          "description": "Categorical SOH label (Healthy, Degraded, End_of_Life). No numeric SOH or measured RUL is provided or invented.",
+          "evidence": {
+            "distribution": {
+              "Degraded": {
+                "capacity_ah_max": 95.95,
+                "capacity_ah_min": 48.01,
+                "cycle_count_max": 1500,
+                "cycle_count_min": 481,
+                "resistance_mohm_mean": 36.410768,
+                "rows": 703
+              },
+              "End_of_Life": {
+                "capacity_ah_max": 59.97,
+                "capacity_ah_min": 35.1,
+                "cycle_count_max": 1500,
+                "cycle_count_min": 1006,
+                "resistance_mohm_mean": 42.831068,
+                "rows": 103
+              },
+              "Healthy": {
+                "capacity_ah_max": 116.97,
+                "capacity_ah_min": 64.01,
+                "cycle_count_max": 1497,
+                "cycle_count_min": 10,
+                "resistance_mohm_mean": 29.135796,
+                "rows": 1194
+              }
+            },
+            "numeric_soh_column_exists": false,
+            "rul_column_exists": false
+          },
+          "task": "classification"
+        }
+      }
+    }
+  },
+  "global_rules": [
+    "Identifiers are never model features.",
+    "Declared targets and candidate targets are never model features for their own task.",
+    "Predicted or projected fields are not measured ground truth and are excluded.",
+    "Deterministically derived fields are excluded when they encode the target.",
+    "Text rationales that restate target values are excluded.",
+    "Enriched scores with undocumented derivation are excluded pending provenance.",
+    "Categorical SOH labels are never converted to numeric percentages or RUL.",
+    "No BiLSTM sequence model is supported by these three datasets; each has at most snapshot rows per entity."
+  ],
+  "pipeline_version": "1.0.0"
+}

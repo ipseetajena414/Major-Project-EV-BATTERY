@@ -1,0 +1,187 @@
+{
+  "active_datasets": {
+    "EV_FAILURE_PREDICTION": {
+      "candidate_targets": {
+        "battery_health_percent": "SOH percentage; audited independently of state_of_health. capacity_loss_percent is exactly 100 minus this field.",
+        "state_of_health": "SOH percentage; audited independently of battery_health_percent."
+      },
+      "chemistry_column": "battery_chemistry",
+      "chemistry_family_column": "chemistry_family",
+      "columns": 82,
+      "cycle_column": "cycle_count",
+      "cycle_is_sequence_index": false,
+      "data_origin": "source_dataset",
+      "entity_columns": [
+        "vehicle_id",
+        "battery_serial"
+      ],
+      "processed_file": "ev_battery_failure_clean.parquet",
+      "processed_path": "DATA/processed/ev_battery_failure_clean.parquet",
+      "processed_sha256": "6b4f9035f50d54d72c6e653a5f1f6676b69896ba4b883e48ad1c6f1e5f57dc9d",
+      "record_grain": "vehicle_pack_snapshot",
+      "rows": 20000,
+      "sequence_available": false,
+      "source_file": "ev battery_failure prediction Dataset.csv",
+      "source_sha256": "3b971b47e6dba73eef7edd60c7841332c5c34be17b649b9b5f036001315b28ea",
+      "status": "active",
+      "targets": {
+        "battery_failure": {
+          "description": "Binary battery-failure label provided by the source dataset.",
+          "task": "classification"
+        }
+      }
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "candidate_targets": {
+        "state_of_health_pct": "Candidate SOH regression target."
+      },
+      "chemistry_column": "electrolyte_chemistry",
+      "chemistry_family_column": "chemistry_family",
+      "columns": 41,
+      "cycle_column": "cycle_number",
+      "cycle_is_sequence_index": false,
+      "data_origin": "source_dataset",
+      "entity_columns": [
+        "cell_id"
+      ],
+      "processed_file": "solid_state_telemetry_clean.parquet",
+      "processed_path": "DATA/processed/solid_state_telemetry_clean.parquet",
+      "processed_sha256": "b49529ccffebe735be022e306339596d490ad717d61960a1ab1b71c43cc87513",
+      "record_grain": "cell_snapshot",
+      "rows": 10000,
+      "sequence_available": false,
+      "source_file": "solid_state_ev_battery_telemetry_enriched_2026.csv",
+      "source_sha256": "0fc38a2d4fe6289d712d85112f62d928c78419e562f2ebd9a2f94583489cd690",
+      "status": "active",
+      "targets": {
+        "degradation_risk_tier": {
+          "description": "Provided risk tier. It is derived from SOH and other signals, so it is a target for risk classification but never an input feature.",
+          "task": "classification"
+        }
+      }
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "candidate_targets": {},
+      "chemistry_column": "electrolyte_type",
+      "chemistry_family_column": "chemistry_family",
+      "columns": 20,
+      "cycle_column": "cycle_count",
+      "cycle_is_sequence_index": false,
+      "data_origin": "synthetic",
+      "entity_columns": [
+        "battery_id"
+      ],
+      "processed_file": "synthetic_battery_lifecycle_clean.parquet",
+      "processed_path": "DATA/processed/synthetic_battery_lifecycle_clean.parquet",
+      "processed_sha256": "9f7e8ff595499bdc7a70bf29e7cc3d975db4fa8ca57b41236123350496bf6238",
+      "record_grain": "synthetic_battery_snapshot",
+      "rows": 2000,
+      "sequence_available": false,
+      "source_file": "synthetic_battery_lifecycle.csv",
+      "source_sha256": "4a754a7937f564375611a080dac9b6b3feca97e1f8264de5b30b7f81aed7d224",
+      "status": "active",
+      "targets": {
+        "state_of_health": {
+          "description": "Categorical SOH label (Healthy, Degraded, End_of_Life). No numeric SOH or measured RUL is provided or invented.",
+          "task": "classification"
+        }
+      }
+    }
+  },
+  "active_master_table": null,
+  "legacy_datasets": [
+    {
+      "bytes": 503697,
+      "column_names": [
+        "battery_chemistry",
+        "cycle_id",
+        "time_sec",
+        "voltage_v",
+        "current_a",
+        "temp_c",
+        "capacity_ah",
+        "soh_pct"
+      ],
+      "columns": 8,
+      "id": "LEGACY_MASTER_TABLE_8COL",
+      "path": "legacy/member1/master_table_8col_fabricated.parquet",
+      "reason": "Archived root master table: 8 columns without provenance; Na-ion voltage/current were constants and Na-ion SOH was derived from resistance.",
+      "rows": 23768,
+      "sha256": "e5f699e19626559d50495e4d9e564086682f9b8eb2e47a4cc42da9162f1bd18c",
+      "status": "deprecated"
+    },
+    {
+      "bytes": 829691,
+      "column_names": [
+        "chemistry",
+        "dataset_id",
+        "cell_id",
+        "protocol_id",
+        "cycle_id",
+        "time_sec",
+        "voltage_v",
+        "current_a",
+        "temp_c",
+        "capacity_ah",
+        "soh_pct",
+        "quality_flag",
+        "source_file"
+      ],
+      "columns": 13,
+      "id": "LEGACY_MASTER_TABLE_4789_LFP_B1",
+      "path": "legacy/member1/master_table_4789_LFP_B1_regression.csv",
+      "reason": "Archived 4,789-row LFP B1-only output from a partial legacy build; the NASA and Na-ion archives required by master_table_build.py are absent.",
+      "rows": 4789,
+      "sha256": "b700a1b8c23211d8e3bfbbec9c81087be1dcd929ec0a91ac8f41bbe4b606ebc7",
+      "status": "deprecated"
+    },
+    {
+      "bytes": 17487,
+      "id": "LEGACY_BUILD_SCRIPT",
+      "path": "legacy/member1/master_table_build.py",
+      "reason": "Legacy master build script; reads DATA/archive (4).zip, DATA/NA-ion.zip and AUDIT/B5.zip, which are not present in this checkout. Never run blindly.",
+      "sha256": "3adb5776439c3bac6318d9ce73be62e41328ff69a73e54b254f4bce6f6e732da",
+      "status": "deprecated"
+    },
+    {
+      "bytes": 9033,
+      "id": "LEGACY_VALIDATION_JSON",
+      "path": "legacy/member1/master_table_final_validation.json",
+      "reason": "Validation report for the earlier 515,270-row 13-column master table; the referenced artifact is not present in this checkout.",
+      "sha256": "e4bb771cd010ed0eadb358cb877eba9a492bc30bdc09e3bde0a2e5197510112a",
+      "status": "deprecated"
+    },
+    {
+      "bytes": 2063,
+      "id": "LEGACY_VALIDATION_SUMMARY",
+      "path": "legacy/member1/master_table_validation_report.json",
+      "reason": "Validation summary for the earlier 515,270-row 13-column master table; superseded by the current data_quality_report.json.",
+      "sha256": "b2c23fa9b8746db80f75d0712f785e466d9f982008aefdb2fb92a09bc4b2bd05",
+      "status": "deprecated"
+    },
+    {
+      "bytes": 14267,
+      "id": "LEGACY_STATUS_REPORT",
+      "path": "legacy/member1/MEMBER1_STATUS_REPORT.md",
+      "reason": "Legacy Member 1 status report describing the retired 515,270-row master table.",
+      "sha256": "60a31dab5e5d1de95d7de0daed226ffca10c47e08bb7d6c1e215e4f3295f3fa5",
+      "status": "deprecated"
+    },
+    {
+      "bytes": 12222,
+      "id": "LEGACY_FINAL_VALIDATION_REPORT",
+      "path": "legacy/member1/MEMBER1_FINAL_VALIDATION_REPORT.md",
+      "reason": "Legacy Member 1 final validation report describing the retired 515,270-row master table.",
+      "sha256": "4e0a510f4c9ff1e94c5a2136e28566292f0794a0ba4264a9b4dbb43eff5d5464",
+      "status": "deprecated"
+    },
+    {
+      "id": "LEGACY_MASTER_TABLE_13COL_515270",
+      "path": "not present in this checkout",
+      "reason": "The earlier 13-column 515,270-row table is referenced by the archived validation reports and exists on other Git branches, but it cannot be regenerated here because DATA/archive (4).zip and DATA/NA-ion.zip are absent. It is not the active dataset.",
+      "status": "documented_only"
+    }
+  ],
+  "master_table_policy": "No unified cell-cycle master table is produced. The three active datasets have different grains and none contains a real cell-level voltage/current/temperature time series. Downstream code must load datasets separately through member1_pipeline.loader. Do not merge vehicle snapshots, cell snapshots and synthetic snapshots into one table.",
+  "registry_version": "1.0.0"
+}
