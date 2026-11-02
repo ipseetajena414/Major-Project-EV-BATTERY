@@ -1,0 +1,36 @@
+{
+  "bands": [
+    {
+      "label": "GOOD",
+      "min_soh_pct": 90.0
+    },
+    {
+      "label": "FAIR",
+      "min_soh_pct": 80.0
+    },
+    {
+      "label": "POOR",
+      "min_soh_pct": 70.0
+    },
+    {
+      "label": "CRITICAL",
+      "min_soh_pct": 0.0
+    }
+  ],
+  "band_definition": "A cell is assigned the first band (highest min_soh_pct) whose threshold is less than or equal to its latest observed SOH.",
+  "counts": {
+    "GOOD": 3,
+    "CRITICAL": 3,
+    "FAIR": 2,
+    "POOR": 1
+  },
+  "cells": 9,
+  "informational_only": true,
+  "certified_safety_diagnosis": false,
+  "disclaimer": "Informational health status only. It is not a certified safety diagnosis and must not be used as the sole basis for operational decisions.",
+  "limitations": [
+    "Bands are project-defined and are not manufacturer limits.",
+    "A single latest SOH value ignores rate of change and operating context.",
+    "No cell-level safety event or field failure is inferred."
+  ]
+}

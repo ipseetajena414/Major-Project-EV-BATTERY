@@ -1,0 +1,138 @@
+{
+  "out_dir": "C:\\Users\\KIIT0001\\OneDrive\\Desktop\\Major-Project-EV-BATTERY-git\\member2_modeling\\artifacts\\rul_v1",
+  "selected_model": "median_fade_constant",
+  "selection_metric_mae_cycles": 12.214935042321466,
+  "n_loco_records": 624,
+  "n_current_records": 3,
+  "n_censored_records": 1,
+  "n_unavailable_records": 5,
+  "support": {
+    "LFP_MultiStat_B1": {
+      "dataset_id": "LFP_MultiStat_B1",
+      "chemistry": "LFP",
+      "cells": 1,
+      "observed_cycles": 1,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Only 1 observed cycles; at least 10 are required before any trajectory estimate is attempted."
+    },
+    "LFP_MultiStat_B5": {
+      "dataset_id": "LFP_MultiStat_B5",
+      "chemistry": "LFP",
+      "cells": 1,
+      "observed_cycles": 249,
+      "cells_with_observed_crossing": 0,
+      "status": "EXPERIMENTAL_CENSORED",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Genuine LFP sequence but no observed 80% SOH crossing within the available history. Only a censored projection can be produced, and it has no validated accuracy."
+    },
+    "NASA_Ames_PCoE": {
+      "dataset_id": "NASA_Ames_PCoE",
+      "chemistry": "NMC",
+      "cells": 3,
+      "observed_cycles": 468,
+      "cells_with_observed_crossing": 3,
+      "status": "EXPERIMENTAL",
+      "validation_protocol": "leave-one-cell-out",
+      "approved_for_use": false,
+      "reason": "Genuine NMC sequence with an observed 80% SOH crossing at cycle position 74. Validation is leave-one-cell-out over a very small number of cells, so the estimate is experimental and not approved for operation."
+    },
+    "Zenodo_IonTech_NaIon": {
+      "dataset_id": "Zenodo_IonTech_NaIon",
+      "chemistry": "Na-ion",
+      "cells": 4,
+      "observed_cycles": 100,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "The cell is already below the threshold in its first observed cycle, so no genuine end-of-life transition is observed."
+    },
+    "EV_FAILURE_PREDICTION": {
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "chemistry": null,
+      "cells": 0,
+      "observed_cycles": 0,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Active Member 1 dataset is a snapshot table with no observed chronological end-of-life trajectory. A sequence is never manufactured from independent snapshots."
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "chemistry": null,
+      "cells": 0,
+      "observed_cycles": 0,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Active Member 1 dataset is a snapshot table with no observed chronological end-of-life trajectory. A sequence is never manufactured from independent snapshots."
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "chemistry": null,
+      "cells": 0,
+      "observed_cycles": 0,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Active Member 1 dataset is a snapshot table with no observed chronological end-of-life trajectory. A sequence is never manufactured from independent snapshots."
+    }
+  },
+  "candidates": {
+    "last_delta_persistence": {
+      "pre_threshold_mae_cycles": 17.78157557889388,
+      "pre_threshold_rmse_cycles": 35.13894316753164,
+      "coverage": 0.864406779661017,
+      "n_scored": 59
+    },
+    "degradation_rate_20": {
+      "pre_threshold_mae_cycles": 39.66894936638784,
+      "pre_threshold_rmse_cycles": 141.7886744848538,
+      "coverage": 0.8767123287671232,
+      "n_scored": 73
+    },
+    "median_fade_constant": {
+      "pre_threshold_mae_cycles": 12.214935042321466,
+      "pre_threshold_rmse_cycles": 16.119302853908625,
+      "coverage": 0.8333333333333334,
+      "n_scored": 78
+    },
+    "linear_extrapolation": {
+      "pre_threshold_mae_cycles": 48.15355958800139,
+      "pre_threshold_rmse_cycles": 91.60556009480585,
+      "coverage": 0.6538461538461539,
+      "n_scored": 78
+    },
+    "exponential_extrapolation": {
+      "pre_threshold_mae_cycles": 53.343827739517636,
+      "pre_threshold_rmse_cycles": 99.39728938511608,
+      "coverage": 0.6666666666666666,
+      "n_scored": 78
+    },
+    "padm_ar": {
+      "pre_threshold_mae_cycles": 15.440508994816575,
+      "pre_threshold_rmse_cycles": 18.45820039933422,
+      "coverage": 0.48148148148148145,
+      "n_scored": 27
+    },
+    "direct_ridge": {
+      "pre_threshold_mae_cycles": 18.953079175308083,
+      "pre_threshold_rmse_cycles": 20.682805462392487,
+      "coverage": 0.47435897435897434,
+      "n_scored": 78
+    },
+    "direct_hgb": {
+      "pre_threshold_mae_cycles": 12.071530164768358,
+      "pre_threshold_rmse_cycles": 15.191150844141065,
+      "coverage": 0.8846153846153846,
+      "n_scored": 78
+    }
+  }
+}

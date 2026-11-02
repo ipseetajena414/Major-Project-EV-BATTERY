@@ -1,0 +1,107 @@
+{
+  "categorical_features": [
+    "electrolyte_type"
+  ],
+  "chemistry_column": "chemistry_family",
+  "dropped_null_target": 0,
+  "evaluation": {
+    "baselines": {
+      "train_chemistry_median": {
+        "mae": 8.282275,
+        "mape_pct": 11.293097393353989,
+        "n": 400,
+        "r2": 0.7096313949724058,
+        "rmse": 10.238501513893524
+      },
+      "train_median": {
+        "mae": 15.907375000000002,
+        "mape_pct": 21.56526229616128,
+        "n": 400,
+        "r2": -3.0903687560979165e-05,
+        "rmse": 19.000642219409322
+      }
+    },
+    "caveats": [
+      "Snapshot records: this random split estimates i.i.d. generalization, not a temporal or vehicle-level forecast.",
+      "Early stopping uses a validation slice of the training split only."
+    ],
+    "counts": {
+      "dropped_null_target": 0,
+      "rows": 2000,
+      "test": 400
+    },
+    "model": {
+      "mae": 4.154097324660627,
+      "mape_pct": 5.707011464057521,
+      "n": 400,
+      "r2": 0.9180211964440861,
+      "rmse": 5.440168577152812
+    },
+    "outperforms_chemistry_median": true,
+    "outperforms_train_median": true,
+    "per_chemistry": {
+      "Lithium-Sulfur": {
+        "mae": 4.4676600369004955,
+        "mape_pct": 4.714533897415084,
+        "n": 138,
+        "r2": 0.7312650610012846,
+        "rmse": 5.659223961103754
+      },
+      "Sodium-ion": {
+        "mae": 3.77591786738425,
+        "mape_pct": 6.915421076604596,
+        "n": 134,
+        "r2": 0.731174445546255,
+        "rmse": 5.098864845260021
+      },
+      "Solid-State": {
+        "mae": 4.211944144863227,
+        "mape_pct": 5.5119725274586795,
+        "n": 128,
+        "r2": 0.6723262742981053,
+        "rmse": 5.544341449410423
+      }
+    },
+    "split_counts": {
+      "test": 400,
+      "train": 1200,
+      "val": 400
+    },
+    "split_protocol": "deterministic_stratified_snapshot_split"
+  },
+  "feature_columns": [
+    "electrolyte_type",
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "feature_names": [
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins",
+    "electrolyte_type=Lithium_Sulfur",
+    "electrolyte_type=Sodium_Ion",
+    "electrolyte_type=Solid_State"
+  ],
+  "model_type": "tabular_lightgbm_regressor",
+  "n_rows": 2000,
+  "numeric_features": [
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "numeric_medians": {
+    "charge_time_mins": 61.15,
+    "cycle_count": 789.0,
+    "internal_resistance_mohms": 31.985,
+    "temperature_celsius": 31.055
+  },
+  "production_ready": false,
+  "readiness": "RESEARCH_ONLY",
+  "schema_version": "2.0.0",
+  "target_column": "discharge_capacity_ah",
+  "target_kind": "synthetic_label"
+}

@@ -1,0 +1,376 @@
+{
+  "baselines": {
+    "majority_class": {
+      "accuracy": 0.5975,
+      "balanced_accuracy": 0.3333333333333333,
+      "brier": null,
+      "class": "Healthy",
+      "confusion_matrix": {
+        "labels": [
+          "Degraded",
+          "End_of_Life",
+          "Healthy"
+        ],
+        "matrix": [
+          [
+            0,
+            0,
+            140
+          ],
+          [
+            0,
+            0,
+            21
+          ],
+          [
+            0,
+            0,
+            239
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.24934793948878456,
+      "n": 400,
+      "per_class": {
+        "Degraded": {
+          "n": 140,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "End_of_Life": {
+          "n": 21,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "Healthy": {
+          "n": 239,
+          "precision": 0.5975,
+          "recall": 1.0
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.44695618153364636
+    },
+    "train_chemistry_majority": {
+      "accuracy": 0.5975,
+      "balanced_accuracy": 0.3333333333333333,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "Degraded",
+          "End_of_Life",
+          "Healthy"
+        ],
+        "matrix": [
+          [
+            0,
+            0,
+            140
+          ],
+          [
+            0,
+            0,
+            21
+          ],
+          [
+            0,
+            0,
+            239
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.24934793948878456,
+      "n": 400,
+      "per_class": {
+        "Degraded": {
+          "n": 140,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "End_of_Life": {
+          "n": 21,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "Healthy": {
+          "n": 239,
+          "precision": 0.5975,
+          "recall": 1.0
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.44695618153364636
+    }
+  },
+  "caveats": [
+    "Metrics are computed on a grouped holdout of unseen entities.",
+    "No test row was used for selection or preprocessing.",
+    "The synthetic dataset is generated, not measured."
+  ],
+  "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+  "feature_importance": [
+    {
+      "feature": "cycle_count",
+      "importance": 1.8502464148186686
+    },
+    {
+      "feature": "electrolyte_type=Lithium_Sulfur",
+      "importance": 0.9370279327204459
+    },
+    {
+      "feature": "electrolyte_type=Sodium_Ion",
+      "importance": 0.7101346869855946
+    },
+    {
+      "feature": "electrolyte_type=Solid_State",
+      "importance": 0.22105640062895301
+    },
+    {
+      "feature": "internal_resistance_mohms",
+      "importance": 0.15226989071360167
+    },
+    {
+      "feature": "charge_time_mins",
+      "importance": 0.055858266233809774
+    },
+    {
+      "feature": "temperature_celsius",
+      "importance": 0.033886799477555955
+    }
+  ],
+  "per_chemistry": {
+    "Lithium_Sulfur": {
+      "accuracy": 0.835820895522388,
+      "balanced_accuracy": 0.8111702127659575,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "Degraded",
+          "End_of_Life",
+          "Healthy"
+        ],
+        "matrix": [
+          [
+            30,
+            0,
+            10
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            12,
+            0,
+            82
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.8067138735903487,
+      "n": 134,
+      "per_class": {
+        "Degraded": {
+          "n": 40,
+          "precision": 0.7142857142857143,
+          "recall": 0.75
+        },
+        "End_of_Life": {
+          "n": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "Healthy": {
+          "n": 94,
+          "precision": 0.8913043478260869,
+          "recall": 0.8723404255319149
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.836940396365928
+    },
+    "Sodium_Ion": {
+      "accuracy": 0.7121212121212122,
+      "balanced_accuracy": 0.7524366471734892,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "Degraded",
+          "End_of_Life",
+          "Healthy"
+        ],
+        "matrix": [
+          [
+            28,
+            28,
+            1
+          ],
+          [
+            2,
+            16,
+            0
+          ],
+          [
+            6,
+            1,
+            50
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.6786709904989475,
+      "n": 132,
+      "per_class": {
+        "Degraded": {
+          "n": 57,
+          "precision": 0.7777777777777778,
+          "recall": 0.49122807017543857
+        },
+        "End_of_Life": {
+          "n": 18,
+          "precision": 0.35555555555555557,
+          "recall": 0.8888888888888888
+        },
+        "Healthy": {
+          "n": 57,
+          "precision": 0.9803921568627451,
+          "recall": 0.8771929824561403
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.7291152694378501
+    },
+    "Solid_State": {
+      "accuracy": 0.7761194029850746,
+      "balanced_accuracy": 0.8308668076109936,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "Degraded",
+          "End_of_Life",
+          "Healthy"
+        ],
+        "matrix": [
+          [
+            29,
+            6,
+            8
+          ],
+          [
+            0,
+            3,
+            0
+          ],
+          [
+            15,
+            1,
+            72
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.6617826617826618,
+      "n": 134,
+      "per_class": {
+        "Degraded": {
+          "n": 43,
+          "precision": 0.6590909090909091,
+          "recall": 0.6744186046511628
+        },
+        "End_of_Life": {
+          "n": 3,
+          "precision": 0.3,
+          "recall": 1.0
+        },
+        "Healthy": {
+          "n": 88,
+          "precision": 0.9,
+          "recall": 0.8181818181818182
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.7871630856705483
+    }
+  },
+  "selected_model": {
+    "name": "logistic_regression",
+    "params": {
+      "C": 1.0,
+      "class_weight": "balanced"
+    },
+    "scale_features": true
+  },
+  "status": "RESEARCH_ONLY",
+  "target": "state_of_health",
+  "task_id": "synthetic_class",
+  "task_type": "multiclass",
+  "test": {
+    "accuracy": 0.775,
+    "balanced_accuracy": 0.7932489871820415,
+    "bootstrap_ci": {
+      "balanced_accuracy_ci95_high": 0.8410099438524017,
+      "balanced_accuracy_ci95_low": 0.7398862140173418
+    },
+    "brier": null,
+    "confusion_matrix": {
+      "labels": [
+        "Degraded",
+        "End_of_Life",
+        "Healthy"
+      ],
+      "matrix": [
+        [
+          87,
+          34,
+          19
+        ],
+        [
+          2,
+          19,
+          0
+        ],
+        [
+          33,
+          2,
+          204
+        ]
+      ]
+    },
+    "log_loss": 0.4987625458350755,
+    "macro_f1": 0.6824130068404877,
+    "n": 400,
+    "per_class": {
+      "Degraded": {
+        "n": 140,
+        "precision": 0.7131147540983607,
+        "recall": 0.6214285714285714
+      },
+      "End_of_Life": {
+        "n": 21,
+        "precision": 0.34545454545454546,
+        "recall": 0.9047619047619048
+      },
+      "Healthy": {
+        "n": 239,
+        "precision": 0.9147982062780269,
+        "recall": 0.8535564853556485
+      }
+    },
+    "roc_auc": null,
+    "weighted_f1": 0.7863550857539408
+  },
+  "uncertainty": {
+    "calibration_status": "uncalibrated_class_probabilities",
+    "classes": [
+      "Degraded",
+      "End_of_Life",
+      "Healthy"
+    ],
+    "kind": "class_probabilities",
+    "validation_balanced_accuracy": 0.809767352146948,
+    "validation_log_loss": 0.5110310757202997
+  }
+}

@@ -1,0 +1,938 @@
+{
+  "generated_at": "2026-11-02T12:27:13.772787+00:00",
+  "snapshot_inventory": {
+    "EV_FAILURE_PREDICTION": {
+      "chemistry_column": "battery_chemistry",
+      "chemistry_counts": {
+        "LFP": 5867,
+        "LMO": 2998,
+        "LTO": 1353,
+        "NCA": 1484,
+        "NMC": 7576
+      },
+      "chemistry_values": [
+        "LFP",
+        "LMO",
+        "LTO",
+        "NCA",
+        "NMC"
+      ],
+      "columns": 82,
+      "data_origin": "source_dataset",
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "entity_column": "vehicle_id",
+      "entity_repeats": 0,
+      "feature_columns": [
+        "BMS_warning_count",
+        "abnormal_voltage_events",
+        "aggressive_acceleration_score",
+        "altitude",
+        "average_ambient_temperature",
+        "average_charge_power_kw",
+        "average_charging_time",
+        "average_speed",
+        "average_trip_distance",
+        "battery_capacity_kwh",
+        "battery_chemistry",
+        "battery_manufacturer",
+        "cell_temperature_avg",
+        "cell_temperature_max",
+        "cell_voltage_avg",
+        "cell_voltage_std",
+        "charge_efficiency",
+        "charging_cycles_last_month",
+        "charging_interruptions",
+        "city_driving_ratio",
+        "cooling_system_health",
+        "cycle_count",
+        "daily_distance",
+        "depth_of_discharge",
+        "discharge_efficiency",
+        "drive_type",
+        "dust_exposure",
+        "fast_charge_ratio",
+        "firmware_updates",
+        "fleet_or_private",
+        "hard_braking_score",
+        "highway_driving_ratio",
+        "home_charging_ratio",
+        "humidity",
+        "last_service_days",
+        "maintenance_score",
+        "manufacturing_year",
+        "maximum_temperature",
+        "minimum_temperature",
+        "odometer_km",
+        "overcharge_events",
+        "overnight_charging_ratio",
+        "pack_voltage",
+        "previous_faults",
+        "regenerative_braking_usage",
+        "sensor_fault_count",
+        "slow_charge_ratio",
+        "state_of_charge",
+        "temperature_variance",
+        "terrain_type",
+        "thermal_runaway_risk",
+        "vehicle_age_years",
+        "vehicle_brand",
+        "vehicle_model",
+        "vehicle_type",
+        "voltage_imbalance"
+      ],
+      "feature_count": 56,
+      "intended_tasks": [
+        "state_of_health regression (ev_soh)",
+        "remaining_capacity regression (ev_capacity, derived target)",
+        "battery_failure classification (ev_failure)",
+        "formula-based range estimate (not validated)"
+      ],
+      "legacy": false,
+      "member1_status": "active_integrated_dataset",
+      "missing_by_target": {
+        "battery_failure": 0,
+        "remaining_capacity": 614,
+        "state_of_health": 956
+      },
+      "missing_features": {
+        "BMS_warning_count": {
+          "missing": 906,
+          "missing_pct": 4.53
+        },
+        "abnormal_voltage_events": {
+          "missing": 760,
+          "missing_pct": 3.8
+        },
+        "aggressive_acceleration_score": {
+          "missing": 728,
+          "missing_pct": 3.64
+        },
+        "altitude": {
+          "missing": 834,
+          "missing_pct": 4.17
+        },
+        "average_ambient_temperature": {
+          "missing": 916,
+          "missing_pct": 4.58
+        },
+        "average_charge_power_kw": {
+          "missing": 904,
+          "missing_pct": 4.52
+        },
+        "average_charging_time": {
+          "missing": 614,
+          "missing_pct": 3.07
+        },
+        "average_speed": {
+          "missing": 984,
+          "missing_pct": 4.92
+        },
+        "average_trip_distance": {
+          "missing": 712,
+          "missing_pct": 3.56
+        },
+        "battery_capacity_kwh": {
+          "missing": 690,
+          "missing_pct": 3.45
+        },
+        "battery_chemistry": {
+          "missing": 722,
+          "missing_pct": 3.61
+        },
+        "battery_manufacturer": {
+          "missing": 618,
+          "missing_pct": 3.09
+        },
+        "cell_temperature_avg": {
+          "missing": 768,
+          "missing_pct": 3.84
+        },
+        "cell_temperature_max": {
+          "missing": 944,
+          "missing_pct": 4.72
+        },
+        "cell_voltage_avg": {
+          "missing": 940,
+          "missing_pct": 4.7
+        },
+        "cell_voltage_std": {
+          "missing": 856,
+          "missing_pct": 4.28
+        },
+        "charge_efficiency": {
+          "missing": 930,
+          "missing_pct": 4.65
+        },
+        "charging_cycles_last_month": {
+          "missing": 798,
+          "missing_pct": 3.99
+        },
+        "charging_interruptions": {
+          "missing": 964,
+          "missing_pct": 4.82
+        },
+        "city_driving_ratio": {
+          "missing": 724,
+          "missing_pct": 3.62
+        },
+        "cooling_system_health": {
+          "missing": 940,
+          "missing_pct": 4.7
+        },
+        "cycle_count": {
+          "missing": 766,
+          "missing_pct": 3.83
+        },
+        "daily_distance": {
+          "missing": 856,
+          "missing_pct": 4.28
+        },
+        "depth_of_discharge": {
+          "missing": 832,
+          "missing_pct": 4.16
+        },
+        "discharge_efficiency": {
+          "missing": 680,
+          "missing_pct": 3.4
+        },
+        "drive_type": {
+          "missing": 726,
+          "missing_pct": 3.63
+        },
+        "dust_exposure": {
+          "missing": 610,
+          "missing_pct": 3.05
+        },
+        "fast_charge_ratio": {
+          "missing": 988,
+          "missing_pct": 4.94
+        },
+        "firmware_updates": {
+          "missing": 622,
+          "missing_pct": 3.11
+        },
+        "fleet_or_private": {
+          "missing": 894,
+          "missing_pct": 4.47
+        },
+        "hard_braking_score": {
+          "missing": 924,
+          "missing_pct": 4.62
+        },
+        "highway_driving_ratio": {
+          "missing": 648,
+          "missing_pct": 3.24
+        },
+        "home_charging_ratio": {
+          "missing": 980,
+          "missing_pct": 4.9
+        },
+        "humidity": {
+          "missing": 822,
+          "missing_pct": 4.11
+        },
+        "last_service_days": {
+          "missing": 734,
+          "missing_pct": 3.67
+        },
+        "maintenance_score": {
+          "missing": 844,
+          "missing_pct": 4.22
+        },
+        "manufacturing_year": {
+          "missing": 982,
+          "missing_pct": 4.91
+        },
+        "maximum_temperature": {
+          "missing": 822,
+          "missing_pct": 4.11
+        },
+        "minimum_temperature": {
+          "missing": 624,
+          "missing_pct": 3.12
+        },
+        "odometer_km": {
+          "missing": 866,
+          "missing_pct": 4.33
+        },
+        "overcharge_events": {
+          "missing": 716,
+          "missing_pct": 3.58
+        },
+        "overnight_charging_ratio": {
+          "missing": 740,
+          "missing_pct": 3.7
+        },
+        "pack_voltage": {
+          "missing": 618,
+          "missing_pct": 3.09
+        },
+        "previous_faults": {
+          "missing": 628,
+          "missing_pct": 3.14
+        },
+        "regenerative_braking_usage": {
+          "missing": 906,
+          "missing_pct": 4.53
+        },
+        "sensor_fault_count": {
+          "missing": 968,
+          "missing_pct": 4.84
+        },
+        "slow_charge_ratio": {
+          "missing": 948,
+          "missing_pct": 4.74
+        },
+        "state_of_charge": {
+          "missing": 964,
+          "missing_pct": 4.82
+        },
+        "temperature_variance": {
+          "missing": 636,
+          "missing_pct": 3.18
+        },
+        "terrain_type": {
+          "missing": 712,
+          "missing_pct": 3.56
+        },
+        "thermal_runaway_risk": {
+          "missing": 720,
+          "missing_pct": 3.6
+        },
+        "vehicle_age_years": {
+          "missing": 768,
+          "missing_pct": 3.84
+        },
+        "vehicle_brand": {
+          "missing": 644,
+          "missing_pct": 3.22
+        },
+        "vehicle_model": {
+          "missing": 820,
+          "missing_pct": 4.1
+        },
+        "vehicle_type": {
+          "missing": 644,
+          "missing_pct": 3.22
+        },
+        "voltage_imbalance": {
+          "missing": 724,
+          "missing_pct": 3.62
+        }
+      },
+      "original_source": "ev battery_failure prediction Dataset.csv",
+      "processed_data_location": "DATA/processed/ev_battery_failure_clean.parquet",
+      "processed_sha256": "6b4f9035f50d54d72c6e653a5f1f6676b69896ba4b883e48ad1c6f1e5f57dc9d",
+      "quality_flags": {
+        "MISSING_FIELDS": 6785,
+        "MISSING_FIELDS;MISSING_BATTERY_CHEMISTRY": 297,
+        "MISSING_FIELDS;MISSING_CORE_MEASUREMENT": 796,
+        "MISSING_FIELDS;MISSING_CORE_MEASUREMENT;SOH_LABEL_DISAGREEMENT": 643,
+        "MISSING_FIELDS;MISSING_ONE_SOH_LABEL": 1306,
+        "MISSING_FIELDS;OUTLIER_DETECTED": 1315,
+        "MISSING_FIELDS;SOH_LABEL_DISAGREEMENT": 5284,
+        "MISSING_FIELDS;SOH_LABEL_DISAGREEMENT;OUTLIER_DETECTED": 1102,
+        "OK": 623,
+        "SOH_LABEL_DISAGREEMENT": 495
+      },
+      "raw_data_location": "ev battery_failure prediction Dataset.csv",
+      "record_grain": "vehicle_pack_snapshot",
+      "records": 20000,
+      "sequence_reason": "No chronological cycle history; at most one snapshot per entity. See DATA/processed/dataset_registry.json.",
+      "sequential": false,
+      "source_sha256": "3b971b47e6dba73eef7edd60c7841332c5c34be17b649b9b5f036001315b28ea",
+      "target_columns": [
+        "battery_failure",
+        "battery_health_percent",
+        "state_of_health"
+      ],
+      "targets_used_by_member2": {
+        "battery_failure": {
+          "feature_count": 56,
+          "label_origin": "source_label",
+          "status": "EXPERIMENTAL",
+          "task_id": "ev_failure",
+          "task_type": "binary",
+          "unit": "probability of failure (0/1 label)"
+        },
+        "remaining_capacity": {
+          "feature_count": 56,
+          "label_origin": "derived_from_health_percent",
+          "status": "EXPERIMENTAL",
+          "task_id": "ev_capacity",
+          "task_type": "regression",
+          "unit": "kWh (pack energy, not cell Ah)"
+        },
+        "state_of_health": {
+          "feature_count": 56,
+          "label_origin": "source_label",
+          "status": "EXPERIMENTAL",
+          "task_id": "ev_soh",
+          "task_type": "regression",
+          "unit": "%"
+        }
+      },
+      "temporal_resolution": "single snapshot per entity; cycle field is a scalar, not a time index",
+      "unique_entities": 20000,
+      "units": {
+        "aging_score": "score 0-100",
+        "altitude": "m",
+        "average_ambient_temperature": "degC",
+        "average_charge_power_kw": "kW",
+        "average_charging_time": "minutes",
+        "average_speed": "km/h",
+        "average_trip_distance": "km",
+        "battery_capacity_kwh": "kWh",
+        "battery_failure": "0/1 label",
+        "battery_health_percent": "percent",
+        "battery_stress_index": "score 0-100",
+        "capacity_loss_percent": "percent",
+        "cell_temperature_avg": "degC",
+        "cell_temperature_max": "degC",
+        "cell_voltage_avg": "V",
+        "cell_voltage_std": "V",
+        "charge_efficiency": "percent",
+        "charging_cycles_last_month": "cycles/month",
+        "charging_quality_score": "score 0-100",
+        "cycle_count": "cycles",
+        "daily_distance": "km",
+        "depth_of_discharge": "percent",
+        "discharge_efficiency": "percent",
+        "driving_stress_score": "score 0-100",
+        "humidity": "percent",
+        "internal_resistance": "ohm (unit not declared by source; range 0.03-1.12)",
+        "last_service_days": "days",
+        "manufacturing_year": "year",
+        "maximum_temperature": "degC",
+        "minimum_temperature": "degC",
+        "odometer_km": "km",
+        "pack_voltage": "V",
+        "predicted_remaining_life_cycles": "cycles (predicted, not measured)",
+        "remaining_capacity": "Ah (grain ambiguous: not equal to pack kWh / pack voltage)",
+        "state_of_charge": "percent",
+        "state_of_health": "percent",
+        "temperature_variance": "score (unit not declared)",
+        "thermal_health_score": "score 0-100",
+        "thermal_runaway_risk": "score 0-100",
+        "vehicle_age_years": "years",
+        "voltage_imbalance": "score (unit not declared)"
+      },
+      "usable_for": {
+        "rul": false,
+        "sequence_modelling": false,
+        "split_unit": "vehicle_id",
+        "temporal_validation": false,
+        "train_val_test": true
+      }
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "chemistry_column": "electrolyte_chemistry",
+      "chemistry_counts": {
+        "Halide_Based_Li3YCl6": 1195,
+        "Oxide_Based_LLZO": 2385,
+        "Polymer_Composite": 1979,
+        "Sulfide_Based_Li10GeP2S12": 4441
+      },
+      "chemistry_values": [
+        "Halide_Based_Li3YCl6",
+        "Oxide_Based_LLZO",
+        "Polymer_Composite",
+        "Sulfide_Based_Li10GeP2S12"
+      ],
+      "columns": 41,
+      "data_origin": "source_dataset",
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "entity_column": "cell_id",
+      "entity_repeats": 0,
+      "feature_columns": [
+        "ambient_temperature_c",
+        "anode_composition",
+        "cathode_chemistry",
+        "charging_c_rate",
+        "commercial_readiness_level",
+        "coulombic_efficiency_pct",
+        "cycle_number",
+        "discharging_c_rate",
+        "electrolyte_chemistry",
+        "gravimetric_energy_density_wh_kg",
+        "internal_resistance_mohm",
+        "manufacturer",
+        "nominal_capacity_ah",
+        "nominal_voltage_plateau_v",
+        "operating_temperature_c",
+        "stack_pressure_mpa",
+        "target_ev_application",
+        "thermal_runaway_onset_c",
+        "volumetric_energy_density_wh_l"
+      ],
+      "feature_count": 19,
+      "intended_tasks": [
+        "state_of_health_pct regression (solid_soh)",
+        "degradation_risk_tier classification (solid_tier)"
+      ],
+      "legacy": false,
+      "member1_status": "active_integrated_dataset",
+      "missing_by_target": {
+        "degradation_risk_tier": 0,
+        "state_of_health_pct": 0
+      },
+      "missing_features": {},
+      "original_source": "solid_state_ev_battery_telemetry_enriched_2026.csv",
+      "processed_data_location": "DATA/processed/solid_state_telemetry_clean.parquet",
+      "processed_sha256": "b49529ccffebe735be022e306339596d490ad717d61960a1ab1b71c43cc87513",
+      "quality_flags": {
+        "OK": 7333,
+        "OUTLIER_DETECTED": 758,
+        "PROJECTED_RUL_BEFORE_CURRENT_CYCLE;SOH_AT_OR_BELOW_80": 1896,
+        "PROJECTED_RUL_BEFORE_CURRENT_CYCLE;SOH_AT_OR_BELOW_80;OUTLIER_DETECTED": 8,
+        "SOH_AT_OR_BELOW_80": 5
+      },
+      "raw_data_location": "solid_state_ev_battery_telemetry_enriched_2026.csv",
+      "record_grain": "cell_snapshot",
+      "records": 10000,
+      "sequence_reason": "No chronological cycle history; at most one snapshot per entity. See DATA/processed/dataset_registry.json.",
+      "sequential": false,
+      "source_sha256": "0fc38a2d4fe6289d712d85112f62d928c78419e562f2ebd9a2f94583489cd690",
+      "target_columns": [
+        "degradation_risk_tier",
+        "state_of_health_pct"
+      ],
+      "targets_used_by_member2": {
+        "degradation_risk_tier": {
+          "feature_count": 19,
+          "label_origin": "derived_from_soh",
+          "status": "EXPERIMENTAL",
+          "task_id": "solid_tier",
+          "task_type": "multiclass",
+          "unit": "risk tier class"
+        },
+        "state_of_health_pct": {
+          "feature_count": 19,
+          "label_origin": "source_label",
+          "status": "EXPERIMENTAL",
+          "task_id": "solid_soh",
+          "task_type": "regression",
+          "unit": "%"
+        }
+      },
+      "temporal_resolution": "single snapshot per entity; cycle field is a scalar, not a time index",
+      "unique_entities": 10000,
+      "units": {
+        "ambient_temperature_c": "degC",
+        "charging_c_rate": "C",
+        "confidence_score": "confidence 0-1",
+        "coulombic_efficiency_pct": "percent",
+        "cycle_number": "cycles (snapshot value)",
+        "dendrite_mitigation_efficiency": "score 0-100",
+        "dendrite_penetration_risk": "risk index 0-1",
+        "discharging_c_rate": "C",
+        "fast_charge_acceptance_score": "score 0-100",
+        "gravimetric_energy_density_wh_kg": "Wh/kg",
+        "internal_resistance_mohm": "mOhm",
+        "nominal_capacity_ah": "Ah",
+        "nominal_voltage_plateau_v": "V",
+        "operating_temperature_c": "degC",
+        "projected_cycle_life_80pct_soh": "cycles (projected, not observed RUL)",
+        "stack_pressure_mpa": "MPa",
+        "state_of_health_pct": "percent",
+        "thermal_runaway_onset_c": "degC",
+        "thermal_stability_margin_c": "degC (onset minus operating temperature)",
+        "volumetric_energy_density_wh_l": "Wh/L"
+      },
+      "usable_for": {
+        "rul": false,
+        "sequence_modelling": false,
+        "split_unit": "cell_id",
+        "temporal_validation": false,
+        "train_val_test": true
+      }
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "chemistry_column": "electrolyte_type",
+      "chemistry_counts": {
+        "Lithium_Sulfur": 667,
+        "Sodium_Ion": 648,
+        "Solid_State": 685
+      },
+      "chemistry_values": [
+        "Lithium_Sulfur",
+        "Sodium_Ion",
+        "Solid_State"
+      ],
+      "columns": 20,
+      "data_origin": "synthetic",
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "entity_column": "battery_id",
+      "entity_repeats": 22,
+      "feature_columns": [
+        "charge_time_mins",
+        "cycle_count",
+        "discharge_capacity_ah",
+        "electrolyte_type",
+        "internal_resistance_mohms",
+        "temperature_celsius"
+      ],
+      "feature_count": 6,
+      "intended_tasks": [
+        "discharge_capacity_ah regression (synthetic_capacity)",
+        "categorical state_of_health classification (synthetic_class)"
+      ],
+      "legacy": false,
+      "member1_status": "active_integrated_dataset",
+      "missing_by_target": {
+        "discharge_capacity_ah": 0,
+        "state_of_health": 0
+      },
+      "missing_features": {},
+      "original_source": "synthetic_battery_lifecycle.csv",
+      "processed_data_location": "DATA/processed/synthetic_battery_lifecycle_clean.parquet",
+      "processed_sha256": "9f7e8ff595499bdc7a70bf29e7cc3d975db4fa8ca57b41236123350496bf6238",
+      "quality_flags": {
+        "ID_REPEATED": 22,
+        "ID_REPEATED;ID_METADATA_CONFLICT": 22,
+        "OK": 1951,
+        "OUTLIER_DETECTED": 5
+      },
+      "raw_data_location": "synthetic_battery_lifecycle.csv",
+      "record_grain": "synthetic_battery_snapshot",
+      "records": 2000,
+      "sequence_reason": "No chronological cycle history; at most one snapshot per entity. See DATA/processed/dataset_registry.json.",
+      "sequential": false,
+      "source_sha256": "4a754a7937f564375611a080dac9b6b3feca97e1f8264de5b30b7f81aed7d224",
+      "target_columns": [
+        "state_of_health"
+      ],
+      "targets_used_by_member2": {
+        "discharge_capacity_ah": {
+          "feature_count": 5,
+          "label_origin": "synthetic_label",
+          "status": "RESEARCH_ONLY",
+          "task_id": "synthetic_capacity",
+          "task_type": "regression",
+          "unit": "Ah (synthetic)"
+        },
+        "state_of_health": {
+          "feature_count": 5,
+          "label_origin": "synthetic_label",
+          "status": "RESEARCH_ONLY",
+          "task_id": "synthetic_class",
+          "task_type": "multiclass",
+          "unit": "Healthy / Degraded / End_of_Life class"
+        }
+      },
+      "temporal_resolution": "single snapshot per entity; cycle field is a scalar, not a time index",
+      "unique_entities": 1978,
+      "units": {
+        "charge_time_mins": "minutes",
+        "cycle_count": "cycles",
+        "discharge_capacity_ah": "Ah",
+        "internal_resistance_mohms": "mOhm",
+        "state_of_health": "category (Healthy/Degraded/End_of_Life)",
+        "temperature_celsius": "degC"
+      },
+      "usable_for": {
+        "rul": false,
+        "sequence_modelling": false,
+        "split_unit": "battery_id",
+        "temporal_validation": false,
+        "train_val_test": true
+      }
+    }
+  },
+  "sequential_source": {
+    "path": "C:\\Users\\KIIT0001\\OneDrive\\Desktop\\Major-Project-EV-BATTERY-git\\master_table.parquet",
+    "sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+    "cycles": 818,
+    "cells": 9
+  },
+  "rul_support": {
+    "LFP_MultiStat_B1": {
+      "dataset_id": "LFP_MultiStat_B1",
+      "chemistry": "LFP",
+      "cells": 1,
+      "observed_cycles": 1,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Only 1 observed cycles; at least 10 are required before any trajectory estimate is attempted."
+    },
+    "LFP_MultiStat_B5": {
+      "dataset_id": "LFP_MultiStat_B5",
+      "chemistry": "LFP",
+      "cells": 1,
+      "observed_cycles": 249,
+      "cells_with_observed_crossing": 0,
+      "status": "EXPERIMENTAL_CENSORED",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Genuine LFP sequence but no observed 80% SOH crossing within the available history. Only a censored projection can be produced, and it has no validated accuracy."
+    },
+    "NASA_Ames_PCoE": {
+      "dataset_id": "NASA_Ames_PCoE",
+      "chemistry": "NMC",
+      "cells": 3,
+      "observed_cycles": 468,
+      "cells_with_observed_crossing": 3,
+      "status": "EXPERIMENTAL",
+      "validation_protocol": "leave-one-cell-out",
+      "approved_for_use": false,
+      "reason": "Genuine NMC sequence with an observed 80% SOH crossing at cycle position 74. Validation is leave-one-cell-out over a very small number of cells, so the estimate is experimental and not approved for operation."
+    },
+    "Zenodo_IonTech_NaIon": {
+      "dataset_id": "Zenodo_IonTech_NaIon",
+      "chemistry": "Na-ion",
+      "cells": 4,
+      "observed_cycles": 100,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "The cell is already below the threshold in its first observed cycle, so no genuine end-of-life transition is observed."
+    },
+    "EV_FAILURE_PREDICTION": {
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "chemistry": null,
+      "cells": 0,
+      "observed_cycles": 0,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Active Member 1 dataset is a snapshot table with no observed chronological end-of-life trajectory. A sequence is never manufactured from independent snapshots."
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "chemistry": null,
+      "cells": 0,
+      "observed_cycles": 0,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Active Member 1 dataset is a snapshot table with no observed chronological end-of-life trajectory. A sequence is never manufactured from independent snapshots."
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "chemistry": null,
+      "cells": 0,
+      "observed_cycles": 0,
+      "cells_with_observed_crossing": 0,
+      "status": "UNAVAILABLE",
+      "validation_protocol": "none",
+      "approved_for_use": false,
+      "reason": "Active Member 1 dataset is a snapshot table with no observed chronological end-of-life trajectory. A sequence is never manufactured from independent snapshots."
+    }
+  },
+  "rul_cells": [
+    {
+      "dataset_id": "LFP_MultiStat_B1",
+      "chemistry": "LFP",
+      "cell_id": "BATTERY_1",
+      "n_cycles": 1,
+      "first_cycle_id": 2,
+      "last_cycle_id": 2,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 96.178,
+      "soh_last_pct": 96.178,
+      "soh_min_pct": 96.178,
+      "soh_max_pct": 96.178,
+      "starts_below_threshold": false,
+      "total_fade_pct": 0.0,
+      "mean_delta_pct": null,
+      "first_crossing_position": null,
+      "sustained3_crossing_position": null,
+      "pre_eol_cycles": 1,
+      "censored": true,
+      "eol_threshold_pct": 80.0,
+      "status": "UNAVAILABLE",
+      "reason": "Only 1 observed cycles; at least 10 are required before any trajectory estimate is attempted."
+    },
+    {
+      "dataset_id": "LFP_MultiStat_B5",
+      "chemistry": "LFP",
+      "cell_id": "BATTERY_5",
+      "n_cycles": 249,
+      "first_cycle_id": 1,
+      "last_cycle_id": 500,
+      "contiguous_cycle_ids": false,
+      "soh_first_pct": 95.60082,
+      "soh_last_pct": 91.06696,
+      "soh_min_pct": 90.91437,
+      "soh_max_pct": 95.75172,
+      "starts_below_threshold": false,
+      "total_fade_pct": 4.686449999999994,
+      "mean_delta_pct": -0.018281693548387115,
+      "first_crossing_position": null,
+      "sustained3_crossing_position": null,
+      "pre_eol_cycles": 249,
+      "censored": true,
+      "eol_threshold_pct": 80.0,
+      "status": "EXPERIMENTAL_CENSORED",
+      "reason": "Genuine LFP sequence but no observed 80% SOH crossing within the available history. Only a censored projection can be produced, and it has no validated accuracy."
+    },
+    {
+      "dataset_id": "NASA_Ames_PCoE",
+      "chemistry": "NMC",
+      "cell_id": "B0005",
+      "n_cycles": 168,
+      "first_cycle_id": 1,
+      "last_cycle_id": 168,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 92.82437104090788,
+      "soh_last_pct": 66.25396643214678,
+      "soh_min_pct": 64.37262610689703,
+      "soh_max_pct": 92.82437104090788,
+      "starts_below_threshold": false,
+      "total_fade_pct": 28.451744934010847,
+      "mean_delta_pct": -0.15910421921413828,
+      "first_crossing_position": 74.0,
+      "sustained3_crossing_position": 74.0,
+      "pre_eol_cycles": 74,
+      "censored": false,
+      "eol_threshold_pct": 80.0,
+      "status": "EXPERIMENTAL",
+      "reason": "Genuine NMC sequence with an observed 80% SOH crossing at cycle position 74. Validation is leave-one-cell-out over a very small number of cells, so the estimate is experimental and not approved for operation."
+    },
+    {
+      "dataset_id": "NASA_Ames_PCoE",
+      "chemistry": "NMC",
+      "cell_id": "B0006",
+      "n_cycles": 168,
+      "first_cycle_id": 1,
+      "last_cycle_id": 168,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 101.7668795502799,
+      "soh_last_pct": 59.283761639646784,
+      "soh_min_pct": 57.6909165798125,
+      "soh_max_pct": 101.7668795502799,
+      "starts_below_threshold": false,
+      "total_fade_pct": 44.075962970467394,
+      "mean_delta_pct": -0.25438992760858153,
+      "first_crossing_position": 62.0,
+      "sustained3_crossing_position": 62.0,
+      "pre_eol_cycles": 62,
+      "censored": false,
+      "eol_threshold_pct": 80.0,
+      "status": "EXPERIMENTAL",
+      "reason": "Genuine NMC sequence with an observed 80% SOH crossing at cycle position 62. Validation is leave-one-cell-out over a very small number of cells, so the estimate is experimental and not approved for operation."
+    },
+    {
+      "dataset_id": "NASA_Ames_PCoE",
+      "chemistry": "NMC",
+      "cell_id": "B0018",
+      "n_cycles": 132,
+      "first_cycle_id": 1,
+      "last_cycle_id": 132,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 92.75022603955408,
+      "soh_last_pct": 67.05257203202424,
+      "soh_min_pct": 67.05257203202424,
+      "soh_max_pct": 92.75022603955408,
+      "starts_below_threshold": false,
+      "total_fade_pct": 25.697654007529835,
+      "mean_delta_pct": -0.19616529776740332,
+      "first_crossing_position": 44.0,
+      "sustained3_crossing_position": 58.0,
+      "pre_eol_cycles": 44,
+      "censored": false,
+      "eol_threshold_pct": 80.0,
+      "status": "EXPERIMENTAL",
+      "reason": "Genuine NMC sequence with an observed 80% SOH crossing at cycle position 44. Validation is leave-one-cell-out over a very small number of cells, so the estimate is experimental and not approved for operation."
+    },
+    {
+      "dataset_id": "Zenodo_IonTech_NaIon",
+      "chemistry": "Na-ion",
+      "cell_id": "NA-ion_270040-1-1-64",
+      "n_cycles": 25,
+      "first_cycle_id": 1,
+      "last_cycle_id": 25,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 79.02409,
+      "soh_last_pct": 78.62877,
+      "soh_min_pct": 78.62877,
+      "soh_max_pct": 79.21813,
+      "starts_below_threshold": true,
+      "total_fade_pct": 0.3953199999999981,
+      "mean_delta_pct": -0.01647166666666659,
+      "first_crossing_position": 0.0,
+      "sustained3_crossing_position": 0.0,
+      "pre_eol_cycles": 0,
+      "censored": false,
+      "eol_threshold_pct": 80.0,
+      "status": "UNAVAILABLE",
+      "reason": "The cell is already below the threshold in its first observed cycle, so no genuine end-of-life transition is observed."
+    },
+    {
+      "dataset_id": "Zenodo_IonTech_NaIon",
+      "chemistry": "Na-ion",
+      "cell_id": "NA-ion_270040-1-2-63",
+      "n_cycles": 25,
+      "first_cycle_id": 1,
+      "last_cycle_id": 25,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 89.65244,
+      "soh_last_pct": 88.5981,
+      "soh_min_pct": 88.5981,
+      "soh_max_pct": 89.89758,
+      "starts_below_threshold": false,
+      "total_fade_pct": 1.0543399999999963,
+      "mean_delta_pct": -0.043930833333333176,
+      "first_crossing_position": null,
+      "sustained3_crossing_position": null,
+      "pre_eol_cycles": 25,
+      "censored": true,
+      "eol_threshold_pct": 80.0,
+      "status": "UNAVAILABLE",
+      "reason": "No threshold crossing and only 25 observed cycles; at least 50 are required before a censored projection is even attempted."
+    },
+    {
+      "dataset_id": "Zenodo_IonTech_NaIon",
+      "chemistry": "Na-ion",
+      "cell_id": "NA-ion_270040-1-3-62",
+      "n_cycles": 25,
+      "first_cycle_id": 1,
+      "last_cycle_id": 25,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 88.06634,
+      "soh_last_pct": 87.57669,
+      "soh_min_pct": 87.57669,
+      "soh_max_pct": 88.54548,
+      "starts_below_threshold": false,
+      "total_fade_pct": 0.4896499999999975,
+      "mean_delta_pct": -0.020402083333333227,
+      "first_crossing_position": null,
+      "sustained3_crossing_position": null,
+      "pre_eol_cycles": 25,
+      "censored": true,
+      "eol_threshold_pct": 80.0,
+      "status": "UNAVAILABLE",
+      "reason": "No threshold crossing and only 25 observed cycles; at least 50 are required before a censored projection is even attempted."
+    },
+    {
+      "dataset_id": "Zenodo_IonTech_NaIon",
+      "chemistry": "Na-ion",
+      "cell_id": "NA-ion_270040-1-4-61",
+      "n_cycles": 25,
+      "first_cycle_id": 1,
+      "last_cycle_id": 25,
+      "contiguous_cycle_ids": true,
+      "soh_first_pct": 90.65956,
+      "soh_last_pct": 90.35298,
+      "soh_min_pct": 90.35298,
+      "soh_max_pct": 90.99804999999999,
+      "starts_below_threshold": false,
+      "total_fade_pct": 0.30657999999999674,
+      "mean_delta_pct": -0.012774166666666531,
+      "first_crossing_position": null,
+      "sustained3_crossing_position": null,
+      "pre_eol_cycles": 25,
+      "censored": true,
+      "eol_threshold_pct": 80.0,
+      "status": "UNAVAILABLE",
+      "reason": "No threshold crossing and only 25 observed cycles; at least 50 are required before a censored projection is even attempted."
+    }
+  ],
+  "snapshot_sequences_available": false,
+  "statement": "Active Member 1 datasets are snapshots and remain UNAVAILABLE for RUL. Genuine sequences come only from the legacy cycle-level table."
+}

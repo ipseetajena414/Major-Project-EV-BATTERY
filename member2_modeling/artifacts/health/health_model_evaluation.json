@@ -1,0 +1,920 @@
+{
+  "capacity": {
+    "EV_FAILURE_PREDICTION": {
+      "algebraic": {
+        "basis": "soh_pct_times_rated_capacity",
+        "is_pack_energy": true,
+        "scope": "vehicle_pack_energy",
+        "source_column": "battery_capacity_kwh",
+        "unit": "kWh"
+      },
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "is_pack_energy": true,
+      "measured_column": "remaining_capacity",
+      "measured_unit": "kWh",
+      "notes": [
+        "remaining_capacity is derived pack energy in kWh (algebraically from battery_capacity_kwh and battery_health_percent), not cell Ah.",
+        "A capacity model trained on remaining_capacity predicts pack energy.",
+        "SOH x battery_capacity_kwh is an algebraic estimate, not a measurement."
+      ],
+      "predicted_capacity_available": true,
+      "scope": "vehicle_pack_energy"
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "algebraic": {
+        "basis": "soh_pct_times_rated_capacity",
+        "is_pack_energy": false,
+        "scope": "cell_nominal_capacity",
+        "source_column": "nominal_capacity_ah",
+        "unit": "Ah"
+      },
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "is_pack_energy": false,
+      "measured_column": null,
+      "measured_unit": null,
+      "notes": [
+        "No measured capacity column exists; only nominal_capacity_ah and SOH.",
+        "Capacity can only be derived algebraically from nominal capacity and SOH."
+      ],
+      "predicted_capacity_available": false,
+      "scope": "cell_nominal_capacity"
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "algebraic": null,
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "is_pack_energy": false,
+      "measured_column": "discharge_capacity_ah",
+      "measured_unit": "Ah",
+      "notes": [
+        "discharge_capacity_ah is a synthetic measured label, not experimental truth.",
+        "No rated nominal capacity column exists, so no algebraic derivation is exposed."
+      ],
+      "predicted_capacity_available": true,
+      "scope": "cell_discharge_capacity"
+    }
+  },
+  "chemistry_comparison": {
+    "EV_FAILURE_PREDICTION": {
+      "remaining_capacity": {
+        "LFP": {
+          "mae": 3.2761061231798068,
+          "mape_pct": 5.329655398317237,
+          "n": 1139,
+          "r2": 0.9707042952330525,
+          "rmse": 5.262226027152356
+        },
+        "LMO": {
+          "mae": 3.4678584161297867,
+          "mape_pct": 5.14183890670217,
+          "n": 573,
+          "r2": 0.9671841125765192,
+          "rmse": 5.449512369603179
+        },
+        "LTO": {
+          "mae": 3.6312341746820693,
+          "mape_pct": 5.955427394264034,
+          "n": 261,
+          "r2": 0.9678760372070735,
+          "rmse": 5.639636595550681
+        },
+        "NCA": {
+          "mae": 3.931385695136457,
+          "mape_pct": 6.162374880520306,
+          "n": 275,
+          "r2": 0.9506770047961991,
+          "rmse": 6.796890922721589
+        },
+        "NMC": {
+          "mae": 3.446166791759062,
+          "mape_pct": 5.449055981171756,
+          "n": 1500,
+          "r2": 0.9663343262357814,
+          "rmse": 5.5826743951445446
+        }
+      },
+      "state_of_health": {
+        "LFP": {
+          "mae": 2.7160630085271293,
+          "mape_pct": 3.425899600583035,
+          "n": 1134,
+          "r2": 0.8502818110559075,
+          "rmse": 3.4773014204876285
+        },
+        "LMO": {
+          "mae": 2.7037325400267083,
+          "mape_pct": 3.4072234719616428,
+          "n": 560,
+          "r2": 0.8672120236310357,
+          "rmse": 3.4738657122650127
+        },
+        "LTO": {
+          "mae": 2.859235873259066,
+          "mape_pct": 3.5498768129037197,
+          "n": 245,
+          "r2": 0.8439460540220186,
+          "rmse": 3.500250868715675
+        },
+        "NCA": {
+          "mae": 2.769860124537014,
+          "mape_pct": 3.4424927373163294,
+          "n": 264,
+          "r2": 0.8483718264446484,
+          "rmse": 3.525196468929396
+        },
+        "NMC": {
+          "mae": 2.8301923104885733,
+          "mape_pct": 3.551667359557654,
+          "n": 1458,
+          "r2": 0.843618368256041,
+          "rmse": 3.5471111646686855
+        }
+      }
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "state_of_health_pct": {
+        "Solid-State": {
+          "mae": 0.6296484625338307,
+          "mape_pct": 0.7299419031655765,
+          "n": 2000,
+          "r2": 0.9856633080209182,
+          "rmse": 0.7939668326931802
+        }
+      }
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "discharge_capacity_ah": {
+        "Lithium-Sulfur": {
+          "mae": 4.4676600369004955,
+          "mape_pct": 4.714533897415084,
+          "n": 138,
+          "r2": 0.7312650610012846,
+          "rmse": 5.659223961103754
+        },
+        "Sodium-ion": {
+          "mae": 3.77591786738425,
+          "mape_pct": 6.915421076604596,
+          "n": 134,
+          "r2": 0.731174445546255,
+          "rmse": 5.098864845260021
+        },
+        "Solid-State": {
+          "mae": 4.211944144863227,
+          "mape_pct": 5.5119725274586795,
+          "n": 128,
+          "r2": 0.6723262742981053,
+          "rmse": 5.544341449410423
+        }
+      }
+    }
+  },
+  "datasets": {
+    "EV_FAILURE_PREDICTION": {
+      "provenance": {
+        "data_origin": "source_dataset",
+        "processed_sha256": "6b4f9035f50d54d72c6e653a5f1f6676b69896ba4b883e48ad1c6f1e5f57dc9d",
+        "record_grain": "vehicle_pack_snapshot",
+        "source_file": "ev battery_failure prediction Dataset.csv",
+        "source_sha256": "3b971b47e6dba73eef7edd60c7841332c5c34be17b649b9b5f036001315b28ea"
+      },
+      "targets": {
+        "remaining_capacity": {
+          "artifact_dir": "member2_modeling/artifacts/health/EV_FAILURE_PREDICTION/remaining_capacity",
+          "dataset_id": "EV_FAILURE_PREDICTION",
+          "evaluation": {
+            "baselines": {
+              "train_chemistry_median": {
+                "mae": 26.17259541000516,
+                "mape_pct": 50.72376511035475,
+                "n": 3878,
+                "r2": -0.0023159328249233724,
+                "rmse": 30.64527945489724
+              },
+              "train_median": {
+                "mae": 26.152681794739557,
+                "mape_pct": 50.723071623716955,
+                "n": 3878,
+                "r2": -0.0009090142420531411,
+                "rmse": 30.623764006380974
+              }
+            },
+            "caveats": [
+              "Snapshot records: this random split estimates i.i.d. generalization, not a temporal or vehicle-level forecast.",
+              "Early stopping uses a validation slice of the training split only."
+            ],
+            "counts": {
+              "dropped_null_target": 614,
+              "rows": 19386,
+              "test": 3878
+            },
+            "model": {
+              "mae": 3.4397070990777663,
+              "mape_pct": 5.460209319491402,
+              "n": 3878,
+              "r2": 0.9671309238712341,
+              "rmse": 5.549514847898004
+            },
+            "outperforms_chemistry_median": true,
+            "outperforms_train_median": true,
+            "per_chemistry": {
+              "LFP": {
+                "mae": 3.2761061231798068,
+                "mape_pct": 5.329655398317237,
+                "n": 1139,
+                "r2": 0.9707042952330525,
+                "rmse": 5.262226027152356
+              },
+              "LMO": {
+                "mae": 3.4678584161297867,
+                "mape_pct": 5.14183890670217,
+                "n": 573,
+                "r2": 0.9671841125765192,
+                "rmse": 5.449512369603179
+              },
+              "LTO": {
+                "mae": 3.6312341746820693,
+                "mape_pct": 5.955427394264034,
+                "n": 261,
+                "r2": 0.9678760372070735,
+                "rmse": 5.639636595550681
+              },
+              "NCA": {
+                "mae": 3.931385695136457,
+                "mape_pct": 6.162374880520306,
+                "n": 275,
+                "r2": 0.9506770047961991,
+                "rmse": 6.796890922721589
+              },
+              "NMC": {
+                "mae": 3.446166791759062,
+                "mape_pct": 5.449055981171756,
+                "n": 1500,
+                "r2": 0.9663343262357814,
+                "rmse": 5.5826743951445446
+              }
+            },
+            "split_counts": {
+              "test": 3878,
+              "train": 11631,
+              "val": 3877
+            },
+            "split_protocol": "deterministic_stratified_snapshot_split"
+          },
+          "feature_count": 56,
+          "label_origin": "derived_from_health_percent",
+          "model": {
+            "feature_names": [
+              "manufacturing_year",
+              "battery_capacity_kwh",
+              "odometer_km",
+              "vehicle_age_years",
+              "cycle_count",
+              "state_of_charge",
+              "depth_of_discharge",
+              "cell_voltage_avg",
+              "cell_voltage_std",
+              "pack_voltage",
+              "cell_temperature_avg",
+              "cell_temperature_max",
+              "charge_efficiency",
+              "discharge_efficiency",
+              "charging_cycles_last_month",
+              "fast_charge_ratio",
+              "slow_charge_ratio",
+              "average_charge_power_kw",
+              "average_charging_time",
+              "overnight_charging_ratio",
+              "home_charging_ratio",
+              "charging_interruptions",
+              "overcharge_events",
+              "average_speed",
+              "average_trip_distance",
+              "aggressive_acceleration_score",
+              "hard_braking_score",
+              "regenerative_braking_usage",
+              "highway_driving_ratio",
+              "city_driving_ratio",
+              "daily_distance",
+              "average_ambient_temperature",
+              "maximum_temperature",
+              "minimum_temperature",
+              "humidity",
+              "altitude",
+              "dust_exposure",
+              "last_service_days",
+              "cooling_system_health",
+              "firmware_updates",
+              "previous_faults",
+              "maintenance_score",
+              "thermal_runaway_risk",
+              "voltage_imbalance",
+              "temperature_variance",
+              "sensor_fault_count",
+              "BMS_warning_count",
+              "abnormal_voltage_events",
+              "vehicle_brand=Audi",
+              "vehicle_brand=BMW",
+              "vehicle_brand=BYD",
+              "vehicle_brand=Ford",
+              "vehicle_brand=GM",
+              "vehicle_brand=Honda",
+              "vehicle_brand=Hyundai",
+              "vehicle_brand=Kia",
+              "vehicle_brand=Lucid",
+              "vehicle_brand=MG",
+              "vehicle_brand=Mahindra",
+              "vehicle_brand=Mercedes-Benz",
+              "vehicle_brand=Nissan",
+              "vehicle_brand=Porsche",
+              "vehicle_brand=Renault",
+              "vehicle_brand=Rivian",
+              "vehicle_brand=Tata",
+              "vehicle_brand=Tesla",
+              "vehicle_brand=Volkswagen",
+              "vehicle_brand=Volvo",
+              "vehicle_brand=__MISSING__",
+              "vehicle_model=Air",
+              "vehicle_model=Ariya",
+              "vehicle_model=Atto 3",
+              "vehicle_model=BE 6",
+              "vehicle_model=Cadillac Lyriq",
+              "vehicle_model=Chevrolet Bolt",
+              "vehicle_model=Comet EV",
+              "vehicle_model=Dolphin",
+              "vehicle_model=EQA",
+              "vehicle_model=EQE",
+              "vehicle_model=EV6",
+              "vehicle_model=EV9",
+              "vehicle_model=EX30",
+              "vehicle_model=F-150 Lightning",
+              "vehicle_model=ID.3",
+              "vehicle_model=ID.4",
+              "vehicle_model=Ioniq 5",
+              "vehicle_model=Kona Electric",
+              "vehicle_model=Leaf",
+              "vehicle_model=Macan Electric",
+              "vehicle_model=Megane E-Tech",
+              "vehicle_model=Model 3",
+              "vehicle_model=Model S",
+              "vehicle_model=Model Y",
+              "vehicle_model=Mustang Mach-E",
+              "vehicle_model=Nexon EV",
+              "vehicle_model=Prologue",
+              "vehicle_model=Q4 e-tron",
+              "vehicle_model=R1S",
+              "vehicle_model=R1T",
+              "vehicle_model=Seal",
+              "vehicle_model=Taycan",
+              "vehicle_model=Tiago EV",
+              "vehicle_model=XC40 Recharge",
+              "vehicle_model=XUV400",
+              "vehicle_model=ZS EV",
+              "vehicle_model=Zoe",
+              "vehicle_model=__MISSING__",
+              "vehicle_model=e-tron GT",
+              "vehicle_model=e:N1",
+              "vehicle_model=i4",
+              "vehicle_model=iX",
+              "vehicle_model=iX1",
+              "vehicle_type=Crossover",
+              "vehicle_type=Hatchback",
+              "vehicle_type=SUV",
+              "vehicle_type=Sedan",
+              "vehicle_type=Truck",
+              "vehicle_type=Van",
+              "vehicle_type=__MISSING__",
+              "battery_manufacturer=BYD Battery",
+              "battery_manufacturer=CATL",
+              "battery_manufacturer=Envision AESC",
+              "battery_manufacturer=Guoxuan",
+              "battery_manufacturer=LG Energy Solution",
+              "battery_manufacturer=Northvolt",
+              "battery_manufacturer=Panasonic",
+              "battery_manufacturer=SK On",
+              "battery_manufacturer=__MISSING__",
+              "battery_chemistry=LFP",
+              "battery_chemistry=LMO",
+              "battery_chemistry=LTO",
+              "battery_chemistry=NCA",
+              "battery_chemistry=NMC",
+              "battery_chemistry=__MISSING__",
+              "drive_type=AWD",
+              "drive_type=FWD",
+              "drive_type=RWD",
+              "drive_type=__MISSING__",
+              "fleet_or_private=Fleet",
+              "fleet_or_private=Private",
+              "fleet_or_private=__MISSING__",
+              "terrain_type=Coastal",
+              "terrain_type=Desert",
+              "terrain_type=Flat",
+              "terrain_type=Hilly",
+              "terrain_type=Mountainous",
+              "terrain_type=__MISSING__"
+            ],
+            "model_type": "tabular_lightgbm_regressor",
+            "production_ready": false,
+            "schema_version": "2.0.0"
+          },
+          "readiness": "EXPERIMENTAL",
+          "target": "remaining_capacity",
+          "target_kind": "derived_from_health_percent",
+          "unit": "kWh (pack energy, not cell Ah)"
+        },
+        "state_of_health": {
+          "artifact_dir": "member2_modeling/artifacts/health/EV_FAILURE_PREDICTION/state_of_health",
+          "dataset_id": "EV_FAILURE_PREDICTION",
+          "evaluation": {
+            "baselines": {
+              "train_chemistry_median": {
+                "mae": 7.340945129955369,
+                "mape_pct": 9.49168082217,
+                "n": 3809,
+                "r2": -0.014136757067788386,
+                "rmse": 9.101378795720883
+              },
+              "train_median": {
+                "mae": 7.338676818062485,
+                "mape_pct": 9.484244467497305,
+                "n": 3809,
+                "r2": -0.011902984368347358,
+                "rmse": 9.09134976423048
+              }
+            },
+            "caveats": [
+              "Snapshot records: this random split estimates i.i.d. generalization, not a temporal or vehicle-level forecast.",
+              "Early stopping uses a validation slice of the training split only."
+            ],
+            "counts": {
+              "dropped_null_target": 956,
+              "rows": 19044,
+              "test": 3809
+            },
+            "model": {
+              "mae": 2.784319549506864,
+              "mape_pct": 3.4941950878966885,
+              "n": 3809,
+              "r2": 0.8484032289853953,
+              "rmse": 3.5188755159646123
+            },
+            "outperforms_chemistry_median": true,
+            "outperforms_train_median": true,
+            "per_chemistry": {
+              "LFP": {
+                "mae": 2.7160630085271293,
+                "mape_pct": 3.425899600583035,
+                "n": 1134,
+                "r2": 0.8502818110559075,
+                "rmse": 3.4773014204876285
+              },
+              "LMO": {
+                "mae": 2.7037325400267083,
+                "mape_pct": 3.4072234719616428,
+                "n": 560,
+                "r2": 0.8672120236310357,
+                "rmse": 3.4738657122650127
+              },
+              "LTO": {
+                "mae": 2.859235873259066,
+                "mape_pct": 3.5498768129037197,
+                "n": 245,
+                "r2": 0.8439460540220186,
+                "rmse": 3.500250868715675
+              },
+              "NCA": {
+                "mae": 2.769860124537014,
+                "mape_pct": 3.4424927373163294,
+                "n": 264,
+                "r2": 0.8483718264446484,
+                "rmse": 3.525196468929396
+              },
+              "NMC": {
+                "mae": 2.8301923104885733,
+                "mape_pct": 3.551667359557654,
+                "n": 1458,
+                "r2": 0.843618368256041,
+                "rmse": 3.5471111646686855
+              }
+            },
+            "split_counts": {
+              "test": 3809,
+              "train": 11426,
+              "val": 3809
+            },
+            "split_protocol": "deterministic_stratified_snapshot_split"
+          },
+          "feature_count": 56,
+          "label_origin": "source_dataset",
+          "model": {
+            "feature_names": [
+              "manufacturing_year",
+              "battery_capacity_kwh",
+              "odometer_km",
+              "vehicle_age_years",
+              "cycle_count",
+              "state_of_charge",
+              "depth_of_discharge",
+              "cell_voltage_avg",
+              "cell_voltage_std",
+              "pack_voltage",
+              "cell_temperature_avg",
+              "cell_temperature_max",
+              "charge_efficiency",
+              "discharge_efficiency",
+              "charging_cycles_last_month",
+              "fast_charge_ratio",
+              "slow_charge_ratio",
+              "average_charge_power_kw",
+              "average_charging_time",
+              "overnight_charging_ratio",
+              "home_charging_ratio",
+              "charging_interruptions",
+              "overcharge_events",
+              "average_speed",
+              "average_trip_distance",
+              "aggressive_acceleration_score",
+              "hard_braking_score",
+              "regenerative_braking_usage",
+              "highway_driving_ratio",
+              "city_driving_ratio",
+              "daily_distance",
+              "average_ambient_temperature",
+              "maximum_temperature",
+              "minimum_temperature",
+              "humidity",
+              "altitude",
+              "dust_exposure",
+              "last_service_days",
+              "cooling_system_health",
+              "firmware_updates",
+              "previous_faults",
+              "maintenance_score",
+              "thermal_runaway_risk",
+              "voltage_imbalance",
+              "temperature_variance",
+              "sensor_fault_count",
+              "BMS_warning_count",
+              "abnormal_voltage_events",
+              "vehicle_brand=Audi",
+              "vehicle_brand=BMW",
+              "vehicle_brand=BYD",
+              "vehicle_brand=Ford",
+              "vehicle_brand=GM",
+              "vehicle_brand=Honda",
+              "vehicle_brand=Hyundai",
+              "vehicle_brand=Kia",
+              "vehicle_brand=Lucid",
+              "vehicle_brand=MG",
+              "vehicle_brand=Mahindra",
+              "vehicle_brand=Mercedes-Benz",
+              "vehicle_brand=Nissan",
+              "vehicle_brand=Porsche",
+              "vehicle_brand=Renault",
+              "vehicle_brand=Rivian",
+              "vehicle_brand=Tata",
+              "vehicle_brand=Tesla",
+              "vehicle_brand=Volkswagen",
+              "vehicle_brand=Volvo",
+              "vehicle_brand=__MISSING__",
+              "vehicle_model=Air",
+              "vehicle_model=Ariya",
+              "vehicle_model=Atto 3",
+              "vehicle_model=BE 6",
+              "vehicle_model=Cadillac Lyriq",
+              "vehicle_model=Chevrolet Bolt",
+              "vehicle_model=Comet EV",
+              "vehicle_model=Dolphin",
+              "vehicle_model=EQA",
+              "vehicle_model=EQE",
+              "vehicle_model=EV6",
+              "vehicle_model=EV9",
+              "vehicle_model=EX30",
+              "vehicle_model=F-150 Lightning",
+              "vehicle_model=ID.3",
+              "vehicle_model=ID.4",
+              "vehicle_model=Ioniq 5",
+              "vehicle_model=Kona Electric",
+              "vehicle_model=Leaf",
+              "vehicle_model=Macan Electric",
+              "vehicle_model=Megane E-Tech",
+              "vehicle_model=Model 3",
+              "vehicle_model=Model S",
+              "vehicle_model=Model Y",
+              "vehicle_model=Mustang Mach-E",
+              "vehicle_model=Nexon EV",
+              "vehicle_model=Prologue",
+              "vehicle_model=Q4 e-tron",
+              "vehicle_model=R1S",
+              "vehicle_model=R1T",
+              "vehicle_model=Seal",
+              "vehicle_model=Taycan",
+              "vehicle_model=Tiago EV",
+              "vehicle_model=XC40 Recharge",
+              "vehicle_model=XUV400",
+              "vehicle_model=ZS EV",
+              "vehicle_model=Zoe",
+              "vehicle_model=__MISSING__",
+              "vehicle_model=e-tron GT",
+              "vehicle_model=e:N1",
+              "vehicle_model=i4",
+              "vehicle_model=iX",
+              "vehicle_model=iX1",
+              "vehicle_type=Crossover",
+              "vehicle_type=Hatchback",
+              "vehicle_type=SUV",
+              "vehicle_type=Sedan",
+              "vehicle_type=Truck",
+              "vehicle_type=Van",
+              "vehicle_type=__MISSING__",
+              "battery_manufacturer=BYD Battery",
+              "battery_manufacturer=CATL",
+              "battery_manufacturer=Envision AESC",
+              "battery_manufacturer=Guoxuan",
+              "battery_manufacturer=LG Energy Solution",
+              "battery_manufacturer=Northvolt",
+              "battery_manufacturer=Panasonic",
+              "battery_manufacturer=SK On",
+              "battery_manufacturer=__MISSING__",
+              "battery_chemistry=LFP",
+              "battery_chemistry=LMO",
+              "battery_chemistry=LTO",
+              "battery_chemistry=NCA",
+              "battery_chemistry=NMC",
+              "battery_chemistry=__MISSING__",
+              "drive_type=AWD",
+              "drive_type=FWD",
+              "drive_type=RWD",
+              "drive_type=__MISSING__",
+              "fleet_or_private=Fleet",
+              "fleet_or_private=Private",
+              "fleet_or_private=__MISSING__",
+              "terrain_type=Coastal",
+              "terrain_type=Desert",
+              "terrain_type=Flat",
+              "terrain_type=Hilly",
+              "terrain_type=Mountainous",
+              "terrain_type=__MISSING__"
+            ],
+            "model_type": "tabular_lightgbm_regressor",
+            "production_ready": false,
+            "schema_version": "2.0.0"
+          },
+          "readiness": "EXPERIMENTAL",
+          "target": "state_of_health",
+          "target_kind": "source_label",
+          "unit": "%"
+        }
+      }
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "provenance": {
+        "data_origin": "source_dataset",
+        "processed_sha256": "b49529ccffebe735be022e306339596d490ad717d61960a1ab1b71c43cc87513",
+        "record_grain": "cell_snapshot",
+        "source_file": "solid_state_ev_battery_telemetry_enriched_2026.csv",
+        "source_sha256": "0fc38a2d4fe6289d712d85112f62d928c78419e562f2ebd9a2f94583489cd690"
+      },
+      "targets": {
+        "state_of_health_pct": {
+          "artifact_dir": "member2_modeling/artifacts/health/SOLID_STATE_TELEMETRY_2026/state_of_health_pct",
+          "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+          "evaluation": {
+            "baselines": {
+              "train_chemistry_median": {
+                "mae": 5.639105,
+                "mape_pct": 6.575403491036052,
+                "n": 2000,
+                "r2": -9.441466758408623e-06,
+                "rmse": 6.631013825200487
+              },
+              "train_median": {
+                "mae": 5.639105,
+                "mape_pct": 6.575403491036052,
+                "n": 2000,
+                "r2": -9.441466758408623e-06,
+                "rmse": 6.631013825200487
+              }
+            },
+            "caveats": [
+              "Snapshot records: this random split estimates i.i.d. generalization, not a temporal or vehicle-level forecast.",
+              "Early stopping uses a validation slice of the training split only."
+            ],
+            "counts": {
+              "dropped_null_target": 0,
+              "rows": 10000,
+              "test": 2000
+            },
+            "model": {
+              "mae": 0.6296484625338307,
+              "mape_pct": 0.7299419031655765,
+              "n": 2000,
+              "r2": 0.9856633080209182,
+              "rmse": 0.7939668326931802
+            },
+            "outperforms_chemistry_median": true,
+            "outperforms_train_median": true,
+            "per_chemistry": {
+              "Solid-State": {
+                "mae": 0.6296484625338307,
+                "mape_pct": 0.7299419031655765,
+                "n": 2000,
+                "r2": 0.9856633080209182,
+                "rmse": 0.7939668326931802
+              }
+            },
+            "split_counts": {
+              "test": 2000,
+              "train": 6000,
+              "val": 2000
+            },
+            "split_protocol": "deterministic_stratified_snapshot_split"
+          },
+          "feature_count": 19,
+          "label_origin": "source_dataset",
+          "model": {
+            "feature_names": [
+              "nominal_capacity_ah",
+              "gravimetric_energy_density_wh_kg",
+              "volumetric_energy_density_wh_l",
+              "cycle_number",
+              "charging_c_rate",
+              "discharging_c_rate",
+              "operating_temperature_c",
+              "ambient_temperature_c",
+              "internal_resistance_mohm",
+              "coulombic_efficiency_pct",
+              "stack_pressure_mpa",
+              "thermal_runaway_onset_c",
+              "nominal_voltage_plateau_v",
+              "manufacturer=BYD",
+              "manufacturer=CATL",
+              "manufacturer=LG Energy Solution",
+              "manufacturer=Panasonic Energy",
+              "manufacturer=QuantumScape",
+              "manufacturer=Samsung SDI",
+              "manufacturer=Solid Power",
+              "manufacturer=StoreDot",
+              "manufacturer=Toyota Motor",
+              "electrolyte_chemistry=Halide_Based_Li3YCl6",
+              "electrolyte_chemistry=Oxide_Based_LLZO",
+              "electrolyte_chemistry=Polymer_Composite",
+              "electrolyte_chemistry=Sulfide_Based_Li10GeP2S12",
+              "anode_composition=Anode_Free_InSitu_Plating",
+              "anode_composition=Graphite_Silicon_Composite",
+              "anode_composition=Lithium_Metal_Foil",
+              "anode_composition=Silicon_Dominant_Nanowire",
+              "cathode_chemistry=High_Nickel_NMC811",
+              "cathode_chemistry=LFP_Advanced",
+              "cathode_chemistry=Solid_State_Sulfur",
+              "cathode_chemistry=Ultra_Nickel_NMC955",
+              "target_ev_application=Commercial_Class8_Hauler",
+              "target_ev_application=Hypercar_Track",
+              "target_ev_application=Long_Range_Luxury_Sedan",
+              "target_ev_application=Urban_Compact_SUV",
+              "target_ev_application=eVTOL_Aerospace",
+              "commercial_readiness_level=TRL_6_Laboratory_Prototype",
+              "commercial_readiness_level=TRL_7_Automotive_Testing",
+              "commercial_readiness_level=TRL_8_Pilot_Production",
+              "commercial_readiness_level=TRL_9_Commercial_Fleet"
+            ],
+            "model_type": "tabular_lightgbm_regressor",
+            "production_ready": false,
+            "schema_version": "2.0.0"
+          },
+          "readiness": "EXPERIMENTAL",
+          "target": "state_of_health_pct",
+          "target_kind": "source_label",
+          "unit": "%"
+        }
+      }
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "provenance": {
+        "data_origin": "synthetic",
+        "processed_sha256": "9f7e8ff595499bdc7a70bf29e7cc3d975db4fa8ca57b41236123350496bf6238",
+        "record_grain": "synthetic_battery_snapshot",
+        "source_file": "synthetic_battery_lifecycle.csv",
+        "source_sha256": "4a754a7937f564375611a080dac9b6b3feca97e1f8264de5b30b7f81aed7d224"
+      },
+      "targets": {
+        "discharge_capacity_ah": {
+          "artifact_dir": "member2_modeling/artifacts/health/SYNTHETIC_BATTERY_LIFECYCLE/discharge_capacity_ah",
+          "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+          "evaluation": {
+            "baselines": {
+              "train_chemistry_median": {
+                "mae": 8.282275,
+                "mape_pct": 11.293097393353989,
+                "n": 400,
+                "r2": 0.7096313949724058,
+                "rmse": 10.238501513893524
+              },
+              "train_median": {
+                "mae": 15.907375000000002,
+                "mape_pct": 21.56526229616128,
+                "n": 400,
+                "r2": -3.0903687560979165e-05,
+                "rmse": 19.000642219409322
+              }
+            },
+            "caveats": [
+              "Snapshot records: this random split estimates i.i.d. generalization, not a temporal or vehicle-level forecast.",
+              "Early stopping uses a validation slice of the training split only."
+            ],
+            "counts": {
+              "dropped_null_target": 0,
+              "rows": 2000,
+              "test": 400
+            },
+            "model": {
+              "mae": 4.154097324660627,
+              "mape_pct": 5.707011464057521,
+              "n": 400,
+              "r2": 0.9180211964440861,
+              "rmse": 5.440168577152812
+            },
+            "outperforms_chemistry_median": true,
+            "outperforms_train_median": true,
+            "per_chemistry": {
+              "Lithium-Sulfur": {
+                "mae": 4.4676600369004955,
+                "mape_pct": 4.714533897415084,
+                "n": 138,
+                "r2": 0.7312650610012846,
+                "rmse": 5.659223961103754
+              },
+              "Sodium-ion": {
+                "mae": 3.77591786738425,
+                "mape_pct": 6.915421076604596,
+                "n": 134,
+                "r2": 0.731174445546255,
+                "rmse": 5.098864845260021
+              },
+              "Solid-State": {
+                "mae": 4.211944144863227,
+                "mape_pct": 5.5119725274586795,
+                "n": 128,
+                "r2": 0.6723262742981053,
+                "rmse": 5.544341449410423
+              }
+            },
+            "split_counts": {
+              "test": 400,
+              "train": 1200,
+              "val": 400
+            },
+            "split_protocol": "deterministic_stratified_snapshot_split"
+          },
+          "feature_count": 5,
+          "label_origin": "synthetic",
+          "model": {
+            "feature_names": [
+              "cycle_count",
+              "internal_resistance_mohms",
+              "temperature_celsius",
+              "charge_time_mins",
+              "electrolyte_type=Lithium_Sulfur",
+              "electrolyte_type=Sodium_Ion",
+              "electrolyte_type=Solid_State"
+            ],
+            "model_type": "tabular_lightgbm_regressor",
+            "production_ready": false,
+            "schema_version": "2.0.0"
+          },
+          "readiness": "RESEARCH_ONLY",
+          "target": "discharge_capacity_ah",
+          "target_kind": "synthetic_label",
+          "unit": "Ah (synthetic)"
+        }
+      }
+    }
+  },
+  "generated_at": "2026-11-02T07:54:36.893635+00:00",
+  "not_trained": {
+    "EV_FAILURE_PREDICTION": {
+      "battery_health_percent": "Duplicate SOH label; state_of_health is the primary audited target.",
+      "predicted_remaining_life_cycles": "Supplied projection, not an observed RUL label."
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "degradation_risk_tier": "Classification target; outside the Phase 4 SOH/capacity regression scope.",
+      "projected_cycle_life_80pct_soh": "Projected cycle life is not observed RUL."
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "state_of_health": "Categorical synthetic label; regression modules do not consume it."
+    }
+  },
+  "protected_artifacts_untouched": [
+    "DATA/processed/",
+    "master_table.parquet",
+    "member3/",
+    "member2_modeling/*_model.joblib",
+    "member2_modeling/model_manifest.json",
+    "member2_modeling/feature_schema.json"
+  ],
+  "registry_version": "1.0.0",
+  "split_protocol": "deterministic_stratified_snapshot_split_60_20_20",
+  "warnings": [
+    "Snapshot splits are not temporal validation.",
+    "Synthetic labels are not measured experimental truth.",
+    "No model in this report is production-validated."
+  ]
+}

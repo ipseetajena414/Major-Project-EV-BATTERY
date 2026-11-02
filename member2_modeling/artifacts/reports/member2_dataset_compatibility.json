@@ -1,0 +1,1118 @@
+{
+  "active_master_table": null,
+  "datasets": {
+    "EV_FAILURE_PREDICTION": {
+      "columns": 82,
+      "compatibility": {
+        "available_columns": [
+          "source_row_id",
+          "dataset_id",
+          "data_origin",
+          "source_file",
+          "vehicle_id",
+          "vehicle_brand",
+          "vehicle_model",
+          "vehicle_type",
+          "manufacturing_year",
+          "battery_manufacturer",
+          "battery_chemistry",
+          "battery_capacity_kwh",
+          "drive_type",
+          "odometer_km",
+          "vehicle_age_years",
+          "fleet_or_private",
+          "battery_serial",
+          "cycle_count",
+          "battery_health_percent",
+          "state_of_charge",
+          "depth_of_discharge",
+          "state_of_health",
+          "cell_voltage_avg",
+          "cell_voltage_std",
+          "pack_voltage",
+          "cell_temperature_avg",
+          "cell_temperature_max",
+          "internal_resistance",
+          "charge_efficiency",
+          "discharge_efficiency",
+          "remaining_capacity",
+          "capacity_loss_percent",
+          "charging_cycles_last_month",
+          "fast_charge_ratio",
+          "slow_charge_ratio",
+          "average_charge_power_kw",
+          "average_charging_time",
+          "overnight_charging_ratio",
+          "home_charging_ratio",
+          "charging_interruptions",
+          "overcharge_events",
+          "average_speed",
+          "average_trip_distance",
+          "aggressive_acceleration_score",
+          "hard_braking_score",
+          "regenerative_braking_usage",
+          "highway_driving_ratio",
+          "city_driving_ratio",
+          "daily_distance",
+          "average_ambient_temperature",
+          "maximum_temperature",
+          "minimum_temperature",
+          "humidity",
+          "altitude",
+          "terrain_type",
+          "dust_exposure",
+          "last_service_days",
+          "cooling_system_health",
+          "firmware_updates",
+          "previous_faults",
+          "maintenance_score",
+          "thermal_runaway_risk",
+          "voltage_imbalance",
+          "temperature_variance",
+          "sensor_fault_count",
+          "BMS_warning_count",
+          "abnormal_voltage_events",
+          "battery_stress_index",
+          "aging_score",
+          "thermal_health_score",
+          "charging_quality_score",
+          "driving_stress_score",
+          "predicted_remaining_life_cycles",
+          "battery_failure",
+          "chemistry_family",
+          "missing_field_count",
+          "missing_fields",
+          "outlier_field_count",
+          "outlier_fields",
+          "invalid_field_count",
+          "invalid_fields",
+          "quality_flag"
+        ],
+        "candidate_targets": [
+          "battery_failure",
+          "state_of_health",
+          "battery_health_percent",
+          "remaining_capacity"
+        ],
+        "chemistry_labels": [
+          "LFP",
+          "LMO",
+          "LTO",
+          "NCA",
+          "NMC"
+        ],
+        "cycle_field": "cycle_count",
+        "cycle_is_sequence_index": false,
+        "duplicate_full_rows": 0,
+        "identifier_analysis": {
+          "battery_serial": {
+            "nulls": 0,
+            "repeated_rows": 0,
+            "unique": 20000
+          },
+          "vehicle_id": {
+            "nulls": 0,
+            "repeated_rows": 0,
+            "unique": 20000
+          }
+        },
+        "label_counts": {
+          "battery_failure": {
+            "0": 18616,
+            "1": 1384
+          }
+        },
+        "leakage_columns": [
+          "battery_health_percent",
+          "capacity_loss_percent",
+          "predicted_remaining_life_cycles",
+          "remaining_capacity",
+          "state_of_health"
+        ],
+        "missingness": {
+          "BMS_warning_count": {
+            "count": 906,
+            "pct": 4.53
+          },
+          "abnormal_voltage_events": {
+            "count": 760,
+            "pct": 3.8
+          },
+          "aggressive_acceleration_score": {
+            "count": 728,
+            "pct": 3.64
+          },
+          "aging_score": {
+            "count": 836,
+            "pct": 4.18
+          },
+          "altitude": {
+            "count": 834,
+            "pct": 4.17
+          },
+          "average_ambient_temperature": {
+            "count": 916,
+            "pct": 4.58
+          },
+          "average_charge_power_kw": {
+            "count": 904,
+            "pct": 4.52
+          },
+          "average_charging_time": {
+            "count": 614,
+            "pct": 3.07
+          },
+          "average_speed": {
+            "count": 984,
+            "pct": 4.92
+          },
+          "average_trip_distance": {
+            "count": 712,
+            "pct": 3.56
+          },
+          "battery_capacity_kwh": {
+            "count": 690,
+            "pct": 3.45
+          },
+          "battery_chemistry": {
+            "count": 722,
+            "pct": 3.61
+          },
+          "battery_health_percent": {
+            "count": 898,
+            "pct": 4.49
+          },
+          "battery_manufacturer": {
+            "count": 618,
+            "pct": 3.09
+          },
+          "battery_stress_index": {
+            "count": 730,
+            "pct": 3.65
+          },
+          "capacity_loss_percent": {
+            "count": 956,
+            "pct": 4.78
+          },
+          "cell_temperature_avg": {
+            "count": 768,
+            "pct": 3.84
+          },
+          "cell_temperature_max": {
+            "count": 944,
+            "pct": 4.72
+          },
+          "cell_voltage_avg": {
+            "count": 940,
+            "pct": 4.7
+          },
+          "cell_voltage_std": {
+            "count": 856,
+            "pct": 4.28
+          },
+          "charge_efficiency": {
+            "count": 930,
+            "pct": 4.65
+          },
+          "charging_cycles_last_month": {
+            "count": 798,
+            "pct": 3.99
+          },
+          "charging_interruptions": {
+            "count": 964,
+            "pct": 4.82
+          },
+          "charging_quality_score": {
+            "count": 718,
+            "pct": 3.59
+          },
+          "chemistry_family": {
+            "count": 722,
+            "pct": 3.61
+          },
+          "city_driving_ratio": {
+            "count": 724,
+            "pct": 3.62
+          },
+          "cooling_system_health": {
+            "count": 940,
+            "pct": 4.7
+          },
+          "cycle_count": {
+            "count": 766,
+            "pct": 3.83
+          },
+          "daily_distance": {
+            "count": 856,
+            "pct": 4.28
+          },
+          "depth_of_discharge": {
+            "count": 832,
+            "pct": 4.16
+          },
+          "discharge_efficiency": {
+            "count": 680,
+            "pct": 3.4
+          },
+          "drive_type": {
+            "count": 726,
+            "pct": 3.63
+          },
+          "driving_stress_score": {
+            "count": 680,
+            "pct": 3.4
+          },
+          "dust_exposure": {
+            "count": 610,
+            "pct": 3.05
+          },
+          "fast_charge_ratio": {
+            "count": 988,
+            "pct": 4.94
+          },
+          "firmware_updates": {
+            "count": 622,
+            "pct": 3.11
+          },
+          "fleet_or_private": {
+            "count": 894,
+            "pct": 4.47
+          },
+          "hard_braking_score": {
+            "count": 924,
+            "pct": 4.62
+          },
+          "highway_driving_ratio": {
+            "count": 648,
+            "pct": 3.24
+          },
+          "home_charging_ratio": {
+            "count": 980,
+            "pct": 4.9
+          },
+          "humidity": {
+            "count": 822,
+            "pct": 4.11
+          },
+          "internal_resistance": {
+            "count": 798,
+            "pct": 3.99
+          },
+          "last_service_days": {
+            "count": 734,
+            "pct": 3.67
+          },
+          "maintenance_score": {
+            "count": 844,
+            "pct": 4.22
+          },
+          "manufacturing_year": {
+            "count": 982,
+            "pct": 4.91
+          },
+          "maximum_temperature": {
+            "count": 822,
+            "pct": 4.11
+          },
+          "minimum_temperature": {
+            "count": 624,
+            "pct": 3.12
+          },
+          "odometer_km": {
+            "count": 866,
+            "pct": 4.33
+          },
+          "overcharge_events": {
+            "count": 716,
+            "pct": 3.58
+          },
+          "overnight_charging_ratio": {
+            "count": 740,
+            "pct": 3.7
+          },
+          "pack_voltage": {
+            "count": 618,
+            "pct": 3.09
+          },
+          "predicted_remaining_life_cycles": {
+            "count": 898,
+            "pct": 4.49
+          },
+          "previous_faults": {
+            "count": 628,
+            "pct": 3.14
+          },
+          "regenerative_braking_usage": {
+            "count": 906,
+            "pct": 4.53
+          },
+          "remaining_capacity": {
+            "count": 614,
+            "pct": 3.07
+          },
+          "sensor_fault_count": {
+            "count": 968,
+            "pct": 4.84
+          },
+          "slow_charge_ratio": {
+            "count": 948,
+            "pct": 4.74
+          },
+          "state_of_charge": {
+            "count": 964,
+            "pct": 4.82
+          },
+          "state_of_health": {
+            "count": 956,
+            "pct": 4.78
+          },
+          "temperature_variance": {
+            "count": 636,
+            "pct": 3.18
+          },
+          "terrain_type": {
+            "count": 712,
+            "pct": 3.56
+          },
+          "thermal_health_score": {
+            "count": 632,
+            "pct": 3.16
+          },
+          "thermal_runaway_risk": {
+            "count": 720,
+            "pct": 3.6
+          },
+          "vehicle_age_years": {
+            "count": 768,
+            "pct": 3.84
+          },
+          "vehicle_brand": {
+            "count": 644,
+            "pct": 3.22
+          },
+          "vehicle_model": {
+            "count": 820,
+            "pct": 4.1
+          },
+          "vehicle_type": {
+            "count": 644,
+            "pct": 3.22
+          },
+          "voltage_imbalance": {
+            "count": 724,
+            "pct": 3.62
+          }
+        },
+        "safe_feature_columns": {
+          "battery_failure": [
+            "vehicle_brand",
+            "vehicle_model",
+            "vehicle_type",
+            "manufacturing_year",
+            "battery_manufacturer",
+            "battery_chemistry",
+            "battery_capacity_kwh",
+            "drive_type",
+            "odometer_km",
+            "vehicle_age_years",
+            "fleet_or_private",
+            "cycle_count",
+            "state_of_charge",
+            "depth_of_discharge",
+            "cell_voltage_avg",
+            "cell_voltage_std",
+            "pack_voltage",
+            "cell_temperature_avg",
+            "cell_temperature_max",
+            "charge_efficiency",
+            "discharge_efficiency",
+            "charging_cycles_last_month",
+            "fast_charge_ratio",
+            "slow_charge_ratio",
+            "average_charge_power_kw",
+            "average_charging_time",
+            "overnight_charging_ratio",
+            "home_charging_ratio",
+            "charging_interruptions",
+            "overcharge_events",
+            "average_speed",
+            "average_trip_distance",
+            "aggressive_acceleration_score",
+            "hard_braking_score",
+            "regenerative_braking_usage",
+            "highway_driving_ratio",
+            "city_driving_ratio",
+            "daily_distance",
+            "average_ambient_temperature",
+            "maximum_temperature",
+            "minimum_temperature",
+            "humidity",
+            "altitude",
+            "terrain_type",
+            "dust_exposure",
+            "last_service_days",
+            "cooling_system_health",
+            "firmware_updates",
+            "previous_faults",
+            "maintenance_score",
+            "thermal_runaway_risk",
+            "voltage_imbalance",
+            "temperature_variance",
+            "sensor_fault_count",
+            "BMS_warning_count",
+            "abnormal_voltage_events"
+          ],
+          "battery_health_percent": [
+            "vehicle_brand",
+            "vehicle_model",
+            "vehicle_type",
+            "manufacturing_year",
+            "battery_manufacturer",
+            "battery_chemistry",
+            "battery_capacity_kwh",
+            "drive_type",
+            "odometer_km",
+            "vehicle_age_years",
+            "fleet_or_private",
+            "cycle_count",
+            "state_of_charge",
+            "depth_of_discharge",
+            "cell_voltage_avg",
+            "cell_voltage_std",
+            "pack_voltage",
+            "cell_temperature_avg",
+            "cell_temperature_max",
+            "charge_efficiency",
+            "discharge_efficiency",
+            "charging_cycles_last_month",
+            "fast_charge_ratio",
+            "slow_charge_ratio",
+            "average_charge_power_kw",
+            "average_charging_time",
+            "overnight_charging_ratio",
+            "home_charging_ratio",
+            "charging_interruptions",
+            "overcharge_events",
+            "average_speed",
+            "average_trip_distance",
+            "aggressive_acceleration_score",
+            "hard_braking_score",
+            "regenerative_braking_usage",
+            "highway_driving_ratio",
+            "city_driving_ratio",
+            "daily_distance",
+            "average_ambient_temperature",
+            "maximum_temperature",
+            "minimum_temperature",
+            "humidity",
+            "altitude",
+            "terrain_type",
+            "dust_exposure",
+            "last_service_days",
+            "cooling_system_health",
+            "firmware_updates",
+            "previous_faults",
+            "maintenance_score",
+            "thermal_runaway_risk",
+            "voltage_imbalance",
+            "temperature_variance",
+            "sensor_fault_count",
+            "BMS_warning_count",
+            "abnormal_voltage_events"
+          ],
+          "remaining_capacity": [
+            "vehicle_brand",
+            "vehicle_model",
+            "vehicle_type",
+            "manufacturing_year",
+            "battery_manufacturer",
+            "battery_chemistry",
+            "battery_capacity_kwh",
+            "drive_type",
+            "odometer_km",
+            "vehicle_age_years",
+            "fleet_or_private",
+            "cycle_count",
+            "state_of_charge",
+            "depth_of_discharge",
+            "cell_voltage_avg",
+            "cell_voltage_std",
+            "pack_voltage",
+            "cell_temperature_avg",
+            "cell_temperature_max",
+            "charge_efficiency",
+            "discharge_efficiency",
+            "charging_cycles_last_month",
+            "fast_charge_ratio",
+            "slow_charge_ratio",
+            "average_charge_power_kw",
+            "average_charging_time",
+            "overnight_charging_ratio",
+            "home_charging_ratio",
+            "charging_interruptions",
+            "overcharge_events",
+            "average_speed",
+            "average_trip_distance",
+            "aggressive_acceleration_score",
+            "hard_braking_score",
+            "regenerative_braking_usage",
+            "highway_driving_ratio",
+            "city_driving_ratio",
+            "daily_distance",
+            "average_ambient_temperature",
+            "maximum_temperature",
+            "minimum_temperature",
+            "humidity",
+            "altitude",
+            "terrain_type",
+            "dust_exposure",
+            "last_service_days",
+            "cooling_system_health",
+            "firmware_updates",
+            "previous_faults",
+            "maintenance_score",
+            "thermal_runaway_risk",
+            "voltage_imbalance",
+            "temperature_variance",
+            "sensor_fault_count",
+            "BMS_warning_count",
+            "abnormal_voltage_events"
+          ],
+          "state_of_health": [
+            "vehicle_brand",
+            "vehicle_model",
+            "vehicle_type",
+            "manufacturing_year",
+            "battery_manufacturer",
+            "battery_chemistry",
+            "battery_capacity_kwh",
+            "drive_type",
+            "odometer_km",
+            "vehicle_age_years",
+            "fleet_or_private",
+            "cycle_count",
+            "state_of_charge",
+            "depth_of_discharge",
+            "cell_voltage_avg",
+            "cell_voltage_std",
+            "pack_voltage",
+            "cell_temperature_avg",
+            "cell_temperature_max",
+            "charge_efficiency",
+            "discharge_efficiency",
+            "charging_cycles_last_month",
+            "fast_charge_ratio",
+            "slow_charge_ratio",
+            "average_charge_power_kw",
+            "average_charging_time",
+            "overnight_charging_ratio",
+            "home_charging_ratio",
+            "charging_interruptions",
+            "overcharge_events",
+            "average_speed",
+            "average_trip_distance",
+            "aggressive_acceleration_score",
+            "hard_braking_score",
+            "regenerative_braking_usage",
+            "highway_driving_ratio",
+            "city_driving_ratio",
+            "daily_distance",
+            "average_ambient_temperature",
+            "maximum_temperature",
+            "minimum_temperature",
+            "humidity",
+            "altitude",
+            "terrain_type",
+            "dust_exposure",
+            "last_service_days",
+            "cooling_system_health",
+            "firmware_updates",
+            "previous_faults",
+            "maintenance_score",
+            "thermal_runaway_risk",
+            "voltage_imbalance",
+            "temperature_variance",
+            "sensor_fault_count",
+            "BMS_warning_count",
+            "abnormal_voltage_events"
+          ]
+        },
+        "sequence_available": false,
+        "sequence_reason": "Registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory.",
+        "targets": {
+          "battery_failure": {
+            "definition": "Binary battery-failure label supplied by the source dataset.",
+            "label_origin": "source_dataset",
+            "leakage_columns": [
+              "state_of_health",
+              "battery_health_percent",
+              "capacity_loss_percent",
+              "remaining_capacity",
+              "predicted_remaining_life_cycles"
+            ],
+            "readiness": "EXPERIMENTAL",
+            "rul_reason": "No observed sequential EOL history in this dataset.",
+            "rul_status": "UNAVAILABLE",
+            "task": "classification",
+            "training_permitted": true,
+            "unit": null
+          },
+          "battery_health_percent": {
+            "definition": "SOH percentage; audited independently of state_of_health.",
+            "label_origin": "source_dataset",
+            "leakage_columns": [
+              "state_of_health",
+              "capacity_loss_percent",
+              "remaining_capacity",
+              "predicted_remaining_life_cycles"
+            ],
+            "readiness": "EXPERIMENTAL",
+            "rul_reason": "No observed sequential EOL history in this dataset.",
+            "rul_status": "UNAVAILABLE",
+            "task": "regression",
+            "training_permitted": true,
+            "unit": "%"
+          },
+          "predicted_remaining_life_cycles": {
+            "definition": "Source-provided projection. It is not an observed RUL label.",
+            "label_origin": "source_dataset",
+            "leakage_columns": [],
+            "readiness": "UNAVAILABLE",
+            "rul_reason": "The field is a supplied projection, not an observed EOL trajectory.",
+            "rul_status": "UNAVAILABLE",
+            "task": "projection_not_rul",
+            "training_permitted": false,
+            "unit": "cycles (projected)"
+          },
+          "remaining_capacity": {
+            "definition": "Pack capacity derived algebraically as battery_capacity_kwh × battery_health_percent / 100 (rounded to 2 decimals); it is not an independent measurement. The derivation is verified only on rows where both battery_capacity_kwh and battery_health_percent are present.",
+            "label_origin": "derived_from_health_percent",
+            "leakage_columns": [
+              "state_of_health",
+              "battery_health_percent",
+              "capacity_loss_percent",
+              "predicted_remaining_life_cycles"
+            ],
+            "readiness": "EXPERIMENTAL",
+            "rul_reason": "No observed sequential EOL history in this dataset.",
+            "rul_status": "UNAVAILABLE",
+            "task": "regression",
+            "training_permitted": true,
+            "unit": "kWh (pack energy, not cell Ah)"
+          },
+          "state_of_health": {
+            "definition": "SOH percentage; audited independently of battery_health_percent.",
+            "label_origin": "source_dataset",
+            "leakage_columns": [
+              "battery_health_percent",
+              "capacity_loss_percent",
+              "remaining_capacity",
+              "predicted_remaining_life_cycles"
+            ],
+            "readiness": "EXPERIMENTAL",
+            "rul_reason": "No observed sequential EOL history in this dataset.",
+            "rul_status": "UNAVAILABLE",
+            "task": "regression",
+            "training_permitted": true,
+            "unit": "%"
+          }
+        },
+        "training_permitted_targets": [
+          "battery_failure",
+          "state_of_health",
+          "battery_health_percent",
+          "remaining_capacity"
+        ],
+        "useful_for": {
+          "augmentation": false,
+          "experimentation": true,
+          "inference": false,
+          "validation": true
+        }
+      },
+      "data_origin": "source_dataset",
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "provenance": {
+        "processed_sha256": "6b4f9035f50d54d72c6e653a5f1f6676b69896ba4b883e48ad1c6f1e5f57dc9d",
+        "quality_report": "DATA/processed/data_quality_report.json",
+        "source_sha256": "3b971b47e6dba73eef7edd60c7841332c5c34be17b649b9b5f036001315b28ea"
+      },
+      "record_grain": "vehicle_pack_snapshot",
+      "rows": 20000,
+      "source_file": "ev battery_failure prediction Dataset.csv"
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "columns": 41,
+      "compatibility": {
+        "available_columns": [
+          "source_row_id",
+          "dataset_id",
+          "data_origin",
+          "source_file",
+          "cell_id",
+          "manufacturer",
+          "electrolyte_chemistry",
+          "anode_composition",
+          "cathode_chemistry",
+          "nominal_capacity_ah",
+          "gravimetric_energy_density_wh_kg",
+          "volumetric_energy_density_wh_l",
+          "cycle_number",
+          "charging_c_rate",
+          "discharging_c_rate",
+          "operating_temperature_c",
+          "ambient_temperature_c",
+          "internal_resistance_mohm",
+          "state_of_health_pct",
+          "coulombic_efficiency_pct",
+          "stack_pressure_mpa",
+          "dendrite_penetration_risk",
+          "thermal_runaway_onset_c",
+          "nominal_voltage_plateau_v",
+          "target_ev_application",
+          "thermal_stability_margin_c",
+          "fast_charge_acceptance_score",
+          "dendrite_mitigation_efficiency",
+          "projected_cycle_life_80pct_soh",
+          "commercial_readiness_level",
+          "degradation_risk_tier",
+          "cot_electrochemical_risk_rationale",
+          "confidence_score",
+          "chemistry_family",
+          "missing_field_count",
+          "missing_fields",
+          "outlier_field_count",
+          "outlier_fields",
+          "invalid_field_count",
+          "invalid_fields",
+          "quality_flag"
+        ],
+        "candidate_targets": [
+          "state_of_health_pct",
+          "degradation_risk_tier"
+        ],
+        "chemistry_labels": [
+          "Solid-State"
+        ],
+        "cycle_field": "cycle_number",
+        "cycle_is_sequence_index": false,
+        "duplicate_full_rows": 0,
+        "identifier_analysis": {
+          "cell_id": {
+            "nulls": 0,
+            "repeated_rows": 0,
+            "unique": 10000
+          }
+        },
+        "label_counts": {
+          "degradation_risk_tier": {
+            "Accelerated_Degradation_Tier_3": 3758,
+            "Critical_Thermal_Risk_Tier_4": 1682,
+            "Minimal_Degradation_Tier_1": 2278,
+            "Moderate_Degradation_Tier_2": 2282
+          }
+        },
+        "leakage_columns": [
+          "confidence_score",
+          "cot_electrochemical_risk_rationale",
+          "degradation_risk_tier",
+          "projected_cycle_life_80pct_soh",
+          "state_of_health_pct"
+        ],
+        "missingness": {},
+        "safe_feature_columns": {
+          "degradation_risk_tier": [
+            "manufacturer",
+            "electrolyte_chemistry",
+            "anode_composition",
+            "cathode_chemistry",
+            "nominal_capacity_ah",
+            "gravimetric_energy_density_wh_kg",
+            "volumetric_energy_density_wh_l",
+            "cycle_number",
+            "charging_c_rate",
+            "discharging_c_rate",
+            "operating_temperature_c",
+            "ambient_temperature_c",
+            "internal_resistance_mohm",
+            "coulombic_efficiency_pct",
+            "stack_pressure_mpa",
+            "thermal_runaway_onset_c",
+            "nominal_voltage_plateau_v",
+            "target_ev_application",
+            "commercial_readiness_level"
+          ],
+          "state_of_health_pct": [
+            "manufacturer",
+            "electrolyte_chemistry",
+            "anode_composition",
+            "cathode_chemistry",
+            "nominal_capacity_ah",
+            "gravimetric_energy_density_wh_kg",
+            "volumetric_energy_density_wh_l",
+            "cycle_number",
+            "charging_c_rate",
+            "discharging_c_rate",
+            "operating_temperature_c",
+            "ambient_temperature_c",
+            "internal_resistance_mohm",
+            "coulombic_efficiency_pct",
+            "stack_pressure_mpa",
+            "thermal_runaway_onset_c",
+            "nominal_voltage_plateau_v",
+            "target_ev_application",
+            "commercial_readiness_level"
+          ]
+        },
+        "sequence_available": false,
+        "sequence_reason": "Registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory.",
+        "targets": {
+          "degradation_risk_tier": {
+            "definition": "Provided risk tier derived from SOH and other signals.",
+            "label_origin": "source_dataset",
+            "leakage_columns": [
+              "state_of_health_pct",
+              "degradation_risk_tier",
+              "projected_cycle_life_80pct_soh",
+              "cot_electrochemical_risk_rationale",
+              "confidence_score"
+            ],
+            "readiness": "EXPERIMENTAL",
+            "rul_reason": "No observed sequential EOL history in this dataset.",
+            "rul_status": "UNAVAILABLE",
+            "task": "classification",
+            "training_permitted": true,
+            "unit": null
+          },
+          "projected_cycle_life_80pct_soh": {
+            "definition": "Projected cycle life at 80% SOH. Never an observed RUL label.",
+            "label_origin": "source_dataset",
+            "leakage_columns": [],
+            "readiness": "UNAVAILABLE",
+            "rul_reason": "Projected cycle life is not observed remaining useful life.",
+            "rul_status": "UNAVAILABLE",
+            "task": "projection_not_rul",
+            "training_permitted": false,
+            "unit": "cycles (projected)"
+          },
+          "state_of_health_pct": {
+            "definition": "Candidate SOH percentage; mixed electrolyte/cathode metadata.",
+            "label_origin": "source_dataset",
+            "leakage_columns": [
+              "degradation_risk_tier",
+              "projected_cycle_life_80pct_soh",
+              "cot_electrochemical_risk_rationale",
+              "confidence_score"
+            ],
+            "readiness": "EXPERIMENTAL",
+            "rul_reason": "projected_cycle_life_80pct_soh is a projection and cycle_number is not a chronological trajectory.",
+            "rul_status": "UNAVAILABLE",
+            "task": "regression",
+            "training_permitted": true,
+            "unit": "%"
+          }
+        },
+        "training_permitted_targets": [
+          "state_of_health_pct",
+          "degradation_risk_tier"
+        ],
+        "useful_for": {
+          "augmentation": false,
+          "experimentation": true,
+          "inference": false,
+          "validation": true
+        }
+      },
+      "data_origin": "source_dataset",
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "provenance": {
+        "processed_sha256": "b49529ccffebe735be022e306339596d490ad717d61960a1ab1b71c43cc87513",
+        "quality_report": "DATA/processed/data_quality_report.json",
+        "source_sha256": "0fc38a2d4fe6289d712d85112f62d928c78419e562f2ebd9a2f94583489cd690"
+      },
+      "record_grain": "cell_snapshot",
+      "rows": 10000,
+      "source_file": "solid_state_ev_battery_telemetry_enriched_2026.csv"
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "columns": 20,
+      "compatibility": {
+        "available_columns": [
+          "source_row_id",
+          "dataset_id",
+          "data_origin",
+          "source_file",
+          "battery_id",
+          "electrolyte_type",
+          "cycle_count",
+          "internal_resistance_mohms",
+          "temperature_celsius",
+          "discharge_capacity_ah",
+          "charge_time_mins",
+          "state_of_health",
+          "chemistry_family",
+          "missing_field_count",
+          "missing_fields",
+          "outlier_field_count",
+          "outlier_fields",
+          "invalid_field_count",
+          "invalid_fields",
+          "quality_flag"
+        ],
+        "candidate_targets": [
+          "state_of_health",
+          "discharge_capacity_ah"
+        ],
+        "chemistry_labels": [
+          "Lithium-Sulfur",
+          "Sodium-ion",
+          "Solid-State"
+        ],
+        "cycle_field": "cycle_count",
+        "cycle_is_sequence_index": false,
+        "duplicate_full_rows": 0,
+        "identifier_analysis": {
+          "battery_id": {
+            "nulls": 0,
+            "repeated_rows": 22,
+            "unique": 1978
+          }
+        },
+        "label_counts": {
+          "state_of_health": {
+            "Degraded": 703,
+            "End_of_Life": 103,
+            "Healthy": 1194
+          }
+        },
+        "leakage_columns": [
+          "discharge_capacity_ah",
+          "state_of_health"
+        ],
+        "missingness": {},
+        "safe_feature_columns": {
+          "discharge_capacity_ah": [
+            "electrolyte_type",
+            "cycle_count",
+            "internal_resistance_mohms",
+            "temperature_celsius",
+            "charge_time_mins"
+          ],
+          "state_of_health": [
+            "electrolyte_type",
+            "cycle_count",
+            "internal_resistance_mohms",
+            "temperature_celsius",
+            "charge_time_mins"
+          ]
+        },
+        "sequence_available": false,
+        "sequence_reason": "Registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory.",
+        "targets": {
+          "discharge_capacity_ah": {
+            "definition": "Measured discharge capacity in the synthetic campaign.",
+            "label_origin": "synthetic",
+            "leakage_columns": [
+              "state_of_health"
+            ],
+            "readiness": "RESEARCH_ONLY",
+            "rul_reason": "Synthetic snapshot records do not establish observed RUL.",
+            "rul_status": "UNAVAILABLE",
+            "task": "regression",
+            "training_permitted": true,
+            "unit": "Ah (synthetic)"
+          },
+          "state_of_health": {
+            "definition": "Categorical Healthy/Degraded/End_of_Life label.",
+            "label_origin": "synthetic",
+            "leakage_columns": [
+              "discharge_capacity_ah"
+            ],
+            "readiness": "RESEARCH_ONLY",
+            "rul_reason": "Synthetic snapshot labels with no chronological history.",
+            "rul_status": "UNAVAILABLE",
+            "task": "classification",
+            "training_permitted": true,
+            "unit": null
+          }
+        },
+        "training_permitted_targets": [
+          "state_of_health",
+          "discharge_capacity_ah"
+        ],
+        "useful_for": {
+          "augmentation": true,
+          "experimentation": true,
+          "inference": false,
+          "validation": false
+        }
+      },
+      "data_origin": "synthetic",
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "provenance": {
+        "processed_sha256": "9f7e8ff595499bdc7a70bf29e7cc3d975db4fa8ca57b41236123350496bf6238",
+        "quality_report": "DATA/processed/data_quality_report.json",
+        "source_sha256": "4a754a7937f564375611a080dac9b6b3feca97e1f8264de5b30b7f81aed7d224"
+      },
+      "record_grain": "synthetic_battery_snapshot",
+      "rows": 2000,
+      "source_file": "synthetic_battery_lifecycle.csv"
+    }
+  },
+  "registry_version": "1.0.0",
+  "summary": {
+    "EV_FAILURE_PREDICTION": {
+      "columns": 82,
+      "data_origin": "source_dataset",
+      "leakage_columns": [
+        "battery_health_percent",
+        "capacity_loss_percent",
+        "predicted_remaining_life_cycles",
+        "remaining_capacity",
+        "state_of_health"
+      ],
+      "record_grain": "vehicle_pack_snapshot",
+      "rows": 20000,
+      "sequence_available": false,
+      "training_permitted_targets": [
+        "battery_failure",
+        "state_of_health",
+        "battery_health_percent",
+        "remaining_capacity"
+      ]
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "columns": 41,
+      "data_origin": "source_dataset",
+      "leakage_columns": [
+        "confidence_score",
+        "cot_electrochemical_risk_rationale",
+        "degradation_risk_tier",
+        "projected_cycle_life_80pct_soh",
+        "state_of_health_pct"
+      ],
+      "record_grain": "cell_snapshot",
+      "rows": 10000,
+      "sequence_available": false,
+      "training_permitted_targets": [
+        "state_of_health_pct",
+        "degradation_risk_tier"
+      ]
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "columns": 20,
+      "data_origin": "synthetic",
+      "leakage_columns": [
+        "discharge_capacity_ah",
+        "state_of_health"
+      ],
+      "record_grain": "synthetic_battery_snapshot",
+      "rows": 2000,
+      "sequence_available": false,
+      "training_permitted_targets": [
+        "state_of_health",
+        "discharge_capacity_ah"
+      ]
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "registry_version": "1.0.0",
+  "generated_at": "2026-11-02T12:04:32.674763+00:00",
+  "selected_model": "median_fade_constant",
+  "model_version": "1.0.0",
+  "model_id": "member2_rul::median_fade_constant::1.0.0",
+  "approved_for_use": false,
+  "production_ready": false,
+  "task": "remaining_useful_life",
+  "unit": "observed_cycles",
+  "eol_threshold_pct": 80.0,
+  "target_definition": "Observed cycles from the prediction origin until the first cycle whose SOH is strictly below the configured threshold.",
+  "trained_cells": [
+    "B0005",
+    "B0006",
+    "B0018"
+  ],
+  "validation_protocol": "leave-one-cell-out",
+  "candidates": {
+    "last_delta_persistence": {
+      "description": "Mean SOH change over the last 5 cycles held constant.",
+      "metrics": {
+        "n": 59,
+        "mae": 17.78157557889388,
+        "rmse": 35.13894316753164,
+        "bias": 4.864155702997849
+      },
+      "coverage": 0.864406779661017
+    },
+    "degradation_rate_20": {
+      "description": "Linear SOH fade over the last 20 cycles extrapolated.",
+      "metrics": {
+        "n": 73,
+        "mae": 39.66894936638784,
+        "rmse": 141.7886744848538,
+        "bias": 36.610494783319695
+      },
+      "coverage": 0.8767123287671232
+    },
+    "median_fade_constant": {
+      "description": "Training median fade per cycle applied as a constant.",
+      "metrics": {
+        "n": 78,
+        "mae": 12.214935042321466,
+        "rmse": 16.119302853908625,
+        "bias": 6.176676284301801
+      },
+      "coverage": 0.8333333333333334
+    },
+    "linear_extrapolation": {
+      "description": "OLS SOH trend over the full observed history extrapolated.",
+      "metrics": {
+        "n": 78,
+        "mae": 48.15355958800139,
+        "rmse": 91.60556009480585,
+        "bias": 45.98684357348477
+      },
+      "coverage": 0.6538461538461539
+    },
+    "exponential_extrapolation": {
+      "description": "Log-linear exponential decay extrapolated.",
+      "metrics": {
+        "n": 78,
+        "mae": 53.343827739517636,
+        "rmse": 99.39728938511608,
+        "bias": 51.95623582570311
+      },
+      "coverage": 0.6666666666666666
+    },
+    "padm_ar": {
+      "description": "Autoregressive SOH-delta Ridge model rolled forward causally.",
+      "metrics": {
+        "n": 27,
+        "mae": 15.440508994816575,
+        "rmse": 18.45820039933422,
+        "bias": -15.390907203599628
+      },
+      "coverage": 0.48148148148148145
+    },
+    "direct_ridge": {
+      "description": "Ridge regression on causal trajectory summary features.",
+      "metrics": {
+        "n": 78,
+        "mae": 18.953079175308083,
+        "rmse": 20.682805462392487,
+        "bias": -9.649046212412271
+      },
+      "coverage": 0.47435897435897434
+    },
+    "direct_hgb": {
+      "description": "Histogram gradient boosting on causal trajectory summary features.",
+      "metrics": {
+        "n": 78,
+        "mae": 12.071530164768358,
+        "rmse": 15.191150844141065,
+        "bias": -1.9196378390886053
+      },
+      "coverage": 0.8846153846153846
+    }
+  },
+  "selection": {
+    "selected_model": "median_fade_constant",
+    "best_single_model": "direct_hgb",
+    "best_single_model_mae": 12.071530164768358,
+    "selection_protocol": "prefer the simplest candidate whose pre-threshold MAE is within 0.60 cycles of the best candidate",
+    "selection_metric": 12.214935042321466,
+    "selection_rmse": 16.119302853908625,
+    "simplicity_tolerance_cycles": 0.6035765082384179,
+    "complexity_tiebreak": [
+      "last_delta_persistence",
+      "degradation_rate_20",
+      "median_fade_constant",
+      "linear_extrapolation",
+      "exponential_extrapolation",
+      "padm_ar",
+      "direct_ridge",
+      "direct_hgb"
+    ],
+    "eligible_models": [
+      "degradation_rate_20",
+      "direct_hgb",
+      "direct_ridge",
+      "exponential_extrapolation",
+      "linear_extrapolation",
+      "median_fade_constant"
+    ]
+  },
+  "calibration": {
+    "coverage_target": 0.9,
+    "q90_abs_residual": 26.466043844557582,
+    "details": {
+      "n_residuals": 78,
+      "median_abs_residual": 10.002944227415913,
+      "q90_abs_residual": 26.466043844557582,
+      "coverage_target": 0.9
+    },
+    "all_models": {
+      "last_delta_persistence": 43.577803585004915,
+      "degradation_rate_20": 60.01989191081732,
+      "median_fade_constant": 26.466043844557582,
+      "linear_extrapolation": 187.25228382407045,
+      "exponential_extrapolation": 203.9217665265174,
+      "padm_ar": 31.432245593864067,
+      "direct_ridge": 30.259840533980896,
+      "direct_hgb": 26.106610379227654
+    }
+  },
+  "artifacts": {
+    "rul_predictions.csv": {
+      "sha256": "8380c22e80bbca493594e0af47298d97a0760fd2de2b9f48588a889a2f3eb456"
+    },
+    "rul_current_predictions.csv": {
+      "sha256": "4320d9e5727b14359f797e18bb969ca2795e97966158b4f8459315ba3afc0b0b"
+    },
+    "rul_censored_projections.csv": {
+      "sha256": "ecaf5db510623c9fdd12331b36d15dfe18766721fe62f15fd4a042349dca2fbd"
+    },
+    "rul_per_battery.csv": {
+      "sha256": "a4e08deb4e3246c7681f6f2997aa12f72c450eef724ef236f0f0f8706941600f"
+    },
+    "rul_degradation_trajectories.csv": {
+      "sha256": "57c07c2b7f32b040904ade4e12018a77e62a1bf3167c80c7bccb7c7be372cd36"
+    },
+    "rul_eol_trajectories.csv": {
+      "sha256": "5411535ec156c272dd88057a5d8b8a43dab0b13317b337962be95d25654189e7"
+    },
+    "rul_model.joblib": {
+      "sha256": "9841f6052fc94add79efb1e78cadadfac679f6351822287bea729d153f2148d4"
+    }
+  },
+  "source": {
+    "path": "C:\\Users\\KIIT0001\\OneDrive\\Desktop\\Major-Project-EV-BATTERY-git\\master_table.parquet",
+    "sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb"
+  },
+  "code": {
+    "member2_modeling\\analytics\\sequential.py": "fefcad58ba1c76f004ce5ab20d3234ad6f4945c07811f1de9976820f099ce311",
+    "member2_modeling\\rul\\forecast.py": "2f97068b4bc47b3f60778cca073aaed93e6b642a0907639f487de97108f26e04",
+    "member2_modeling\\rul\\pipeline.py": "cc2acbf5e44b986224264d465696c703935f127287be67ab14314efd45d09218",
+    "member2_modeling\\rul\\labels.py": "8caa6ca211b867ceebfb003931bf6bc942b492276e5492927aef812f14528055",
+    "member2_modeling\\rul\\evaluation.py": "398db541516ccc40fddce638c0790ac4b9b224e080100d884a5cfbdfb53fba4a"
+  },
+  "limitations": [
+    "Only three NMC cells provide a genuine observed EOL crossing.",
+    "One NMC cell (B0018) returns above 80% for several cycles after its first crossing; the first-crossing convention is audited separately.",
+    "The 80% SOH threshold is a project assumption, not a manufacturer limit.",
+    "Cycle ids in the source table are contiguous for these cells, so predicted EOL cycle ids are reported in source-cycle space.",
+    "No LFP or Na-ion cell reaches 80% SOH, so no supervised RUL validation is possible for those chemistries."
+  ]
+}

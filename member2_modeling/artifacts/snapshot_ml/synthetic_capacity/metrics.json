@@ -1,0 +1,105 @@
+{
+  "baselines": {
+    "train_chemistry_median": {
+      "bias": -1.4553874999999983,
+      "mae": 8.149037499999999,
+      "mape_pct": 11.336075381561965,
+      "median_abs_error": 7.282499999999999,
+      "n": 400,
+      "r2": 0.7291542747369693,
+      "residual_q90": null,
+      "rmse": 10.045801377316796
+    },
+    "train_mean": {
+      "bias": 0.17035833333333414,
+      "mae": 16.258006416666667,
+      "mape_pct": 22.306125621692516,
+      "median_abs_error": 15.049999999999997,
+      "n": 400,
+      "r2": -7.788961844679143e-05,
+      "residual_q90": null,
+      "rmse": 19.303697675085754
+    },
+    "train_median": {
+      "bias": -0.11982500000001167,
+      "mae": 16.249924999999998,
+      "mape_pct": 22.37551288773642,
+      "median_abs_error": 14.975000000000001,
+      "n": 400,
+      "r2": -3.853431884448533e-05,
+      "residual_q90": null,
+      "rmse": 19.303317849530426
+    }
+  },
+  "caveats": [
+    "Metrics are computed on a grouped holdout of unseen entities.",
+    "No test row was used for selection or preprocessing.",
+    "The synthetic dataset is generated, not measured."
+  ],
+  "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+  "feature_importance": [],
+  "per_chemistry": {
+    "Lithium_Sulfur": {
+      "bias": 0.8635197750274323,
+      "mae": 3.9893260799274115,
+      "mape_pct": 4.102208830909164,
+      "median_abs_error": 3.0675077629929675,
+      "n": 138,
+      "r2": 0.725772953763083,
+      "residual_q90": null,
+      "rmse": 5.088998981867045
+    },
+    "Sodium_Ion": {
+      "bias": -0.3554625926814654,
+      "mae": 3.6190535854302865,
+      "mape_pct": 6.580769787384787,
+      "median_abs_error": 2.649730668958526,
+      "n": 131,
+      "r2": 0.7814662616679681,
+      "residual_q90": null,
+      "rmse": 4.761654990946403
+    },
+    "Solid_State": {
+      "bias": 0.5542618576130763,
+      "mae": 3.835194526897446,
+      "mape_pct": 5.1027181678980575,
+      "median_abs_error": 2.7286077545399507,
+      "n": 131,
+      "r2": 0.7324937766844463,
+      "residual_q90": null,
+      "rmse": 5.119901626194309
+    }
+  },
+  "selected_model": {
+    "name": "ridge",
+    "params": {
+      "alpha": 1.0
+    },
+    "scale_features": true
+  },
+  "status": "RESEARCH_ONLY",
+  "target": "discharge_capacity_ah",
+  "task_id": "synthetic_capacity",
+  "task_type": "regression",
+  "test": {
+    "bias": 0.3630210816495667,
+    "bootstrap_ci": {
+      "mae_ci95_high": 4.14691154749152,
+      "mae_ci95_low": 3.503231227913011
+    },
+    "mae": 3.8175837543622895,
+    "mape_pct": 5.241604352018793,
+    "median_abs_error": 2.8639510908635515,
+    "n": 400,
+    "r2": 0.9330516883657524,
+    "residual_q90": 8.959232598335829,
+    "rmse": 4.994516002025248
+  },
+  "uncertainty": {
+    "calibration_status": "empirical_validation_residuals",
+    "kind": "validation_residual_interval",
+    "note": "Prediction interval is +/- residual_q90 around the point estimate.",
+    "residual_q90": 8.959232598335829,
+    "residual_std": 3.2879757071457023
+  }
+}

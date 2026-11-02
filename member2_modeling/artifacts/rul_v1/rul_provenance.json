@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-11-02T12:04:32.674763+00:00",
+  "python": "3.12.10 (main, May 30 2025, 05:39:07) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "numpy": "2.5.4",
+  "pandas": "3.1.0",
+  "source": {
+    "path": "C:\\Users\\KIIT0001\\OneDrive\\Desktop\\Major-Project-EV-BATTERY-git\\master_table.parquet",
+    "sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb"
+  },
+  "code": {
+    "member2_modeling\\analytics\\sequential.py": "fefcad58ba1c76f004ce5ab20d3234ad6f4945c07811f1de9976820f099ce311",
+    "member2_modeling\\rul\\forecast.py": "2f97068b4bc47b3f60778cca073aaed93e6b642a0907639f487de97108f26e04",
+    "member2_modeling\\rul\\pipeline.py": "cc2acbf5e44b986224264d465696c703935f127287be67ab14314efd45d09218",
+    "member2_modeling\\rul\\labels.py": "8caa6ca211b867ceebfb003931bf6bc942b492276e5492927aef812f14528055",
+    "member2_modeling\\rul\\evaluation.py": "398db541516ccc40fddce638c0790ac4b9b224e080100d884a5cfbdfb53fba4a"
+  },
+  "selection": {
+    "selected_model": "median_fade_constant",
+    "best_single_model": "direct_hgb",
+    "best_single_model_mae": 12.071530164768358,
+    "selection_protocol": "prefer the simplest candidate whose pre-threshold MAE is within 0.60 cycles of the best candidate",
+    "selection_metric": 12.214935042321466,
+    "selection_rmse": 16.119302853908625,
+    "simplicity_tolerance_cycles": 0.6035765082384179,
+    "complexity_tiebreak": [
+      "last_delta_persistence",
+      "degradation_rate_20",
+      "median_fade_constant",
+      "linear_extrapolation",
+      "exponential_extrapolation",
+      "padm_ar",
+      "direct_ridge",
+      "direct_hgb"
+    ],
+    "eligible_models": [
+      "degradation_rate_20",
+      "direct_hgb",
+      "direct_ridge",
+      "exponential_extrapolation",
+      "linear_extrapolation",
+      "median_fade_constant"
+    ]
+  },
+  "validation": {
+    "primary": "leave-one-cell-out over cells",
+    "cells": [
+      "B0005",
+      "B0006",
+      "B0018"
+    ],
+    "secondary": "within-cell chronological 60/40 split",
+    "origin_step_cycles": 2,
+    "min_history_cycles": 10,
+    "causal_rule": "Every prediction uses only cycles at or before the origin; future SOH is never an input."
+  },
+  "excluded": {
+    "protected_padm_test_evaluation": "Read-only and not re-run; not used for fitting or selection.",
+    "snapshot_datasets": "EV, solid-state and synthetic snapshots are UNAVAILABLE for RUL; no sequences were manufactured.",
+    "na_ion": "25 cycles per cell with no genuine crossing; UNAVAILABLE."
+  },
+  "no_fabrication": "All predictions derive from observed cycle-level SOH in the source table. Censored projections are labelled and carry no validated accuracy."
+}

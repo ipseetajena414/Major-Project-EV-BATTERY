@@ -1,0 +1,83 @@
+{
+  "pooled_metrics": {
+    "ridge": {
+      "label": "PADM_Ridge",
+      "n": 95,
+      "mae": 0.4443643391132355,
+      "rmse": 0.8547940254211426,
+      "r2": 0.9411454945842233,
+      "bias": -0.00021205701341386884
+    },
+    "elasticnet": {
+      "label": "PADM_ElasticNet",
+      "n": 95,
+      "mae": 0.4083951711654663,
+      "rmse": 0.8564938306808472,
+      "r2": 0.9409111884445214,
+      "bias": -0.11170907318592072
+    },
+    "persistence": {
+      "label": "persistence",
+      "n": 95,
+      "mae": 0.5040179491043091,
+      "rmse": 0.8669114112854004,
+      "r2": 0.9394650510279067,
+      "bias": 0.12550121545791626
+    },
+    "mean_fade": {
+      "label": "mean_fade",
+      "n": 95,
+      "mae": 0.41381385922431946,
+      "rmse": 0.8665686249732971,
+      "r2": 0.9395129071561614,
+      "bias": -0.1231112852692604
+    }
+  },
+  "per_cell_metrics": {
+    "B0005": {
+      "n": 34,
+      "ridge_mae": 0.289093017578125,
+      "enet_mae": 0.27747657895088196,
+      "persistence_mae": 0.3270997405052185,
+      "mean_fade_mae": 0.28193822503089905
+    },
+    "B0006": {
+      "n": 34,
+      "ridge_mae": 0.4559549391269684,
+      "enet_mae": 0.36617133021354675,
+      "persistence_mae": 0.4710210859775543,
+      "mean_fade_mae": 0.3550042510032654
+    },
+    "B0018": {
+      "n": 27,
+      "ridge_mae": 0.6252955794334412,
+      "enet_mae": 0.6264263987541199,
+      "persistence_mae": 0.7683554887771606,
+      "mean_fade_mae": 0.6539360284805298
+    }
+  },
+  "quality_flags": {
+    "ridge": "PADM_BEATS_PERSISTENCE_ONLY",
+    "elasticnet": "PADM_BEATS_BOTH_BASELINES"
+  },
+  "best_padm_model": "PADM_ElasticNet",
+  "export_model": "PADM_ElasticNet",
+  "gate_tests": {
+    "G1_no_nan_inf_in_padm": true,
+    "G2_soh_within_bounds": true,
+    "G3_test_rows_only": true,
+    "G4_aligned_sample_counts": true,
+    "G5_persistence_mae_finite": true,
+    "G6_mean_fade_mae_finite": true,
+    "G7_valid_quality_flag": true,
+    "G8_production_ready_is_false": true
+  },
+  "all_gates_passed": true,
+  "delta_clip_bounds": {
+    "low": -4.041602607500252,
+    "high": 9.277404840655052
+  },
+  "train_mean_delta": -0.24861488866443487,
+  "production_ready": false,
+  "note": "Test evaluation completed. Results are final. Do not re-run or adjust models based on these results."
+}

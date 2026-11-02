@@ -1,0 +1,462 @@
+{
+  "baselines": {
+    "majority_class": {
+      "accuracy": 0.93075,
+      "balanced_accuracy": 0.5,
+      "brier": null,
+      "class": "0",
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            3723,
+            0
+          ],
+          [
+            277,
+            0
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.4820665544477535,
+      "n": 4000,
+      "per_class": {
+        "0": {
+          "n": 3723,
+          "precision": 0.93075,
+          "recall": 1.0
+        },
+        "1": {
+          "n": 277,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.8973668911044931
+    },
+    "train_chemistry_majority": {
+      "accuracy": 0.93075,
+      "balanced_accuracy": 0.5,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            3723,
+            0
+          ],
+          [
+            277,
+            0
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.4820665544477535,
+      "n": 4000,
+      "per_class": {
+        "0": {
+          "n": 3723,
+          "precision": 0.93075,
+          "recall": 1.0
+        },
+        "1": {
+          "n": 277,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.8973668911044931
+    }
+  },
+  "caveats": [
+    "Metrics are computed on a grouped holdout of unseen entities.",
+    "No test row was used for selection or preprocessing."
+  ],
+  "dataset_id": "EV_FAILURE_PREDICTION",
+  "feature_importance": [
+    {
+      "feature": "thermal_runaway_risk",
+      "importance": 2.016651963945411
+    },
+    {
+      "feature": "previous_faults",
+      "importance": 1.9514056576676375
+    },
+    {
+      "feature": "BMS_warning_count",
+      "importance": 1.5845830066493494
+    },
+    {
+      "feature": "discharge_efficiency",
+      "importance": 1.2761143164275528
+    },
+    {
+      "feature": "charge_efficiency",
+      "importance": 1.183824296745194
+    },
+    {
+      "feature": "abnormal_voltage_events",
+      "importance": 1.1313972697452088
+    },
+    {
+      "feature": "cell_temperature_max",
+      "importance": 0.930332935307702
+    },
+    {
+      "feature": "maximum_temperature",
+      "importance": 0.614436954177314
+    },
+    {
+      "feature": "vehicle_model=Kona Electric",
+      "importance": 0.6130495181550661
+    },
+    {
+      "feature": "manufacturing_year",
+      "importance": 0.6108090877309693
+    },
+    {
+      "feature": "vehicle_brand=MG",
+      "importance": 0.6029171976001253
+    },
+    {
+      "feature": "vehicle_brand=Hyundai",
+      "importance": 0.5612697426800899
+    },
+    {
+      "feature": "vehicle_age_years",
+      "importance": 0.5559161366265969
+    },
+    {
+      "feature": "vehicle_brand=Ford",
+      "importance": 0.5126910405774081
+    },
+    {
+      "feature": "vehicle_model=Ioniq 5",
+      "importance": 0.4846801344239784
+    },
+    {
+      "feature": "vehicle_model=Comet EV",
+      "importance": 0.4587951225882971
+    },
+    {
+      "feature": "vehicle_model=F-150 Lightning",
+      "importance": 0.4328616166868403
+    },
+    {
+      "feature": "vehicle_model=Mustang Mach-E",
+      "importance": 0.3866132354617275
+    },
+    {
+      "feature": "vehicle_brand=BMW",
+      "importance": 0.33630935111475563
+    },
+    {
+      "feature": "vehicle_model=Air",
+      "importance": 0.33497151889490895
+    }
+  ],
+  "per_chemistry": {
+    "LFP": {
+      "accuracy": 0.9155900086132644,
+      "balanced_accuracy": 0.9111196151322982,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            986,
+            90
+          ],
+          [
+            8,
+            77
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.7818840579710145,
+      "n": 1161,
+      "per_class": {
+        "0": {
+          "n": 1076,
+          "precision": 0.9919517102615694,
+          "recall": 0.9163568773234201
+        },
+        "1": {
+          "n": 85,
+          "precision": 0.46107784431137727,
+          "recall": 0.9058823529411765
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.927651491509485
+    },
+    "LMO": {
+      "accuracy": 0.9377162629757786,
+      "balanced_accuracy": 0.9518782803561951,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            512,
+            35
+          ],
+          [
+            1,
+            30
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.7955188679245283,
+      "n": 578,
+      "per_class": {
+        "0": {
+          "n": 547,
+          "precision": 0.9980506822612085,
+          "recall": 0.9360146252285192
+        },
+        "1": {
+          "n": 31,
+          "precision": 0.46153846153846156,
+          "recall": 0.967741935483871
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.9477467846183979
+    },
+    "LTO": {
+      "accuracy": 0.9487179487179487,
+      "balanced_accuracy": 0.972972972972973,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            245,
+            14
+          ],
+          [
+            0,
+            14
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.8194444444444444,
+      "n": 273,
+      "per_class": {
+        "0": {
+          "n": 259,
+          "precision": 1.0,
+          "recall": 0.9459459459459459
+        },
+        "1": {
+          "n": 14,
+          "precision": 0.5,
+          "recall": 1.0
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.9565527065527064
+    },
+    "NCA": {
+      "accuracy": 0.926056338028169,
+      "balanced_accuracy": 0.9611111111111111,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            249,
+            21
+          ],
+          [
+            0,
+            14
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.7654830718414534,
+      "n": 284,
+      "per_class": {
+        "0": {
+          "n": 270,
+          "precision": 1.0,
+          "recall": 0.9222222222222223
+        },
+        "1": {
+          "n": 14,
+          "precision": 0.4,
+          "recall": 1.0
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.9404054384108117
+    },
+    "NMC": {
+      "accuracy": 0.9205637411915438,
+      "balanced_accuracy": 0.8876152402708657,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            1336,
+            106
+          ],
+          [
+            18,
+            101
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.7876414158701739,
+      "n": 1561,
+      "per_class": {
+        "0": {
+          "n": 1442,
+          "precision": 0.9867060561299852,
+          "recall": 0.926490984743412
+        },
+        "1": {
+          "n": 119,
+          "precision": 0.48792270531400966,
+          "recall": 0.8487394957983193
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.930035129554524
+    },
+    "__MISSING__": {
+      "accuracy": 0.9020979020979021,
+      "balanced_accuracy": 0.9457364341085271,
+      "brier": null,
+      "confusion_matrix": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "matrix": [
+          [
+            115,
+            14
+          ],
+          [
+            0,
+            14
+          ]
+        ]
+      },
+      "log_loss": null,
+      "macro_f1": 0.8046448087431695,
+      "n": 143,
+      "per_class": {
+        "0": {
+          "n": 129,
+          "precision": 1.0,
+          "recall": 0.8914728682170543
+        },
+        "1": {
+          "n": 14,
+          "precision": 0.5,
+          "recall": 1.0
+        }
+      },
+      "roc_auc": null,
+      "weighted_f1": 0.9156062516718255
+    }
+  },
+  "selected_model": {
+    "name": "logistic_regression",
+    "params": {
+      "C": 1.0,
+      "class_weight": "balanced"
+    },
+    "scale_features": true
+  },
+  "status": "EXPERIMENTAL",
+  "target": "battery_failure",
+  "task_id": "ev_failure",
+  "task_type": "binary",
+  "test": {
+    "accuracy": 0.92325,
+    "balanced_accuracy": 0.9136594551771551,
+    "bootstrap_ci": {
+      "balanced_accuracy_ci95_high": 0.9302316324039335,
+      "balanced_accuracy_ci95_low": 0.8938441034004359
+    },
+    "brier": 0.0544226946235979,
+    "confusion_matrix": {
+      "labels": [
+        "0",
+        "1"
+      ],
+      "matrix": [
+        [
+          3443,
+          280
+        ],
+        [
+          27,
+          250
+        ]
+      ]
+    },
+    "log_loss": 0.19652702836375674,
+    "macro_f1": 0.7884491513934018,
+    "n": 4000,
+    "per_class": {
+      "0": {
+        "n": 3723,
+        "precision": 0.9922190201729106,
+        "recall": 0.924791834542036
+      },
+      "1": {
+        "n": 277,
+        "precision": 0.4716981132075472,
+        "recall": 0.9025270758122743
+      }
+    },
+    "roc_auc": 0.9748979657141527,
+    "weighted_f1": 0.9339310569049387
+  },
+  "uncertainty": {
+    "calibration_status": "uncalibrated_class_probabilities",
+    "classes": [
+      "0",
+      "1"
+    ],
+    "kind": "class_probabilities",
+    "validation_balanced_accuracy": 0.9239685785792484,
+    "validation_log_loss": 0.20957014315929112
+  }
+}

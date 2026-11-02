@@ -1,0 +1,196 @@
+{
+  "schema_version": "analytics_v1",
+  "generated_at": "2026-11-02T12:27:31.850778+00:00",
+  "entrypoint": "member2_modeling.analytics.run_analytics",
+  "files": [
+    {
+      "name": "anomaly_flags.csv",
+      "bytes": 214656,
+      "sha256": "36d0a55384da72af1b6eaaca26e17b9bd11d4cbc42aafde73bcb90428bdad969"
+    },
+    {
+      "name": "anomaly_flags_ev_failure_prediction.csv",
+      "bytes": 35789,
+      "sha256": "84df1cb07f59afad826108f5d132c0ffba0620ec0281378f7a63ddd0b98eda40"
+    },
+    {
+      "name": "anomaly_flags_solid_state_telemetry_2026.csv",
+      "bytes": 71337,
+      "sha256": "93247f76f09f7c948608ee6de9113dbcf916a341a7811f537605a8331e57318a"
+    },
+    {
+      "name": "anomaly_summary.json",
+      "bytes": 4108,
+      "sha256": "52df287c18045fc0c6bdf037461a8d57665b11c2dc480b3f0e1c868950cdd8a4"
+    },
+    {
+      "name": "chemistry_metrics.csv",
+      "bytes": 6401,
+      "sha256": "6be443cbe4cdcad220685cfc30ef6ea51c12f64fbd60e33ba7eee7965008246a"
+    },
+    {
+      "name": "classification_results.csv",
+      "bytes": 2151,
+      "sha256": "0d362253c29364de99b2d7d73342a551ef6e4836a6720dfa3ba5677f6b92a020"
+    },
+    {
+      "name": "confusion_matrices.json",
+      "bytes": 17080,
+      "sha256": "89104dd1a4fb318eb9fcd6a31490caaf2cdba8ab7dfa23a119e21c0830fb53e8"
+    },
+    {
+      "name": "dataset_summary.json",
+      "bytes": 32884,
+      "sha256": "1d3ece3a4f310f408682e70f900b20144a32febb72c31cd0ed69d9cd25929a42"
+    },
+    {
+      "name": "degradation_summary.csv",
+      "bytes": 2316,
+      "sha256": "02e339f45059e56db9d14b54a9c039dadc207fedab6021e643f043db53b227a1"
+    },
+    {
+      "name": "degradation_summary.json",
+      "bytes": 719,
+      "sha256": "ca923a75f66aa3d930184278d07a57bc37d15afaf9439e8e2aa2ed46feaa0129"
+    },
+    {
+      "name": "degradation_trajectories.csv",
+      "bytes": 171084,
+      "sha256": "aea0696075b64a21e6cd6e3d66dbf98c3ea4a1c1acbaa480554ece9d33e4c38e"
+    },
+    {
+      "name": "feature_importance.csv",
+      "bytes": 23560,
+      "sha256": "6e9dab79a6a449ecc827cf851b2fc1ec4b1852fe741ee1c4cf44dd8c3790d2cd"
+    },
+    {
+      "name": "feature_importance_summary.json",
+      "bytes": 6752,
+      "sha256": "3290b42921123d3f8a6f6eae6d0370c0f5c6793f18da573e6c3b003b3a53046b"
+    },
+    {
+      "name": "health_status.csv",
+      "bytes": 4151,
+      "sha256": "88eb87954f134280e88dde1431b252626f088f1786ce391fca52159e193522df"
+    },
+    {
+      "name": "health_status_summary.json",
+      "bytes": 1008,
+      "sha256": "3de2f2688ce976ebe6b244c5bccb8f86a15023ce4a2376f15e40af7f5e8d932e"
+    },
+    {
+      "name": "member3_combined_analytics_schema.json",
+      "bytes": 3895,
+      "sha256": "317021f2c304b6e33ce06a87a9b68f1d41e339a613429652c8e27b24f0e03fd2"
+    },
+    {
+      "name": "member3_results_template.csv",
+      "bytes": 355,
+      "sha256": "748db4df68cea2d5a76fddca262f1257ab88d466df17a976e1e9516c7efcf0ed"
+    },
+    {
+      "name": "member3_soh_sequences.csv",
+      "bytes": 90020,
+      "sha256": "13e7a72a7897dab1847024140f8c2f5c92932fb35193799295c1957df63e2dd5"
+    },
+    {
+      "name": "MEMBER5_ANALYTICS_HANDOVER.md",
+      "bytes": 4156,
+      "sha256": "8767226e7c0f9c77e5230c83f0b058f8530430d6d9e32630dda4e87806784802"
+    },
+    {
+      "name": "model_comparison.csv",
+      "bytes": 5183,
+      "sha256": "d1768f7efab467bdcbf695a16296dbbd085bac3c8852460a18104efb6b160143"
+    },
+    {
+      "name": "model_metrics.csv",
+      "bytes": 6997,
+      "sha256": "11e3448082c7f611cf03916a4b557b5116022005f42310f2b9c6e127835044a1"
+    },
+    {
+      "name": "model_metrics.json",
+      "bytes": 190898,
+      "sha256": "aa64152888ce338d38e963c5d31dd221e681f2248d4a2c0b78e7b5e919590302"
+    },
+    {
+      "name": "prediction_provenance.json",
+      "bytes": 22035,
+      "sha256": "ba7512df7bdac15b208ae95d19bbee023c1df99986c721a98cff079950b79f32"
+    },
+    {
+      "name": "prediction_results.csv",
+      "bytes": 5586176,
+      "sha256": "c66caf79900576ad3411f3ad41671072c20a2c6cfe5272f602bb6b8c1c6803aa"
+    },
+    {
+      "name": "regression_residuals.csv",
+      "bytes": 2159702,
+      "sha256": "548e9580856a59a34d91052926afc6f7a536effbd5a3c945faa5afaf69863067"
+    },
+    {
+      "name": "rul_censored_projections.csv",
+      "bytes": 1757,
+      "sha256": "ecaf5db510623c9fdd12331b36d15dfe18766721fe62f15fd4a042349dca2fbd"
+    },
+    {
+      "name": "rul_current_predictions.csv",
+      "bytes": 3980,
+      "sha256": "4320d9e5727b14359f797e18bb969ca2795e97966158b4f8459315ba3afc0b0b"
+    },
+    {
+      "name": "rul_degradation_trajectories.csv",
+      "bytes": 171081,
+      "sha256": "57c07c2b7f32b040904ade4e12018a77e62a1bf3167c80c7bccb7c7be372cd36"
+    },
+    {
+      "name": "rul_eol_trajectories.csv",
+      "bytes": 65910,
+      "sha256": "5411535ec156c272dd88057a5d8b8a43dab0b13317b337962be95d25654189e7"
+    },
+    {
+      "name": "rul_metrics.json",
+      "bytes": 109948,
+      "sha256": "c2c8d9f9020bd3346c6abf87dc62cba88711796af844642a076f493fdbb051e6"
+    },
+    {
+      "name": "rul_model_registry.json",
+      "bytes": 7007,
+      "sha256": "2929b59cd8629fd702c74c88748819b40a9e48593d9222b3491fa96b12572e2a"
+    },
+    {
+      "name": "rul_per_battery.csv",
+      "bytes": 2830,
+      "sha256": "a4e08deb4e3246c7681f6f2997aa12f72c450eef724ef236f0f0f8706941600f"
+    },
+    {
+      "name": "rul_predictions.csv",
+      "bytes": 227614,
+      "sha256": "8380c22e80bbca493594e0af47298d97a0760fd2de2b9f48588a889a2f3eb456"
+    },
+    {
+      "name": "rul_provenance.json",
+      "bytes": 2785,
+      "sha256": "39399a4680d0133fce0427a1cde708ffe98d91200838d083b6fda5eed9083e73"
+    },
+    {
+      "name": "rul_unavailable.csv",
+      "bytes": 2582,
+      "sha256": "6e0f54036d446d387268294940a0d5fbbaceedb8a45d2ed0ea5ed4f06b5fefb1"
+    },
+    {
+      "name": "uncertainty_summary.csv",
+      "bytes": 3947,
+      "sha256": "0223f2acf4e4495b00d5a0ce2eea7981a6d22cbeb6aacdb22d74278edb460071"
+    },
+    {
+      "name": "uncertainty_summary.json",
+      "bytes": 5207,
+      "sha256": "fe1bdcc20d709599550de1cf486a3cabd5e10cd93ae53b1020e8fef5ba7e1fcd"
+    }
+  ],
+  "member_directories_modified": false,
+  "rul_approved_for_use": false,
+  "combined_schema": "member3_combined_analytics_schema.json",
+  "handover": "MEMBER5_ANALYTICS_HANDOVER.md"
+}

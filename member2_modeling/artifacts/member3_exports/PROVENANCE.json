@@ -1,0 +1,82 @@
+{
+  "adapter_compatibility": {
+    "member3_files_modified": false,
+    "required_columns": [
+      "cycle_index",
+      "cell_id",
+      "chemistry",
+      "soh_pct"
+    ],
+    "soh_bounds": "1 < SOH <= 100",
+    "supported_chemistries": [
+      "NMC",
+      "LFP"
+    ],
+    "validated_by": "member3.integration.member2_range_adapter"
+  },
+  "cycle_index_semantics": "cycle_index is the next observed record's source cycle_id; the horizon is one observed record, not necessarily one physical cycle.",
+  "dataset_id": "LEGACY_NMC_SEQUENTIAL",
+  "excluded_rows": [],
+  "generated_at": "2026-11-02T08:10:14.566703+00:00",
+  "metrics": {
+    "baseline": {
+      "bias": 0.1255013150071254,
+      "mae": 0.5040182599936701,
+      "rmse": 0.8669116170819162
+    },
+    "baseline_mae": 0.5040182599936701,
+    "predicted": {
+      "bias": 6.001002866790183,
+      "mae": 6.11053073725096,
+      "rmse": 6.500716932659858
+    },
+    "predicted_mae": 6.11053073725096
+  },
+  "model": {
+    "artifact": "member2_modeling/artifacts/hybrid_nmc_legacy/hybrid_model",
+    "benchmark_warning": "The persistence and training-mean-fade baselines outperform the fused hybrid on the chronological test split. The fusion improves on both learned branches but is not production-validated.",
+    "manifest": "member2_modeling/artifacts/hybrid_nmc_legacy/hybrid_manifest.json",
+    "manifest_sha256": "1d4131850fb14e8f2ecbb90ce5f6ff261dcdbe1749d24238f49685a83a74311b",
+    "name": "hybrid_nmc_legacy_fused",
+    "production_ready": false,
+    "readiness": "EXPERIMENTAL"
+  },
+  "module": "member2_modeling/member3_export",
+  "roles": {
+    "baseline": {
+      "path": "baseline_soh.csv",
+      "rows": 95,
+      "sha256": "b09ce127021c515d2a4847dbdb11508bdde93a8d15d9b8e8d201aa8feb1fda8d"
+    },
+    "observed": {
+      "path": "observed_soh.csv",
+      "rows": 95,
+      "sha256": "d7d04ddc1e2bad6ecdefdc84450e3df60df0eba2d8fc7bc8fa5c0d4b5b499357"
+    },
+    "predicted": {
+      "path": "predicted_soh.csv",
+      "rows": 95,
+      "sha256": "758d13a9d57f0935c93ee9fd8f536f1230849c3af5ffe7a9357449568631033c"
+    }
+  },
+  "rows": 95,
+  "source": {
+    "cells": [
+      "B0005",
+      "B0006",
+      "B0018"
+    ],
+    "file": "master_table.parquet",
+    "sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb"
+  },
+  "split": {
+    "name": "test",
+    "protocol": "per-cell chronological 60/20/20 holdout"
+  },
+  "target": "SOH of the next observed cycle record (positional shift by 1); not necessarily the next physical cycle.",
+  "warnings": [
+    "Observed rows are measured labels; predicted and baseline rows are not observations and must not be labelled as measured.",
+    "Persistence and training-mean-fade baselines outperform the fused hybrid on this holdout; range outputs remain experimental.",
+    "Member 3 combines SOH with a partially sourced vehicle profile, so range estimates are not validated real-world predictions."
+  ]
+}

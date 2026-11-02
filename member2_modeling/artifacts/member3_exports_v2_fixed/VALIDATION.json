@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "problems": [],
+  "rows": {
+    "ev_failure_predictions.csv": 4000,
+    "ev_range_estimate.csv": 3687,
+    "ev_soh_predictions.csv": 3809,
+    "solid_state_soh_predictions.csv": 2000
+  }
+}

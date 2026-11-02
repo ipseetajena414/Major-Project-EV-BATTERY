@@ -1,0 +1,689 @@
+{
+  "candidate_selection": [
+    {
+      "fit_seconds": 0.462,
+      "name": "logistic_regression",
+      "params": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "scale_features": true,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.9239685785792484
+    },
+    {
+      "fit_seconds": 16.802,
+      "name": "random_forest",
+      "params": {
+        "class_weight": "balanced_subsample",
+        "min_samples_leaf": 2,
+        "n_estimators": 400
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.6517268496835459
+    },
+    {
+      "fit_seconds": 38.742,
+      "name": "hist_gradient_boosting",
+      "params": {
+        "learning_rate": 0.08,
+        "max_iter": 300,
+        "max_leaf_nodes": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.8714605569244165
+    },
+    {
+      "best_iteration": 272,
+      "fit_seconds": 32.159,
+      "name": "lightgbm",
+      "params": {
+        "class_weight": "balanced",
+        "learning_rate": 0.05,
+        "n_estimators": 600,
+        "num_leaves": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.8333929684825812
+    }
+  ],
+  "categorical_features": [
+    "vehicle_brand",
+    "vehicle_model",
+    "vehicle_type",
+    "battery_manufacturer",
+    "battery_chemistry",
+    "drive_type",
+    "fleet_or_private",
+    "terrain_type"
+  ],
+  "categorical_vocabularies": {
+    "battery_chemistry": [
+      "LFP",
+      "LMO",
+      "LTO",
+      "NCA",
+      "NMC",
+      "__MISSING__"
+    ],
+    "battery_manufacturer": [
+      "BYD Battery",
+      "CATL",
+      "Envision AESC",
+      "Guoxuan",
+      "LG Energy Solution",
+      "Northvolt",
+      "Panasonic",
+      "SK On",
+      "__MISSING__"
+    ],
+    "drive_type": [
+      "AWD",
+      "FWD",
+      "RWD",
+      "__MISSING__"
+    ],
+    "fleet_or_private": [
+      "Fleet",
+      "Private",
+      "__MISSING__"
+    ],
+    "terrain_type": [
+      "Coastal",
+      "Desert",
+      "Flat",
+      "Hilly",
+      "Mountainous",
+      "__MISSING__"
+    ],
+    "vehicle_brand": [
+      "Audi",
+      "BMW",
+      "BYD",
+      "Ford",
+      "GM",
+      "Honda",
+      "Hyundai",
+      "Kia",
+      "Lucid",
+      "MG",
+      "Mahindra",
+      "Mercedes-Benz",
+      "Nissan",
+      "Porsche",
+      "Renault",
+      "Rivian",
+      "Tata",
+      "Tesla",
+      "Volkswagen",
+      "Volvo",
+      "__MISSING__"
+    ],
+    "vehicle_model": [
+      "Air",
+      "Ariya",
+      "Atto 3",
+      "BE 6",
+      "Cadillac Lyriq",
+      "Chevrolet Bolt",
+      "Comet EV",
+      "Dolphin",
+      "EQA",
+      "EQE",
+      "EV6",
+      "EV9",
+      "EX30",
+      "F-150 Lightning",
+      "ID.3",
+      "ID.4",
+      "Ioniq 5",
+      "Kona Electric",
+      "Leaf",
+      "Macan Electric",
+      "Megane E-Tech",
+      "Model 3",
+      "Model S",
+      "Model Y",
+      "Mustang Mach-E",
+      "Nexon EV",
+      "Prologue",
+      "Q4 e-tron",
+      "R1S",
+      "R1T",
+      "Seal",
+      "Taycan",
+      "Tiago EV",
+      "XC40 Recharge",
+      "XUV400",
+      "ZS EV",
+      "Zoe",
+      "__MISSING__",
+      "e-tron GT",
+      "e:N1",
+      "i4",
+      "iX",
+      "iX1"
+    ],
+    "vehicle_type": [
+      "Crossover",
+      "Hatchback",
+      "SUV",
+      "Sedan",
+      "Truck",
+      "Van",
+      "__MISSING__"
+    ]
+  },
+  "chemistry_column": "battery_chemistry",
+  "classes": [
+    "0",
+    "1"
+  ],
+  "dataset_provenance": {
+    "data_origin": "source_dataset",
+    "processed_path": "DATA/processed/ev_battery_failure_clean.parquet",
+    "processed_sha256": "6b4f9035f50d54d72c6e653a5f1f6676b69896ba4b883e48ad1c6f1e5f57dc9d",
+    "record_grain": "vehicle_pack_snapshot",
+    "sequence_available": false,
+    "source_file": "ev battery_failure prediction Dataset.csv",
+    "source_sha256": "3b971b47e6dba73eef7edd60c7841332c5c34be17b649b9b5f036001315b28ea"
+  },
+  "entity_column": "vehicle_id",
+  "feature_columns": [
+    "vehicle_brand",
+    "vehicle_model",
+    "vehicle_type",
+    "manufacturing_year",
+    "battery_manufacturer",
+    "battery_chemistry",
+    "battery_capacity_kwh",
+    "drive_type",
+    "odometer_km",
+    "vehicle_age_years",
+    "fleet_or_private",
+    "cycle_count",
+    "state_of_charge",
+    "depth_of_discharge",
+    "cell_voltage_avg",
+    "cell_voltage_std",
+    "pack_voltage",
+    "cell_temperature_avg",
+    "cell_temperature_max",
+    "charge_efficiency",
+    "discharge_efficiency",
+    "charging_cycles_last_month",
+    "fast_charge_ratio",
+    "slow_charge_ratio",
+    "average_charge_power_kw",
+    "average_charging_time",
+    "overnight_charging_ratio",
+    "home_charging_ratio",
+    "charging_interruptions",
+    "overcharge_events",
+    "average_speed",
+    "average_trip_distance",
+    "aggressive_acceleration_score",
+    "hard_braking_score",
+    "regenerative_braking_usage",
+    "highway_driving_ratio",
+    "city_driving_ratio",
+    "daily_distance",
+    "average_ambient_temperature",
+    "maximum_temperature",
+    "minimum_temperature",
+    "humidity",
+    "altitude",
+    "terrain_type",
+    "dust_exposure",
+    "last_service_days",
+    "cooling_system_health",
+    "firmware_updates",
+    "previous_faults",
+    "maintenance_score",
+    "thermal_runaway_risk",
+    "voltage_imbalance",
+    "temperature_variance",
+    "sensor_fault_count",
+    "BMS_warning_count",
+    "abnormal_voltage_events"
+  ],
+  "final_fit": "trained on the training split only; validation used for early stopping/selection",
+  "forbidden_columns": [
+    "battery_failure",
+    "battery_health_percent",
+    "capacity_loss_percent",
+    "predicted_remaining_life_cycles",
+    "remaining_capacity",
+    "state_of_health"
+  ],
+  "limitations": [
+    "All SOH labels, capacity loss, remaining capacity and predicted RUL are forbidden as features.",
+    "The positive class is 1,384 / 20,000 (6.9%); balanced accuracy is the selection metric and accuracy alone is not accepted.",
+    "Snapshot records do not support temporal, vehicle-level or RUL claims.",
+    "Grouped holdout estimates generalization to unseen entities, not to a future time."
+  ],
+  "model_version": "2.0.0",
+  "numeric_features": [
+    "manufacturing_year",
+    "battery_capacity_kwh",
+    "odometer_km",
+    "vehicle_age_years",
+    "cycle_count",
+    "state_of_charge",
+    "depth_of_discharge",
+    "cell_voltage_avg",
+    "cell_voltage_std",
+    "pack_voltage",
+    "cell_temperature_avg",
+    "cell_temperature_max",
+    "charge_efficiency",
+    "discharge_efficiency",
+    "charging_cycles_last_month",
+    "fast_charge_ratio",
+    "slow_charge_ratio",
+    "average_charge_power_kw",
+    "average_charging_time",
+    "overnight_charging_ratio",
+    "home_charging_ratio",
+    "charging_interruptions",
+    "overcharge_events",
+    "average_speed",
+    "average_trip_distance",
+    "aggressive_acceleration_score",
+    "hard_braking_score",
+    "regenerative_braking_usage",
+    "highway_driving_ratio",
+    "city_driving_ratio",
+    "daily_distance",
+    "average_ambient_temperature",
+    "maximum_temperature",
+    "minimum_temperature",
+    "humidity",
+    "altitude",
+    "dust_exposure",
+    "last_service_days",
+    "cooling_system_health",
+    "firmware_updates",
+    "previous_faults",
+    "maintenance_score",
+    "thermal_runaway_risk",
+    "voltage_imbalance",
+    "temperature_variance",
+    "sensor_fault_count",
+    "BMS_warning_count",
+    "abnormal_voltage_events"
+  ],
+  "numeric_statistics": {
+    "BMS_warning_count": {
+      "max": 7.0,
+      "mean": 1.206782320634644,
+      "min": 0.0,
+      "std": 1.0952187772863953
+    },
+    "abnormal_voltage_events": {
+      "max": 5.0,
+      "mean": 0.5888927395598683,
+      "min": 0.0,
+      "std": 0.7612323027271397
+    },
+    "aggressive_acceleration_score": {
+      "max": 99.97,
+      "mean": 49.98290141088894,
+      "min": 0.01,
+      "std": 28.815254275349723
+    },
+    "altitude": {
+      "max": 2621.29,
+      "mean": 1305.4312503256058,
+      "min": 0.24,
+      "std": 755.666566551983
+    },
+    "average_ambient_temperature": {
+      "max": 47.99,
+      "mean": 11.173465407154728,
+      "min": -25.0,
+      "std": 21.051256324838874
+    },
+    "average_charge_power_kw": {
+      "max": 272.82,
+      "mean": 41.971984293193714,
+      "min": 4.28,
+      "std": 27.29670425560389
+    },
+    "average_charging_time": {
+      "max": 600.0,
+      "mean": 211.44356927840371,
+      "min": 8.0,
+      "std": 151.1320136309766
+    },
+    "average_speed": {
+      "max": 119.75,
+      "mean": 65.33931640453388,
+      "min": 10.0,
+      "std": 31.719588249491878
+    },
+    "average_trip_distance": {
+      "max": 144.09,
+      "mean": 72.42829584775086,
+      "min": 1.0,
+      "std": 41.51147948916784
+    },
+    "battery_capacity_kwh": {
+      "max": 149.01,
+      "mean": 87.15611691563768,
+      "min": 25.0,
+      "std": 35.86659289851494
+    },
+    "cell_temperature_avg": {
+      "max": 65.09,
+      "mean": 26.897443211375062,
+      "min": -14.23,
+      "std": 11.060011143635371
+    },
+    "cell_temperature_max": {
+      "max": 86.98,
+      "mean": 40.460264193858805,
+      "min": -4.95,
+      "std": 12.060824835903462
+    },
+    "cell_voltage_avg": {
+      "max": 3.85,
+      "mean": 3.5967740695439456,
+      "min": 3.061,
+      "std": 0.1261490135823648
+    },
+    "cell_voltage_std": {
+      "max": 0.06,
+      "mean": 0.01099858211551844,
+      "min": 0.0,
+      "std": 0.010860512157775984
+    },
+    "charge_efficiency": {
+      "max": 98.97,
+      "mean": 96.19015824444831,
+      "min": 92.11,
+      "std": 1.0719572729181848
+    },
+    "charging_cycles_last_month": {
+      "max": 41.0,
+      "mean": 20.919104244423227,
+      "min": 1.0,
+      "std": 11.793468351977722
+    },
+    "charging_interruptions": {
+      "max": 6.0,
+      "mean": 1.013051857042747,
+      "min": 0.0,
+      "std": 0.9967121525497468
+    },
+    "city_driving_ratio": {
+      "max": 1.0,
+      "mean": 0.49968887736582834,
+      "min": 0.0,
+      "std": 0.28892923649911173
+    },
+    "cooling_system_health": {
+      "max": 99.69,
+      "mean": 88.58041732283465,
+      "min": 57.52,
+      "std": 6.420894495029906
+    },
+    "cycle_count": {
+      "max": 3369.0,
+      "mean": 1359.7620492371707,
+      "min": 209.0,
+      "std": 523.2083807562542
+    },
+    "daily_distance": {
+      "max": 205.3,
+      "mean": 66.38436940460669,
+      "min": 3.0,
+      "std": 48.893527837650744
+    },
+    "depth_of_discharge": {
+      "max": 90.34,
+      "mean": 44.35722888425443,
+      "min": 5.23,
+      "std": 17.011952159020005
+    },
+    "discharge_efficiency": {
+      "max": 98.93,
+      "mean": 95.31120749180045,
+      "min": 90.51,
+      "std": 1.393622400211632
+    },
+    "dust_exposure": {
+      "max": 99.99,
+      "mean": 50.10761912938954,
+      "min": 0.02,
+      "std": 28.89014634152612
+    },
+    "fast_charge_ratio": {
+      "max": 0.97,
+      "mean": 0.3325971406017016,
+      "min": 0.0,
+      "std": 0.17753721606481124
+    },
+    "firmware_updates": {
+      "max": 30.0,
+      "mean": 15.062977919065212,
+      "min": 0.0,
+      "std": 8.908913862758453
+    },
+    "hard_braking_score": {
+      "max": 99.98,
+      "mean": 50.627702702702706,
+      "min": 0.0,
+      "std": 28.944738806008548
+    },
+    "highway_driving_ratio": {
+      "max": 1.0,
+      "mean": 0.4997375441011962,
+      "min": 0.0,
+      "std": 0.2885732940487813
+    },
+    "home_charging_ratio": {
+      "max": 1.0,
+      "mean": 0.5006127450980392,
+      "min": 0.0,
+      "std": 0.28763976489241955
+    },
+    "humidity": {
+      "max": 100.0,
+      "mean": 52.256840456088426,
+      "min": 5.0,
+      "std": 27.460519372007422
+    },
+    "last_service_days": {
+      "max": 1500.0,
+      "mean": 761.1257620367164,
+      "min": 24.4,
+      "std": 425.0552694421228
+    },
+    "maintenance_score": {
+      "max": 100.0,
+      "mean": 65.92560146443515,
+      "min": 19.73,
+      "std": 17.97387563975602
+    },
+    "manufacturing_year": {
+      "max": 2024.0,
+      "mean": 2019.4577532615358,
+      "min": 2015.0,
+      "std": 2.861616830433673
+    },
+    "maximum_temperature": {
+      "max": 67.96,
+      "mean": 23.70261776464454,
+      "min": -19.54,
+      "std": 21.468367850810807
+    },
+    "minimum_temperature": {
+      "max": 44.58,
+      "mean": -0.25506405296191215,
+      "min": -42.4,
+      "std": 21.645599281003886
+    },
+    "odometer_km": {
+      "max": 450000.0,
+      "mean": 169562.44827375765,
+      "min": 5887.6,
+      "std": 73840.78733868436
+    },
+    "overcharge_events": {
+      "max": 5.0,
+      "mean": 0.4994381536865762,
+      "min": 0.0,
+      "std": 0.7019382392545686
+    },
+    "overnight_charging_ratio": {
+      "max": 0.94,
+      "mean": 0.46575584415584415,
+      "min": 0.0,
+      "std": 0.26988459157365047
+    },
+    "pack_voltage": {
+      "max": 400.4,
+      "mean": 312.8647315061432,
+      "min": 223.23,
+      "std": 37.85521450800214
+    },
+    "previous_faults": {
+      "max": 6.0,
+      "mean": 0.90572535514421,
+      "min": 0.0,
+      "std": 0.958895604516013
+    },
+    "regenerative_braking_usage": {
+      "max": 100.0,
+      "mean": 50.3318740734281,
+      "min": 0.7,
+      "std": 28.70234425009498
+    },
+    "sensor_fault_count": {
+      "max": 6.0,
+      "mean": 0.7027334851936219,
+      "min": 0.0,
+      "std": 0.8353277485250491
+    },
+    "slow_charge_ratio": {
+      "max": 0.99,
+      "mean": 0.5425174947515745,
+      "min": 0.0,
+      "std": 0.19131020082828715
+    },
+    "state_of_charge": {
+      "max": 100.0,
+      "mean": 50.75741395919083,
+      "min": 2.03,
+      "std": 28.234399809413237
+    },
+    "temperature_variance": {
+      "max": 32.94,
+      "mean": 22.061044211250643,
+      "min": 0.0,
+      "std": 12.755753659813134
+    },
+    "thermal_runaway_risk": {
+      "max": 100.0,
+      "mean": 19.39019488956258,
+      "min": 0.0,
+      "std": 15.123538990706548
+    },
+    "vehicle_age_years": {
+      "max": 11.55,
+      "mean": 6.543025049839647,
+      "min": 1.37,
+      "std": 2.87919111814793
+    },
+    "voltage_imbalance": {
+      "max": 86.55,
+      "mean": 18.059783228258055,
+      "min": 0.02,
+      "std": 14.30201194978848
+    }
+  },
+  "production_ready": false,
+  "random_state": 42,
+  "rows": {
+    "dropped_null_target": 0,
+    "test": 4000,
+    "total": 20000,
+    "train": 12000,
+    "val": 4000
+  },
+  "selected_model": {
+    "name": "logistic_regression",
+    "params": {
+      "C": 1.0,
+      "class_weight": "balanced"
+    },
+    "scale_features": true
+  },
+  "selection_rule": "maximum validation balanced accuracy",
+  "split": {
+    "counts": {
+      "test": 4000,
+      "train": 12000,
+      "val": 4000
+    },
+    "entity_counts": {
+      "test": 4000,
+      "train": 12000,
+      "val": 4000
+    },
+    "entity_overlap": {
+      "train_test": 0,
+      "train_val": 0,
+      "val_test": 0
+    },
+    "protocol": "entity_grouped_class_stratified_60_20_20_stratified_group_kfold",
+    "sha256": "d05a6bfab31a60e08f6639f32918808069ea9edfd7206baa756b4f2760be80e2",
+    "strata": "target_class",
+    "target_distribution": {
+      "test": {
+        "0": 3723,
+        "1": 277
+      },
+      "train": {
+        "0": 11170,
+        "1": 830
+      },
+      "val": {
+        "0": 3723,
+        "1": 277
+      }
+    },
+    "warning": null
+  },
+  "status": "EXPERIMENTAL",
+  "target": {
+    "column": "battery_failure",
+    "definition": "Binary battery-failure label supplied by the source dataset.",
+    "label_origin": "source_label",
+    "unit": "probability of failure (0/1 label)"
+  },
+  "task": {
+    "chemistry_column": "battery_chemistry",
+    "dataset_id": "EV_FAILURE_PREDICTION",
+    "entity_column": "vehicle_id",
+    "label_origin": "source_label",
+    "notes": [
+      "All SOH labels, capacity loss, remaining capacity and predicted RUL are forbidden as features.",
+      "The positive class is 1,384 / 20,000 (6.9%); balanced accuracy is the selection metric and accuracy alone is not accepted."
+    ],
+    "readiness": "EXPERIMENTAL",
+    "record_grain": "vehicle_pack_snapshot",
+    "rul_reason": "No observed sequential EOL history in this dataset.",
+    "rul_status": "UNAVAILABLE",
+    "status": "EXPERIMENTAL",
+    "target": "battery_failure",
+    "target_definition": "Binary battery-failure label supplied by the source dataset.",
+    "task_id": "ev_failure",
+    "task_type": "binary",
+    "unit": "probability of failure (0/1 label)"
+  }
+}

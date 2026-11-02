@@ -1,0 +1,341 @@
+{
+  "candidate_selection": [
+    {
+      "fit_seconds": 0.86,
+      "name": "logistic_regression",
+      "params": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "scale_features": true,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.7767593381266146
+    },
+    {
+      "fit_seconds": 5.465,
+      "name": "random_forest",
+      "params": {
+        "class_weight": "balanced_subsample",
+        "min_samples_leaf": 2,
+        "n_estimators": 400
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.8848420831806225
+    },
+    {
+      "fit_seconds": 100.171,
+      "name": "hist_gradient_boosting",
+      "params": {
+        "learning_rate": 0.08,
+        "max_iter": 300,
+        "max_leaf_nodes": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.8964659910431836
+    },
+    {
+      "best_iteration": 139,
+      "fit_seconds": 42.192,
+      "name": "lightgbm",
+      "params": {
+        "class_weight": "balanced",
+        "learning_rate": 0.05,
+        "n_estimators": 600,
+        "num_leaves": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.9016450967407579
+    }
+  ],
+  "categorical_features": [
+    "manufacturer",
+    "electrolyte_chemistry",
+    "anode_composition",
+    "cathode_chemistry",
+    "target_ev_application",
+    "commercial_readiness_level"
+  ],
+  "categorical_vocabularies": {
+    "anode_composition": [
+      "Anode_Free_InSitu_Plating",
+      "Graphite_Silicon_Composite",
+      "Lithium_Metal_Foil",
+      "Silicon_Dominant_Nanowire"
+    ],
+    "cathode_chemistry": [
+      "High_Nickel_NMC811",
+      "LFP_Advanced",
+      "Solid_State_Sulfur",
+      "Ultra_Nickel_NMC955"
+    ],
+    "commercial_readiness_level": [
+      "TRL_6_Laboratory_Prototype",
+      "TRL_7_Automotive_Testing",
+      "TRL_8_Pilot_Production",
+      "TRL_9_Commercial_Fleet"
+    ],
+    "electrolyte_chemistry": [
+      "Halide_Based_Li3YCl6",
+      "Oxide_Based_LLZO",
+      "Polymer_Composite",
+      "Sulfide_Based_Li10GeP2S12"
+    ],
+    "manufacturer": [
+      "BYD",
+      "CATL",
+      "LG Energy Solution",
+      "Panasonic Energy",
+      "QuantumScape",
+      "Samsung SDI",
+      "Solid Power",
+      "StoreDot",
+      "Toyota Motor"
+    ],
+    "target_ev_application": [
+      "Commercial_Class8_Hauler",
+      "Hypercar_Track",
+      "Long_Range_Luxury_Sedan",
+      "Urban_Compact_SUV",
+      "eVTOL_Aerospace"
+    ]
+  },
+  "chemistry_column": "electrolyte_chemistry",
+  "classes": [
+    "Accelerated_Degradation_Tier_3",
+    "Critical_Thermal_Risk_Tier_4",
+    "Minimal_Degradation_Tier_1",
+    "Moderate_Degradation_Tier_2"
+  ],
+  "dataset_provenance": {
+    "data_origin": "source_dataset",
+    "processed_path": "DATA/processed/solid_state_telemetry_clean.parquet",
+    "processed_sha256": "b49529ccffebe735be022e306339596d490ad717d61960a1ab1b71c43cc87513",
+    "record_grain": "cell_snapshot",
+    "sequence_available": false,
+    "source_file": "solid_state_ev_battery_telemetry_enriched_2026.csv",
+    "source_sha256": "0fc38a2d4fe6289d712d85112f62d928c78419e562f2ebd9a2f94583489cd690"
+  },
+  "entity_column": "cell_id",
+  "feature_columns": [
+    "manufacturer",
+    "electrolyte_chemistry",
+    "anode_composition",
+    "cathode_chemistry",
+    "nominal_capacity_ah",
+    "gravimetric_energy_density_wh_kg",
+    "volumetric_energy_density_wh_l",
+    "cycle_number",
+    "charging_c_rate",
+    "discharging_c_rate",
+    "operating_temperature_c",
+    "ambient_temperature_c",
+    "internal_resistance_mohm",
+    "coulombic_efficiency_pct",
+    "stack_pressure_mpa",
+    "thermal_runaway_onset_c",
+    "nominal_voltage_plateau_v",
+    "target_ev_application",
+    "commercial_readiness_level"
+  ],
+  "final_fit": "trained on the training split only; validation used for early stopping/selection",
+  "forbidden_columns": [
+    "confidence_score",
+    "cot_electrochemical_risk_rationale",
+    "degradation_risk_tier",
+    "projected_cycle_life_80pct_soh",
+    "state_of_health_pct"
+  ],
+  "limitations": [
+    "The tier is derived from SOH and other signals, but state_of_health_pct is excluded, so this is not a relabelled SOH shortcut.",
+    "Four classes are imbalanced (1,682 to 3,758 rows); balanced accuracy and macro F1 are reported alongside accuracy.",
+    "Snapshot records do not support temporal, vehicle-level or RUL claims.",
+    "Grouped holdout estimates generalization to unseen entities, not to a future time."
+  ],
+  "model_version": "2.0.0",
+  "numeric_features": [
+    "nominal_capacity_ah",
+    "gravimetric_energy_density_wh_kg",
+    "volumetric_energy_density_wh_l",
+    "cycle_number",
+    "charging_c_rate",
+    "discharging_c_rate",
+    "operating_temperature_c",
+    "ambient_temperature_c",
+    "internal_resistance_mohm",
+    "coulombic_efficiency_pct",
+    "stack_pressure_mpa",
+    "thermal_runaway_onset_c",
+    "nominal_voltage_plateau_v"
+  ],
+  "numeric_statistics": {
+    "ambient_temperature_c": {
+      "max": 50.0,
+      "mean": 14.642723787297882,
+      "min": -20.0,
+      "std": 20.06489006410036
+    },
+    "charging_c_rate": {
+      "max": 10.0,
+      "mean": 3.0610101683613937,
+      "min": 0.5,
+      "std": 1.9866352205794002
+    },
+    "coulombic_efficiency_pct": {
+      "max": 99.954,
+      "mean": 99.45584664110686,
+      "min": 98.916,
+      "std": 0.20687687761577345
+    },
+    "cycle_number": {
+      "max": 2500.0,
+      "mean": 1248.4515752625437,
+      "min": 1.0,
+      "std": 719.2390446953906
+    },
+    "discharging_c_rate": {
+      "max": 5.0,
+      "mean": 2.2156026004334053,
+      "min": 1.0,
+      "std": 0.9771006705486577
+    },
+    "gravimetric_energy_density_wh_kg": {
+      "max": 520.0,
+      "mean": 413.06824470745124,
+      "min": 350.0,
+      "std": 39.3011010811889
+    },
+    "internal_resistance_mohm": {
+      "max": 20.55,
+      "mean": 9.271320220036673,
+      "min": 1.61,
+      "std": 3.3954457929210116
+    },
+    "nominal_capacity_ah": {
+      "max": 120.0,
+      "mean": 80.37177862977163,
+      "min": 40.0,
+      "std": 18.33863797998178
+    },
+    "nominal_voltage_plateau_v": {
+      "max": 3.85,
+      "mean": 3.6414952492082016,
+      "min": 3.15,
+      "std": 0.17569905984107761
+    },
+    "operating_temperature_c": {
+      "max": 75.0,
+      "mean": 28.060893482247042,
+      "min": -18.5,
+      "std": 21.66703558420003
+    },
+    "stack_pressure_mpa": {
+      "max": 8.0,
+      "mean": 3.897064510751792,
+      "min": 0.5,
+      "std": 1.489919621238681
+    },
+    "thermal_runaway_onset_c": {
+      "max": 390.0,
+      "mean": 293.2702117019503,
+      "min": 190.0,
+      "std": 45.348060291856974
+    },
+    "volumetric_energy_density_wh_l": {
+      "max": 1150.0,
+      "mean": 898.4105517586265,
+      "min": 750.0,
+      "std": 87.4849595837546
+    }
+  },
+  "production_ready": false,
+  "random_state": 42,
+  "rows": {
+    "dropped_null_target": 0,
+    "test": 2000,
+    "total": 10000,
+    "train": 5999,
+    "val": 2001
+  },
+  "selected_model": {
+    "name": "lightgbm",
+    "params": {
+      "class_weight": "balanced",
+      "learning_rate": 0.05,
+      "n_estimators": 600,
+      "num_leaves": 31
+    },
+    "scale_features": false
+  },
+  "selection_rule": "maximum validation balanced accuracy",
+  "split": {
+    "counts": {
+      "test": 2000,
+      "train": 5999,
+      "val": 2001
+    },
+    "entity_counts": {
+      "test": 2000,
+      "train": 5999,
+      "val": 2001
+    },
+    "entity_overlap": {
+      "train_test": 0,
+      "train_val": 0,
+      "val_test": 0
+    },
+    "protocol": "entity_grouped_class_stratified_60_20_20_stratified_group_kfold",
+    "sha256": "e9a673b64debc339f567f28447ceff9dea50fc4cec3bc8edd2374c762ae3151b",
+    "strata": "target_class",
+    "target_distribution": {
+      "test": {
+        "Accelerated_Degradation_Tier_3": 751,
+        "Critical_Thermal_Risk_Tier_4": 336,
+        "Minimal_Degradation_Tier_1": 456,
+        "Moderate_Degradation_Tier_2": 457
+      },
+      "train": {
+        "Accelerated_Degradation_Tier_3": 2255,
+        "Critical_Thermal_Risk_Tier_4": 1010,
+        "Minimal_Degradation_Tier_1": 1366,
+        "Moderate_Degradation_Tier_2": 1368
+      },
+      "val": {
+        "Accelerated_Degradation_Tier_3": 752,
+        "Critical_Thermal_Risk_Tier_4": 336,
+        "Minimal_Degradation_Tier_1": 456,
+        "Moderate_Degradation_Tier_2": 457
+      }
+    },
+    "warning": null
+  },
+  "status": "EXPERIMENTAL",
+  "target": {
+    "column": "degradation_risk_tier",
+    "definition": "Provided risk tier derived from SOH and other signals.",
+    "label_origin": "derived_from_soh",
+    "unit": "risk tier class"
+  },
+  "task": {
+    "chemistry_column": "electrolyte_chemistry",
+    "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+    "entity_column": "cell_id",
+    "label_origin": "derived_from_soh",
+    "notes": [
+      "The tier is derived from SOH and other signals, but state_of_health_pct is excluded, so this is not a relabelled SOH shortcut.",
+      "Four classes are imbalanced (1,682 to 3,758 rows); balanced accuracy and macro F1 are reported alongside accuracy."
+    ],
+    "readiness": "EXPERIMENTAL",
+    "record_grain": "cell_snapshot",
+    "rul_reason": "No observed sequential EOL history in this dataset.",
+    "rul_status": "UNAVAILABLE",
+    "status": "EXPERIMENTAL",
+    "target": "degradation_risk_tier",
+    "target_definition": "Provided risk tier derived from SOH and other signals.",
+    "task_id": "solid_tier",
+    "task_type": "multiclass",
+    "unit": "risk tier class"
+  }
+}

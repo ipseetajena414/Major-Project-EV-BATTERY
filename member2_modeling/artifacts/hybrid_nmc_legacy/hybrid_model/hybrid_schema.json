@@ -1,0 +1,69 @@
+{
+  "branches": {
+    "sequence": {
+      "epochs_run": 60,
+      "fitted": true,
+      "hidden_dim": 32,
+      "input_dim": 11,
+      "model": "bilstm_regressor",
+      "n_training_sequences": 226,
+      "sequence_length": 5
+    },
+    "tabular": {
+      "best_iteration": 115,
+      "fitted": true,
+      "model": "lightgbm_regressor",
+      "n_estimators": 200,
+      "n_training_rows": 236
+    }
+  },
+  "configured_folds": 3,
+  "dropped_null_target": 0,
+  "effective_folds": 3,
+  "entity_column": "cell_id",
+  "feature_columns": [
+    "current_soh_pct",
+    "v_mean",
+    "v_min",
+    "v_end",
+    "v_slope",
+    "i_mean",
+    "ah_throughput",
+    "energy_wh",
+    "discharge_time_s",
+    "temp_mean",
+    "temp_range"
+  ],
+  "fusion": {
+    "alpha": 1.0,
+    "coefficients": {
+      "intercept": 84.13597068370933,
+      "sequence_pred": 3.8484661431946097,
+      "tabular_pred": 2.6769444894406784
+    },
+    "fallback_coefficients": {
+      "intercept": -59.01525172624088,
+      "tabular_pred": 1.6904822164161628
+    },
+    "fusion_method": "out_of_fold_ridge",
+    "in_sample_fusion": false,
+    "n_rows": 278,
+    "n_sequence_rows": 242,
+    "trained_on": "out_of_fold_predictions",
+    "uses_sequence": true
+  },
+  "model_type": "fused_lightgbm_bilstm",
+  "n_training_rows": 278,
+  "notes": [
+    "Fusion inputs are chronological out-of-fold branch predictions.",
+    "Rows without sequence history use the learned tabular-only fallback.",
+    "No production validation exists; do not claim production readiness."
+  ],
+  "order_column": "cycle_id",
+  "production_ready": false,
+  "readiness_status": "EXPERIMENTAL",
+  "schema_version": "2.0.0",
+  "sequence_length": 5,
+  "sequence_oof_coverage": 0.8705035971223022,
+  "target_column": "target_soh_pct"
+}

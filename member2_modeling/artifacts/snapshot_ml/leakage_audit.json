@@ -1,0 +1,195 @@
+{
+  "ok": true,
+  "policy": {
+    "features": "Member 1 data dictionary role 'feature' after target/leakage removal",
+    "preprocessing": "fit on training split only",
+    "rul": "not produced; no observed EOL trajectory in active data",
+    "selection": "validation only; test scored once",
+    "sequence": "not used; all active datasets are snapshots",
+    "splits": "entity-grouped and target-stratified"
+  },
+  "tasks": {
+    "ev_capacity": {
+      "checks": {
+        "entity_disjoint_splits": true,
+        "no_audited_leakage_columns": true,
+        "no_direct_target_leakage": true,
+        "rul_not_invented": true,
+        "sequence_model_not_used": true
+      },
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "entity_overlap": {
+        "train_test": 0,
+        "train_val": 0,
+        "val_test": 0
+      },
+      "feature_count": 56,
+      "forbidden_count": 5,
+      "forbidden_used_as_feature": [],
+      "model_selection": "validation split only",
+      "preprocessing_fit": "training split only",
+      "split_protocol": "entity-grouped, target-stratified",
+      "split_sha256": "71eb79fbba34c741cce351f36f34dbeed80198d46843a4dd2e54a821ea97efd0",
+      "split_unit": "vehicle_id",
+      "target": "remaining_capacity",
+      "target_used_as_feature": false,
+      "test_use": "single frozen evaluation"
+    },
+    "ev_failure": {
+      "checks": {
+        "entity_disjoint_splits": true,
+        "no_audited_leakage_columns": true,
+        "no_direct_target_leakage": true,
+        "rul_not_invented": true,
+        "sequence_model_not_used": true
+      },
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "entity_overlap": {
+        "train_test": 0,
+        "train_val": 0,
+        "val_test": 0
+      },
+      "feature_count": 56,
+      "forbidden_count": 6,
+      "forbidden_used_as_feature": [],
+      "model_selection": "validation split only",
+      "preprocessing_fit": "training split only",
+      "split_protocol": "entity-grouped, target-stratified",
+      "split_sha256": "d05a6bfab31a60e08f6639f32918808069ea9edfd7206baa756b4f2760be80e2",
+      "split_unit": "vehicle_id",
+      "target": "battery_failure",
+      "target_used_as_feature": false,
+      "test_use": "single frozen evaluation"
+    },
+    "ev_soh": {
+      "checks": {
+        "entity_disjoint_splits": true,
+        "no_audited_leakage_columns": true,
+        "no_direct_target_leakage": true,
+        "rul_not_invented": true,
+        "sequence_model_not_used": true
+      },
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "entity_overlap": {
+        "train_test": 0,
+        "train_val": 0,
+        "val_test": 0
+      },
+      "feature_count": 56,
+      "forbidden_count": 5,
+      "forbidden_used_as_feature": [],
+      "model_selection": "validation split only",
+      "preprocessing_fit": "training split only",
+      "split_protocol": "entity-grouped, target-stratified",
+      "split_sha256": "9975be708285adabfbd79702c1d9b83211adde1a0d5e46bd4b7e50e62de832e4",
+      "split_unit": "vehicle_id",
+      "target": "state_of_health",
+      "target_used_as_feature": false,
+      "test_use": "single frozen evaluation"
+    },
+    "solid_soh": {
+      "checks": {
+        "entity_disjoint_splits": true,
+        "no_audited_leakage_columns": true,
+        "no_direct_target_leakage": true,
+        "rul_not_invented": true,
+        "sequence_model_not_used": true
+      },
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "entity_overlap": {
+        "train_test": 0,
+        "train_val": 0,
+        "val_test": 0
+      },
+      "feature_count": 19,
+      "forbidden_count": 5,
+      "forbidden_used_as_feature": [],
+      "model_selection": "validation split only",
+      "preprocessing_fit": "training split only",
+      "split_protocol": "entity-grouped, target-stratified",
+      "split_sha256": "6556459fa29764d50e8dfca2564c65ecff4b7ba43c1a8dc66fc745d0ca0ce081",
+      "split_unit": "cell_id",
+      "target": "state_of_health_pct",
+      "target_used_as_feature": false,
+      "test_use": "single frozen evaluation"
+    },
+    "solid_tier": {
+      "checks": {
+        "entity_disjoint_splits": true,
+        "no_audited_leakage_columns": true,
+        "no_direct_target_leakage": true,
+        "rul_not_invented": true,
+        "sequence_model_not_used": true
+      },
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "entity_overlap": {
+        "train_test": 0,
+        "train_val": 0,
+        "val_test": 0
+      },
+      "feature_count": 19,
+      "forbidden_count": 5,
+      "forbidden_used_as_feature": [],
+      "model_selection": "validation split only",
+      "preprocessing_fit": "training split only",
+      "split_protocol": "entity-grouped, target-stratified",
+      "split_sha256": "e9a673b64debc339f567f28447ceff9dea50fc4cec3bc8edd2374c762ae3151b",
+      "split_unit": "cell_id",
+      "target": "degradation_risk_tier",
+      "target_used_as_feature": false,
+      "test_use": "single frozen evaluation"
+    },
+    "synthetic_capacity": {
+      "checks": {
+        "entity_disjoint_splits": true,
+        "no_audited_leakage_columns": true,
+        "no_direct_target_leakage": true,
+        "rul_not_invented": true,
+        "sequence_model_not_used": true
+      },
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "entity_overlap": {
+        "train_test": 0,
+        "train_val": 0,
+        "val_test": 0
+      },
+      "feature_count": 5,
+      "forbidden_count": 2,
+      "forbidden_used_as_feature": [],
+      "model_selection": "validation split only",
+      "preprocessing_fit": "training split only",
+      "split_protocol": "entity-grouped, target-stratified",
+      "split_sha256": "be70bd4dc26b1e454a409b33f856fbe2885392f8fc4ce4e178a7d0f294d4c04b",
+      "split_unit": "battery_id",
+      "target": "discharge_capacity_ah",
+      "target_used_as_feature": false,
+      "test_use": "single frozen evaluation"
+    },
+    "synthetic_class": {
+      "checks": {
+        "entity_disjoint_splits": true,
+        "no_audited_leakage_columns": true,
+        "no_direct_target_leakage": true,
+        "rul_not_invented": true,
+        "sequence_model_not_used": true
+      },
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "entity_overlap": {
+        "train_test": 0,
+        "train_val": 0,
+        "val_test": 0
+      },
+      "feature_count": 5,
+      "forbidden_count": 2,
+      "forbidden_used_as_feature": [],
+      "model_selection": "validation split only",
+      "preprocessing_fit": "training split only",
+      "split_protocol": "entity-grouped, target-stratified",
+      "split_sha256": "09101e7cf3da85d997bef0024db97d0260314292d1666b78ff79c04972d07258",
+      "split_unit": "battery_id",
+      "target": "state_of_health",
+      "target_used_as_feature": false,
+      "test_use": "single frozen evaluation"
+    }
+  }
+}

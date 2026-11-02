@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Member 2 + Member 3 combined battery analytics row",
+  "description": "One row joins a Member 2 battery-state estimate to an optional Member 3 vehicle/range result. Member 2 never fabricates Member 3 fields: range_km, usable_energy_kwh, consumption_kwh_per_km, vehicle_config_id and member3_model_id may be null when no Member 3 result exists.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "battery_id",
+    "dataset_id",
+    "chemistry",
+    "cycle_index",
+    "soh_pct",
+    "soh_source",
+    "member2_model_id",
+    "provenance_json"
+  ],
+  "properties": {
+    "battery_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cell_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dataset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chemistry": {
+      "type": "string",
+      "enum": [
+        "NMC",
+        "LFP",
+        "Na-ion",
+        "LMO",
+        "LTO",
+        "NCA",
+        "UNKNOWN"
+      ]
+    },
+    "cycle_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "soh_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 110
+    },
+    "soh_source": {
+      "type": "string",
+      "enum": [
+        "observed",
+        "predicted",
+        "calculated"
+      ]
+    },
+    "range_km": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "Member 3 output only; null when unavailable."
+    },
+    "usable_energy_kwh": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "consumption_kwh_per_km": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "vehicle_config_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rul_cycles": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "description": "Member 2 experimental RUL estimate; null when UNAVAILABLE."
+    },
+    "rul_lower_cycles": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "rul_upper_cycles": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "rul_eol_threshold_pct": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "rul_status": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "VALIDATED",
+        "EXPERIMENTAL",
+        "EXPERIMENTAL_CENSORED",
+        "UNAVAILABLE",
+        null
+      ]
+    },
+    "anomaly_flag": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "anomaly_score": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "health_band": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GOOD",
+        "FAIR",
+        "POOR",
+        "CRITICAL",
+        null
+      ]
+    },
+    "member2_model_id": {
+      "type": "string"
+    },
+    "member3_model_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "member2_artifact_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "member3_artifact_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance_json": {
+      "type": "string",
+      "description": "JSON-encoded provenance object for the row."
+    }
+  },
+  "x-notes": [
+    "Member 3 owns range_km and vehicle configuration fields.",
+    "Member 2 owns SOH, RUL, anomaly and health-band fields.",
+    "A null range_km means Member 3 has not produced a result; it is never imputed.",
+    "rul_status=VALIDATED is reserved and currently unused."
+  ]
+}

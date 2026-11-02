@@ -1,0 +1,518 @@
+{
+  "datasets": {
+    "EV_FAILURE_PREDICTION": {
+      "processed_path": "DATA/processed/ev_battery_failure_clean.parquet",
+      "processed_sha256": "6b4f9035f50d54d72c6e653a5f1f6676b69896ba4b883e48ad1c6f1e5f57dc9d"
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "processed_path": "DATA/processed/solid_state_telemetry_clean.parquet",
+      "processed_sha256": "b49529ccffebe735be022e306339596d490ad717d61960a1ab1b71c43cc87513"
+    }
+  },
+  "generated_at": "2026-11-02T12:15:42.878371+00:00",
+  "member3_modified": false,
+  "models": {
+    "ev_failure": {
+      "artifact_dir": "ev_failure",
+      "files": {
+        "config.json": {
+          "path": "ev_failure/config.json",
+          "sha256": "dbf91d70c6dfb022302e456e6fd2df48416a4fbb5b242858b458289d1b4aa62e"
+        },
+        "feature_pipeline.joblib": {
+          "path": "ev_failure/feature_pipeline.joblib",
+          "sha256": "685f9ca1737fc72a5ad097b16d612d18a778a1026bffc1a9ec3d8f1fbc37e8cd"
+        },
+        "metrics.json": {
+          "path": "ev_failure/metrics.json",
+          "sha256": "b66cd2292e8250b9a997f37a384033468fb0b801477d483a9532a5729eadc6f7"
+        },
+        "model.joblib": {
+          "path": "ev_failure/model.joblib",
+          "sha256": "12f4c6dcdc7dd1249fca7d02e264f7296fa39539dc95f034aed653c08dc195c8"
+        },
+        "schema.json": {
+          "path": "ev_failure/schema.json",
+          "sha256": "014a52735405d96ac5fa6035cd6aa31cd0fa08a1d3f3ea49eb44269f64ab99ea"
+        },
+        "test_predictions.parquet": {
+          "path": "ev_failure/test_predictions.parquet",
+          "sha256": "2105c32a35b5ad77817d5a6c8c88b0f95cfbcb10e2b95ce779bdc4e305b2088a"
+        }
+      },
+      "model_id": "member2::ev_failure::2.0.0",
+      "test_metrics": {
+        "accuracy": 0.92325,
+        "balanced_accuracy": 0.9136594551771551,
+        "bootstrap_ci": {
+          "balanced_accuracy_ci95_high": 0.9302316324039335,
+          "balanced_accuracy_ci95_low": 0.8938441034004359
+        },
+        "brier": 0.0544226946235979,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              3443,
+              280
+            ],
+            [
+              27,
+              250
+            ]
+          ]
+        },
+        "log_loss": 0.19652702836375674,
+        "macro_f1": 0.7884491513934018,
+        "n": 4000,
+        "per_chemistry": {
+          "LFP": {
+            "accuracy": 0.9155900086132644,
+            "balanced_accuracy": 0.9111196151322982,
+            "brier": null,
+            "confusion_matrix": {
+              "labels": [
+                "0",
+                "1"
+              ],
+              "matrix": [
+                [
+                  986,
+                  90
+                ],
+                [
+                  8,
+                  77
+                ]
+              ]
+            },
+            "log_loss": null,
+            "macro_f1": 0.7818840579710145,
+            "n": 1161,
+            "per_class": {
+              "0": {
+                "n": 1076,
+                "precision": 0.9919517102615694,
+                "recall": 0.9163568773234201
+              },
+              "1": {
+                "n": 85,
+                "precision": 0.46107784431137727,
+                "recall": 0.9058823529411765
+              }
+            },
+            "roc_auc": null,
+            "weighted_f1": 0.927651491509485
+          },
+          "LMO": {
+            "accuracy": 0.9377162629757786,
+            "balanced_accuracy": 0.9518782803561951,
+            "brier": null,
+            "confusion_matrix": {
+              "labels": [
+                "0",
+                "1"
+              ],
+              "matrix": [
+                [
+                  512,
+                  35
+                ],
+                [
+                  1,
+                  30
+                ]
+              ]
+            },
+            "log_loss": null,
+            "macro_f1": 0.7955188679245283,
+            "n": 578,
+            "per_class": {
+              "0": {
+                "n": 547,
+                "precision": 0.9980506822612085,
+                "recall": 0.9360146252285192
+              },
+              "1": {
+                "n": 31,
+                "precision": 0.46153846153846156,
+                "recall": 0.967741935483871
+              }
+            },
+            "roc_auc": null,
+            "weighted_f1": 0.9477467846183979
+          },
+          "LTO": {
+            "accuracy": 0.9487179487179487,
+            "balanced_accuracy": 0.972972972972973,
+            "brier": null,
+            "confusion_matrix": {
+              "labels": [
+                "0",
+                "1"
+              ],
+              "matrix": [
+                [
+                  245,
+                  14
+                ],
+                [
+                  0,
+                  14
+                ]
+              ]
+            },
+            "log_loss": null,
+            "macro_f1": 0.8194444444444444,
+            "n": 273,
+            "per_class": {
+              "0": {
+                "n": 259,
+                "precision": 1.0,
+                "recall": 0.9459459459459459
+              },
+              "1": {
+                "n": 14,
+                "precision": 0.5,
+                "recall": 1.0
+              }
+            },
+            "roc_auc": null,
+            "weighted_f1": 0.9565527065527064
+          },
+          "NCA": {
+            "accuracy": 0.926056338028169,
+            "balanced_accuracy": 0.9611111111111111,
+            "brier": null,
+            "confusion_matrix": {
+              "labels": [
+                "0",
+                "1"
+              ],
+              "matrix": [
+                [
+                  249,
+                  21
+                ],
+                [
+                  0,
+                  14
+                ]
+              ]
+            },
+            "log_loss": null,
+            "macro_f1": 0.7654830718414534,
+            "n": 284,
+            "per_class": {
+              "0": {
+                "n": 270,
+                "precision": 1.0,
+                "recall": 0.9222222222222223
+              },
+              "1": {
+                "n": 14,
+                "precision": 0.4,
+                "recall": 1.0
+              }
+            },
+            "roc_auc": null,
+            "weighted_f1": 0.9404054384108117
+          },
+          "NMC": {
+            "accuracy": 0.9205637411915438,
+            "balanced_accuracy": 0.8876152402708657,
+            "brier": null,
+            "confusion_matrix": {
+              "labels": [
+                "0",
+                "1"
+              ],
+              "matrix": [
+                [
+                  1336,
+                  106
+                ],
+                [
+                  18,
+                  101
+                ]
+              ]
+            },
+            "log_loss": null,
+            "macro_f1": 0.7876414158701739,
+            "n": 1561,
+            "per_class": {
+              "0": {
+                "n": 1442,
+                "precision": 0.9867060561299852,
+                "recall": 0.926490984743412
+              },
+              "1": {
+                "n": 119,
+                "precision": 0.48792270531400966,
+                "recall": 0.8487394957983193
+              }
+            },
+            "roc_auc": null,
+            "weighted_f1": 0.930035129554524
+          },
+          "__MISSING__": {
+            "accuracy": 0.9020979020979021,
+            "balanced_accuracy": 0.9457364341085271,
+            "brier": null,
+            "confusion_matrix": {
+              "labels": [
+                "0",
+                "1"
+              ],
+              "matrix": [
+                [
+                  115,
+                  14
+                ],
+                [
+                  0,
+                  14
+                ]
+              ]
+            },
+            "log_loss": null,
+            "macro_f1": 0.8046448087431695,
+            "n": 143,
+            "per_class": {
+              "0": {
+                "n": 129,
+                "precision": 1.0,
+                "recall": 0.8914728682170543
+              },
+              "1": {
+                "n": 14,
+                "precision": 0.5,
+                "recall": 1.0
+              }
+            },
+            "roc_auc": null,
+            "weighted_f1": 0.9156062516718255
+          }
+        },
+        "per_class": {
+          "0": {
+            "n": 3723,
+            "precision": 0.9922190201729106,
+            "recall": 0.924791834542036
+          },
+          "1": {
+            "n": 277,
+            "precision": 0.4716981132075472,
+            "recall": 0.9025270758122743
+          }
+        },
+        "roc_auc": 0.9748979657141527,
+        "weighted_f1": 0.9339310569049387
+      }
+    },
+    "ev_soh": {
+      "artifact_dir": "ev_soh",
+      "files": {
+        "config.json": {
+          "path": "ev_soh/config.json",
+          "sha256": "468d7fb898d98eb4e204b8d32837fb1b093f1e60c0c98c408dc99fa906c604a5"
+        },
+        "feature_pipeline.joblib": {
+          "path": "ev_soh/feature_pipeline.joblib",
+          "sha256": "9aeb256b2a2474a976a683c2e674d4b359caa4dc372c142576764fee6c13f6d4"
+        },
+        "metrics.json": {
+          "path": "ev_soh/metrics.json",
+          "sha256": "5cb38ce3e3085da680f0441bf3a25943fe3da57263adfb6c7da21b816f5edf25"
+        },
+        "model.joblib": {
+          "path": "ev_soh/model.joblib",
+          "sha256": "b430bb4ab19266ad9aecdb585a6ca321be064acc11f9b1e977af4c1f0778c672"
+        },
+        "schema.json": {
+          "path": "ev_soh/schema.json",
+          "sha256": "c71b4452f7c942f14d0e54a84d4bbd33a64846bf86e8ccb25fa1f8b695859245"
+        },
+        "test_predictions.parquet": {
+          "path": "ev_soh/test_predictions.parquet",
+          "sha256": "e2830779c24c1c7a9f7588b22ae0a5bf130e9eb135629bbbc0cbd60729a86340"
+        }
+      },
+      "model_id": "member2::ev_soh::2.0.0",
+      "test_metrics": {
+        "bias": -0.08896995987693668,
+        "bootstrap_ci": {
+          "mae_ci95_high": 2.807655110189115,
+          "mae_ci95_low": 2.676764469864762
+        },
+        "mae": 2.7470264024366586,
+        "mape_pct": 3.4463755420941453,
+        "median_abs_error": 2.256872503916057,
+        "n": 3809,
+        "per_chemistry": {
+          "LFP": {
+            "bias": 0.012066351276494873,
+            "mae": 2.6539529395695847,
+            "mape_pct": 3.300149785623578,
+            "median_abs_error": 2.1994168644314556,
+            "n": 1091,
+            "r2": 0.8634613764703013,
+            "residual_q90": null,
+            "rmse": 3.3676254132348284
+          },
+          "LMO": {
+            "bias": 0.09368371740110351,
+            "mae": 2.761064645610842,
+            "mape_pct": 3.478128246484122,
+            "median_abs_error": 2.267650423940637,
+            "n": 538,
+            "r2": 0.8602136874885151,
+            "residual_q90": null,
+            "rmse": 3.4815761946796338
+          },
+          "LTO": {
+            "bias": -0.26872223231119374,
+            "mae": 2.8947648979357776,
+            "mape_pct": 3.6201558878862907,
+            "median_abs_error": 2.472809051887296,
+            "n": 251,
+            "r2": 0.8218183482943195,
+            "residual_q90": null,
+            "rmse": 3.5670700103581847
+          },
+          "NCA": {
+            "bias": -0.05556597689535393,
+            "mae": 2.698125656291407,
+            "mape_pct": 3.411878787833374,
+            "median_abs_error": 2.084030206229869,
+            "n": 288,
+            "r2": 0.8492290686926273,
+            "residual_q90": null,
+            "rmse": 3.4743370628467605
+          },
+          "NMC": {
+            "bias": -0.21517665627173543,
+            "mae": 2.796220473653266,
+            "mape_pct": 3.519003542236561,
+            "median_abs_error": 2.3338348948789474,
+            "n": 1500,
+            "r2": 0.8492797690847451,
+            "residual_q90": null,
+            "rmse": 3.540945064457507
+          },
+          "__MISSING__": {
+            "bias": 0.026698295658675722,
+            "mae": 2.72717192623035,
+            "mape_pct": 3.4451240780319594,
+            "median_abs_error": 2.279156330875864,
+            "n": 141,
+            "r2": 0.8600861388006914,
+            "residual_q90": null,
+            "rmse": 3.4373997727857204
+          }
+        },
+        "r2": 0.8540563258799698,
+        "residual_q90": 5.812863143043334,
+        "rmse": 3.476578416251982
+      }
+    },
+    "solid_soh": {
+      "artifact_dir": "solid_soh",
+      "files": {
+        "config.json": {
+          "path": "solid_soh/config.json",
+          "sha256": "b59a0d9bb48bf236b3ca78c757dd3de7abaaf093d948064195af213daa9a9db1"
+        },
+        "feature_pipeline.joblib": {
+          "path": "solid_soh/feature_pipeline.joblib",
+          "sha256": "b66c3d1bba7e4b742cf50f8e3d118d1c7009d90b1d06b0e45c0519b1187fefba"
+        },
+        "metrics.json": {
+          "path": "solid_soh/metrics.json",
+          "sha256": "351c6d21b8430072a8e3013d279a4ae42696bc5eccbfb03fd21586025bb8bd42"
+        },
+        "model.joblib": {
+          "path": "solid_soh/model.joblib",
+          "sha256": "31c48970b4c4fcbd8f3c396e11f5530ca2d4cf3194127e53bbf8134cc53d62d5"
+        },
+        "schema.json": {
+          "path": "solid_soh/schema.json",
+          "sha256": "77d275c92dafdd3b49ccf613903ecfde6d33f909df9fa6b6fe1321a41edadd7c"
+        },
+        "test_predictions.parquet": {
+          "path": "solid_soh/test_predictions.parquet",
+          "sha256": "ca767ad1f290bc73e7a730fa6bf2a40652a45fac38b8257a9afb2636ac0f8b20"
+        }
+      },
+      "model_id": "member2::solid_soh::2.0.0",
+      "test_metrics": {
+        "bias": -0.0216228711510793,
+        "bootstrap_ci": {
+          "mae_ci95_high": 0.6689342548103872,
+          "mae_ci95_low": 0.6271107782249783
+        },
+        "mae": 0.6472153937157553,
+        "mape_pct": 0.7515599906611581,
+        "median_abs_error": 0.5528806446026735,
+        "n": 2000,
+        "per_chemistry": {
+          "Halide_Based_Li3YCl6": {
+            "bias": -0.04636761653565867,
+            "mae": 0.6205457750997196,
+            "mape_pct": 0.7293599606755251,
+            "median_abs_error": 0.5292398678718939,
+            "n": 236,
+            "r2": 0.9862951981432824,
+            "residual_q90": null,
+            "rmse": 0.789101246482569
+          },
+          "Oxide_Based_LLZO": {
+            "bias": -0.006877455799626824,
+            "mae": 0.6243048375205567,
+            "mape_pct": 0.7241344618438301,
+            "median_abs_error": 0.5248579382181902,
+            "n": 494,
+            "r2": 0.9851745548007073,
+            "residual_q90": null,
+            "rmse": 0.7943846252000527
+          },
+          "Polymer_Composite": {
+            "bias": -0.048640928031392625,
+            "mae": 0.6385811775660094,
+            "mape_pct": 0.7376117727776317,
+            "median_abs_error": 0.5544867165761218,
+            "n": 386,
+            "r2": 0.9860401710151009,
+            "residual_q90": null,
+            "rmse": 0.7933023306743318
+          },
+          "Sulfide_Based_Li10GeP2S12": {
+            "bias": -0.011459415627386827,
+            "mae": 0.6709084391768577,
+            "mape_pct": 0.7789032377374147,
+            "median_abs_error": 0.5838753259612375,
+            "n": 884,
+            "r2": 0.9846476863671667,
+            "residual_q90": null,
+            "rmse": 0.8368736456162612
+          }
+        },
+        "r2": 0.9852716461701707,
+        "residual_q90": 1.2708307427512482,
+        "rmse": 0.8126274398474272
+      }
+    }
+  },
+  "registry_sha256": "94e9f9bf24b067a527e2612d24bf186d906ea1e467ae7abacc9e018692176f05",
+  "registry_verification": {
+    "checked_files": 42,
+    "ok": true,
+    "problems": [],
+    "tasks": 7
+  },
+  "source_registry": "member2_modeling\\artifacts\\snapshot_ml\\model_registry.json"
+}

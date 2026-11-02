@@ -1,0 +1,12 @@
+{
+  "eol_threshold_pct": 80.0,
+  "cells": 9,
+  "history_definition": "Rows with record_type='observed' are measured cycle-level SOH. Rows with record_type='forecast' are model extrapolations and are never labelled measured.",
+  "trajectory_artifact": "C:\\Users\\KIIT0001\\OneDrive\\Desktop\\Major-Project-EV-BATTERY-git\\member2_modeling\\artifacts\\rul_v1\\rul_degradation_trajectories.csv",
+  "cells_with_eol_projection": 4,
+  "limitations": [
+    "Cross-cell comparisons are affected by different protocols and different cycle counts.",
+    "Fade rates are descriptive and do not control for temperature, depth of discharge or C-rate.",
+    "Forecast trajectories are not validated measurements."
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "method": "permutation importance on transformed features",
+  "shap_available": false,
+  "dependency_pins_changed": false,
+  "caveat": "Permutation importance measures model reliance on a feature in this test sample. It is not a causal effect and is unstable when features are correlated.",
+  "tasks": [
+    {
+      "task_id": "ev_capacity",
+      "status": "ok",
+      "baseline_metric": 3.237571542771792,
+      "metric": "mae",
+      "n_rows": 300,
+      "features_evaluated": 147,
+      "top_features": [
+        {
+          "feature": "battery_capacity_kwh",
+          "importance": 28.80566389852255
+        },
+        {
+          "feature": "average_charging_time",
+          "importance": 1.959739725389686
+        },
+        {
+          "feature": "charge_efficiency",
+          "importance": 1.5967315727479132
+        },
+        {
+          "feature": "discharge_efficiency",
+          "importance": 1.1572459498090293
+        },
+        {
+          "feature": "average_charge_power_kw",
+          "importance": 1.0553079900050442
+        }
+      ],
+      "shap_available": false,
+      "method_note": "SHAP is not installed and dependency pins are frozen, so permutation importance is used instead."
+    },
+    {
+      "task_id": "ev_failure",
+      "status": "ok",
+      "baseline_metric": 0.9166666666666666,
+      "metric": "accuracy",
+      "n_rows": 300,
+      "features_evaluated": 147,
+      "top_features": [
+        {
+          "feature": "vehicle_brand",
+          "importance": 0.01999999999999935
+        },
+        {
+          "feature": "BMS_warning_count",
+          "importance": 0.006666666666666599
+        },
+        {
+          "feature": "discharge_efficiency",
+          "importance": 0.006666666666666599
+        },
+        {
+          "feature": "cell_voltage_avg",
+          "importance": 0.006666666666666599
+        },
+        {
+          "feature": "maximum_temperature",
+          "importance": 0.006666666666666599
+        }
+      ],
+      "shap_available": false,
+      "method_note": "SHAP is not installed and dependency pins are frozen, so permutation importance is used instead."
+    },
+    {
+      "task_id": "ev_soh",
+      "status": "ok",
+      "baseline_metric": 2.828396162031587,
+      "metric": "mae",
+      "n_rows": 300,
+      "features_evaluated": 147,
+      "top_features": [
+        {
+          "feature": "charge_efficiency",
+          "importance": 2.541939671426336
+        },
+        {
+          "feature": "discharge_efficiency",
+          "importance": 1.1999194897913306
+        },
+        {
+          "feature": "vehicle_age_years",
+          "importance": 0.46565835218356577
+        },
+        {
+          "feature": "manufacturing_year",
+          "importance": 0.11721381316337443
+        },
+        {
+          "feature": "cooling_system_health",
+          "importance": 0.11392057277317136
+        }
+      ],
+      "shap_available": false,
+      "method_note": "SHAP is not installed and dependency pins are frozen, so permutation importance is used instead."
+    },
+    {
+      "task_id": "solid_soh",
+      "status": "ok",
+      "baseline_metric": 0.6345101907902243,
+      "metric": "mae",
+      "n_rows": 300,
+      "features_evaluated": 43,
+      "top_features": [
+        {
+          "feature": "internal_resistance_mohm",
+          "importance": 2.4728356808720298
+        },
+        {
+          "feature": "cycle_number",
+          "importance": 2.342680412804774
+        },
+        {
+          "feature": "coulombic_efficiency_pct",
+          "importance": 0.8432850697926769
+        },
+        {
+          "feature": "operating_temperature_c",
+          "importance": 0.7342739893815594
+        },
+        {
+          "feature": "charging_c_rate",
+          "importance": 0.08606427149327733
+        }
+      ],
+      "shap_available": false,
+      "method_note": "SHAP is not installed and dependency pins are frozen, so permutation importance is used instead."
+    },
+    {
+      "task_id": "solid_tier",
+      "status": "ok",
+      "baseline_metric": 0.0,
+      "metric": "accuracy",
+      "n_rows": 300,
+      "features_evaluated": 43,
+      "top_features": [
+        {
+          "feature": "ambient_temperature_c",
+          "importance": 0.0
+        },
+        {
+          "feature": "anode_composition",
+          "importance": 0.0
+        },
+        {
+          "feature": "cathode_chemistry",
+          "importance": 0.0
+        },
+        {
+          "feature": "charging_c_rate",
+          "importance": 0.0
+        },
+        {
+          "feature": "commercial_readiness_level",
+          "importance": 0.0
+        }
+      ],
+      "shap_available": false,
+      "method_note": "SHAP is not installed and dependency pins are frozen, so permutation importance is used instead."
+    },
+    {
+      "task_id": "synthetic_capacity",
+      "status": "ok",
+      "baseline_metric": 3.9000381707306935,
+      "metric": "mae",
+      "n_rows": 300,
+      "features_evaluated": 7,
+      "top_features": [
+        {
+          "feature": "electrolyte_type",
+          "importance": 14.811356215422784
+        },
+        {
+          "feature": "cycle_count",
+          "importance": 7.274351481719082
+        },
+        {
+          "feature": "temperature_celsius",
+          "importance": 0.09600153700069569
+        },
+        {
+          "feature": "internal_resistance_mohms",
+          "importance": 0.05094920271551695
+        },
+        {
+          "feature": "charge_time_mins",
+          "importance": -0.02196243022459976
+        }
+      ],
+      "shap_available": false,
+      "method_note": "SHAP is not installed and dependency pins are frozen, so permutation importance is used instead."
+    },
+    {
+      "task_id": "synthetic_class",
+      "status": "ok",
+      "baseline_metric": 0.0,
+      "metric": "accuracy",
+      "n_rows": 300,
+      "features_evaluated": 7,
+      "top_features": [
+        {
+          "feature": "charge_time_mins",
+          "importance": 0.0
+        },
+        {
+          "feature": "cycle_count",
+          "importance": 0.0
+        },
+        {
+          "feature": "electrolyte_type",
+          "importance": 0.0
+        },
+        {
+          "feature": "internal_resistance_mohms",
+          "importance": 0.0
+        },
+        {
+          "feature": "temperature_celsius",
+          "importance": 0.0
+        }
+      ],
+      "shap_available": false,
+      "method_note": "SHAP is not installed and dependency pins are frozen, so permutation importance is used instead."
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "artifacts": {
+    "evaluation_json": "hybrid_evaluation.json",
+    "evaluation_markdown": "hybrid_evaluation.md",
+    "model_directory": "hybrid_model"
+  },
+  "benchmark_warning": "The persistence and training-mean-fade baselines outperform the fused hybrid on the chronological test split. The fusion improves on both learned branches but is not production-validated.",
+  "dataset_eligibility": {
+    "EV_FAILURE_PREDICTION": {
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "eligible_components": [
+        "tabular"
+      ],
+      "hybrid_status": "UNAVAILABLE",
+      "reason": "The Member 1 registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory, so no BiLSTM sequence branch or hybrid fusion can be fitted.",
+      "sequence_available": false
+    },
+    "LEGACY_NMC_SEQUENTIAL": {
+      "dataset_id": "LEGACY_NMC_SEQUENTIAL",
+      "eligible_components": [
+        "tabular",
+        "sequence",
+        "fusion"
+      ],
+      "hybrid_status": "EXPERIMENTAL",
+      "reason": "The legacy NASA NMC master table provides chronological per-cycle histories with measured SOH labels. The hybrid may be trained on it as explicitly labelled legacy research input; it is not a Member 1 processed dataset.",
+      "sequence_available": true
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "eligible_components": [
+        "tabular"
+      ],
+      "hybrid_status": "UNAVAILABLE",
+      "reason": "The Member 1 registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory, so no BiLSTM sequence branch or hybrid fusion can be fitted.",
+      "sequence_available": false
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "eligible_components": [
+        "tabular"
+      ],
+      "hybrid_status": "UNAVAILABLE",
+      "reason": "The Member 1 registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory, so no BiLSTM sequence branch or hybrid fusion can be fitted.",
+      "sequence_available": false
+    }
+  },
+  "feature_columns": [
+    "current_soh_pct",
+    "v_mean",
+    "v_min",
+    "v_end",
+    "v_slope",
+    "i_mean",
+    "ah_throughput",
+    "energy_wh",
+    "discharge_time_s",
+    "temp_mean",
+    "temp_range"
+  ],
+  "generated_at": "2026-11-02T07:48:53.001749+00:00",
+  "model_type": "fused_lightgbm_bilstm",
+  "module": "member2_modeling/hybrid",
+  "n_folds": 3,
+  "production_ready": false,
+  "protected_artifacts_untouched": [
+    "member2_modeling/nmc_lgbm_model.joblib",
+    "member2_modeling/lfp_lgbm_model.joblib",
+    "member2_modeling/nmc_bilstm_model.pt",
+    "member2_modeling/nmc_rul_lgbm_model.joblib",
+    "member2_modeling/feature_schema.json",
+    "member2_modeling/model_manifest.json",
+    "member3/",
+    "DATA/processed/"
+  ],
+  "readiness_status": "EXPERIMENTAL",
+  "sequence_length": 5,
+  "training_dataset": {
+    "cells": [
+      "B0005",
+      "B0006",
+      "B0018"
+    ],
+    "cycles_per_cell": {
+      "B0005": 168,
+      "B0006": 168,
+      "B0018": 132
+    },
+    "model_ready_pairs": 465,
+    "source_file": "master_table.parquet",
+    "source_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+    "split_counts": {
+      "test": 95,
+      "train": 278,
+      "val": 92
+    },
+    "target": "SOH of the next observed cycle record (positional shift by 1); not necessarily the next physical cycle."
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "baselines": {
+    "train_chemistry_median": {
+      "bias": 0.020255000000000543,
+      "mae": 5.674425,
+      "mape_pct": 6.603479856793178,
+      "median_abs_error": 5.525000000000006,
+      "n": 2000,
+      "r2": -0.0010036034108418246,
+      "residual_q90": null,
+      "rmse": 6.6993427700036365
+    },
+    "train_mean": {
+      "bias": 0.06453500000000748,
+      "mae": 5.67430043,
+      "mape_pct": 6.600144461642969,
+      "median_abs_error": 5.501809999999992,
+      "n": 2000,
+      "r2": -9.28884833228949e-05,
+      "residual_q90": null,
+      "rmse": 6.696294539310529
+    },
+    "train_median": {
+      "bias": 0.026344999999993086,
+      "mae": 5.674505,
+      "mape_pct": 6.603289759297941,
+      "median_abs_error": 5.529999999999987,
+      "n": 2000,
+      "r2": -1.5479882107705123e-05,
+      "residual_q90": null,
+      "rmse": 6.696035382971031
+    }
+  },
+  "caveats": [
+    "Metrics are computed on a grouped holdout of unseen entities.",
+    "No test row was used for selection or preprocessing."
+  ],
+  "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+  "feature_importance": [
+    {
+      "feature": "internal_resistance_mohm",
+      "importance": 1245.0
+    },
+    {
+      "feature": "operating_temperature_c",
+      "importance": 777.0
+    },
+    {
+      "feature": "cycle_number",
+      "importance": 620.0
+    },
+    {
+      "feature": "coulombic_efficiency_pct",
+      "importance": 472.0
+    },
+    {
+      "feature": "charging_c_rate",
+      "importance": 415.0
+    },
+    {
+      "feature": "ambient_temperature_c",
+      "importance": 336.0
+    },
+    {
+      "feature": "stack_pressure_mpa",
+      "importance": 252.0
+    },
+    {
+      "feature": "volumetric_energy_density_wh_l",
+      "importance": 243.0
+    },
+    {
+      "feature": "nominal_capacity_ah",
+      "importance": 206.0
+    },
+    {
+      "feature": "gravimetric_energy_density_wh_kg",
+      "importance": 198.0
+    },
+    {
+      "feature": "thermal_runaway_onset_c",
+      "importance": 185.0
+    },
+    {
+      "feature": "discharging_c_rate",
+      "importance": 153.0
+    },
+    {
+      "feature": "nominal_voltage_plateau_v",
+      "importance": 142.0
+    },
+    {
+      "feature": "commercial_readiness_level=TRL_7_Automotive_Testing",
+      "importance": 21.0
+    },
+    {
+      "feature": "commercial_readiness_level=TRL_8_Pilot_Production",
+      "importance": 17.0
+    },
+    {
+      "feature": "manufacturer=LG Energy Solution",
+      "importance": 14.0
+    },
+    {
+      "feature": "electrolyte_chemistry=Halide_Based_Li3YCl6",
+      "importance": 14.0
+    },
+    {
+      "feature": "target_ev_application=Long_Range_Luxury_Sedan",
+      "importance": 13.0
+    },
+    {
+      "feature": "anode_composition=Silicon_Dominant_Nanowire",
+      "importance": 11.0
+    },
+    {
+      "feature": "anode_composition=Anode_Free_InSitu_Plating",
+      "importance": 11.0
+    }
+  ],
+  "per_chemistry": {
+    "Halide_Based_Li3YCl6": {
+      "bias": -0.04636761653565867,
+      "mae": 0.6205457750997196,
+      "mape_pct": 0.7293599606755251,
+      "median_abs_error": 0.5292398678718939,
+      "n": 236,
+      "r2": 0.9862951981432824,
+      "residual_q90": null,
+      "rmse": 0.789101246482569
+    },
+    "Oxide_Based_LLZO": {
+      "bias": -0.006877455799626824,
+      "mae": 0.6243048375205567,
+      "mape_pct": 0.7241344618438301,
+      "median_abs_error": 0.5248579382181902,
+      "n": 494,
+      "r2": 0.9851745548007073,
+      "residual_q90": null,
+      "rmse": 0.7943846252000527
+    },
+    "Polymer_Composite": {
+      "bias": -0.048640928031392625,
+      "mae": 0.6385811775660094,
+      "mape_pct": 0.7376117727776317,
+      "median_abs_error": 0.5544867165761218,
+      "n": 386,
+      "r2": 0.9860401710151009,
+      "residual_q90": null,
+      "rmse": 0.7933023306743318
+    },
+    "Sulfide_Based_Li10GeP2S12": {
+      "bias": -0.011459415627386827,
+      "mae": 0.6709084391768577,
+      "mape_pct": 0.7789032377374147,
+      "median_abs_error": 0.5838753259612375,
+      "n": 884,
+      "r2": 0.9846476863671667,
+      "residual_q90": null,
+      "rmse": 0.8368736456162612
+    }
+  },
+  "selected_model": {
+    "name": "lightgbm",
+    "params": {
+      "learning_rate": 0.05,
+      "min_child_samples": 20,
+      "n_estimators": 600,
+      "num_leaves": 31
+    },
+    "scale_features": false
+  },
+  "status": "EXPERIMENTAL",
+  "target": "state_of_health_pct",
+  "task_id": "solid_soh",
+  "task_type": "regression",
+  "test": {
+    "bias": -0.0216228711510793,
+    "bootstrap_ci": {
+      "mae_ci95_high": 0.6689342548103872,
+      "mae_ci95_low": 0.6271107782249783
+    },
+    "mae": 0.6472153937157553,
+    "mape_pct": 0.7515599906611581,
+    "median_abs_error": 0.5528806446026735,
+    "n": 2000,
+    "r2": 0.9852716461701707,
+    "residual_q90": 1.2708307427512482,
+    "rmse": 0.8126274398474272
+  },
+  "uncertainty": {
+    "calibration_status": "empirical_validation_residuals",
+    "kind": "validation_residual_interval",
+    "note": "Prediction interval is +/- residual_q90 around the point estimate.",
+    "residual_q90": 1.2708307427512482,
+    "residual_std": 0.4743009392247176
+  }
+}

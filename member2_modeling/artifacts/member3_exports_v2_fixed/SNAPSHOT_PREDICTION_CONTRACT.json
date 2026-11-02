@@ -1,0 +1,116 @@
+{
+  "contract_version": "2.0.0-snapshot-draft",
+  "datasets": [
+    "EV_FAILURE_PREDICTION",
+    "SOLID_STATE_TELEMETRY_2026"
+  ],
+  "files": {
+    "ev_failure_predictions.csv": {
+      "columns": [
+        "snapshot_row_id",
+        "entity_id",
+        "dataset_id",
+        "chemistry",
+        "observed_failure",
+        "predicted_failure_probability",
+        "predicted_class",
+        "model_id",
+        "model_status",
+        "validation_status",
+        "split",
+        "quality_flag"
+      ],
+      "model_id": "member2::ev_failure::2.0.0",
+      "status": "EXPERIMENTAL",
+      "unit": "failure probability"
+    },
+    "ev_range_estimate.csv": {
+      "accuracy_claim": "none",
+      "columns": [
+        "snapshot_row_id",
+        "entity_id",
+        "chemistry",
+        "battery_capacity_kwh",
+        "soh_pct",
+        "soh_source",
+        "range_km",
+        "range_km_optimistic",
+        "range_km_conservative",
+        "unit",
+        "kind",
+        "is_measured",
+        "validated_accuracy",
+        "validation_status",
+        "consumption_kwh_per_km"
+      ],
+      "is_measured": false,
+      "kind": "calculated_estimate",
+      "unit": "km",
+      "validated_accuracy": false
+    },
+    "ev_soh_predictions.csv": {
+      "columns": [
+        "snapshot_row_id",
+        "entity_id",
+        "dataset_id",
+        "chemistry",
+        "observed_soh_pct",
+        "predicted_soh_pct",
+        "interval_90_low",
+        "interval_90_high",
+        "unit",
+        "model_id",
+        "model_status",
+        "validation_status",
+        "split",
+        "quality_flag"
+      ],
+      "model_id": "member2::ev_soh::2.0.0",
+      "status": "EXPERIMENTAL",
+      "unit": "%"
+    },
+    "solid_state_soh_predictions.csv": {
+      "columns": [
+        "snapshot_row_id",
+        "entity_id",
+        "dataset_id",
+        "chemistry",
+        "observed_soh_pct",
+        "predicted_soh_pct",
+        "interval_90_low",
+        "interval_90_high",
+        "unit",
+        "model_id",
+        "model_status",
+        "validation_status",
+        "split",
+        "quality_flag"
+      ],
+      "model_id": "member2::solid_soh::2.0.0",
+      "status": "EXPERIMENTAL",
+      "unit": "%"
+    }
+  },
+  "limitations": [
+    "Snapshot predictions are grouped-holdout estimates, not temporal forecasts.",
+    "EV capacity targets are algebraically derived from the health percentage.",
+    "Synthetic tasks are excluded from this bundle because they are RESEARCH_ONLY.",
+    "Range is a formula estimate with no measured ground truth."
+  ],
+  "member3_adapter": {
+    "compatible": false,
+    "existing_adapter": "member3/integration/member2_range_adapter.py",
+    "reason": "The snapshot datasets have no cycle_index. Emitting a fake cycle index would fabricate temporal structure, so this bundle is proposed as a new snapshot contract rather than passed to the cycle adapter.",
+    "required_columns": [
+      "cycle_index",
+      "cell_id",
+      "chemistry",
+      "soh_pct"
+    ]
+  },
+  "production_ready": false,
+  "rul": {
+    "available": false,
+    "reason": "No active Member 1 dataset has an observed EOL trajectory."
+  }
+}

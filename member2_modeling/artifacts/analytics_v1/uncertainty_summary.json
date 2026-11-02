@@ -1,0 +1,133 @@
+{
+  "generated_from": {
+    "snapshot_registry": "C:\\Users\\KIIT0001\\OneDrive\\Desktop\\Major-Project-EV-BATTERY-git\\member2_modeling\\artifacts\\snapshot_ml\\model_registry.json",
+    "rul_metrics": "C:\\Users\\KIIT0001\\OneDrive\\Desktop\\Major-Project-EV-BATTERY-git\\member2_modeling\\artifacts\\rul_v1\\rul_metrics.json"
+  },
+  "snapshot_regression": {
+    "method": "validation residual q90 around the point estimate",
+    "nominal_coverage": 0.9,
+    "calibration_status": "empirical_validation_residuals",
+    "warning": "Empirical coverage on the frozen test split does not guarantee coverage for new vehicles or future conditions."
+  },
+  "snapshot_classification": {
+    "method": "raw model class probabilities",
+    "calibration_status": "uncalibrated_class_probabilities",
+    "warning": "Probabilities are uncalibrated confidence scores. They are not calibrated probabilities and have no coverage guarantee."
+  },
+  "rul": {
+    "method": "cross-fitted conformal absolute-residual q90",
+    "nominal_coverage": 0.9,
+    "calibration_status": "empirical_on_held_out_cells",
+    "warning": "Only three NMC cells are available; coverage is unstable and no VALIDATED status is claimed."
+  },
+  "range": {
+    "method": "fixed consumption scenarios (0.15, 0.18, 0.22 kWh/km)",
+    "calibration_status": "assumption_scenario_spread",
+    "validated_accuracy": false,
+    "warning": "Scenario spread reflects assumed consumption, not statistical uncertainty, and the dataset has no measured range target."
+  },
+  "tasks": {
+    "ev_capacity": {
+      "uncertainty": {
+        "calibration_status": "empirical_validation_residuals",
+        "kind": "validation_residual_interval",
+        "note": "Prediction interval is +/- residual_q90 around the point estimate.",
+        "residual_q90": 6.3671509035576666,
+        "residual_std": 3.9198961742938314
+      },
+      "empirical_coverage": 0.8816094918751612,
+      "mean_interval_width": 12.73430180711534,
+      "n_test": 3877
+    },
+    "ev_failure": {
+      "uncertainty": {
+        "calibration_status": "uncalibrated_class_probabilities",
+        "classes": [
+          "0",
+          "1"
+        ],
+        "kind": "class_probabilities",
+        "validation_balanced_accuracy": 0.9239685785792484,
+        "validation_log_loss": 0.20957014315929112
+      },
+      "brier": 0.0544226946235979,
+      "log_loss": 0.19652702836375674,
+      "roc_auc": 0.9748979657141527,
+      "n_test": 4000,
+      "calibration_status": "uncalibrated_class_probabilities"
+    },
+    "ev_soh": {
+      "uncertainty": {
+        "calibration_status": "empirical_validation_residuals",
+        "kind": "validation_residual_interval",
+        "note": "Prediction interval is +/- residual_q90 around the point estimate.",
+        "residual_q90": 5.812863143043334,
+        "residual_std": 2.1682392744557277
+      },
+      "empirical_coverage": 0.9023365712785508,
+      "mean_interval_width": 11.62572628608666,
+      "n_test": 3809
+    },
+    "solid_soh": {
+      "uncertainty": {
+        "calibration_status": "empirical_validation_residuals",
+        "kind": "validation_residual_interval",
+        "note": "Prediction interval is +/- residual_q90 around the point estimate.",
+        "residual_q90": 1.2708307427512482,
+        "residual_std": 0.4743009392247176
+      },
+      "empirical_coverage": 0.8865,
+      "mean_interval_width": 2.541661485502487,
+      "n_test": 2000
+    },
+    "solid_tier": {
+      "uncertainty": {
+        "calibration_status": "uncalibrated_class_probabilities",
+        "classes": [
+          "Accelerated_Degradation_Tier_3",
+          "Critical_Thermal_Risk_Tier_4",
+          "Minimal_Degradation_Tier_1",
+          "Moderate_Degradation_Tier_2"
+        ],
+        "kind": "class_probabilities",
+        "validation_balanced_accuracy": 0.9016450967407579,
+        "validation_log_loss": 0.26012363913023157
+      },
+      "brier": null,
+      "log_loss": 0.26923018249367026,
+      "roc_auc": null,
+      "n_test": 2000,
+      "calibration_status": "uncalibrated_class_probabilities"
+    },
+    "synthetic_capacity": {
+      "uncertainty": {
+        "calibration_status": "empirical_validation_residuals",
+        "kind": "validation_residual_interval",
+        "note": "Prediction interval is +/- residual_q90 around the point estimate.",
+        "residual_q90": 8.959232598335829,
+        "residual_std": 3.2879757071457023
+      },
+      "empirical_coverage": 0.9,
+      "mean_interval_width": 17.91846519667166,
+      "n_test": 400
+    },
+    "synthetic_class": {
+      "uncertainty": {
+        "calibration_status": "uncalibrated_class_probabilities",
+        "classes": [
+          "Degraded",
+          "End_of_Life",
+          "Healthy"
+        ],
+        "kind": "class_probabilities",
+        "validation_balanced_accuracy": 0.809767352146948,
+        "validation_log_loss": 0.5110310757202997
+      },
+      "brier": null,
+      "log_loss": 0.4987625458350755,
+      "roc_auc": null,
+      "n_test": 400,
+      "calibration_status": "uncalibrated_class_probabilities"
+    }
+  }
+}

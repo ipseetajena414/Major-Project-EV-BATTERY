@@ -1,0 +1,136 @@
+{
+  "baselines": {
+    "train_chemistry_median": {
+      "bias": 0.6863915398504019,
+      "mae": 26.121728140314676,
+      "mape_pct": 51.19521821276124,
+      "median_abs_error": 25.319999999999993,
+      "n": 3877,
+      "r2": -0.00112084533827983,
+      "residual_q90": null,
+      "rmse": 30.604444722006093
+    },
+    "train_mean": {
+      "bias": -0.22532628320866435,
+      "mae": 26.12937870535207,
+      "mape_pct": 51.86539229117373,
+      "median_abs_error": 25.443850915656434,
+      "n": 3877,
+      "r2": -5.42676733190639e-05,
+      "residual_q90": null,
+      "rmse": 30.58813764177581
+    },
+    "train_median": {
+      "bias": 0.628524632447773,
+      "mae": 26.115065772504515,
+      "mape_pct": 51.22491426076882,
+      "median_abs_error": 25.39,
+      "n": 3877,
+      "r2": -0.00042224265284973583,
+      "residual_q90": null,
+      "rmse": 30.593764653470018
+    }
+  },
+  "caveats": [
+    "Metrics are computed on a grouped holdout of unseen entities.",
+    "No test row was used for selection or preprocessing."
+  ],
+  "dataset_id": "EV_FAILURE_PREDICTION",
+  "feature_importance": [],
+  "per_chemistry": {
+    "LFP": {
+      "bias": 0.1520916504624174,
+      "mae": 3.1615694320224623,
+      "mape_pct": 4.706139484799839,
+      "median_abs_error": 1.9280226991370881,
+      "n": 1117,
+      "r2": 0.97284679876021,
+      "residual_q90": null,
+      "rmse": 5.116700680348254
+    },
+    "LMO": {
+      "bias": -0.07436047017470868,
+      "mae": 3.145836483375131,
+      "mape_pct": 4.960361170285365,
+      "median_abs_error": 1.9872633446226544,
+      "n": 579,
+      "r2": 0.9739500684726986,
+      "residual_q90": null,
+      "rmse": 4.9680130449772735
+    },
+    "LTO": {
+      "bias": -0.24950443969031721,
+      "mae": 3.1497234384955957,
+      "mape_pct": 4.998512983189018,
+      "median_abs_error": 2.2295441820015043,
+      "n": 241,
+      "r2": 0.972875615652587,
+      "residual_q90": null,
+      "rmse": 4.8052272546300685
+    },
+    "NCA": {
+      "bias": 0.5526785896195562,
+      "mae": 3.526467131654904,
+      "mape_pct": 4.851014315274293,
+      "median_abs_error": 1.9277441978789334,
+      "n": 264,
+      "r2": 0.9489029527766959,
+      "residual_q90": null,
+      "rmse": 6.825885958347251
+    },
+    "NMC": {
+      "bias": 0.025076774115604234,
+      "mae": 3.2019915092491433,
+      "mape_pct": 4.990311188307568,
+      "median_abs_error": 2.056358862610047,
+      "n": 1538,
+      "r2": 0.9696094451694004,
+      "residual_q90": null,
+      "rmse": 5.309658830701422
+    },
+    "__MISSING__": {
+      "bias": 0.1533081277981731,
+      "mae": 3.434059754481622,
+      "mape_pct": 5.530612910706388,
+      "median_abs_error": 2.4913609987464795,
+      "n": 138,
+      "r2": 0.9650623258674413,
+      "residual_q90": null,
+      "rmse": 5.638996192456308
+    }
+  },
+  "selected_model": {
+    "name": "hist_gradient_boosting",
+    "params": {
+      "learning_rate": 0.06,
+      "max_iter": 300,
+      "max_leaf_nodes": 31
+    },
+    "scale_features": false
+  },
+  "status": "EXPERIMENTAL",
+  "target": "remaining_capacity",
+  "task_id": "ev_capacity",
+  "task_type": "regression",
+  "test": {
+    "bias": 0.0702431878399555,
+    "bootstrap_ci": {
+      "mae_ci95_high": 3.3626730804131943,
+      "mae_ci95_low": 3.0818168640992627
+    },
+    "mae": 3.2090653180864765,
+    "mape_pct": 4.914222212946127,
+    "median_abs_error": 2.0182075514511695,
+    "n": 3877,
+    "r2": 0.9699090627682619,
+    "residual_q90": 6.3671509035576666,
+    "rmse": 5.305900596272016
+  },
+  "uncertainty": {
+    "calibration_status": "empirical_validation_residuals",
+    "kind": "validation_residual_interval",
+    "note": "Prediction interval is +/- residual_q90 around the point estimate.",
+    "residual_q90": 6.3671509035576666,
+    "residual_std": 3.9198961742938314
+  }
+}

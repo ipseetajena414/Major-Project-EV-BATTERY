@@ -1,0 +1,108 @@
+{
+  "sequential": {
+    "method": "robust_z + per_cell_isolation_forest",
+    "robust_z_threshold": 4.0,
+    "iforest_contamination": "auto",
+    "iforest_min_cycles": 20,
+    "cycles_scored": 817,
+    "cycles_flagged": 242,
+    "flagged_fraction": 0.2962056303549572,
+    "cells": 8,
+    "confirmed_fault_labels_available": false,
+    "interpretation": "Statistical outlier that may merit inspection. It is not a confirmed fault, failure, or safety event.",
+    "limitations": [
+      "No verified fault labels exist in the repository, so precision, recall and fault-detection accuracy cannot be computed.",
+      "Flags describe telemetry context, not a diagnosis.",
+      "IsolationForest is unsupervised and its contamination is automatic."
+    ]
+  },
+  "snapshots": {
+    "EV_FAILURE_PREDICTION": {
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "method": "robust_z_cross_sectional",
+      "z_threshold": 6.0,
+      "sensor_columns": [
+        "battery_capacity_kwh",
+        "cell_voltage_avg",
+        "cell_voltage_std",
+        "pack_voltage",
+        "cell_temperature_avg",
+        "cell_temperature_max",
+        "internal_resistance",
+        "charge_efficiency",
+        "discharge_efficiency",
+        "remaining_capacity",
+        "capacity_loss_percent",
+        "average_ambient_temperature",
+        "maximum_temperature",
+        "minimum_temperature",
+        "voltage_imbalance",
+        "temperature_variance",
+        "abnormal_voltage_events"
+      ],
+      "rows_scored": 20000,
+      "rows_flagged": 144,
+      "flagged_fraction": 0.0072,
+      "top_feature_share": {
+        "battery_capacity_kwh": 0,
+        "cell_voltage_avg": 0,
+        "cell_voltage_std": 102,
+        "pack_voltage": 0,
+        "cell_temperature_avg": 0,
+        "cell_temperature_max": 0,
+        "internal_resistance": 0,
+        "charge_efficiency": 0,
+        "discharge_efficiency": 0,
+        "remaining_capacity": 0,
+        "capacity_loss_percent": 0,
+        "average_ambient_temperature": 0,
+        "maximum_temperature": 0,
+        "minimum_temperature": 0,
+        "voltage_imbalance": 34,
+        "temperature_variance": 0,
+        "abnormal_voltage_events": 8
+      },
+      "confirmed_fault_labels_available": false,
+      "interpretation": "Statistical outlier that may merit inspection. It is not a confirmed fault, failure, or safety event.",
+      "limitations": [
+        "Snapshot records are not chronological, so this is a cross-sectional outlier screen rather than a temporal anomaly detector.",
+        "No verified fault labels exist to score the detector."
+      ]
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "method": "robust_z_cross_sectional",
+      "z_threshold": 6.0,
+      "sensor_columns": [
+        "nominal_capacity_ah",
+        "operating_temperature_c",
+        "ambient_temperature_c",
+        "internal_resistance_mohm",
+        "coulombic_efficiency_pct",
+        "nominal_voltage_plateau_v",
+        "dendrite_mitigation_efficiency",
+        "projected_cycle_life_80pct_soh"
+      ],
+      "rows_scored": 10000,
+      "rows_flagged": 1639,
+      "flagged_fraction": 0.1639,
+      "top_feature_share": {
+        "nominal_capacity_ah": 0,
+        "operating_temperature_c": 0,
+        "ambient_temperature_c": 0,
+        "internal_resistance_mohm": 0,
+        "coulombic_efficiency_pct": 0,
+        "nominal_voltage_plateau_v": 1571,
+        "dendrite_mitigation_efficiency": 0,
+        "projected_cycle_life_80pct_soh": 68
+      },
+      "confirmed_fault_labels_available": false,
+      "interpretation": "Statistical outlier that may merit inspection. It is not a confirmed fault, failure, or safety event.",
+      "limitations": [
+        "Snapshot records are not chronological, so this is a cross-sectional outlier screen rather than a temporal anomaly detector.",
+        "No verified fault labels exist to score the detector."
+      ]
+    }
+  },
+  "confirmed_fault_labels_available": false
+}

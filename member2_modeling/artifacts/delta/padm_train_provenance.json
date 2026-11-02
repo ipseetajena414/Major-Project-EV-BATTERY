@@ -1,0 +1,164 @@
+{
+  "module": "member2_modeling/delta/padm_train",
+  "feature_cols": [
+    "ah_throughput",
+    "energy_wh",
+    "v_mean",
+    "v_std",
+    "v_slope",
+    "dvdt_mean",
+    "temp_mean",
+    "temp_rise",
+    "current_soh_pct",
+    "cycle_position",
+    "delta_lag_1",
+    "delta_rolling_mean_3"
+  ],
+  "hyperparameters": {
+    "ridge_alpha": 1000.0,
+    "enet_alpha": 1.0,
+    "enet_l1_ratio": 0.1
+  },
+  "validation_mae": {
+    "ridge": 0.39406535029411316,
+    "elasticnet": 0.3631247580051422
+  },
+  "train_mean_delta": -0.24861488866443487,
+  "loco_diagnostic": {
+    "per_cell": [
+      {
+        "held_out_cell": "B0005",
+        "n_held_out": 133,
+        "n_train_cells": 2,
+        "soh_mae": 0.3297649323940277
+      },
+      {
+        "held_out_cell": "B0006",
+        "n_held_out": 133,
+        "n_train_cells": 2,
+        "soh_mae": 0.6449673175811768
+      },
+      {
+        "held_out_cell": "B0018",
+        "n_held_out": 104,
+        "n_train_cells": 2,
+        "soh_mae": 0.5350874662399292
+      }
+    ],
+    "pooled_soh_mae": 0.5007796828811233,
+    "note": "LOCO is diagnostic only. Hyperparameters are NOT changed based on LOCO results."
+  },
+  "ridge_grid_scores": [
+    {
+      "alpha": 0.001,
+      "val_soh_mae": 0.5957706570625305
+    },
+    {
+      "alpha": 0.01,
+      "val_soh_mae": 0.6864113807678223
+    },
+    {
+      "alpha": 0.1,
+      "val_soh_mae": 0.753487229347229
+    },
+    {
+      "alpha": 1.0,
+      "val_soh_mae": 0.7415323853492737
+    },
+    {
+      "alpha": 10.0,
+      "val_soh_mae": 0.6107903122901917
+    },
+    {
+      "alpha": 100.0,
+      "val_soh_mae": 0.4403378963470459
+    },
+    {
+      "alpha": 1000.0,
+      "val_soh_mae": 0.39406535029411316
+    }
+  ],
+  "enet_grid_scores": [
+    {
+      "alpha": 0.001,
+      "l1_ratio": 0.1,
+      "val_soh_mae": 0.7558091878890991
+    },
+    {
+      "alpha": 0.001,
+      "l1_ratio": 0.5,
+      "val_soh_mae": 0.7552781105041504
+    },
+    {
+      "alpha": 0.001,
+      "l1_ratio": 0.9,
+      "val_soh_mae": 0.7532609701156616
+    },
+    {
+      "alpha": 0.01,
+      "l1_ratio": 0.1,
+      "val_soh_mae": 0.6995964646339417
+    },
+    {
+      "alpha": 0.01,
+      "l1_ratio": 0.5,
+      "val_soh_mae": 0.6760277152061462
+    },
+    {
+      "alpha": 0.01,
+      "l1_ratio": 0.9,
+      "val_soh_mae": 0.6447955965995789
+    },
+    {
+      "alpha": 0.1,
+      "l1_ratio": 0.1,
+      "val_soh_mae": 0.49058616161346436
+    },
+    {
+      "alpha": 0.1,
+      "l1_ratio": 0.5,
+      "val_soh_mae": 0.4065469801425934
+    },
+    {
+      "alpha": 0.1,
+      "l1_ratio": 0.9,
+      "val_soh_mae": 0.3640053868293762
+    },
+    {
+      "alpha": 1.0,
+      "l1_ratio": 0.1,
+      "val_soh_mae": 0.3631247580051422
+    },
+    {
+      "alpha": 1.0,
+      "l1_ratio": 0.5,
+      "val_soh_mae": 0.3700425624847412
+    },
+    {
+      "alpha": 1.0,
+      "l1_ratio": 0.9,
+      "val_soh_mae": 0.3700425624847412
+    },
+    {
+      "alpha": 10.0,
+      "l1_ratio": 0.1,
+      "val_soh_mae": 0.3700425624847412
+    },
+    {
+      "alpha": 10.0,
+      "l1_ratio": 0.5,
+      "val_soh_mae": 0.3700425624847412
+    },
+    {
+      "alpha": 10.0,
+      "l1_ratio": 0.9,
+      "val_soh_mae": 0.3700425624847412
+    }
+  ],
+  "production_ready": false,
+  "notes": [
+    "Test set was not accessed during training or hyperparameter selection.",
+    "Scaler re-fitted on train+val for final models.",
+    "LOCO diagnostic is informational only; hyperparameters not changed."
+  ]
+}

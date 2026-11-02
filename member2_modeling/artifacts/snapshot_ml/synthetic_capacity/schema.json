@@ -1,0 +1,79 @@
+{
+  "categorical_features": [
+    "electrolyte_type"
+  ],
+  "categorical_vocabularies": {
+    "electrolyte_type": [
+      "Lithium_Sulfur",
+      "Sodium_Ion",
+      "Solid_State"
+    ]
+  },
+  "chemistry_column": "electrolyte_type",
+  "classes": [],
+  "entity_column": "battery_id",
+  "feature_columns": [
+    "electrolyte_type",
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "feature_names": [
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins",
+    "electrolyte_type=Lithium_Sulfur",
+    "electrolyte_type=Sodium_Ion",
+    "electrolyte_type=Solid_State"
+  ],
+  "forbidden_columns": [
+    "discharge_capacity_ah",
+    "state_of_health"
+  ],
+  "missing_category": "__MISSING__",
+  "model_version": "2.0.0",
+  "numeric_features": [
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "numeric_medians": {
+    "charge_time_mins": 60.95,
+    "cycle_count": 769.0,
+    "internal_resistance_mohms": 32.065,
+    "temperature_celsius": 31.07
+  },
+  "numeric_statistics": {
+    "charge_time_mins": {
+      "max": 76.89,
+      "mean": 61.13758333333334,
+      "min": 48.08,
+      "std": 5.48288372966777
+    },
+    "cycle_count": {
+      "max": 1500.0,
+      "mean": 761.6608333333334,
+      "min": 10.0,
+      "std": 432.01816412349945
+    },
+    "internal_resistance_mohms": {
+      "max": 57.27,
+      "mean": 32.27486666666666,
+      "min": 15.09,
+      "std": 9.613778695994387
+    },
+    "temperature_celsius": {
+      "max": 40.11,
+      "mean": 31.457375000000006,
+      "min": 26.62,
+      "std": 2.7120278746186095
+    }
+  },
+  "schema_version": "2.0.0",
+  "target": "discharge_capacity_ah",
+  "task_id": "synthetic_capacity",
+  "unit": "Ah (synthetic)"
+}

@@ -1,0 +1,1934 @@
+{
+  "ev_capacity": {
+    "dataset_id": "EV_FAILURE_PREDICTION",
+    "purpose": "Train on all other chemistries and score the excluded chemistry. Diagnostic only; not used to select the production model.",
+    "results": {
+      "LFP": {
+        "bias": -0.03284814664460084,
+        "held_out_chemistry": "LFP",
+        "mae": 3.0744980571285656,
+        "mape_pct": 4.693166935569021,
+        "median_abs_error": 1.9429859663209612,
+        "n": 5687,
+        "n_heldout": 5687,
+        "n_train": 11644,
+        "n_validation": 2055,
+        "r2": 0.9725083238422464,
+        "residual_q90": null,
+        "rmse": 5.108525247516179,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 1.151021628275019,
+          "mae": 26.330722700896782,
+          "mape_pct": 50.88083662686989,
+          "median_abs_error": 25.620000000000005,
+          "n": 5687,
+          "r2": -0.0013956518636955018,
+          "residual_q90": null,
+          "rmse": 30.83172225719513
+        }
+      },
+      "LMO": {
+        "bias": 0.061348020223945296,
+        "held_out_chemistry": "LMO",
+        "mae": 3.0932570703983164,
+        "mape_pct": 4.669650979014444,
+        "median_abs_error": 1.9294320384804848,
+        "n": 2909,
+        "n_heldout": 2909,
+        "n_train": 14005,
+        "n_validation": 2472,
+        "r2": 0.9722635486701795,
+        "residual_q90": null,
+        "rmse": 5.124718488299713,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 1.341409419044345,
+          "mae": 26.35109659676865,
+          "mape_pct": 50.71842453429357,
+          "median_abs_error": 25.83,
+          "n": 2909,
+          "r2": -0.0019003498954366371,
+          "residual_q90": null,
+          "rmse": 30.800433570765357
+        }
+      },
+      "LTO": {
+        "bias": -0.0014659794025909084,
+        "held_out_chemistry": "LTO",
+        "mae": 3.0519490257305844,
+        "mape_pct": 4.717206968226042,
+        "median_abs_error": 1.9490601154882654,
+        "n": 1313,
+        "n_heldout": 1313,
+        "n_train": 15362,
+        "n_validation": 2711,
+        "r2": 0.9709024158713967,
+        "residual_q90": null,
+        "rmse": 5.168651095025441,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 0.28883092155369317,
+          "mae": 25.809562071591778,
+          "mape_pct": 51.012478517950456,
+          "median_abs_error": 24.564999999999998,
+          "n": 1313,
+          "r2": -9.086358574172948e-05,
+          "residual_q90": null,
+          "rmse": 30.301803678793096
+        }
+      },
+      "NCA": {
+        "bias": -0.06429699633869489,
+        "held_out_chemistry": "NCA",
+        "mae": 3.1381448976972233,
+        "mape_pct": 4.762237356481573,
+        "median_abs_error": 1.9544231955849796,
+        "n": 1436,
+        "n_heldout": 1436,
+        "n_train": 15257,
+        "n_validation": 2693,
+        "r2": 0.9700930613925507,
+        "residual_q90": null,
+        "rmse": 5.409319967274502,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 0.6767757660167164,
+          "mae": 26.909505571030643,
+          "mape_pct": 53.924458850568435,
+          "median_abs_error": 26.355,
+          "n": 1436,
+          "r2": -0.0004681405003676975,
+          "residual_q90": null,
+          "rmse": 31.286596648958987
+        }
+      },
+      "NMC": {
+        "bias": -0.03332390164628511,
+        "held_out_chemistry": "NMC",
+        "mae": 3.1158236155500143,
+        "mape_pct": 4.746169447382917,
+        "median_abs_error": 1.9838220155735797,
+        "n": 7350,
+        "n_heldout": 7350,
+        "n_train": 10230,
+        "n_validation": 1806,
+        "r2": 0.9704230386056919,
+        "residual_q90": null,
+        "rmse": 5.21862382887623,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 0.4331469387755074,
+          "mae": 25.89235238095238,
+          "mape_pct": 50.731061342217906,
+          "median_abs_error": 24.915,
+          "n": 7350,
+          "r2": -0.0002037567793164996,
+          "residual_q90": null,
+          "rmse": 30.347537480257706
+        }
+      },
+      "__MISSING__": {
+        "bias": -0.09973804841207776,
+        "held_out_chemistry": "__MISSING__",
+        "mae": 3.040108378397076,
+        "mape_pct": 4.781607097905488,
+        "median_abs_error": 1.9583352342771896,
+        "n": 691,
+        "n_heldout": 691,
+        "n_train": 15890,
+        "n_validation": 2805,
+        "r2": 0.9741691152384393,
+        "residual_q90": null,
+        "rmse": 4.892588594876384,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 2.0119898697539833,
+          "mae": 26.377040520984085,
+          "mape_pct": 49.85035406893876,
+          "median_abs_error": 25.89500000000001,
+          "n": 691,
+          "r2": -0.0043683101350766584,
+          "residual_q90": null,
+          "rmse": 30.50812789318665
+        }
+      }
+    },
+    "selected_model": "hist_gradient_boosting",
+    "target": "remaining_capacity",
+    "task_id": "ev_capacity",
+    "task_type": "regression"
+  },
+  "ev_failure": {
+    "dataset_id": "EV_FAILURE_PREDICTION",
+    "purpose": "Train on all other chemistries and score the excluded chemistry. Diagnostic only; not used to select the production model.",
+    "results": {
+      "LFP": {
+        "accuracy": 0.9219362536219533,
+        "balanced_accuracy": 0.9203763151460385,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              5048,
+              426
+            ],
+            [
+              32,
+              361
+            ]
+          ]
+        },
+        "held_out_chemistry": "LFP",
+        "log_loss": null,
+        "macro_f1": 0.7842342689573878,
+        "majority_baseline": {
+          "accuracy": 0.9330151695926368,
+          "balanced_accuracy": 0.5,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "0",
+              "1"
+            ],
+            "matrix": [
+              [
+                5474,
+                0
+              ],
+              [
+                393,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.4826734855832819,
+          "n": 5867,
+          "per_class": {
+            "0": {
+              "n": 5474,
+              "precision": 0.9330151695926368,
+              "recall": 1.0
+            },
+            "1": {
+              "n": 393,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.9006833680187097
+        },
+        "n": 5867,
+        "n_heldout": 5867,
+        "n_train": 12013,
+        "n_validation": 2120,
+        "per_class": {
+          "0": {
+            "n": 5474,
+            "precision": 0.9937007874015747,
+            "recall": 0.9221775666788454
+          },
+          "1": {
+            "n": 393,
+            "precision": 0.45870393900889456,
+            "recall": 0.9185750636132316
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.9335117991644833
+      },
+      "LMO": {
+        "accuracy": 0.9216144096064043,
+        "balanced_accuracy": 0.947049778973669,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              2553,
+              230
+            ],
+            [
+              5,
+              210
+            ]
+          ]
+        },
+        "held_out_chemistry": "LMO",
+        "log_loss": null,
+        "macro_f1": 0.798611061484612,
+        "majority_baseline": {
+          "accuracy": 0.928285523682455,
+          "balanced_accuracy": 0.5,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "0",
+              "1"
+            ],
+            "matrix": [
+              [
+                2783,
+                0
+              ],
+              [
+                215,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.48140460128005536,
+          "n": 2998,
+          "per_class": {
+            "0": {
+              "n": 2783,
+              "precision": 0.928285523682455,
+              "recall": 1.0
+            },
+            "1": {
+              "n": 215,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.8937618448047991
+        },
+        "n": 2998,
+        "n_heldout": 2998,
+        "n_train": 14451,
+        "n_validation": 2551,
+        "per_class": {
+          "0": {
+            "n": 2783,
+            "precision": 0.9980453479280688,
+            "recall": 0.9173553719008265
+          },
+          "1": {
+            "n": 215,
+            "precision": 0.4772727272727273,
+            "recall": 0.9767441860465116
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.9334265108985098
+      },
+      "LTO": {
+        "accuracy": 0.9371766444937176,
+        "balanced_accuracy": 0.9319095038434662,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              1193,
+              79
+            ],
+            [
+              6,
+              75
+            ]
+          ]
+        },
+        "held_out_chemistry": "LTO",
+        "log_loss": null,
+        "macro_f1": 0.8019494218035597,
+        "majority_baseline": {
+          "accuracy": 0.9401330376940134,
+          "balanced_accuracy": 0.5,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "0",
+              "1"
+            ],
+            "matrix": [
+              [
+                1272,
+                0
+              ],
+              [
+                81,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.4845714285714286,
+          "n": 1353,
+          "per_class": {
+            "0": {
+              "n": 1272,
+              "precision": 0.9401330376940134,
+              "recall": 1.0
+            },
+            "1": {
+              "n": 81,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.9111232182451695
+        },
+        "n": 1353,
+        "n_heldout": 1353,
+        "n_train": 15849,
+        "n_validation": 2798,
+        "per_class": {
+          "0": {
+            "n": 1272,
+            "precision": 0.9949958298582152,
+            "recall": 0.9378930817610063
+          },
+          "1": {
+            "n": 81,
+            "precision": 0.487012987012987,
+            "recall": 0.9259259259259259
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.9460063289806421
+      },
+      "NCA": {
+        "accuracy": 0.9245283018867925,
+        "balanced_accuracy": 0.930860196671597,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              1281,
+              106
+            ],
+            [
+              6,
+              91
+            ]
+          ]
+        },
+        "held_out_chemistry": "NCA",
+        "log_loss": null,
+        "macro_f1": 0.7885814011468462,
+        "majority_baseline": {
+          "accuracy": 0.9346361185983828,
+          "balanced_accuracy": 0.5,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "0",
+              "1"
+            ],
+            "matrix": [
+              [
+                1387,
+                0
+              ],
+              [
+                97,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.4831069313827934,
+          "n": 1484,
+          "per_class": {
+            "0": {
+              "n": 1387,
+              "precision": 0.9346361185983828,
+              "recall": 1.0
+            },
+            "1": {
+              "n": 97,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.9030583744311785
+        },
+        "n": 1484,
+        "n_heldout": 1484,
+        "n_train": 15738,
+        "n_validation": 2778,
+        "per_class": {
+          "0": {
+            "n": 1387,
+            "precision": 0.9953379953379954,
+            "recall": 0.923576063446287
+          },
+          "1": {
+            "n": 97,
+            "precision": 0.4619289340101523,
+            "recall": 0.9381443298969072
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.9359524111926703
+      },
+      "NMC": {
+        "accuracy": 0.9276663146779303,
+        "balanced_accuracy": 0.9201779023761236,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              6534,
+              500
+            ],
+            [
+              48,
+              494
+            ]
+          ]
+        },
+        "held_out_chemistry": "NMC",
+        "log_loss": null,
+        "macro_f1": 0.8014911990795143,
+        "majority_baseline": {
+          "accuracy": 0.9284582893347413,
+          "balanced_accuracy": 0.5,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "0",
+              "1"
+            ],
+            "matrix": [
+              [
+                7034,
+                0
+              ],
+              [
+                542,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.48145106091718004,
+          "n": 7576,
+          "per_class": {
+            "0": {
+              "n": 7034,
+              "precision": 0.9284582893347413,
+              "recall": 1.0
+            },
+            "1": {
+              "n": 542,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.8940144568351226
+        },
+        "n": 7576,
+        "n_heldout": 7576,
+        "n_train": 10560,
+        "n_validation": 1864,
+        "per_class": {
+          "0": {
+            "n": 7034,
+            "precision": 0.9927073837739289,
+            "recall": 0.9289166903611032
+          },
+          "1": {
+            "n": 542,
+            "precision": 0.4969818913480885,
+            "recall": 0.9114391143911439
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.9371085584280104
+      },
+      "__MISSING__": {
+        "accuracy": 0.9307479224376731,
+        "balanced_accuracy": 0.9379290004290004,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              619,
+              47
+            ],
+            [
+              3,
+              53
+            ]
+          ]
+        },
+        "held_out_chemistry": "__MISSING__",
+        "log_loss": null,
+        "macro_f1": 0.820333651855391,
+        "majority_baseline": {
+          "accuracy": 0.9224376731301939,
+          "balanced_accuracy": 0.5,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "0",
+              "1"
+            ],
+            "matrix": [
+              [
+                666,
+                0
+              ],
+              [
+                56,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.47982708933717577,
+          "n": 722,
+          "per_class": {
+            "0": {
+              "n": 666,
+              "precision": 0.9224376731301939,
+              "recall": 1.0
+            },
+            "1": {
+              "n": 56,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.8852211675860362
+        },
+        "n": 722,
+        "n_heldout": 722,
+        "n_train": 16386,
+        "n_validation": 2892,
+        "per_class": {
+          "0": {
+            "n": 666,
+            "precision": 0.9951768488745981,
+            "recall": 0.9294294294294294
+          },
+          "1": {
+            "n": 56,
+            "precision": 0.53,
+            "recall": 0.9464285714285714
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.9393313639670379
+      }
+    },
+    "selected_model": "logistic_regression",
+    "target": "battery_failure",
+    "task_id": "ev_failure",
+    "task_type": "binary"
+  },
+  "ev_soh": {
+    "dataset_id": "EV_FAILURE_PREDICTION",
+    "purpose": "Train on all other chemistries and score the excluded chemistry. Diagnostic only; not used to select the production model.",
+    "results": {
+      "LFP": {
+        "bias": 0.03864180344099777,
+        "held_out_chemistry": "LFP",
+        "mae": 2.813739796869162,
+        "mape_pct": 3.5396132008104058,
+        "median_abs_error": 2.3482466661087926,
+        "n": 5557,
+        "n_heldout": 5557,
+        "n_train": 11463,
+        "n_validation": 2024,
+        "r2": 0.8459751907957614,
+        "residual_q90": null,
+        "rmse": 3.570252129621612,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -1.215439985603748,
+          "mae": 7.3645636134605015,
+          "mape_pct": 9.554720012631796,
+          "median_abs_error": 6.3500000000000085,
+          "n": 5557,
+          "r2": -0.01785089293067621,
+          "residual_q90": null,
+          "rmse": 9.17794874722921
+        }
+      },
+      "LMO": {
+        "bias": 0.10799246661964251,
+        "held_out_chemistry": "LMO",
+        "mae": 2.736633236467805,
+        "mape_pct": 3.429804624182281,
+        "median_abs_error": 2.2780303611809813,
+        "n": 2858,
+        "n_heldout": 2858,
+        "n_train": 13758,
+        "n_validation": 2428,
+        "r2": 0.8531086619150061,
+        "residual_q90": null,
+        "rmse": 3.4720416559570313,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -0.8217949615115534,
+          "mae": 7.378421973407977,
+          "mape_pct": 9.485090289893432,
+          "median_abs_error": 6.394999999999996,
+          "n": 2858,
+          "r2": -0.008229117841044964,
+          "residual_q90": null,
+          "rmse": 9.096335109332419
+        }
+      },
+      "LTO": {
+        "bias": -0.047588104349552414,
+        "held_out_chemistry": "LTO",
+        "mae": 2.8501153984070826,
+        "mape_pct": 3.542163989966824,
+        "median_abs_error": 2.4577170324566495,
+        "n": 1296,
+        "n_heldout": 1296,
+        "n_train": 15085,
+        "n_validation": 2663,
+        "r2": 0.8500766804222906,
+        "residual_q90": null,
+        "rmse": 3.51847947360844,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -0.507754629629634,
+          "mae": 7.345486111111111,
+          "mape_pct": 9.421004709722533,
+          "median_abs_error": 6.109999999999999,
+          "n": 1296,
+          "r2": -0.0031222446498015977,
+          "residual_q90": null,
+          "rmse": 9.101172742740898
+        }
+      },
+      "NCA": {
+        "bias": -0.129533126517546,
+        "held_out_chemistry": "NCA",
+        "mae": 2.8114200481905787,
+        "mape_pct": 3.5445128979959954,
+        "median_abs_error": 2.265977657869996,
+        "n": 1421,
+        "n_heldout": 1421,
+        "n_train": 14979,
+        "n_validation": 2644,
+        "r2": 0.8470584884682856,
+        "residual_q90": null,
+        "rmse": 3.5967161645404966,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -1.2689232934553158,
+          "mae": 7.5201688951442645,
+          "mape_pct": 9.745007076658796,
+          "median_abs_error": 6.61999999999999,
+          "n": 1421,
+          "r2": -0.01903635451203889,
+          "residual_q90": null,
+          "rmse": 9.284068084468379
+        }
+      },
+      "NMC": {
+        "bias": 0.009873594033228347,
+        "held_out_chemistry": "NMC",
+        "mae": 2.8489835419084018,
+        "mape_pct": 3.5803959914835626,
+        "median_abs_error": 2.352301852076444,
+        "n": 7216,
+        "n_heldout": 7216,
+        "n_train": 10053,
+        "n_validation": 1775,
+        "r2": 0.8443653811313045,
+        "residual_q90": null,
+        "rmse": 3.6072759193272033,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -1.0359534368070948,
+          "mae": 7.41225332594235,
+          "mape_pct": 9.598879770928912,
+          "median_abs_error": 6.515000000000001,
+          "n": 7216,
+          "r2": -0.012835948095807348,
+          "residual_q90": null,
+          "rmse": 9.202287828303598
+        }
+      },
+      "__MISSING__": {
+        "bias": 0.06594629606304814,
+        "held_out_chemistry": "__MISSING__",
+        "mae": 2.8626174247575524,
+        "mape_pct": 3.599790668581803,
+        "median_abs_error": 2.3616115200658,
+        "n": 696,
+        "n_heldout": 696,
+        "n_train": 15595,
+        "n_validation": 2753,
+        "r2": 0.8300154120884234,
+        "residual_q90": null,
+        "rmse": 3.639938374993558,
+        "selected_model": "hist_gradient_boosting",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -1.194439655172417,
+          "mae": 7.002370689655172,
+          "mape_pct": 9.11521579274846,
+          "median_abs_error": 5.634999999999998,
+          "n": 696,
+          "r2": -0.018304164562760405,
+          "residual_q90": null,
+          "rmse": 8.90898068946652
+        }
+      }
+    },
+    "selected_model": "hist_gradient_boosting",
+    "target": "state_of_health",
+    "task_id": "ev_soh",
+    "task_type": "regression"
+  },
+  "solid_soh": {
+    "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+    "purpose": "Train on all other chemistries and score the excluded chemistry. Diagnostic only; not used to select the production model.",
+    "results": {
+      "Halide_Based_Li3YCl6": {
+        "bias": 0.0334496673193901,
+        "held_out_chemistry": "Halide_Based_Li3YCl6",
+        "mae": 0.625175459508128,
+        "mape_pct": 0.7251332298947952,
+        "median_abs_error": 0.5121225906451059,
+        "n": 1195,
+        "n_heldout": 1195,
+        "n_train": 7484,
+        "n_validation": 1321,
+        "r2": 0.985799362233919,
+        "residual_q90": null,
+        "rmse": 0.7991010215044227,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 0.0696401673640149,
+          "mae": 5.691715481171548,
+          "mape_pct": 6.624245987003528,
+          "median_abs_error": 5.480000000000004,
+          "n": 1195,
+          "r2": -0.00010785097861321091,
+          "residual_q90": null,
+          "rmse": 6.706117821385904
+        }
+      },
+      "Oxide_Based_LLZO": {
+        "bias": 0.001451767103499432,
+        "held_out_chemistry": "Oxide_Based_LLZO",
+        "mae": 0.62872650341404,
+        "mape_pct": 0.7306124132311086,
+        "median_abs_error": 0.5087371677098389,
+        "n": 2385,
+        "n_heldout": 2385,
+        "n_train": 6472,
+        "n_validation": 1143,
+        "r2": 0.9854745206372449,
+        "residual_q90": null,
+        "rmse": 0.801116099870399,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 0.205706498951786,
+          "mae": 5.646041928721174,
+          "mape_pct": 6.566593302649126,
+          "median_abs_error": 5.450000000000003,
+          "n": 2385,
+          "r2": -0.0009577134344813665,
+          "residual_q90": null,
+          "rmse": 6.650251781932976
+        }
+      },
+      "Polymer_Composite": {
+        "bias": 0.011871243180309913,
+        "held_out_chemistry": "Polymer_Composite",
+        "mae": 0.6286438803414044,
+        "mape_pct": 0.7279548080357809,
+        "median_abs_error": 0.5214810204680731,
+        "n": 1979,
+        "n_heldout": 1979,
+        "n_train": 6817,
+        "n_validation": 1204,
+        "r2": 0.9851973535870779,
+        "residual_q90": null,
+        "rmse": 0.8002731341869356,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 0.12101061141991228,
+          "mae": 5.586457806973219,
+          "mape_pct": 6.4911109738002555,
+          "median_abs_error": 5.340000000000003,
+          "n": 1979,
+          "r2": -0.0003384619099626729,
+          "residual_q90": null,
+          "rmse": 6.578729632502344
+        }
+      },
+      "Sulfide_Based_Li10GeP2S12": {
+        "bias": -0.04784639567451829,
+        "held_out_chemistry": "Sulfide_Based_Li10GeP2S12",
+        "mae": 0.6484250672298683,
+        "mape_pct": 0.7547445883289968,
+        "median_abs_error": 0.5559215058240028,
+        "n": 4441,
+        "n_heldout": 4441,
+        "n_train": 4725,
+        "n_validation": 834,
+        "r2": 0.985193786583325,
+        "residual_q90": null,
+        "rmse": 0.8129554114967984,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -0.15915559558657735,
+          "mae": 5.690252195451475,
+          "mape_pct": 6.653453092074479,
+          "median_abs_error": 5.539999999999992,
+          "n": 4441,
+          "r2": -0.0005674849870380694,
+          "residual_q90": null,
+          "rmse": 6.682945457392985
+        }
+      }
+    },
+    "selected_model": "lightgbm",
+    "target": "state_of_health_pct",
+    "task_id": "solid_soh",
+    "task_type": "regression"
+  },
+  "solid_tier": {
+    "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+    "purpose": "Train on all other chemistries and score the excluded chemistry. Diagnostic only; not used to select the production model.",
+    "results": {
+      "Halide_Based_Li3YCl6": {
+        "accuracy": 0.9221757322175732,
+        "balanced_accuracy": 0.9241417987227932,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              350,
+              14,
+              0,
+              21
+            ],
+            [
+              10,
+              136,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              294,
+              21
+            ],
+            [
+              20,
+              0,
+              7,
+              322
+            ]
+          ]
+        },
+        "held_out_chemistry": "Halide_Based_Li3YCl6",
+        "log_loss": null,
+        "macro_f1": 0.9229307149136372,
+        "majority_baseline": {
+          "accuracy": 0.32217573221757323,
+          "balanced_accuracy": 0.25,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "Accelerated_Degradation_Tier_3",
+              "Critical_Thermal_Risk_Tier_4",
+              "Minimal_Degradation_Tier_1",
+              "Moderate_Degradation_Tier_2"
+            ],
+            "matrix": [
+              [
+                385,
+                0,
+                0,
+                0
+              ],
+              [
+                146,
+                0,
+                0,
+                0
+              ],
+              [
+                315,
+                0,
+                0,
+                0
+              ],
+              [
+                349,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.12183544303797468,
+          "n": 1195,
+          "per_class": {
+            "Accelerated_Degradation_Tier_3": {
+              "n": 385,
+              "precision": 0.32217573221757323,
+              "recall": 1.0
+            },
+            "Critical_Thermal_Risk_Tier_4": {
+              "n": 146,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Minimal_Degradation_Tier_1": {
+              "n": 315,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Moderate_Degradation_Tier_2": {
+              "n": 349,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.1570096922832477
+        },
+        "n": 1195,
+        "n_heldout": 1195,
+        "n_train": 7484,
+        "n_validation": 1321,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 385,
+            "precision": 0.9210526315789473,
+            "recall": 0.9090909090909091
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 146,
+            "precision": 0.9066666666666666,
+            "recall": 0.9315068493150684
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 315,
+            "precision": 0.9767441860465116,
+            "recall": 0.9333333333333333
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 349,
+            "precision": 0.8846153846153846,
+            "recall": 0.9226361031518625
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "weighted_f1": 0.9224747853514139
+      },
+      "Oxide_Based_LLZO": {
+        "accuracy": 0.8654088050314466,
+        "balanced_accuracy": 0.8862879394205025,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              753,
+              57,
+              39,
+              108
+            ],
+            [
+              22,
+              282,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              529,
+              35
+            ],
+            [
+              35,
+              0,
+              23,
+              500
+            ]
+          ]
+        },
+        "held_out_chemistry": "Oxide_Based_LLZO",
+        "log_loss": null,
+        "macro_f1": 0.868885048916547,
+        "majority_baseline": {
+          "accuracy": 0.40125786163522015,
+          "balanced_accuracy": 0.25,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "Accelerated_Degradation_Tier_3",
+              "Critical_Thermal_Risk_Tier_4",
+              "Minimal_Degradation_Tier_1",
+              "Moderate_Degradation_Tier_2"
+            ],
+            "matrix": [
+              [
+                957,
+                0,
+                0,
+                0
+              ],
+              [
+                304,
+                0,
+                0,
+                0
+              ],
+              [
+                566,
+                0,
+                0,
+                0
+              ],
+              [
+                558,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.1431777378815081,
+          "n": 2385,
+          "per_class": {
+            "Accelerated_Degradation_Tier_3": {
+              "n": 957,
+              "precision": 0.40125786163522015,
+              "recall": 1.0
+            },
+            "Critical_Thermal_Risk_Tier_4": {
+              "n": 304,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Minimal_Degradation_Tier_1": {
+              "n": 566,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Moderate_Degradation_Tier_2": {
+              "n": 558,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.22980477174440794
+        },
+        "n": 2385,
+        "n_heldout": 2385,
+        "n_train": 6472,
+        "n_validation": 1143,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 957,
+            "precision": 0.9273399014778325,
+            "recall": 0.786833855799373
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 304,
+            "precision": 0.831858407079646,
+            "recall": 0.9276315789473685
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 566,
+            "precision": 0.8950930626057529,
+            "recall": 0.9346289752650176
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 558,
+            "precision": 0.7776049766718507,
+            "recall": 0.8960573476702509
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "weighted_f1": 0.8652217142031973
+      },
+      "Polymer_Composite": {
+        "accuracy": 0.74077817079333,
+        "balanced_accuracy": 0.7742533579446917,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              458,
+              36,
+              0,
+              28
+            ],
+            [
+              146,
+              220,
+              109,
+              133
+            ],
+            [
+              0,
+              0,
+              384,
+              22
+            ],
+            [
+              15,
+              0,
+              24,
+              404
+            ]
+          ]
+        },
+        "held_out_chemistry": "Polymer_Composite",
+        "log_loss": null,
+        "macro_f1": 0.7321497937985281,
+        "majority_baseline": {
+          "accuracy": 0.2637695805962607,
+          "balanced_accuracy": 0.25,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "Accelerated_Degradation_Tier_3",
+              "Critical_Thermal_Risk_Tier_4",
+              "Minimal_Degradation_Tier_1",
+              "Moderate_Degradation_Tier_2"
+            ],
+            "matrix": [
+              [
+                522,
+                0,
+                0,
+                0
+              ],
+              [
+                608,
+                0,
+                0,
+                0
+              ],
+              [
+                406,
+                0,
+                0,
+                0
+              ],
+              [
+                443,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.10435825669732107,
+          "n": 1979,
+          "per_class": {
+            "Accelerated_Degradation_Tier_3": {
+              "n": 522,
+              "precision": 0.2637695805962607,
+              "recall": 1.0
+            },
+            "Critical_Thermal_Risk_Tier_4": {
+              "n": 608,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Minimal_Degradation_Tier_1": {
+              "n": 406,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Moderate_Degradation_Tier_2": {
+              "n": 443,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.1101061344032372
+        },
+        "n": 1979,
+        "n_heldout": 1979,
+        "n_train": 6817,
+        "n_validation": 1204,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 522,
+            "precision": 0.7399030694668821,
+            "recall": 0.8773946360153256
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 608,
+            "precision": 0.859375,
+            "recall": 0.3618421052631579
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 406,
+            "precision": 0.7427466150870407,
+            "recall": 0.9458128078817734
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 443,
+            "precision": 0.6882453151618398,
+            "recall": 0.9119638826185101
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "weighted_f1": 0.71451854819439
+      },
+      "Sulfide_Based_Li10GeP2S12": {
+        "accuracy": 0.8259401035802747,
+        "balanced_accuracy": 0.8427433927426111,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              1398,
+              56,
+              106,
+              334
+            ],
+            [
+              134,
+              487,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              950,
+              40
+            ],
+            [
+              36,
+              0,
+              63,
+              833
+            ]
+          ]
+        },
+        "held_out_chemistry": "Sulfide_Based_Li10GeP2S12",
+        "log_loss": null,
+        "macro_f1": 0.8300657065274044,
+        "majority_baseline": {
+          "accuracy": 0.4264805224048638,
+          "balanced_accuracy": 0.25,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "Accelerated_Degradation_Tier_3",
+              "Critical_Thermal_Risk_Tier_4",
+              "Minimal_Degradation_Tier_1",
+              "Moderate_Degradation_Tier_2"
+            ],
+            "matrix": [
+              [
+                1894,
+                0,
+                0,
+                0
+              ],
+              [
+                624,
+                0,
+                0,
+                0
+              ],
+              [
+                991,
+                0,
+                0,
+                0
+              ],
+              [
+                932,
+                0,
+                0,
+                0
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.1494869771112865,
+          "n": 4441,
+          "per_class": {
+            "Accelerated_Degradation_Tier_3": {
+              "n": 1894,
+              "precision": 0.4264805224048638,
+              "recall": 1.0
+            },
+            "Critical_Thermal_Risk_Tier_4": {
+              "n": 624,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Minimal_Degradation_Tier_1": {
+              "n": 991,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Moderate_Degradation_Tier_2": {
+              "n": 932,
+              "precision": 0.0,
+              "recall": 0.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.2550131363645815
+        },
+        "n": 4441,
+        "n_heldout": 4441,
+        "n_train": 4725,
+        "n_validation": 834,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 1894,
+            "precision": 0.8910133843212237,
+            "recall": 0.7381203801478353
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 624,
+            "precision": 0.8968692449355433,
+            "recall": 0.780448717948718
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 991,
+            "precision": 0.8489722966934763,
+            "recall": 0.958627648839556
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 932,
+            "precision": 0.6884297520661157,
+            "recall": 0.8937768240343348
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "lightgbm",
+        "status": "diagnostic",
+        "weighted_f1": 0.8257738987311981
+      }
+    },
+    "selected_model": "lightgbm",
+    "target": "degradation_risk_tier",
+    "task_id": "solid_tier",
+    "task_type": "multiclass"
+  },
+  "synthetic_capacity": {
+    "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+    "purpose": "Train on all other chemistries and score the excluded chemistry. Diagnostic only; not used to select the production model.",
+    "results": {
+      "Lithium_Sulfur": {
+        "bias": 29.82435178645897,
+        "held_out_chemistry": "Lithium_Sulfur",
+        "mae": 29.82435178645897,
+        "mape_pct": 29.383343067060963,
+        "median_abs_error": 30.065216542264608,
+        "n": 667,
+        "n_heldout": 667,
+        "n_train": 1132,
+        "n_validation": 201,
+        "r2": -7.5966080852622255,
+        "residual_q90": null,
+        "rmse": 30.254100961049186,
+        "selected_model": "ridge",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 29.244460269865062,
+          "mae": 29.244460269865062,
+          "mape_pct": 28.009593104625864,
+          "median_abs_error": 30.394999999999996,
+          "n": 667,
+          "r2": -8.032409576887323,
+          "residual_q90": null,
+          "rmse": 31.01148043149864
+        }
+      },
+      "Sodium_Ion": {
+        "bias": -28.751488965917265,
+        "held_out_chemistry": "Sodium_Ion",
+        "mae": 28.751488965917265,
+        "mape_pct": 49.08920023207056,
+        "median_abs_error": 28.987560267856743,
+        "n": 648,
+        "n_heldout": 648,
+        "n_train": 1147,
+        "n_validation": 205,
+        "r2": -7.156887620867067,
+        "residual_q90": null,
+        "rmse": 29.209427287561237,
+        "selected_model": "ridge",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": -29.867345679012345,
+          "mae": 29.867345679012345,
+          "mape_pct": 53.29163316960355,
+          "median_abs_error": 28.2,
+          "n": 648,
+          "r2": -8.528480331832592,
+          "residual_q90": null,
+          "rmse": 31.569857620603635
+        }
+      },
+      "Solid_State": {
+        "bias": 0.6292622773039636,
+        "held_out_chemistry": "Solid_State",
+        "mae": 4.037993388362061,
+        "mape_pct": 5.32477910009831,
+        "median_abs_error": 3.0994959031164626,
+        "n": 685,
+        "n_heldout": 685,
+        "n_train": 1117,
+        "n_validation": 198,
+        "r2": 0.7145556395936503,
+        "residual_q90": null,
+        "rmse": 5.315291610631312,
+        "selected_model": "ridge",
+        "status": "diagnostic",
+        "train_median_baseline": {
+          "bias": 4.8687883211678775,
+          "mae": 9.369313868613135,
+          "mape_pct": 11.469270023208828,
+          "median_abs_error": 8.709999999999994,
+          "n": 685,
+          "r2": -0.23950195424275345,
+          "residual_q90": null,
+          "rmse": 11.076179121953825
+        }
+      }
+    },
+    "selected_model": "ridge",
+    "target": "discharge_capacity_ah",
+    "task_id": "synthetic_capacity",
+    "task_type": "regression"
+  },
+  "synthetic_class": {
+    "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+    "purpose": "Train on all other chemistries and score the excluded chemistry. Diagnostic only; not used to select the production model.",
+    "results": {
+      "Lithium_Sulfur": {
+        "accuracy": 0.6611694152923538,
+        "balanced_accuracy": 0.6292422129242212,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Degraded",
+            "End_of_Life",
+            "Healthy"
+          ],
+          "matrix": [
+            [
+              105,
+              84,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              119,
+              23,
+              336
+            ]
+          ]
+        },
+        "held_out_chemistry": "Lithium_Sulfur",
+        "log_loss": null,
+        "macro_f1": 0.444675800608004,
+        "majority_baseline": {
+          "accuracy": 0.7166416791604198,
+          "balanced_accuracy": 0.5,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "Degraded",
+              "End_of_Life",
+              "Healthy"
+            ],
+            "matrix": [
+              [
+                0,
+                0,
+                189
+              ],
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                478
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.41746724890829695,
+          "n": 667,
+          "per_class": {
+            "Degraded": {
+              "n": 189,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "End_of_Life": {
+              "n": 0,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Healthy": {
+              "n": 478,
+              "precision": 0.7166416791604198,
+              "recall": 1.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.5983488605042457
+        },
+        "n": 667,
+        "n_heldout": 667,
+        "n_train": 1132,
+        "n_validation": 201,
+        "per_class": {
+          "Degraded": {
+            "n": 189,
+            "precision": 0.46875,
+            "recall": 0.5555555555555556
+          },
+          "End_of_Life": {
+            "n": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "Healthy": {
+            "n": 478,
+            "precision": 1.0,
+            "recall": 0.702928870292887
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.7357060652616264
+      },
+      "Sodium_Ion": {
+        "accuracy": 0.7438271604938271,
+        "balanced_accuracy": 0.5866327641804562,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Degraded",
+            "End_of_Life",
+            "Healthy"
+          ],
+          "matrix": [
+            [
+              209,
+              6,
+              53
+            ],
+            [
+              70,
+              8,
+              0
+            ],
+            [
+              37,
+              0,
+              265
+            ]
+          ]
+        },
+        "held_out_chemistry": "Sodium_Ion",
+        "log_loss": null,
+        "macro_f1": 0.5815017259377382,
+        "majority_baseline": {
+          "accuracy": 0.4660493827160494,
+          "balanced_accuracy": 0.3333333333333333,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "Degraded",
+              "End_of_Life",
+              "Healthy"
+            ],
+            "matrix": [
+              [
+                0,
+                0,
+                268
+              ],
+              [
+                0,
+                0,
+                78
+              ],
+              [
+                0,
+                0,
+                302
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.21192982456140352,
+          "n": 648,
+          "per_class": {
+            "Degraded": {
+              "n": 268,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "End_of_Life": {
+              "n": 78,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Healthy": {
+              "n": 302,
+              "precision": 0.4660493827160494,
+              "recall": 1.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.2963092917478883
+        },
+        "n": 648,
+        "n_heldout": 648,
+        "n_train": 1147,
+        "n_validation": 205,
+        "per_class": {
+          "Degraded": {
+            "n": 268,
+            "precision": 0.6613924050632911,
+            "recall": 0.7798507462686567
+          },
+          "End_of_Life": {
+            "n": 78,
+            "precision": 0.5714285714285714,
+            "recall": 0.10256410256410256
+          },
+          "Healthy": {
+            "n": 302,
+            "precision": 0.8333333333333334,
+            "recall": 0.8774834437086093
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.7153525085217657
+      },
+      "Solid_State": {
+        "accuracy": 0.6846715328467153,
+        "balanced_accuracy": 0.6307356348925808,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Degraded",
+            "End_of_Life",
+            "Healthy"
+          ],
+          "matrix": [
+            [
+              73,
+              54,
+              119
+            ],
+            [
+              8,
+              17,
+              0
+            ],
+            [
+              24,
+              11,
+              379
+            ]
+          ]
+        },
+        "held_out_chemistry": "Solid_State",
+        "log_loss": null,
+        "macro_f1": 0.5216172587258011,
+        "majority_baseline": {
+          "accuracy": 0.6043795620437956,
+          "balanced_accuracy": 0.3333333333333333,
+          "brier": null,
+          "confusion_matrix": {
+            "labels": [
+              "Degraded",
+              "End_of_Life",
+              "Healthy"
+            ],
+            "matrix": [
+              [
+                0,
+                0,
+                246
+              ],
+              [
+                0,
+                0,
+                25
+              ],
+              [
+                0,
+                0,
+                414
+              ]
+            ]
+          },
+          "log_loss": null,
+          "macro_f1": 0.2511373976342129,
+          "n": 685,
+          "per_class": {
+            "Degraded": {
+              "n": 246,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "End_of_Life": {
+              "n": 25,
+              "precision": 0.0,
+              "recall": 0.0
+            },
+            "Healthy": {
+              "n": 414,
+              "precision": 0.6043795620437956,
+              "recall": 1.0
+            }
+          },
+          "roc_auc": null,
+          "weighted_f1": 0.45534693118495245
+        },
+        "n": 685,
+        "n_heldout": 685,
+        "n_train": 1117,
+        "n_validation": 198,
+        "per_class": {
+          "Degraded": {
+            "n": 246,
+            "precision": 0.6952380952380952,
+            "recall": 0.2967479674796748
+          },
+          "End_of_Life": {
+            "n": 25,
+            "precision": 0.2073170731707317,
+            "recall": 0.68
+          },
+          "Healthy": {
+            "n": 414,
+            "precision": 0.7610441767068273,
+            "recall": 0.9154589371980676
+          }
+        },
+        "roc_auc": null,
+        "selected_model": "logistic_regression",
+        "status": "diagnostic",
+        "weighted_f1": 0.6633004625132687
+      }
+    },
+    "selected_model": "logistic_regression",
+    "target": "state_of_health",
+    "task_id": "synthetic_class",
+    "task_type": "multiclass"
+  }
+}

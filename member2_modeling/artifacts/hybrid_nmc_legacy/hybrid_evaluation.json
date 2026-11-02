@@ -1,0 +1,316 @@
+{
+  "dataset_id": "LEGACY_NMC_SEQUENTIAL",
+  "eligibility": {
+    "EV_FAILURE_PREDICTION": {
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "eligible_components": [
+        "tabular"
+      ],
+      "hybrid_status": "UNAVAILABLE",
+      "reason": "The Member 1 registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory, so no BiLSTM sequence branch or hybrid fusion can be fitted.",
+      "sequence_available": false
+    },
+    "LEGACY_NMC_SEQUENTIAL": {
+      "dataset_id": "LEGACY_NMC_SEQUENTIAL",
+      "eligible_components": [
+        "tabular",
+        "sequence",
+        "fusion"
+      ],
+      "hybrid_status": "EXPERIMENTAL",
+      "reason": "The legacy NASA NMC master table provides chronological per-cycle histories with measured SOH labels. The hybrid may be trained on it as explicitly labelled legacy research input; it is not a Member 1 processed dataset.",
+      "sequence_available": true
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "eligible_components": [
+        "tabular"
+      ],
+      "hybrid_status": "UNAVAILABLE",
+      "reason": "The Member 1 registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory, so no BiLSTM sequence branch or hybrid fusion can be fitted.",
+      "sequence_available": false
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "eligible_components": [
+        "tabular"
+      ],
+      "hybrid_status": "UNAVAILABLE",
+      "reason": "The Member 1 registry declares snapshot-only records. Row order and cycle identifiers are not treated as a chronological degradation trajectory, so no BiLSTM sequence branch or hybrid fusion can be fitted.",
+      "sequence_available": false
+    }
+  },
+  "evaluation": {
+    "test": {
+      "counts": {
+        "rows": 95,
+        "sequence_available": 95,
+        "sequence_missing": 0
+      },
+      "fused_all_rows": {
+        "mae": 6.11053073725096,
+        "mape_pct": 9.377446399301347,
+        "n": 95,
+        "r2": -2.403919054291836,
+        "rmse": 6.500716932659858
+      },
+      "fused_sequence_rows": {
+        "mae": 6.11053073725096,
+        "mape_pct": 9.377446399301347,
+        "n": 95,
+        "r2": -2.403919054291836,
+        "rmse": 6.500716932659858
+      },
+      "fusion_beats_persistence_all_rows": false,
+      "fusion_beats_persistence_sequence_rows": false,
+      "fusion_beats_sequence_sequence_rows": true,
+      "fusion_beats_tabular_all_rows": true,
+      "mean_fade_all_rows": {
+        "mae": 0.4138137383755785,
+        "mape_pct": 0.6183461082254579,
+        "n": 95,
+        "r2": 0.9395128420148332,
+        "rmse": 0.8665691684924745
+      },
+      "persistence_all_rows": {
+        "mae": 0.5040182599936701,
+        "mape_pct": 0.7568979223140432,
+        "n": 95,
+        "r2": 0.9394650262478144,
+        "rmse": 0.8669116170819162
+      },
+      "persistence_sequence_rows": {
+        "mae": 0.5040182599936701,
+        "mape_pct": 0.7568979223140432,
+        "n": 95,
+        "r2": 0.9394650262478144,
+        "rmse": 0.8669116170819162
+      },
+      "sequence_sequence_rows": {
+        "mae": 7.1293638525065814,
+        "mape_pct": 10.990136303513408,
+        "n": 95,
+        "r2": -3.8141347682237097,
+        "rmse": 7.730912635606689
+      },
+      "tabular_all_rows": {
+        "mae": 8.822182075714206,
+        "mape_pct": 13.72431480935977,
+        "n": 95,
+        "r2": -5.947737532005869,
+        "rmse": 9.28738277850164
+      },
+      "tabular_sequence_rows": {
+        "mae": 8.822182075714206,
+        "mape_pct": 13.72431480935977,
+        "n": 95,
+        "r2": -5.947737532005869,
+        "rmse": 9.28738277850164
+      }
+    },
+    "train_in_sample_diagnostic": {
+      "counts": {
+        "rows": 278
+      },
+      "fused_all_rows": {
+        "mae": 2.1631474043149272,
+        "mape_pct": 2.5129130128973665,
+        "n": 278,
+        "r2": 0.8823418911757195,
+        "rmse": 2.5061359942620784
+      },
+      "note": "In-sample branch outputs; the fusion layer itself was trained on out-of-fold predictions. Not a generalisation estimate."
+    },
+    "val": {
+      "counts": {
+        "rows": 92,
+        "sequence_available": 92,
+        "sequence_missing": 0
+      },
+      "fused_all_rows": {
+        "mae": 3.3822170974518007,
+        "mape_pct": 4.899872327604478,
+        "n": 92,
+        "r2": -2.5216409512404736,
+        "rmse": 3.8280834736625295
+      },
+      "fused_sequence_rows": {
+        "mae": 3.3822170974518007,
+        "mape_pct": 4.899872327604478,
+        "n": 92,
+        "r2": -2.5216409512404736,
+        "rmse": 3.8280834736625295
+      },
+      "fusion_beats_persistence_all_rows": false,
+      "fusion_beats_persistence_sequence_rows": false,
+      "fusion_beats_sequence_sequence_rows": true,
+      "fusion_beats_tabular_all_rows": true,
+      "mean_fade_all_rows": {
+        "mae": 0.37004214192555707,
+        "mape_pct": 0.5223502926247318,
+        "n": 92,
+        "r2": 0.9074458839962737,
+        "rmse": 0.620592796374581
+      },
+      "persistence_all_rows": {
+        "mae": 0.47039856460038615,
+        "mape_pct": 0.6669639471113851,
+        "n": 92,
+        "r2": 0.9044880274832101,
+        "rmse": 0.6304313022614578
+      },
+      "persistence_sequence_rows": {
+        "mae": 0.47039856460038615,
+        "mape_pct": 0.6669639471113851,
+        "n": 92,
+        "r2": 0.9044880274832101,
+        "rmse": 0.6304313022614578
+      },
+      "sequence_sequence_rows": {
+        "mae": 4.57493749627469,
+        "mape_pct": 6.619062539159054,
+        "n": 92,
+        "r2": -5.216834885802345,
+        "rmse": 5.086201106913369
+      },
+      "tabular_all_rows": {
+        "mae": 4.491649363289867,
+        "mape_pct": 6.478439795426445,
+        "n": 92,
+        "r2": -4.578146017294605,
+        "rmse": 4.817855838880461
+      },
+      "tabular_sequence_rows": {
+        "mae": 4.491649363289867,
+        "mape_pct": 6.478439795426445,
+        "n": 92,
+        "r2": -4.578146017294605,
+        "rmse": 4.817855838880461
+      }
+    }
+  },
+  "model": {
+    "branches": {
+      "sequence": {
+        "epochs_run": 60,
+        "fitted": true,
+        "hidden_dim": 32,
+        "input_dim": 11,
+        "model": "bilstm_regressor",
+        "n_training_sequences": 226,
+        "sequence_length": 5
+      },
+      "tabular": {
+        "best_iteration": 115,
+        "fitted": true,
+        "model": "lightgbm_regressor",
+        "n_estimators": 200,
+        "n_training_rows": 236
+      }
+    },
+    "configured_folds": 3,
+    "dropped_null_target": 0,
+    "effective_folds": 3,
+    "entity_column": "cell_id",
+    "feature_columns": [
+      "current_soh_pct",
+      "v_mean",
+      "v_min",
+      "v_end",
+      "v_slope",
+      "i_mean",
+      "ah_throughput",
+      "energy_wh",
+      "discharge_time_s",
+      "temp_mean",
+      "temp_range"
+    ],
+    "fusion": {
+      "alpha": 1.0,
+      "coefficients": {
+        "intercept": 84.13597068370933,
+        "sequence_pred": 3.8484661431946097,
+        "tabular_pred": 2.6769444894406784
+      },
+      "fallback_coefficients": {
+        "intercept": -59.01525172624088,
+        "tabular_pred": 1.6904822164161628
+      },
+      "fusion_method": "out_of_fold_ridge",
+      "in_sample_fusion": false,
+      "n_rows": 278,
+      "n_sequence_rows": 242,
+      "trained_on": "out_of_fold_predictions",
+      "uses_sequence": true
+    },
+    "model_type": "fused_lightgbm_bilstm",
+    "n_training_rows": 278,
+    "notes": [
+      "Fusion inputs are chronological out-of-fold branch predictions.",
+      "Rows without sequence history use the learned tabular-only fallback.",
+      "No production validation exists; do not claim production readiness."
+    ],
+    "order_column": "cycle_id",
+    "production_ready": false,
+    "readiness_status": "EXPERIMENTAL",
+    "schema_version": "2.0.0",
+    "sequence_length": 5,
+    "sequence_oof_coverage": 0.8705035971223022,
+    "target_column": "target_soh_pct"
+  },
+  "provenance": {
+    "feature_columns": [
+      "current_soh_pct",
+      "v_mean",
+      "v_min",
+      "v_end",
+      "v_slope",
+      "i_mean",
+      "ah_throughput",
+      "energy_wh",
+      "discharge_time_s",
+      "temp_mean",
+      "temp_range"
+    ],
+    "generated_at": "2026-11-02T07:48:52.965928+00:00",
+    "master_table_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb",
+    "n_folds": 3,
+    "parameters": {
+      "fusion_alpha": 1.0,
+      "sequence": {
+        "batch_size": 32,
+        "dropout": 0.1,
+        "epochs": 60,
+        "hidden_dim": 32,
+        "learning_rate": 0.001,
+        "num_layers": 1,
+        "patience": 10,
+        "random_state": 42
+      },
+      "tabular": {
+        "learning_rate": 0.05,
+        "max_depth": 5,
+        "min_child_samples": 10,
+        "n_estimators": 200,
+        "num_leaves": 15,
+        "random_state": 42
+      }
+    },
+    "sequence_length": 5
+  },
+  "readiness": {
+    "benchmark_warning": "The persistence and training-mean-fade baselines outperform the fused hybrid on the chronological test split. The fusion improves on both learned branches but is not production-validated.",
+    "fusion_trained_on_out_of_fold_predictions": true,
+    "mean_fade_outperforms_fusion": true,
+    "notes": [
+      "Only the NMC legacy sequential table is eligible for sequence training.",
+      "The fusion model is not a production-validated predictor.",
+      "Reported test rows are chronological holdout rows per cell."
+    ],
+    "persistence_outperforms_fusion": true,
+    "production_ready": false,
+    "status": "EXPERIMENTAL",
+    "survives_sequence_window_rows": true
+  },
+  "target": "SOH of the next observed cycle record (positional shift by 1); not necessarily the next physical cycle."
+}

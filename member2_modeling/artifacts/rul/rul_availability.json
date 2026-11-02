@@ -1,0 +1,176 @@
+{
+  "availability": {
+    "EV_FAILURE_PREDICTION": {
+      "approved_for_use": false,
+      "conventions": [
+        "first",
+        "sustained3"
+      ],
+      "dataset_id": "EV_FAILURE_PREDICTION",
+      "eol_threshold_pct": null,
+      "reason": "The dataset is a snapshot table with no observed chronological end-of-life trajectory. Row order and cycle identifiers do not establish RUL.",
+      "rul_cycles": null,
+      "sequence_available": false,
+      "status": "UNAVAILABLE",
+      "unit": null
+    },
+    "LEGACY_NMC_SEQUENTIAL": {
+      "approved_for_use": false,
+      "conventions": [
+        "first",
+        "sustained3"
+      ],
+      "dataset_id": "LEGACY_NMC_SEQUENTIAL",
+      "eol_threshold_pct": 80.0,
+      "reason": "Only three NMC cells cross the project-defined 80% SOH threshold, one cell returns above 80% for several cycles after its first crossing, and the shipped RUL model was validated in-sample on pre-EOL rows. RUL remains EXPERIMENTAL and is never approved for operational use.",
+      "rul_cycles": null,
+      "sequence_available": true,
+      "status": "EXPERIMENTAL_PRE_EOL_ONLY",
+      "unit": "observed_cycles"
+    },
+    "SOLID_STATE_TELEMETRY_2026": {
+      "approved_for_use": false,
+      "conventions": [
+        "first",
+        "sustained3"
+      ],
+      "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+      "eol_threshold_pct": null,
+      "reason": "The dataset is a snapshot table with no observed chronological end-of-life trajectory. Row order and cycle identifiers do not establish RUL.",
+      "rul_cycles": null,
+      "sequence_available": false,
+      "status": "UNAVAILABLE",
+      "unit": null
+    },
+    "SYNTHETIC_BATTERY_LIFECYCLE": {
+      "approved_for_use": false,
+      "conventions": [
+        "first",
+        "sustained3"
+      ],
+      "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+      "eol_threshold_pct": null,
+      "reason": "The dataset is a snapshot table with no observed chronological end-of-life trajectory. Row order and cycle identifiers do not establish RUL.",
+      "rul_cycles": null,
+      "sequence_available": false,
+      "status": "UNAVAILABLE",
+      "unit": null
+    }
+  },
+  "conventions_supported": [
+    "first",
+    "sustained3"
+  ],
+  "eol_threshold_pct": 80.0,
+  "existing_validation_evidence": {
+    "caveats": [
+      "80% is a project-defined threshold, not a manufacturer EOL definition.",
+      "SOH is non-monotonic: B0018 first crosses at cycle 45 but returns above 80% for 13 later cycles.",
+      "The production test split is 100% post-threshold, so its RUL target has zero variance.",
+      "The shipped model was trained on all three cells; its pre-EOL accuracy is in-sample only.",
+      "Only three cells are available, so LOCO trains on two cells and tests on one."
+    ],
+    "near_eol_mae": {
+      "last_fade_persistence": 2.1161638847627877,
+      "lgbm_pre_eol_fixed200": 2.54445667602505
+    },
+    "path": "member2_modeling/experiments/results/rul/nmc_rul_summary.json",
+    "primary_pre_eol_mae": 6.78218097639423,
+    "primary_pre_eol_n": 180,
+    "primary_pre_eol_r2": 0.7761492418675578,
+    "primary_pre_eol_rmse": 9.123208594458335,
+    "production_test_pre_threshold_rows": 0,
+    "read_only": true,
+    "sha256": "2efeddba737ea9d1d72bed9a7744319b60b8422f2d50be3e8b6ebe817f76f974",
+    "shipped_model_in_sample": true,
+    "shipped_model_pre_eol_mae": 0.08217157119609236,
+    "sustained3_pre_eol_mae": 9.652330428076313,
+    "sustained3_pre_eol_n": 194,
+    "validation_protocol": "leave-one-cell-out; pre-threshold rows primary"
+  },
+  "legacy_target_audit": {
+    "conventions": {
+      "first": {
+        "cells": [
+          {
+            "cell_id": "B0005",
+            "censored": false,
+            "crossing_cycle_id": 75,
+            "crossing_position": 74,
+            "cycles_above_eol_after_crossing": 1,
+            "observed_cycles": 168,
+            "post_threshold_cycles": 94,
+            "pre_threshold_cycles": 74
+          },
+          {
+            "cell_id": "B0006",
+            "censored": false,
+            "crossing_cycle_id": 63,
+            "crossing_position": 62,
+            "cycles_above_eol_after_crossing": 0,
+            "observed_cycles": 168,
+            "post_threshold_cycles": 106,
+            "pre_threshold_cycles": 62
+          },
+          {
+            "cell_id": "B0018",
+            "censored": false,
+            "crossing_cycle_id": 45,
+            "crossing_position": 44,
+            "cycles_above_eol_after_crossing": 13,
+            "observed_cycles": 132,
+            "post_threshold_cycles": 88,
+            "pre_threshold_cycles": 44
+          }
+        ],
+        "censored_cells": [],
+        "convention": "first",
+        "post_threshold_cycles": 288,
+        "pre_threshold_cycles": 180
+      },
+      "sustained3": {
+        "cells": [
+          {
+            "cell_id": "B0005",
+            "censored": false,
+            "crossing_cycle_id": 75,
+            "crossing_position": 74,
+            "cycles_above_eol_after_crossing": 1,
+            "observed_cycles": 168,
+            "post_threshold_cycles": 94,
+            "pre_threshold_cycles": 74
+          },
+          {
+            "cell_id": "B0006",
+            "censored": false,
+            "crossing_cycle_id": 63,
+            "crossing_position": 62,
+            "cycles_above_eol_after_crossing": 0,
+            "observed_cycles": 168,
+            "post_threshold_cycles": 106,
+            "pre_threshold_cycles": 62
+          },
+          {
+            "cell_id": "B0018",
+            "censored": false,
+            "crossing_cycle_id": 59,
+            "crossing_position": 58,
+            "cycles_above_eol_after_crossing": 0,
+            "observed_cycles": 132,
+            "post_threshold_cycles": 74,
+            "pre_threshold_cycles": 58
+          }
+        ],
+        "censored_cells": [],
+        "convention": "sustained3",
+        "post_threshold_cycles": 274,
+        "pre_threshold_cycles": 194
+      }
+    },
+    "dataset_label": "NASA_Ames_PCoE",
+    "source": "master_table.parquet",
+    "source_sha256": "6fa7475d1810007803a0f55431730fdedbb2eec7127cecddf3219a4d9073b2bb"
+  },
+  "rul_approved": false,
+  "threshold_rule": "strict SOH < 80.0"
+}

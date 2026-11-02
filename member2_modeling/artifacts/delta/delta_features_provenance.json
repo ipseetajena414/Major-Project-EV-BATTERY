@@ -1,0 +1,45 @@
+{
+  "module": "member2_modeling/delta/delta_features",
+  "description": "NMC one-step-ahead delta SOH pairs with lag features",
+  "rows_per_split": {
+    "train": 278,
+    "val": 92,
+    "test": 95
+  },
+  "total_rows": 465,
+  "feature_cols": [
+    "ah_throughput",
+    "energy_wh",
+    "v_mean",
+    "v_std",
+    "v_slope",
+    "dvdt_mean",
+    "temp_mean",
+    "temp_rise",
+    "current_soh_pct",
+    "cycle_position",
+    "delta_lag_1",
+    "delta_rolling_mean_3"
+  ],
+  "lag_imputation_means": {
+    "delta_lag_1": -0.2475874759684094,
+    "delta_lag_2": -0.2465251741097034,
+    "delta_rolling_mean_3": -0.24934039841893882
+  },
+  "soh_clip_range": [
+    0.0,
+    105.0
+  ],
+  "lag_depth": 3,
+  "split_ratios": {
+    "train": 0.6,
+    "val": 0.2,
+    "test": 0.2
+  },
+  "notes": [
+    "delta_target = SOH(i+1) - SOH(i); positive values are valid.",
+    "Lag features built from ground-truth SOH only (no model predictions).",
+    "Lag NaNs at cell boundaries imputed with training-set mean.",
+    "Feature integrity verified: no forbidden columns in feature set."
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "categorical_features": [
+    "manufacturer",
+    "electrolyte_chemistry",
+    "anode_composition",
+    "cathode_chemistry",
+    "target_ev_application",
+    "commercial_readiness_level"
+  ],
+  "chemistry_column": "chemistry_family",
+  "dropped_null_target": 0,
+  "evaluation": {
+    "baselines": {
+      "train_chemistry_median": {
+        "mae": 5.639105,
+        "mape_pct": 6.575403491036052,
+        "n": 2000,
+        "r2": -9.441466758408623e-06,
+        "rmse": 6.631013825200487
+      },
+      "train_median": {
+        "mae": 5.639105,
+        "mape_pct": 6.575403491036052,
+        "n": 2000,
+        "r2": -9.441466758408623e-06,
+        "rmse": 6.631013825200487
+      }
+    },
+    "caveats": [
+      "Snapshot records: this random split estimates i.i.d. generalization, not a temporal or vehicle-level forecast.",
+      "Early stopping uses a validation slice of the training split only."
+    ],
+    "counts": {
+      "dropped_null_target": 0,
+      "rows": 10000,
+      "test": 2000
+    },
+    "model": {
+      "mae": 0.6296484625338307,
+      "mape_pct": 0.7299419031655765,
+      "n": 2000,
+      "r2": 0.9856633080209182,
+      "rmse": 0.7939668326931802
+    },
+    "outperforms_chemistry_median": true,
+    "outperforms_train_median": true,
+    "per_chemistry": {
+      "Solid-State": {
+        "mae": 0.6296484625338307,
+        "mape_pct": 0.7299419031655765,
+        "n": 2000,
+        "r2": 0.9856633080209182,
+        "rmse": 0.7939668326931802
+      }
+    },
+    "split_counts": {
+      "test": 2000,
+      "train": 6000,
+      "val": 2000
+    },
+    "split_protocol": "deterministic_stratified_snapshot_split"
+  },
+  "feature_columns": [
+    "manufacturer",
+    "electrolyte_chemistry",
+    "anode_composition",
+    "cathode_chemistry",
+    "nominal_capacity_ah",
+    "gravimetric_energy_density_wh_kg",
+    "volumetric_energy_density_wh_l",
+    "cycle_number",
+    "charging_c_rate",
+    "discharging_c_rate",
+    "operating_temperature_c",
+    "ambient_temperature_c",
+    "internal_resistance_mohm",
+    "coulombic_efficiency_pct",
+    "stack_pressure_mpa",
+    "thermal_runaway_onset_c",
+    "nominal_voltage_plateau_v",
+    "target_ev_application",
+    "commercial_readiness_level"
+  ],
+  "feature_names": [
+    "nominal_capacity_ah",
+    "gravimetric_energy_density_wh_kg",
+    "volumetric_energy_density_wh_l",
+    "cycle_number",
+    "charging_c_rate",
+    "discharging_c_rate",
+    "operating_temperature_c",
+    "ambient_temperature_c",
+    "internal_resistance_mohm",
+    "coulombic_efficiency_pct",
+    "stack_pressure_mpa",
+    "thermal_runaway_onset_c",
+    "nominal_voltage_plateau_v",
+    "manufacturer=BYD",
+    "manufacturer=CATL",
+    "manufacturer=LG Energy Solution",
+    "manufacturer=Panasonic Energy",
+    "manufacturer=QuantumScape",
+    "manufacturer=Samsung SDI",
+    "manufacturer=Solid Power",
+    "manufacturer=StoreDot",
+    "manufacturer=Toyota Motor",
+    "electrolyte_chemistry=Halide_Based_Li3YCl6",
+    "electrolyte_chemistry=Oxide_Based_LLZO",
+    "electrolyte_chemistry=Polymer_Composite",
+    "electrolyte_chemistry=Sulfide_Based_Li10GeP2S12",
+    "anode_composition=Anode_Free_InSitu_Plating",
+    "anode_composition=Graphite_Silicon_Composite",
+    "anode_composition=Lithium_Metal_Foil",
+    "anode_composition=Silicon_Dominant_Nanowire",
+    "cathode_chemistry=High_Nickel_NMC811",
+    "cathode_chemistry=LFP_Advanced",
+    "cathode_chemistry=Solid_State_Sulfur",
+    "cathode_chemistry=Ultra_Nickel_NMC955",
+    "target_ev_application=Commercial_Class8_Hauler",
+    "target_ev_application=Hypercar_Track",
+    "target_ev_application=Long_Range_Luxury_Sedan",
+    "target_ev_application=Urban_Compact_SUV",
+    "target_ev_application=eVTOL_Aerospace",
+    "commercial_readiness_level=TRL_6_Laboratory_Prototype",
+    "commercial_readiness_level=TRL_7_Automotive_Testing",
+    "commercial_readiness_level=TRL_8_Pilot_Production",
+    "commercial_readiness_level=TRL_9_Commercial_Fleet"
+  ],
+  "model_type": "tabular_lightgbm_regressor",
+  "n_rows": 10000,
+  "numeric_features": [
+    "nominal_capacity_ah",
+    "gravimetric_energy_density_wh_kg",
+    "volumetric_energy_density_wh_l",
+    "cycle_number",
+    "charging_c_rate",
+    "discharging_c_rate",
+    "operating_temperature_c",
+    "ambient_temperature_c",
+    "internal_resistance_mohm",
+    "coulombic_efficiency_pct",
+    "stack_pressure_mpa",
+    "thermal_runaway_onset_c",
+    "nominal_voltage_plateau_v"
+  ],
+  "numeric_medians": {
+    "ambient_temperature_c": 14.5,
+    "charging_c_rate": 2.7,
+    "coulombic_efficiency_pct": 99.406,
+    "cycle_number": 1261.0,
+    "discharging_c_rate": 2.0,
+    "gravimetric_energy_density_wh_kg": 408.9,
+    "internal_resistance_mohm": 9.28,
+    "nominal_capacity_ah": 81.1,
+    "nominal_voltage_plateau_v": 3.71,
+    "operating_temperature_c": 28.5,
+    "stack_pressure_mpa": 4.05,
+    "thermal_runaway_onset_c": 292.0,
+    "volumetric_energy_density_wh_l": 888.3
+  },
+  "production_ready": false,
+  "readiness": "EXPERIMENTAL",
+  "schema_version": "2.0.0",
+  "target_column": "state_of_health_pct",
+  "target_kind": "source_label"
+}

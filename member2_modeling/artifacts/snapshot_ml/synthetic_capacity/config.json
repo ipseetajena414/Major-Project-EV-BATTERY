@@ -1,0 +1,225 @@
+{
+  "candidate_selection": [
+    {
+      "fit_seconds": 0.003,
+      "name": "ridge",
+      "params": {
+        "alpha": 1.0
+      },
+      "scale_features": true,
+      "selection_metric": "validation_mae",
+      "selection_score": 3.9349177034972045
+    },
+    {
+      "fit_seconds": 0.002,
+      "name": "elasticnet",
+      "params": {
+        "alpha": 0.01,
+        "l1_ratio": 0.5,
+        "max_iter": 2000
+      },
+      "scale_features": true,
+      "selection_metric": "validation_mae",
+      "selection_score": 3.9418373366984634
+    },
+    {
+      "fit_seconds": 0.449,
+      "name": "random_forest",
+      "params": {
+        "max_features": 0.6,
+        "min_samples_leaf": 2,
+        "n_estimators": 300
+      },
+      "scale_features": false,
+      "selection_metric": "validation_mae",
+      "selection_score": 4.147902499422799
+    },
+    {
+      "fit_seconds": 6.492,
+      "name": "hist_gradient_boosting",
+      "params": {
+        "learning_rate": 0.06,
+        "max_iter": 300,
+        "max_leaf_nodes": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_mae",
+      "selection_score": 4.150314766514324
+    },
+    {
+      "best_iteration": 89,
+      "fit_seconds": 0.189,
+      "name": "lightgbm",
+      "params": {
+        "learning_rate": 0.05,
+        "min_child_samples": 20,
+        "n_estimators": 600,
+        "num_leaves": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_mae",
+      "selection_score": 4.165372720521849
+    }
+  ],
+  "categorical_features": [
+    "electrolyte_type"
+  ],
+  "categorical_vocabularies": {
+    "electrolyte_type": [
+      "Lithium_Sulfur",
+      "Sodium_Ion",
+      "Solid_State"
+    ]
+  },
+  "chemistry_column": "electrolyte_type",
+  "classes": [],
+  "dataset_provenance": {
+    "data_origin": "synthetic",
+    "processed_path": "DATA/processed/synthetic_battery_lifecycle_clean.parquet",
+    "processed_sha256": "9f7e8ff595499bdc7a70bf29e7cc3d975db4fa8ca57b41236123350496bf6238",
+    "record_grain": "synthetic_battery_snapshot",
+    "sequence_available": false,
+    "source_file": "synthetic_battery_lifecycle.csv",
+    "source_sha256": "4a754a7937f564375611a080dac9b6b3feca97e1f8264de5b30b7f81aed7d224"
+  },
+  "entity_column": "battery_id",
+  "feature_columns": [
+    "electrolyte_type",
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "final_fit": "trained on the training split only; validation used for early stopping/selection",
+  "forbidden_columns": [
+    "discharge_capacity_ah",
+    "state_of_health"
+  ],
+  "limitations": [
+    "Generated data, not experimental truth.",
+    "Repeated battery_id values (22) are kept inside one split by the grouped splitter.",
+    "Snapshot records do not support temporal, vehicle-level or RUL claims.",
+    "Grouped holdout estimates generalization to unseen entities, not to a future time."
+  ],
+  "model_version": "2.0.0",
+  "numeric_features": [
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "numeric_statistics": {
+    "charge_time_mins": {
+      "max": 76.89,
+      "mean": 61.13758333333334,
+      "min": 48.08,
+      "std": 5.48288372966777
+    },
+    "cycle_count": {
+      "max": 1500.0,
+      "mean": 761.6608333333334,
+      "min": 10.0,
+      "std": 432.01816412349945
+    },
+    "internal_resistance_mohms": {
+      "max": 57.27,
+      "mean": 32.27486666666666,
+      "min": 15.09,
+      "std": 9.613778695994387
+    },
+    "temperature_celsius": {
+      "max": 40.11,
+      "mean": 31.457375000000006,
+      "min": 26.62,
+      "std": 2.7120278746186095
+    }
+  },
+  "production_ready": false,
+  "random_state": 42,
+  "rows": {
+    "dropped_null_target": 0,
+    "test": 400,
+    "total": 2000,
+    "train": 1200,
+    "val": 400
+  },
+  "selected_model": {
+    "name": "ridge",
+    "params": {
+      "alpha": 1.0
+    },
+    "scale_features": true
+  },
+  "selection_rule": "minimum validation MAE",
+  "split": {
+    "counts": {
+      "test": 400,
+      "train": 1200,
+      "val": 400
+    },
+    "entity_counts": {
+      "test": 396,
+      "train": 1187,
+      "val": 395
+    },
+    "entity_overlap": {
+      "train_test": 0,
+      "train_val": 0,
+      "val_test": 0
+    },
+    "protocol": "entity_grouped_stratified_60_20_20_stratified_group_kfold",
+    "sha256": "be70bd4dc26b1e454a409b33f856fbe2885392f8fc4ce4e178a7d0f294d4c04b",
+    "strata": "target_quantile_bins",
+    "target_distribution": {
+      "test": {
+        "max": 116.97,
+        "mean": 81.805175,
+        "min": 36.55,
+        "rows": 400,
+        "std": 19.302945940176464
+      },
+      "train": {
+        "max": 116.81,
+        "mean": 81.63481666666667,
+        "min": 35.1,
+        "rows": 1200,
+        "std": 19.108326652702715
+      },
+      "val": {
+        "max": 116.95,
+        "mean": 82.01990000000002,
+        "min": 35.88,
+        "rows": 400,
+        "std": 18.863077505804824
+      }
+    },
+    "warning": null
+  },
+  "status": "RESEARCH_ONLY",
+  "target": {
+    "column": "discharge_capacity_ah",
+    "definition": "Measured discharge capacity in the synthetic campaign.",
+    "label_origin": "synthetic_label",
+    "unit": "Ah (synthetic)"
+  },
+  "task": {
+    "chemistry_column": "electrolyte_type",
+    "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+    "entity_column": "battery_id",
+    "label_origin": "synthetic_label",
+    "notes": [
+      "Generated data, not experimental truth.",
+      "Repeated battery_id values (22) are kept inside one split by the grouped splitter."
+    ],
+    "readiness": "RESEARCH_ONLY",
+    "record_grain": "synthetic_battery_snapshot",
+    "rul_reason": "Synthetic snapshot records do not establish observed RUL.",
+    "rul_status": "UNAVAILABLE",
+    "status": "RESEARCH_ONLY",
+    "target": "discharge_capacity_ah",
+    "target_definition": "Measured discharge capacity in the synthetic campaign.",
+    "task_id": "synthetic_capacity",
+    "task_type": "regression",
+    "unit": "Ah (synthetic)"
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "candidate_selection": [
+    {
+      "fit_seconds": 0.051,
+      "name": "logistic_regression",
+      "params": {
+        "C": 1.0,
+        "class_weight": "balanced"
+      },
+      "scale_features": true,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.809767352146948
+    },
+    {
+      "fit_seconds": 3.124,
+      "name": "random_forest",
+      "params": {
+        "class_weight": "balanced_subsample",
+        "min_samples_leaf": 2,
+        "n_estimators": 400
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.6313510786670228
+    },
+    {
+      "fit_seconds": 45.781,
+      "name": "hist_gradient_boosting",
+      "params": {
+        "learning_rate": 0.08,
+        "max_iter": 300,
+        "max_leaf_nodes": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.7827942471092119
+    },
+    {
+      "best_iteration": 90,
+      "fit_seconds": 7.427,
+      "name": "lightgbm",
+      "params": {
+        "class_weight": "balanced",
+        "learning_rate": 0.05,
+        "n_estimators": 600,
+        "num_leaves": 31
+      },
+      "scale_features": false,
+      "selection_metric": "validation_balanced_accuracy",
+      "selection_score": 0.7060090803881419
+    }
+  ],
+  "categorical_features": [
+    "electrolyte_type"
+  ],
+  "categorical_vocabularies": {
+    "electrolyte_type": [
+      "Lithium_Sulfur",
+      "Sodium_Ion",
+      "Solid_State"
+    ]
+  },
+  "chemistry_column": "electrolyte_type",
+  "classes": [
+    "Degraded",
+    "End_of_Life",
+    "Healthy"
+  ],
+  "dataset_provenance": {
+    "data_origin": "synthetic",
+    "processed_path": "DATA/processed/synthetic_battery_lifecycle_clean.parquet",
+    "processed_sha256": "9f7e8ff595499bdc7a70bf29e7cc3d975db4fa8ca57b41236123350496bf6238",
+    "record_grain": "synthetic_battery_snapshot",
+    "sequence_available": false,
+    "source_file": "synthetic_battery_lifecycle.csv",
+    "source_sha256": "4a754a7937f564375611a080dac9b6b3feca97e1f8264de5b30b7f81aed7d224"
+  },
+  "entity_column": "battery_id",
+  "feature_columns": [
+    "electrolyte_type",
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "final_fit": "trained on the training split only; validation used for early stopping/selection",
+  "forbidden_columns": [
+    "discharge_capacity_ah",
+    "state_of_health"
+  ],
+  "limitations": [
+    "discharge_capacity_ah is forbidden as a feature because the categorical label is generated from capacity-like signals.",
+    "No numeric SOH or RUL is invented from this label.",
+    "Snapshot records do not support temporal, vehicle-level or RUL claims.",
+    "Grouped holdout estimates generalization to unseen entities, not to a future time."
+  ],
+  "model_version": "2.0.0",
+  "numeric_features": [
+    "cycle_count",
+    "internal_resistance_mohms",
+    "temperature_celsius",
+    "charge_time_mins"
+  ],
+  "numeric_statistics": {
+    "charge_time_mins": {
+      "max": 76.89,
+      "mean": 61.265816666666666,
+      "min": 48.4,
+      "std": 5.532667741068096
+    },
+    "cycle_count": {
+      "max": 1500.0,
+      "mean": 765.7083333333334,
+      "min": 10.0,
+      "std": 433.4282619579495
+    },
+    "internal_resistance_mohms": {
+      "max": 57.27,
+      "mean": 32.32879166666667,
+      "min": 15.11,
+      "std": 9.570124935962465
+    },
+    "temperature_celsius": {
+      "max": 40.11,
+      "mean": 31.435574999999996,
+      "min": 26.62,
+      "std": 2.684124656079706
+    }
+  },
+  "production_ready": false,
+  "random_state": 42,
+  "rows": {
+    "dropped_null_target": 0,
+    "test": 400,
+    "total": 2000,
+    "train": 1200,
+    "val": 400
+  },
+  "selected_model": {
+    "name": "logistic_regression",
+    "params": {
+      "C": 1.0,
+      "class_weight": "balanced"
+    },
+    "scale_features": true
+  },
+  "selection_rule": "maximum validation balanced accuracy",
+  "split": {
+    "counts": {
+      "test": 400,
+      "train": 1200,
+      "val": 400
+    },
+    "entity_counts": {
+      "test": 397,
+      "train": 1185,
+      "val": 396
+    },
+    "entity_overlap": {
+      "train_test": 0,
+      "train_val": 0,
+      "val_test": 0
+    },
+    "protocol": "entity_grouped_class_stratified_60_20_20_stratified_group_kfold",
+    "sha256": "09101e7cf3da85d997bef0024db97d0260314292d1666b78ff79c04972d07258",
+    "strata": "target_class",
+    "target_distribution": {
+      "test": {
+        "Degraded": 140,
+        "End_of_Life": 21,
+        "Healthy": 239
+      },
+      "train": {
+        "Degraded": 422,
+        "End_of_Life": 62,
+        "Healthy": 716
+      },
+      "val": {
+        "Degraded": 141,
+        "End_of_Life": 20,
+        "Healthy": 239
+      }
+    },
+    "warning": null
+  },
+  "status": "RESEARCH_ONLY",
+  "target": {
+    "column": "state_of_health",
+    "definition": "Categorical Healthy/Degraded/End_of_Life label.",
+    "label_origin": "synthetic_label",
+    "unit": "Healthy / Degraded / End_of_Life class"
+  },
+  "task": {
+    "chemistry_column": "electrolyte_type",
+    "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+    "entity_column": "battery_id",
+    "label_origin": "synthetic_label",
+    "notes": [
+      "discharge_capacity_ah is forbidden as a feature because the categorical label is generated from capacity-like signals.",
+      "No numeric SOH or RUL is invented from this label."
+    ],
+    "readiness": "RESEARCH_ONLY",
+    "record_grain": "synthetic_battery_snapshot",
+    "rul_reason": "Synthetic snapshot labels with no chronological history.",
+    "rul_status": "UNAVAILABLE",
+    "status": "RESEARCH_ONLY",
+    "target": "state_of_health",
+    "target_definition": "Categorical Healthy/Degraded/End_of_Life label.",
+    "task_id": "synthetic_class",
+    "task_type": "multiclass",
+    "unit": "Healthy / Degraded / End_of_Life class"
+  }
+}

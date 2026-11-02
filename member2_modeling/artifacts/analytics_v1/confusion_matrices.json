@@ -1,0 +1,733 @@
+{
+  "ev_failure": {
+    "dataset_id": "EV_FAILURE_PREDICTION",
+    "labels": [
+      "0",
+      "1"
+    ],
+    "matrix": [
+      [
+        3443,
+        280
+      ],
+      [
+        27,
+        250
+      ]
+    ],
+    "n": 4000,
+    "per_chemistry": {
+      "LFP": {
+        "accuracy": 0.9155900086132644,
+        "balanced_accuracy": 0.9111196151322982,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              986,
+              90
+            ],
+            [
+              8,
+              77
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.7818840579710145,
+        "n": 1161,
+        "per_class": {
+          "0": {
+            "n": 1076,
+            "precision": 0.9919517102615694,
+            "recall": 0.9163568773234201
+          },
+          "1": {
+            "n": 85,
+            "precision": 0.46107784431137727,
+            "recall": 0.9058823529411765
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.927651491509485
+      },
+      "LMO": {
+        "accuracy": 0.9377162629757786,
+        "balanced_accuracy": 0.9518782803561951,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              512,
+              35
+            ],
+            [
+              1,
+              30
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.7955188679245283,
+        "n": 578,
+        "per_class": {
+          "0": {
+            "n": 547,
+            "precision": 0.9980506822612085,
+            "recall": 0.9360146252285192
+          },
+          "1": {
+            "n": 31,
+            "precision": 0.46153846153846156,
+            "recall": 0.967741935483871
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.9477467846183979
+      },
+      "LTO": {
+        "accuracy": 0.9487179487179487,
+        "balanced_accuracy": 0.972972972972973,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              245,
+              14
+            ],
+            [
+              0,
+              14
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.8194444444444444,
+        "n": 273,
+        "per_class": {
+          "0": {
+            "n": 259,
+            "precision": 1.0,
+            "recall": 0.9459459459459459
+          },
+          "1": {
+            "n": 14,
+            "precision": 0.5,
+            "recall": 1.0
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.9565527065527064
+      },
+      "NCA": {
+        "accuracy": 0.926056338028169,
+        "balanced_accuracy": 0.9611111111111111,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              249,
+              21
+            ],
+            [
+              0,
+              14
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.7654830718414534,
+        "n": 284,
+        "per_class": {
+          "0": {
+            "n": 270,
+            "precision": 1.0,
+            "recall": 0.9222222222222223
+          },
+          "1": {
+            "n": 14,
+            "precision": 0.4,
+            "recall": 1.0
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.9404054384108117
+      },
+      "NMC": {
+        "accuracy": 0.9205637411915438,
+        "balanced_accuracy": 0.8876152402708657,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              1336,
+              106
+            ],
+            [
+              18,
+              101
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.7876414158701739,
+        "n": 1561,
+        "per_class": {
+          "0": {
+            "n": 1442,
+            "precision": 0.9867060561299852,
+            "recall": 0.926490984743412
+          },
+          "1": {
+            "n": 119,
+            "precision": 0.48792270531400966,
+            "recall": 0.8487394957983193
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.930035129554524
+      },
+      "__MISSING__": {
+        "accuracy": 0.9020979020979021,
+        "balanced_accuracy": 0.9457364341085271,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "0",
+            "1"
+          ],
+          "matrix": [
+            [
+              115,
+              14
+            ],
+            [
+              0,
+              14
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.8046448087431695,
+        "n": 143,
+        "per_class": {
+          "0": {
+            "n": 129,
+            "precision": 1.0,
+            "recall": 0.8914728682170543
+          },
+          "1": {
+            "n": 14,
+            "precision": 0.5,
+            "recall": 1.0
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.9156062516718255
+      }
+    }
+  },
+  "solid_tier": {
+    "dataset_id": "SOLID_STATE_TELEMETRY_2026",
+    "labels": [
+      "Accelerated_Degradation_Tier_3",
+      "Critical_Thermal_Risk_Tier_4",
+      "Minimal_Degradation_Tier_1",
+      "Moderate_Degradation_Tier_2"
+    ],
+    "matrix": [
+      [
+        661,
+        30,
+        26,
+        34
+      ],
+      [
+        38,
+        294,
+        0,
+        4
+      ],
+      [
+        6,
+        2,
+        428,
+        20
+      ],
+      [
+        23,
+        1,
+        17,
+        416
+      ]
+    ],
+    "n": 2000,
+    "per_chemistry": {
+      "Halide_Based_Li3YCl6": {
+        "accuracy": 0.932,
+        "balanced_accuracy": 0.9302005965049444,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              83,
+              4,
+              0,
+              4
+            ],
+            [
+              2,
+              21,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              61,
+              5
+            ],
+            [
+              0,
+              0,
+              2,
+              68
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.9222720800793891,
+        "n": 250,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 91,
+            "precision": 0.9764705882352941,
+            "recall": 0.9120879120879121
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 23,
+            "precision": 0.84,
+            "recall": 0.9130434782608695
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 66,
+            "precision": 0.9682539682539683,
+            "recall": 0.9242424242424242
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 70,
+            "precision": 0.8831168831168831,
+            "recall": 0.9714285714285714
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.9325402194704521
+      },
+      "Oxide_Based_LLZO": {
+        "accuracy": 0.9021739130434783,
+        "balanced_accuracy": 0.902592014445189,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              154,
+              8,
+              6,
+              9
+            ],
+            [
+              10,
+              57,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              105,
+              0
+            ],
+            [
+              5,
+              0,
+              5,
+              99
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.9007100667721337,
+        "n": 460,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 177,
+            "precision": 0.9005847953216374,
+            "recall": 0.8700564971751412
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 67,
+            "precision": 0.8769230769230769,
+            "recall": 0.8507462686567164
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 107,
+            "precision": 0.9051724137931034,
+            "recall": 0.9813084112149533
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 109,
+            "precision": 0.9166666666666666,
+            "recall": 0.908256880733945
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.9016029604655461
+      },
+      "Polymer_Composite": {
+        "accuracy": 0.9053708439897699,
+        "balanced_accuracy": 0.9022652579246044,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              85,
+              7,
+              0,
+              6
+            ],
+            [
+              2,
+              112,
+              0,
+              4
+            ],
+            [
+              0,
+              2,
+              73,
+              8
+            ],
+            [
+              3,
+              1,
+              4,
+              84
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.9040170084813921,
+        "n": 391,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 98,
+            "precision": 0.9444444444444444,
+            "recall": 0.8673469387755102
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 118,
+            "precision": 0.9180327868852459,
+            "recall": 0.9491525423728814
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 83,
+            "precision": 0.948051948051948,
+            "recall": 0.8795180722891566
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 92,
+            "precision": 0.8235294117647058,
+            "recall": 0.9130434782608695
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.9057748278841755
+      },
+      "Sulfide_Based_Li10GeP2S12": {
+        "accuracy": 0.8865406006674083,
+        "balanced_accuracy": 0.8812790636782573,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Accelerated_Degradation_Tier_3",
+            "Critical_Thermal_Risk_Tier_4",
+            "Minimal_Degradation_Tier_1",
+            "Moderate_Degradation_Tier_2"
+          ],
+          "matrix": [
+            [
+              339,
+              11,
+              20,
+              15
+            ],
+            [
+              24,
+              104,
+              0,
+              0
+            ],
+            [
+              4,
+              0,
+              189,
+              7
+            ],
+            [
+              15,
+              0,
+              6,
+              165
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.883873111118945,
+        "n": 899,
+        "per_class": {
+          "Accelerated_Degradation_Tier_3": {
+            "n": 385,
+            "precision": 0.887434554973822,
+            "recall": 0.8805194805194805
+          },
+          "Critical_Thermal_Risk_Tier_4": {
+            "n": 128,
+            "precision": 0.9043478260869565,
+            "recall": 0.8125
+          },
+          "Minimal_Degradation_Tier_1": {
+            "n": 200,
+            "precision": 0.8790697674418605,
+            "recall": 0.945
+          },
+          "Moderate_Degradation_Tier_2": {
+            "n": 186,
+            "precision": 0.8823529411764706,
+            "recall": 0.8870967741935484
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.8861135113447112
+      }
+    }
+  },
+  "synthetic_class": {
+    "dataset_id": "SYNTHETIC_BATTERY_LIFECYCLE",
+    "labels": [
+      "Degraded",
+      "End_of_Life",
+      "Healthy"
+    ],
+    "matrix": [
+      [
+        87,
+        34,
+        19
+      ],
+      [
+        2,
+        19,
+        0
+      ],
+      [
+        33,
+        2,
+        204
+      ]
+    ],
+    "n": 400,
+    "per_chemistry": {
+      "Lithium_Sulfur": {
+        "accuracy": 0.835820895522388,
+        "balanced_accuracy": 0.8111702127659575,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Degraded",
+            "End_of_Life",
+            "Healthy"
+          ],
+          "matrix": [
+            [
+              30,
+              0,
+              10
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              12,
+              0,
+              82
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.8067138735903487,
+        "n": 134,
+        "per_class": {
+          "Degraded": {
+            "n": 40,
+            "precision": 0.7142857142857143,
+            "recall": 0.75
+          },
+          "End_of_Life": {
+            "n": 0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "Healthy": {
+            "n": 94,
+            "precision": 0.8913043478260869,
+            "recall": 0.8723404255319149
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.836940396365928
+      },
+      "Sodium_Ion": {
+        "accuracy": 0.7121212121212122,
+        "balanced_accuracy": 0.7524366471734892,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Degraded",
+            "End_of_Life",
+            "Healthy"
+          ],
+          "matrix": [
+            [
+              28,
+              28,
+              1
+            ],
+            [
+              2,
+              16,
+              0
+            ],
+            [
+              6,
+              1,
+              50
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.6786709904989475,
+        "n": 132,
+        "per_class": {
+          "Degraded": {
+            "n": 57,
+            "precision": 0.7777777777777778,
+            "recall": 0.49122807017543857
+          },
+          "End_of_Life": {
+            "n": 18,
+            "precision": 0.35555555555555557,
+            "recall": 0.8888888888888888
+          },
+          "Healthy": {
+            "n": 57,
+            "precision": 0.9803921568627451,
+            "recall": 0.8771929824561403
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.7291152694378501
+      },
+      "Solid_State": {
+        "accuracy": 0.7761194029850746,
+        "balanced_accuracy": 0.8308668076109936,
+        "brier": null,
+        "confusion_matrix": {
+          "labels": [
+            "Degraded",
+            "End_of_Life",
+            "Healthy"
+          ],
+          "matrix": [
+            [
+              29,
+              6,
+              8
+            ],
+            [
+              0,
+              3,
+              0
+            ],
+            [
+              15,
+              1,
+              72
+            ]
+          ]
+        },
+        "log_loss": null,
+        "macro_f1": 0.6617826617826618,
+        "n": 134,
+        "per_class": {
+          "Degraded": {
+            "n": 43,
+            "precision": 0.6590909090909091,
+            "recall": 0.6744186046511628
+          },
+          "End_of_Life": {
+            "n": 3,
+            "precision": 0.3,
+            "recall": 1.0
+          },
+          "Healthy": {
+            "n": 88,
+            "precision": 0.9,
+            "recall": 0.8181818181818182
+          }
+        },
+        "roc_auc": null,
+        "weighted_f1": 0.7871630856705483
+      }
+    }
+  }
+}

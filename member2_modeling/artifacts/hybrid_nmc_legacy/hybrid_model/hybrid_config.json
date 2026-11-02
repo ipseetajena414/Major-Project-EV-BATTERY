@@ -1,0 +1,46 @@
+{
+  "dropped_null_target": 0,
+  "effective_folds": 3,
+  "entity_column": "cell_id",
+  "feature_columns": [
+    "current_soh_pct",
+    "v_mean",
+    "v_min",
+    "v_end",
+    "v_slope",
+    "i_mean",
+    "ah_throughput",
+    "energy_wh",
+    "discharge_time_s",
+    "temp_mean",
+    "temp_range"
+  ],
+  "fusion_alpha": 1.0,
+  "n_folds": 3,
+  "n_training_rows": 278,
+  "order_column": "cycle_id",
+  "random_state": 42,
+  "readiness_status": "EXPERIMENTAL",
+  "schema_version": "2.0.0",
+  "sequence_length": 5,
+  "sequence_oof_coverage": 0.8705035971223022,
+  "sequence_params": {
+    "batch_size": 32,
+    "dropout": 0.1,
+    "epochs": 60,
+    "hidden_dim": 32,
+    "learning_rate": 0.001,
+    "num_layers": 1,
+    "patience": 10,
+    "random_state": 42
+  },
+  "tabular_params": {
+    "learning_rate": 0.05,
+    "max_depth": 5,
+    "min_child_samples": 10,
+    "n_estimators": 200,
+    "num_leaves": 15,
+    "random_state": 42
+  },
+  "target_column": "target_soh_pct"
+}
