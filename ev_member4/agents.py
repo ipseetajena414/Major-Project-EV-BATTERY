@@ -22,8 +22,21 @@ def _get_llm():
         from dotenv import load_dotenv
         from langchain_google_genai import ChatGoogleGenerativeAI
         load_dotenv()
-        key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
-        _llm = ChatGoogleGenerativeAI(model=config.GEMINI_MODEL, google_api_key=key)
+        key = (os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY") or "").strip()
+        # Google AI Studio API keys strictly start with 'AIzaSy'
+        # If key is missing or not a standard Google AI Studio key, remain in offline templated mode
+        if not key or not key.startswith("AIzaSy"):
+            return None
+        model_name = config.GEMINI_MODEL
+        try:
+            _llm = ChatGoogleGenerativeAI(
+                model=model_name,
+                google_api_key=key,
+                max_retries=0,
+                timeout=3.0,
+            )
+        except Exception:
+            _llm = None
     return _llm
 
 
@@ -39,12 +52,15 @@ def _extract_text(res) -> str:
 
 
 def _say(prompt: str, fallback: str, block_index: int, use_llm: Optional[bool] = None) -> str:
-    """Call Gemini only every N blocks, and fall back to the template on any error."""
+    """Call Gemini only every N blocks, and fall back to the template on any error or missing valid key."""
     llm_enabled = config.USE_LLM if use_llm is None else bool(use_llm)
     if not llm_enabled or block_index % config.LLM_EVERY_N_BLOCKS != 0:
         return fallback
     try:
-        res = _get_llm().invoke(prompt)
+        client = _get_llm()
+        if client is None:
+            return fallback
+        res = client.invoke(prompt)
         return _extract_text(res)
     except Exception as exc:  # quota, bad key, retired model name, network...
         return f"{fallback} [LLM unavailable: {type(exc).__name__}]"
