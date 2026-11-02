@@ -1,1 +1,7 @@
 # Python standard library only; no third-party packages required.
+#
+# Optional, for the Phase 4 scenario figures only:
+#   matplotlib>=3.5   # enables tools/experiment_plots.py --backend matplotlib
+# When matplotlib is absent the plotter falls back to the deterministic
+# stdlib SVG backend, which produces the same seven figures with the same
+# numbers, so no result depends on it. Nothing else in Member 3 imports it.
