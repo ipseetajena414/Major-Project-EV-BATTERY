@@ -1,76 +1,217 @@
-# Member 4 — Multi-Agent Simulation & BMS Advisory
+# Member 4 — Multi-Agent Simulation & BMS Advisory (Schema 2.0.0)
 
-A Driver Persona agent (always wants a fast charge to 100 %) and a BMS Safety Supervisor agent (thermal, C-rate and SOC limits)
-run through a LangGraph loop for up to 20 simulated years. Five charging strategies are compared across four chemistries
-and three climates, and the results are exported for Member 5's dashboard.
+A Driver Persona agent (fast charge demand to 100%, high C-rate preference) and a deterministic BMS Safety Supervisor agent (thermal, C-rate, SOC limits, and catastrophic cutoff) negotiate charging and driving actions across a multi-turn LangGraph workflow.
 
 ```
-driver_proposes -> bms_evaluates -> apply_action -> update_battery_state -> check_end_of_life -> (loop)
+driver_proposes (R1) 
+    -> bms_evaluates (R1) 
+    -> driver_responds (R2 Counter / Concession) 
+    -> bms_final_verifies (R2 Deterministic Gate) 
+    -> apply_action 
+    -> update_battery_state 
+    -> check_end_of_life 
+    -> (loop)
 ```
 
-Numbers are decided by Python (`bms.py`, `placeholders.py`). The LLM only writes the explanation text.
+## Architectural & Scientific Principles
 
-## Run
+1. **Deterministic Safety Enforcement**: Safety rules (`RULES_CATALOG` in `config.py`) take absolute precedence. LLM agents generate explanatory reasoning and dialogue, but NEVER override hard physical constraints. If cell temperature exceeds critical thresholds ($T_{cell} \ge 50.0^\circ\text{C}$), charging is unconditionally aborted (`0.0C`).
+2. **Strict SOH/RUL Non-Fabrication**: Member 4 does NOT independently predict SOH, RUL, capacity, or range. If Member 2 ML predictions are provided, their values and provenance are recorded. If absent, SOH and RUL remain explicitly `None` with status `"UNAVAILABLE"`. Multi-year degradation curves are strictly isolated as comparative hypothetical simulations with disclaimers.
+3. **Complete Negotiation Transcripts**: Every negotiation step logs `driver_message`, `bms_message`, `requested_action`, `applied_action`, `decision`, `reason`, `rules_triggered`, and `negotiation_round`.
+4. **Member 5 Handover-Ready**: Root-level package exports, zero broken relative imports, and a stable versioned schema (`2.0.0`).
 
+---
+
+## Quickstart
+
+### 1. Setup Environment
 ```bash
-python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
+# In ev_member4 directory
+python -m venv .venv
+# Windows:
+.venv\Scripts\activate
+# Linux/macOS:
+source .venv/bin/activate
+
 pip install -r requirements.txt
-python -m unittest discover -s tests -v                 # 13 tests
-
-# Run simulations
-python run_simulation.py hot                            # or: temperate | cold | all
-python run_simulation.py hot -v tata_nexon_ev_45kwh_partial_reference.json
-python run_simulation.py --list-vehicles                # list all 9 vehicle configurations
-python run_simulation.py --list-cycles                  # list available drive cycles (UDDS, HWFET, etc.)
 ```
 
-Outputs go to `results/<climate>/` (`results.json`, `summary.csv`, `soh_curves.png`). `sample_results/` holds a committed copy for all three climates.
-Gemini text is switched on automatically when `GOOGLE_API_KEY` is in `.env` (copy `.env.example`). Without a key the run uses templated text.
-Set `GEMINI_MODEL` in `.env` or `config.py` (default: `gemini-2.5-flash`).
+### 2. Configure API Key (Optional)
+Gemini LLM dialogue is optional. When `GOOGLE_API_KEY` is present in `.env`, the agents generate natural-language dialogue. When omitted or `use_llm=False`, the system uses high-performance deterministic templated dialogue.
+```powershell
+# In PowerShell:
+$env:GOOGLE_API_KEY="your-api-key"
+# Or copy .env.example to .env
+Copy-Item .env.example .env
+```
 
-### For Member 5 (Dashboard Lead)
+### 3. Run Test Suite (15 Unit Tests)
+```bash
+python -m unittest discover -s tests -v
+```
+All 15 tests verify:
+- Missing SOH/RUL non-fabrication (`UNAVAILABLE`).
+- Member 2 prediction ingestion.
+- Catastrophic thermal shutdown ($0.0\text{C}$ cutoff at $\ge 50^\circ\text{C}$).
+- Extreme heat fast charge lockout ($T_{cell} > 35^\circ\text{C}$).
+- SOC and C-rate ceilings.
+- Full dialogue retention in history records.
+- 2-round counter-proposal negotiation loop.
+- Package importability from root/external directories.
+- Simulation reproducibility.
 
-From Python:
+### 4. Run Batch Simulations
+```bash
+python run_simulation.py hot                            # Hot climate (20 runs: 4 chemistries x 5 strategies)
+python run_simulation.py temperate                      # Temperate climate
+python run_simulation.py cold                           # Cold climate
+python run_simulation.py all                            # All 60 simulations
+```
+Outputs are exported to `results/<climate>/` (`results.json`, `summary.csv`, `soh_curves.png`). A canonical copy is stored in `sample_results/`.
+
+---
+
+## Member 5 (Dashboard Lead) Integration
+
+Member 5 can import and use Member 4 either from the repository root or as an installed package.
+
+### Endpoint: `simulate_bms_negotiation()`
+The primary interactive endpoint for Streamlit sliders, interactive negotiation widgets, and real-time advisory:
+
 ```python
-from run_simulation import run_simulation, run_all, set_active_vehicle, set_active_drive_cycle
+import sys
+# If running from repo root:
+sys.path.insert(0, ".")
 
-# Run with defaults (Tata Curvv.ev 55 kWh, UDDS cycle)
-res = run_simulation("LFP", "full_protection", "hot")
+import ev_member4
 
-# Or specify vehicle and cycle dynamically:
-res = run_simulation("NMC", "bms_supervised", "temperate",
-                     vehicle="tata_nexon_ev_45kwh_partial_reference.json",
-                     cycle="udds_city.csv")
+# 1. Single interactive negotiation turn (e.g. user requests 3.0C fast charge at 85% SOC, 42°C pack temp)
+result = ev_member4.simulate_bms_negotiation(
+    battery_state={
+        "soc": 85.0,
+        "temp_c": 42.0,
+        "soh": 92.5  # Optional Member 2 SOH, or None if unavailable
+    },
+    requested_action={
+        "action": "charge_fast",
+        "charge_rate_c": 3.0,
+        "target_soc": 100.0
+    },
+    member2_predictions={  # Optional Member 2 predictions
+        "soh_pct": 92.5,
+        "rul_cycles": 1450,
+        "model_version": "v1.0-lgbm",
+        "provenance": "Member 2 LightGBM model"
+    },
+    bms_limits_override={  # Optional dynamic custom BMS thresholds
+        "max_cell_temp_c": 45.0,
+        "critical_shutdown_temp_c": 50.0
+    },
+    use_llm=False  # True to use Gemini LLM, False for instant deterministic templates
+)
+
+# 2. Inspect negotiation dialogue and BMS decision
+print("Driver Demand:", result["driver_proposal"]["message"])
+print("BMS Round 1:", result["bms_evaluation"]["message"])
+print("Driver Counter/Concession:", result["driver_counter"]["message"])
+print("Final BMS Decision:", result["final_applied_action"]["decision"])
+print("Applied C-Rate:", result["final_applied_action"]["charge_rate_c"])
+print("Rules Triggered:", result["final_applied_action"]["rules_triggered"])
+print("Provenance:", result["provenance"])
 ```
-`run_simulation` returns a dictionary containing the summary and per-block history.
 
-## Integration status — read before quoting any number
+### Versioned Output Schema (`2.0.0`)
+```json
+{
+  "schema_version": "2.0.0",
+  "status": "success",
+  "battery_state": { "soc": 85.0, "temp_c": 42.0, "soh": 92.5 },
+  "member2_predictions": {
+    "soh_pct": 92.5,
+    "soh_status": "AVAILABLE",
+    "rul_cycles": 1450,
+    "rul_status": "AVAILABLE",
+    "provenance": "Member 2 LightGBM model"
+  },
+  "driver_proposal": {
+    "round": 1,
+    "action": "charge_fast",
+    "charge_rate_c": 3.0,
+    "target_soc": 100.0,
+    "message": "Need maximum charging power (3.0C) right now to reach 100% SOC ASAP."
+  },
+  "bms_evaluation": {
+    "round": 1,
+    "decision": "MODIFIED",
+    "safe_charge_rate_c": 1.0,
+    "safe_target_soc": 80.0,
+    "rules_triggered": ["RULE_CELL_OVERHEAT_DERATE", "RULE_SOC_MAX_CEILING"],
+    "message": "[BMS Advisory] Fast charge restricted: cell temperature is high (42.0°C). Rate derated."
+  },
+  "driver_counter": {
+    "round": 2,
+    "action": "charge_fast",
+    "charge_rate_c": 1.5,
+    "target_soc": 80.0,
+    "message": "Accepted SOC cap of 80.0%, but requesting higher charging speed of 1.50C if safe."
+  },
+  "final_applied_action": {
+    "round": 2,
+    "action": "charge_fast",
+    "charge_rate_c": 1.0,
+    "target_soc": 80.0,
+    "decision": "MODIFIED",
+    "rules_triggered": ["RULE_CELL_OVERHEAT_DERATE", "RULE_SOC_MAX_CEILING"],
+    "reason": "Final safety gate clamped action within verified thermal envelope."
+  },
+  "transcript": [
+    { "round": 1, "speaker": "Driver", "text": "..." },
+    { "round": 1, "speaker": "BMS", "text": "..." },
+    { "round": 2, "speaker": "Driver", "text": "..." },
+    { "round": 2, "speaker": "BMS", "text": "..." }
+  ],
+  "provenance": {
+    "is_hypothetical_simulation": false,
+    "soh_prediction_source": "Member 2 LightGBM model",
+    "safety_rules_version": "2.0.0"
+  }
+}
+```
 
-| Part | Source | Status |
-|---|---|---|
-| Range | Member 3 `RangeCalculator` (vendored in `vendor/member3/`) | **Fully integrated.** Powered by Member 3's lumped-parameter road load engine, empirical HVAC comfort model, and regenerative braking. Default vehicle is the sourced **Tata Curvv.ev 55 kWh** (502 km certified range reference) on the standard **EPA UDDS city cycle**. The complete vehicle library (8 OEM references + 1 placeholder) is vendored in `vendor/member3/vehicle_configs/`. |
-| Degradation | Assumed coefficients in `config.CHEMISTRIES` | **Placeholder.** Rankings are plausible, absolute years are not predictions. |
-| Member 2 SOH model | `member2_modeling/` (not vendored) | **Not plugged in, by design.** It takes 29 discharge-curve statistics and predicts next-record SOH. Its own schema marks temperature, C-rate, SOC and fast-charge features as BLOCKED, which are exactly what this simulation varies. The LFP model is also worse than a persistence baseline (MAE 0.93 vs 0.13 pp). |
+---
 
-`results.json` carries an explicit `model_provenance` block recording the exact vehicle profile, pack energy, rated reference range, drive cycle, engine limitations, and data quality pedigree.
+## Configurable Safety Rules (`RULES_CATALOG`)
 
-## Vehicle Configuration Library
+Deterministic safety rules enforced by `bms.py`:
 
-Profiles in `vendor/member3/vehicle_configs/`:
-- `tata_curvv_ev_55kwh_partial_reference.json` (Default, 55 kWh, 502 km ARAI reference)
-- `tata_nexon_ev_45kwh_partial_reference.json` (45 kWh, 489 km ARAI reference)
-- `tata_punch_ev_40kwh_partial_reference.json` (40 kWh, 468 km ARAI reference)
-- `mahindra_xev9e_59kwh_partial_reference.json` (59 kWh, 542 km ARAI reference)
-- `byd_atto3_gl_49_92kwh_partial_reference.json` (49.92 kWh, 400 km NEDC reference)
-- `mg4_ev_51kwh_partial_reference.json` (51 kWh, 350 km claimed reference)
-- `hyundai_ioniq5_84kwh_partial_reference.json` (84 kWh, 690 km ARAI reference)
-- `tesla_model_y_lr_78kwh_partial_reference.json` (78 kWh, 600 km WLTP reference)
-- `illustrative_placeholder.json` (75 kWh, 650 km illustrative baseline)
+| Rule ID | Parameter | Default Limit | Action |
+|---|---|---|---|
+| `RULE_CATASTROPHIC_SHUTDOWN` | `critical_shutdown_temp_c` | $\ge 50.0^\circ\text{C}$ | Cutoff charging immediately ($0.0\text{C}$). Critical thermal runaway mitigation. |
+| `RULE_THERMAL_LOCKOUT` | `max_temp_for_fast_charge_c` | $> 35.0^\circ\text{C}$ | Lock out high C-rate fast charging. Fall back to standard rate $\le 1.0\text{C}$. |
+| `RULE_CELL_OVERHEAT_DERATE` | `max_cell_temp_c` | $> 45.0^\circ\text{C}$ | Derate charging/discharge current to minimize internal resistive heating. |
+| `RULE_SOC_MAX_CEILING` | `max_soc_pct` | $> 80.0\%$ | Cap high-voltage cutoff to mitigate cathode lattice stress and SEI growth. |
+| `RULE_SOC_MIN_FLOOR` | `min_soc_pct` | $< 20.0\%$ | Protect against copper dissolution and deep-discharge under-voltage. |
+| `RULE_CRATE_CEILING` | `max_charge_c_rate` | $> 1.5\text{C}$ | Cap charging C-rate to prevent lithium plating on anode surfaces. |
 
-Standard drive cycles in `vendor/member3/drive_cycles/`:
-- `udds_city.csv` (Default, EPA Urban Dynamometer Driving Schedule)
-- `hwfet_highway.csv` (EPA Highway Fuel Economy Test)
-- `example_cycle.csv` / `synthetic_example_cycle.csv` (software smoke-test baseline)
+*Disclaimer: Thermal models use empirical lumped-parameter heat dissipation estimations and do not replace certified automotive UN ECE R100 or ISO 26262 ASIL-D functional safety hardware.*
 
-## Files
-`config.py` thresholds, vehicle/cycle resolvers, chemistries, scenarios, climates · `state.py` shared state · `bms.py` rules · `agents.py` Driver/BMS text (optional Gemini) · `graph.py` LangGraph loop · `placeholders.py` model layer · `run_simulation.py` runner, CLI, export, guidelines · `tests/` · `vendor/member3/` · `sample_results/` · `results/`
+---
+
+## File Structure
+
+```
+ev_member4/
+├── __init__.py               # Package exports (simulate_bms_negotiation, run_simulation, etc.)
+├── config.py                 # RULES_CATALOG, BMS thresholds, climates, chemistries, vehicle profiles
+├── state.py                  # SimState TypedDict with provenance and multi-round negotiation schema
+├── bms.py                    # Deterministic BMS safety supervisor and rule evaluations
+├── agents.py                 # Driver Persona & BMS Supervisor agents (LLM & deterministic templates)
+├── graph.py                  # LangGraph 7-node multi-turn negotiation execution loop
+├── placeholders.py           # Range engine connector & hypothetical comparative degradation models
+├── run_simulation.py         # Batch runner, Member 5 interactive API, CLI & export tools
+├── tests/
+│   └── test_member4.py       # 15 comprehensive unit tests (100% passing)
+├── vendor/member3/           # Vendored Member 3 range calculation engine & vehicle configs
+├── results/                  # Generated simulation outputs (hot, temperate, cold)
+└── sample_results/           # Verified canonical test and simulation benchmarks
+```

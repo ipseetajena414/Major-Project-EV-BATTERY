@@ -1,10 +1,14 @@
 {
+  "schema_version": "2.0.0",
   "climate": "temperate",
   "model_provenance": {
     "degradation": {
-      "source": "assumed coefficients (config.CHEMISTRIES), not learned from data",
-      "status": "placeholder",
-      "why_not_member2": "Member 2's schema marks temperature, C-rate and SOC features as BLOCKED; its models predict next-record SOH from discharge-curve statistics"
+      "is_machine_learning_prediction": false,
+      "type": "HYPOTHETICAL_SIMULATION",
+      "source": "assumed comparative coefficients (config.CHEMISTRIES)",
+      "status": "illustrative_scenario_model",
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models.",
+      "why_not_member2": "Member 2's schema marks temperature, C-rate and SOC features as BLOCKED in the master table; its models predict next-record SOH from 29 discharge-curve statistics rather than charging stress."
     },
     "range": {
       "source": "member3.range_calculator.RangeCalculator",
@@ -42,10 +46,61 @@
     },
     "end_of_life_soh_pct": 70.0
   },
+  "rules_catalog": {
+    "RULE_SOC_MAX_CEILING": {
+      "id": "RULE_SOC_MAX_CEILING",
+      "name": "High SOC Ceiling Cap",
+      "description": "Caps charging target to 80% to mitigate high-voltage electrolyte oxidation and mechanical stress at cathode.",
+      "parameter": "max_soc",
+      "default_limit": 80.0,
+      "action": "Cap target SOC"
+    },
+    "RULE_SOC_MIN_FLOOR": {
+      "id": "RULE_SOC_MIN_FLOOR",
+      "name": "Deep Discharge Floor Protection",
+      "description": "Raises minimum discharge floor to 20% to prevent copper dissolution and transition metal dissolution at low potential.",
+      "parameter": "min_soc",
+      "default_limit": 20.0,
+      "action": "Raise minimum SOC floor"
+    },
+    "RULE_CRATE_CEILING": {
+      "id": "RULE_CRATE_CEILING",
+      "name": "Maximum C-rate Kinetic Limit",
+      "description": "Restricts fast charging current to 1.5C to prevent localized lithium plating at anode edges and excess resistive heat.",
+      "parameter": "max_c_rate",
+      "default_limit": 1.5,
+      "action": "Cap charge rate"
+    },
+    "RULE_THERMAL_LOCKOUT": {
+      "id": "RULE_THERMAL_LOCKOUT",
+      "name": "High Ambient Fast-Charge Lockout",
+      "description": "Refuses DC fast charging when ambient temperature >= 42\u00b0C, reverting to slow AC charging (0.3C) to prevent severe thermal acceleration of cell aging.",
+      "parameter": "refuse_fast_charge_above_ambient_c",
+      "default_limit": 42.0,
+      "action": "Refuse DCFC, fall back to slow AC rate"
+    },
+    "RULE_CELL_OVERHEAT_DERATE": {
+      "id": "RULE_CELL_OVERHEAT_DERATE",
+      "name": "Dynamic Cell Temperature Derating",
+      "description": "Iteratively cuts charge rate when predicted cell temperature exceeds 35\u00b0C to preserve cell integrity.",
+      "parameter": "max_temp_c",
+      "default_limit": 35.0,
+      "action": "Step down C-rate incrementally"
+    },
+    "RULE_CATASTROPHIC_SHUTDOWN": {
+      "id": "RULE_CATASTROPHIC_SHUTDOWN",
+      "name": "Critical Overheat Charge Abort",
+      "description": "Completely cuts off charging (0.0C) if predicted cell temperature exceeds 50\u00b0C and cannot be mitigated.",
+      "parameter": "critical_shutdown_temp_c",
+      "default_limit": 50.0,
+      "action": "Abort charging (0.0C)"
+    }
+  },
   "vehicle_config": "tata_curvv_ev_55kwh_partial_reference.json",
   "drive_cycle": "udds_city.csv",
   "summary": [
     {
+      "schema_version": "2.0.0",
       "chemistry": "NMC",
       "scenario": "unrestricted",
       "climate": "temperate",
@@ -60,10 +115,19 @@
       "bms_decisions": {
         "approve": 21,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "NMC",
       "scenario": "bms_supervised",
       "climate": "temperate",
@@ -78,10 +142,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 32,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "NMC",
       "scenario": "soc_20_80",
       "climate": "temperate",
@@ -94,12 +167,21 @@
       "thermal_stress_hours": 93.0,
       "fast_charge_count": 1020,
       "bms_decisions": {
-        "approve": 0,
-        "modify": 34,
-        "reject": 0
-      }
+        "approve": 34,
+        "modify": 0,
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "NMC",
       "scenario": "precondition_only",
       "climate": "temperate",
@@ -114,10 +196,19 @@
       "bms_decisions": {
         "approve": 24,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "NMC",
       "scenario": "full_protection",
       "climate": "temperate",
@@ -132,10 +223,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 56,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "LFP",
       "scenario": "unrestricted",
       "climate": "temperate",
@@ -150,10 +250,19 @@
       "bms_decisions": {
         "approve": 56,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "LFP",
       "scenario": "bms_supervised",
       "climate": "temperate",
@@ -168,10 +277,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 74,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "LFP",
       "scenario": "soc_20_80",
       "climate": "temperate",
@@ -184,12 +302,21 @@
       "thermal_stress_hours": 171.0,
       "fast_charge_count": 2070,
       "bms_decisions": {
-        "approve": 0,
-        "modify": 69,
-        "reject": 0
-      }
+        "approve": 69,
+        "modify": 0,
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "LFP",
       "scenario": "precondition_only",
       "climate": "temperate",
@@ -197,17 +324,26 @@
       "drive_cycle": "udds_city.csv",
       "years_to_eol": 6.1,
       "eol_reached": true,
-      "final_soh": 69.92,
+      "final_soh": 69.93,
       "final_range_km": 223.8,
       "thermal_stress_hours": 0.0,
       "fast_charge_count": 1830,
       "bms_decisions": {
         "approve": 61,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "LFP",
       "scenario": "full_protection",
       "climate": "temperate",
@@ -222,10 +358,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 94,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Sodium-ion",
       "scenario": "unrestricted",
       "climate": "temperate",
@@ -240,10 +385,19 @@
       "bms_decisions": {
         "approve": 35,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Sodium-ion",
       "scenario": "bms_supervised",
       "climate": "temperate",
@@ -258,10 +412,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 47,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Sodium-ion",
       "scenario": "soc_20_80",
       "climate": "temperate",
@@ -274,12 +437,21 @@
       "thermal_stress_hours": 128.4,
       "fast_charge_count": 1350,
       "bms_decisions": {
-        "approve": 0,
-        "modify": 45,
-        "reject": 0
-      }
+        "approve": 45,
+        "modify": 0,
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Sodium-ion",
       "scenario": "precondition_only",
       "climate": "temperate",
@@ -287,17 +459,26 @@
       "drive_cycle": "udds_city.csv",
       "years_to_eol": 3.8,
       "eol_reached": true,
-      "final_soh": 69.32,
+      "final_soh": 69.33,
       "final_range_km": 173.0,
       "thermal_stress_hours": 0.0,
       "fast_charge_count": 1140,
       "bms_decisions": {
         "approve": 38,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Sodium-ion",
       "scenario": "full_protection",
       "climate": "temperate",
@@ -312,10 +493,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 62,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Solid-State",
       "scenario": "unrestricted",
       "climate": "temperate",
@@ -330,10 +520,19 @@
       "bms_decisions": {
         "approve": 85,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Solid-State",
       "scenario": "bms_supervised",
       "climate": "temperate",
@@ -348,10 +547,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 101,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Solid-State",
       "scenario": "soc_20_80",
       "climate": "temperate",
@@ -364,12 +572,21 @@
       "thermal_stress_hours": 270.0,
       "fast_charge_count": 3270,
       "bms_decisions": {
-        "approve": 0,
-        "modify": 109,
-        "reject": 0
-      }
+        "approve": 109,
+        "modify": 0,
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Solid-State",
       "scenario": "precondition_only",
       "climate": "temperate",
@@ -384,10 +601,19 @@
       "bms_decisions": {
         "approve": 90,
         "modify": 0,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     },
     {
+      "schema_version": "2.0.0",
       "chemistry": "Solid-State",
       "scenario": "full_protection",
       "climate": "temperate",
@@ -402,11 +628,19 @@
       "bms_decisions": {
         "approve": 0,
         "modify": 132,
-        "reject": 0
-      }
+        "reject": 0,
+        "compromise_approved": 0
+      },
+      "member2_predictions": null,
+      "member2_soh_pct": null,
+      "member2_soh_status": "UNAVAILABLE",
+      "member2_rul_cycles": null,
+      "member2_rul_status": "UNAVAILABLE",
+      "is_hypothetical_simulation": true,
+      "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
     }
   ],
-  "curves": {
+  "hypothetical_simulation_curves": {
     "NMC": {
       "unrestricted": [
         {
@@ -466,7 +700,7 @@
         },
         {
           "year": 1.2,
-          "soh": 84.494,
+          "soh": 84.493,
           "range_km": 247.5
         },
         {
@@ -481,7 +715,7 @@
         },
         {
           "year": 1.5,
-          "soh": 79.387,
+          "soh": 79.386,
           "range_km": 232.6
         },
         {
@@ -496,7 +730,7 @@
         },
         {
           "year": 1.8,
-          "soh": 74.952,
+          "soh": 74.951,
           "range_km": 187.0
         },
         {
@@ -506,12 +740,12 @@
         },
         {
           "year": 2.0,
-          "soh": 71.897,
+          "soh": 71.896,
           "range_km": 200.7
         },
         {
           "year": 2.1,
-          "soh": 69.376,
+          "soh": 69.375,
           "range_km": 222.0
         }
       ],
@@ -528,7 +762,7 @@
         },
         {
           "year": 0.3,
-          "soh": 97.377,
+          "soh": 97.376,
           "range_km": 264.1
         },
         {
@@ -548,7 +782,7 @@
         },
         {
           "year": 0.7,
-          "soh": 94.006,
+          "soh": 94.005,
           "range_km": 262.5
         },
         {
@@ -558,7 +792,7 @@
         },
         {
           "year": 0.9,
-          "soh": 92.511,
+          "soh": 92.51,
           "range_km": 230.9
         },
         {
@@ -578,7 +812,7 @@
         },
         {
           "year": 1.3,
-          "soh": 89.14,
+          "soh": 89.139,
           "range_km": 241.7
         },
         {
@@ -598,7 +832,7 @@
         },
         {
           "year": 1.7,
-          "soh": 85.769,
+          "soh": 85.768,
           "range_km": 239.5
         },
         {
@@ -608,7 +842,7 @@
         },
         {
           "year": 1.9,
-          "soh": 84.274,
+          "soh": 84.273,
           "range_km": 210.3
         },
         {
@@ -628,7 +862,7 @@
         },
         {
           "year": 2.3,
-          "soh": 80.53,
+          "soh": 80.529,
           "range_km": 218.4
         },
         {
@@ -658,7 +892,7 @@
         },
         {
           "year": 2.9,
-          "soh": 73.815,
+          "soh": 73.814,
           "range_km": 184.2
         },
         {
@@ -668,7 +902,7 @@
         },
         {
           "year": 3.1,
-          "soh": 71.337,
+          "soh": 71.336,
           "range_km": 228.3
         },
         {
@@ -785,7 +1019,7 @@
         },
         {
           "year": 2.2,
-          "soh": 83.093,
+          "soh": 83.092,
           "range_km": 243.4
         },
         {
@@ -820,7 +1054,7 @@
         },
         {
           "year": 2.9,
-          "soh": 76.292,
+          "soh": 76.291,
           "range_km": 190.4
         },
         {
@@ -867,7 +1101,7 @@
         },
         {
           "year": 0.4,
-          "soh": 95.344,
+          "soh": 95.345,
           "range_km": 258.6
         },
         {
@@ -882,7 +1116,7 @@
         },
         {
           "year": 0.7,
-          "soh": 91.937,
+          "soh": 91.938,
           "range_km": 256.7
         },
         {
@@ -897,12 +1131,12 @@
         },
         {
           "year": 1.0,
-          "soh": 88.806,
+          "soh": 88.807,
           "range_km": 247.9
         },
         {
           "year": 1.1,
-          "soh": 87.689,
+          "soh": 87.69,
           "range_km": 280.6
         },
         {
@@ -912,12 +1146,12 @@
         },
         {
           "year": 1.3,
-          "soh": 85.23,
+          "soh": 85.231,
           "range_km": 231.1
         },
         {
           "year": 1.4,
-          "soh": 83.974,
+          "soh": 83.975,
           "range_km": 227.7
         },
         {
@@ -932,42 +1166,42 @@
         },
         {
           "year": 1.7,
-          "soh": 80.19,
+          "soh": 80.191,
           "range_km": 223.9
         },
         {
           "year": 1.8,
-          "soh": 78.693,
+          "soh": 78.694,
           "range_km": 196.4
         },
         {
           "year": 1.9,
-          "soh": 77.496,
+          "soh": 77.497,
           "range_km": 193.4
         },
         {
           "year": 2.0,
-          "soh": 76.034,
+          "soh": 76.036,
           "range_km": 212.3
         },
         {
           "year": 2.1,
-          "soh": 74.1,
+          "soh": 74.101,
           "range_km": 237.1
         },
         {
           "year": 2.2,
-          "soh": 72.508,
+          "soh": 72.509,
           "range_km": 212.4
         },
         {
           "year": 2.3,
-          "soh": 70.415,
+          "soh": 70.417,
           "range_km": 191.0
         },
         {
           "year": 2.4,
-          "soh": 67.806,
+          "soh": 67.808,
           "range_km": 183.9
         }
       ],
@@ -1034,12 +1268,12 @@
         },
         {
           "year": 1.3,
-          "soh": 93.802,
+          "soh": 93.803,
           "range_km": 254.4
         },
         {
           "year": 1.4,
-          "soh": 93.286,
+          "soh": 93.287,
           "range_km": 253.0
         },
         {
@@ -1074,7 +1308,7 @@
         },
         {
           "year": 2.1,
-          "soh": 90.08,
+          "soh": 90.081,
           "range_km": 288.3
         },
         {
@@ -1094,7 +1328,7 @@
         },
         {
           "year": 2.5,
-          "soh": 88.061,
+          "soh": 88.062,
           "range_km": 258.0
         },
         {
@@ -1129,12 +1363,12 @@
         },
         {
           "year": 3.2,
-          "soh": 84.855,
+          "soh": 84.856,
           "range_km": 248.6
         },
         {
           "year": 3.3,
-          "soh": 84.335,
+          "soh": 84.336,
           "range_km": 228.7
         },
         {
@@ -1149,12 +1383,12 @@
         },
         {
           "year": 3.6,
-          "soh": 82.777,
+          "soh": 82.778,
           "range_km": 264.9
         },
         {
           "year": 3.7,
-          "soh": 82.274,
+          "soh": 82.275,
           "range_km": 229.7
         },
         {
@@ -1164,92 +1398,92 @@
         },
         {
           "year": 3.9,
-          "soh": 81.231,
+          "soh": 81.232,
           "range_km": 202.7
         },
         {
           "year": 4.0,
-          "soh": 80.69,
+          "soh": 80.691,
           "range_km": 225.3
         },
         {
           "year": 4.1,
-          "soh": 80.129,
+          "soh": 80.13,
           "range_km": 256.4
         },
         {
           "year": 4.2,
-          "soh": 79.508,
+          "soh": 79.509,
           "range_km": 232.9
         },
         {
           "year": 4.3,
-          "soh": 78.84,
+          "soh": 78.841,
           "range_km": 213.8
         },
         {
           "year": 4.4,
-          "soh": 78.155,
+          "soh": 78.156,
           "range_km": 212.0
         },
         {
           "year": 4.5,
-          "soh": 77.481,
+          "soh": 77.482,
           "range_km": 227.0
         },
         {
           "year": 4.6,
-          "soh": 76.842,
+          "soh": 76.843,
           "range_km": 245.9
         },
         {
           "year": 4.7,
-          "soh": 76.196,
+          "soh": 76.197,
           "range_km": 212.7
         },
         {
           "year": 4.8,
-          "soh": 75.535,
+          "soh": 75.536,
           "range_km": 188.5
         },
         {
           "year": 4.9,
-          "soh": 74.858,
+          "soh": 74.859,
           "range_km": 186.8
         },
         {
           "year": 5.0,
-          "soh": 74.164,
+          "soh": 74.165,
           "range_km": 207.1
         },
         {
           "year": 5.1,
-          "soh": 73.444,
+          "soh": 73.445,
           "range_km": 235.0
         },
         {
           "year": 5.2,
-          "soh": 72.647,
+          "soh": 72.648,
           "range_km": 212.8
         },
         {
           "year": 5.3,
-          "soh": 71.79,
+          "soh": 71.792,
           "range_km": 194.7
         },
         {
           "year": 5.4,
-          "soh": 70.91,
+          "soh": 70.912,
           "range_km": 192.3
         },
         {
           "year": 5.5,
-          "soh": 70.046,
+          "soh": 70.048,
           "range_km": 205.2
         },
         {
           "year": 5.6,
-          "soh": 69.226,
+          "soh": 69.228,
           "range_km": 221.5
         }
       ]
@@ -1373,12 +1607,12 @@
         },
         {
           "year": 2.4,
-          "soh": 88.547,
+          "soh": 88.546,
           "range_km": 240.1
         },
         {
           "year": 2.5,
-          "soh": 88.097,
+          "soh": 88.096,
           "range_km": 258.1
         },
         {
@@ -1483,17 +1717,17 @@
         },
         {
           "year": 4.6,
-          "soh": 77.029,
+          "soh": 77.028,
           "range_km": 246.5
         },
         {
           "year": 4.7,
-          "soh": 76.452,
+          "soh": 76.451,
           "range_km": 213.4
         },
         {
           "year": 4.8,
-          "soh": 75.809,
+          "soh": 75.808,
           "range_km": 189.2
         },
         {
@@ -1503,7 +1737,7 @@
         },
         {
           "year": 5.0,
-          "soh": 74.645,
+          "soh": 74.644,
           "range_km": 208.4
         },
         {
@@ -1595,17 +1829,17 @@
         },
         {
           "year": 1.2,
-          "soh": 95.7,
+          "soh": 95.699,
           "range_km": 280.3
         },
         {
           "year": 1.3,
-          "soh": 95.306,
+          "soh": 95.305,
           "range_km": 258.5
         },
         {
           "year": 1.4,
-          "soh": 94.912,
+          "soh": 94.911,
           "range_km": 257.4
         },
         {
@@ -1690,7 +1924,7 @@
         },
         {
           "year": 3.1,
-          "soh": 88.945,
+          "soh": 88.944,
           "range_km": 284.6
         },
         {
@@ -1720,7 +1954,7 @@
         },
         {
           "year": 3.7,
-          "soh": 86.708,
+          "soh": 86.707,
           "range_km": 242.1
         },
         {
@@ -1735,7 +1969,7 @@
         },
         {
           "year": 4.0,
-          "soh": 85.713,
+          "soh": 85.712,
           "range_km": 239.3
         },
         {
@@ -1800,7 +2034,7 @@
         },
         {
           "year": 5.3,
-          "soh": 80.611,
+          "soh": 80.61,
           "range_km": 218.6
         },
         {
@@ -1810,7 +2044,7 @@
         },
         {
           "year": 5.5,
-          "soh": 79.635,
+          "soh": 79.634,
           "range_km": 233.3
         },
         {
@@ -1835,7 +2069,7 @@
         },
         {
           "year": 6.0,
-          "soh": 77.414,
+          "soh": 77.413,
           "range_km": 216.1
         },
         {
@@ -1900,7 +2134,7 @@
         },
         {
           "year": 7.3,
-          "soh": 70.002,
+          "soh": 70.001,
           "range_km": 189.8
         },
         {
@@ -2003,7 +2237,7 @@
         {
           "year": 1.9,
           "soh": 92.743,
-          "range_km": 231.5
+          "range_km": 231.4
         },
         {
           "year": 2.0,
@@ -2112,12 +2346,12 @@
         },
         {
           "year": 4.1,
-          "soh": 84.405,
+          "soh": 84.404,
           "range_km": 270.1
         },
         {
           "year": 4.2,
-          "soh": 83.914,
+          "soh": 83.913,
           "range_km": 245.8
         },
         {
@@ -2157,7 +2391,7 @@
         },
         {
           "year": 5.0,
-          "soh": 80.556,
+          "soh": 80.555,
           "range_km": 224.9
         },
         {
@@ -2167,12 +2401,12 @@
         },
         {
           "year": 5.2,
-          "soh": 79.569,
+          "soh": 79.568,
           "range_km": 233.1
         },
         {
           "year": 5.3,
-          "soh": 78.989,
+          "soh": 78.988,
           "range_km": 214.2
         },
         {
@@ -2247,7 +2481,7 @@
         },
         {
           "year": 6.8,
-          "soh": 70.237,
+          "soh": 70.236,
           "range_km": 175.3
         },
         {
@@ -2284,7 +2518,7 @@
         },
         {
           "year": 0.6,
-          "soh": 97.321,
+          "soh": 97.322,
           "range_km": 311.4
         },
         {
@@ -2304,7 +2538,7 @@
         },
         {
           "year": 1.0,
-          "soh": 95.738,
+          "soh": 95.739,
           "range_km": 267.3
         },
         {
@@ -2319,7 +2553,7 @@
         },
         {
           "year": 1.3,
-          "soh": 94.4,
+          "soh": 94.401,
           "range_km": 256.0
         },
         {
@@ -2329,7 +2563,7 @@
         },
         {
           "year": 1.5,
-          "soh": 93.438,
+          "soh": 93.439,
           "range_km": 273.7
         },
         {
@@ -2349,12 +2583,12 @@
         },
         {
           "year": 1.9,
-          "soh": 91.844,
+          "soh": 91.845,
           "range_km": 229.2
         },
         {
           "year": 2.0,
-          "soh": 91.439,
+          "soh": 91.44,
           "range_km": 255.3
         },
         {
@@ -2369,7 +2603,7 @@
         },
         {
           "year": 2.3,
-          "soh": 90.102,
+          "soh": 90.103,
           "range_km": 244.4
         },
         {
@@ -2404,7 +2638,7 @@
         },
         {
           "year": 3.0,
-          "soh": 87.095,
+          "soh": 87.096,
           "range_km": 243.2
         },
         {
@@ -2424,12 +2658,12 @@
         },
         {
           "year": 3.4,
-          "soh": 85.338,
+          "soh": 85.339,
           "range_km": 231.4
         },
         {
           "year": 3.5,
-          "soh": 84.889,
+          "soh": 84.89,
           "range_km": 248.7
         },
         {
@@ -2439,7 +2673,7 @@
         },
         {
           "year": 3.7,
-          "soh": 84.034,
+          "soh": 84.035,
           "range_km": 234.6
         },
         {
@@ -2449,12 +2683,12 @@
         },
         {
           "year": 3.9,
-          "soh": 83.134,
+          "soh": 83.135,
           "range_km": 207.5
         },
         {
           "year": 4.0,
-          "soh": 82.729,
+          "soh": 82.73,
           "range_km": 231.0
         },
         {
@@ -2464,12 +2698,12 @@
         },
         {
           "year": 4.2,
-          "soh": 81.681,
+          "soh": 81.682,
           "range_km": 239.3
         },
         {
           "year": 4.3,
-          "soh": 81.193,
+          "soh": 81.194,
           "range_km": 220.2
         },
         {
@@ -2479,22 +2713,22 @@
         },
         {
           "year": 4.5,
-          "soh": 80.021,
+          "soh": 80.022,
           "range_km": 234.4
         },
         {
           "year": 4.6,
-          "soh": 79.541,
+          "soh": 79.542,
           "range_km": 254.5
         },
         {
           "year": 4.7,
-          "soh": 79.018,
+          "soh": 79.019,
           "range_km": 220.6
         },
         {
           "year": 4.8,
-          "soh": 78.436,
+          "soh": 78.437,
           "range_km": 195.7
         },
         {
@@ -2504,12 +2738,12 @@
         },
         {
           "year": 5.0,
-          "soh": 77.381,
+          "soh": 77.382,
           "range_km": 216.0
         },
         {
           "year": 5.1,
-          "soh": 76.717,
+          "soh": 76.718,
           "range_km": 245.5
         },
         {
@@ -2519,7 +2753,7 @@
         },
         {
           "year": 5.3,
-          "soh": 75.456,
+          "soh": 75.457,
           "range_km": 204.6
         },
         {
@@ -2529,37 +2763,37 @@
         },
         {
           "year": 5.5,
-          "soh": 74.058,
+          "soh": 74.059,
           "range_km": 217.0
         },
         {
           "year": 5.6,
-          "soh": 73.385,
+          "soh": 73.386,
           "range_km": 234.8
         },
         {
           "year": 5.7,
-          "soh": 72.661,
+          "soh": 72.662,
           "range_km": 202.9
         },
         {
           "year": 5.8,
-          "soh": 72.051,
+          "soh": 72.052,
           "range_km": 179.8
         },
         {
           "year": 5.9,
-          "soh": 71.366,
+          "soh": 71.367,
           "range_km": 178.1
         },
         {
           "year": 6.0,
-          "soh": 70.595,
+          "soh": 70.596,
           "range_km": 197.1
         },
         {
           "year": 6.1,
-          "soh": 69.924,
+          "soh": 69.925,
           "range_km": 223.8
         }
       ],
@@ -2621,7 +2855,7 @@
         },
         {
           "year": 1.2,
-          "soh": 96.639,
+          "soh": 96.64,
           "range_km": 283.1
         },
         {
@@ -2641,27 +2875,27 @@
         },
         {
           "year": 1.6,
-          "soh": 95.481,
+          "soh": 95.482,
           "range_km": 305.6
         },
         {
           "year": 1.7,
-          "soh": 95.211,
+          "soh": 95.212,
           "range_km": 265.8
         },
         {
           "year": 1.8,
-          "soh": 94.941,
+          "soh": 94.942,
           "range_km": 236.9
         },
         {
           "year": 1.9,
-          "soh": 94.671,
+          "soh": 94.672,
           "range_km": 236.3
         },
         {
           "year": 2.0,
-          "soh": 94.401,
+          "soh": 94.402,
           "range_km": 263.6
         },
         {
@@ -2681,7 +2915,7 @@
         },
         {
           "year": 2.4,
-          "soh": 93.243,
+          "soh": 93.244,
           "range_km": 252.9
         },
         {
@@ -2716,7 +2950,7 @@
         },
         {
           "year": 3.1,
-          "soh": 91.329,
+          "soh": 91.33,
           "range_km": 292.3
         },
         {
@@ -2726,7 +2960,7 @@
         },
         {
           "year": 3.3,
-          "soh": 90.742,
+          "soh": 90.743,
           "range_km": 246.1
         },
         {
@@ -2786,7 +3020,7 @@
         },
         {
           "year": 4.5,
-          "soh": 87.356,
+          "soh": 87.357,
           "range_km": 255.9
         },
         {
@@ -2821,7 +3055,7 @@
         },
         {
           "year": 5.2,
-          "soh": 85.442,
+          "soh": 85.443,
           "range_km": 250.3
         },
         {
@@ -2831,7 +3065,7 @@
         },
         {
           "year": 5.4,
-          "soh": 84.845,
+          "soh": 84.846,
           "range_km": 230.1
         },
         {
@@ -2841,7 +3075,7 @@
         },
         {
           "year": 5.6,
-          "soh": 84.275,
+          "soh": 84.276,
           "range_km": 269.7
         },
         {
@@ -2851,7 +3085,7 @@
         },
         {
           "year": 5.8,
-          "soh": 83.71,
+          "soh": 83.711,
           "range_km": 208.9
         },
         {
@@ -2861,22 +3095,22 @@
         },
         {
           "year": 6.0,
-          "soh": 83.129,
+          "soh": 83.13,
           "range_km": 232.1
         },
         {
           "year": 6.1,
-          "soh": 82.829,
+          "soh": 82.83,
           "range_km": 265.1
         },
         {
           "year": 6.2,
-          "soh": 82.507,
+          "soh": 82.508,
           "range_km": 241.7
         },
         {
           "year": 6.3,
-          "soh": 82.169,
+          "soh": 82.17,
           "range_km": 222.8
         },
         {
@@ -2886,7 +3120,7 @@
         },
         {
           "year": 6.5,
-          "soh": 81.488,
+          "soh": 81.489,
           "range_km": 238.7
         },
         {
@@ -2896,12 +3130,12 @@
         },
         {
           "year": 6.7,
-          "soh": 80.839,
+          "soh": 80.84,
           "range_km": 225.7
         },
         {
           "year": 6.8,
-          "soh": 80.509,
+          "soh": 80.51,
           "range_km": 200.9
         },
         {
@@ -2911,127 +3145,127 @@
         },
         {
           "year": 7.0,
-          "soh": 79.835,
+          "soh": 79.836,
           "range_km": 222.9
         },
         {
           "year": 7.1,
-          "soh": 79.487,
+          "soh": 79.488,
           "range_km": 254.4
         },
         {
           "year": 7.2,
-          "soh": 79.114,
+          "soh": 79.115,
           "range_km": 231.8
         },
         {
           "year": 7.3,
-          "soh": 78.722,
+          "soh": 78.723,
           "range_km": 213.5
         },
         {
           "year": 7.4,
-          "soh": 78.324,
+          "soh": 78.325,
           "range_km": 212.4
         },
         {
           "year": 7.5,
-          "soh": 77.932,
+          "soh": 77.933,
           "range_km": 228.3
         },
         {
           "year": 7.6,
-          "soh": 77.557,
+          "soh": 77.558,
           "range_km": 248.2
         },
         {
           "year": 7.7,
-          "soh": 77.18,
+          "soh": 77.181,
           "range_km": 215.5
         },
         {
           "year": 7.8,
-          "soh": 76.797,
+          "soh": 76.798,
           "range_km": 191.7
         },
         {
           "year": 7.9,
-          "soh": 76.409,
+          "soh": 76.41,
           "range_km": 190.7
         },
         {
           "year": 8.0,
-          "soh": 76.015,
+          "soh": 76.016,
           "range_km": 212.2
         },
         {
           "year": 8.1,
-          "soh": 75.612,
+          "soh": 75.613,
           "range_km": 242.0
         },
         {
           "year": 8.2,
-          "soh": 75.179,
+          "soh": 75.18,
           "range_km": 220.2
         },
         {
           "year": 8.3,
-          "soh": 74.724,
+          "soh": 74.725,
           "range_km": 202.7
         },
         {
           "year": 8.4,
-          "soh": 74.262,
+          "soh": 74.263,
           "range_km": 201.4
         },
         {
           "year": 8.5,
-          "soh": 73.808,
+          "soh": 73.81,
           "range_km": 216.2
         },
         {
           "year": 8.6,
-          "soh": 73.373,
+          "soh": 73.374,
           "range_km": 234.8
         },
         {
           "year": 8.7,
-          "soh": 72.936,
+          "soh": 72.937,
           "range_km": 203.6
         },
         {
           "year": 8.8,
-          "soh": 72.492,
+          "soh": 72.493,
           "range_km": 180.9
         },
         {
           "year": 8.9,
-          "soh": 72.042,
+          "soh": 72.043,
           "range_km": 179.8
         },
         {
           "year": 9.0,
-          "soh": 71.585,
+          "soh": 71.586,
           "range_km": 199.9
         },
         {
           "year": 9.1,
-          "soh": 71.117,
+          "soh": 71.118,
           "range_km": 227.6
         },
         {
           "year": 9.2,
-          "soh": 70.615,
+          "soh": 70.616,
           "range_km": 206.9
         },
         {
           "year": 9.3,
-          "soh": 70.088,
+          "soh": 70.089,
           "range_km": 190.1
         },
         {
           "year": 9.4,
-          "soh": 69.552,
+          "soh": 69.553,
           "range_km": 188.6
         }
       ]
@@ -3065,7 +3299,7 @@
         },
         {
           "year": 0.6,
-          "soh": 95.177,
+          "soh": 95.176,
           "range_km": 304.6
         },
         {
@@ -3170,12 +3404,12 @@
         },
         {
           "year": 2.7,
-          "soh": 78.774,
+          "soh": 78.773,
           "range_km": 219.9
         },
         {
           "year": 2.8,
-          "soh": 77.977,
+          "soh": 77.976,
           "range_km": 194.6
         },
         {
@@ -3233,7 +3467,7 @@
         {
           "year": 0.4,
           "soh": 97.657,
-          "range_km": 264.9
+          "range_km": 264.8
         },
         {
           "year": 0.5,
@@ -3267,7 +3501,7 @@
         },
         {
           "year": 1.1,
-          "soh": 93.856,
+          "soh": 93.855,
           "range_km": 300.4
         },
         {
@@ -3387,7 +3621,7 @@
         },
         {
           "year": 3.5,
-          "soh": 79.673,
+          "soh": 79.672,
           "range_km": 233.4
         },
         {
@@ -3407,7 +3641,7 @@
         },
         {
           "year": 3.9,
-          "soh": 76.82,
+          "soh": 76.819,
           "range_km": 191.7
         },
         {
@@ -3427,7 +3661,7 @@
         },
         {
           "year": 4.3,
-          "soh": 73.405,
+          "soh": 73.404,
           "range_km": 199.1
         },
         {
@@ -3447,7 +3681,7 @@
         },
         {
           "year": 4.7,
-          "soh": 69.557,
+          "soh": 69.556,
           "range_km": 194.2
         }
       ],
@@ -3559,7 +3793,7 @@
         },
         {
           "year": 2.2,
-          "soh": 87.118,
+          "soh": 87.117,
           "range_km": 255.2
         },
         {
@@ -3579,12 +3813,12 @@
         },
         {
           "year": 2.6,
-          "soh": 84.553,
+          "soh": 84.552,
           "range_km": 270.6
         },
         {
           "year": 2.7,
-          "soh": 83.95,
+          "soh": 83.949,
           "range_km": 234.4
         },
         {
@@ -3674,7 +3908,7 @@
         },
         {
           "year": 4.5,
-          "soh": 69.085,
+          "soh": 69.084,
           "range_km": 202.4
         }
       ],
@@ -3696,12 +3930,12 @@
         },
         {
           "year": 0.4,
-          "soh": 97.171,
+          "soh": 97.172,
           "range_km": 263.5
         },
         {
           "year": 0.5,
-          "soh": 96.446,
+          "soh": 96.447,
           "range_km": 282.5
         },
         {
@@ -3726,7 +3960,7 @@
         },
         {
           "year": 1.0,
-          "soh": 93.07,
+          "soh": 93.071,
           "range_km": 259.8
         },
         {
@@ -3751,7 +3985,7 @@
         },
         {
           "year": 1.5,
-          "soh": 89.351,
+          "soh": 89.352,
           "range_km": 261.8
         },
         {
@@ -3786,17 +4020,17 @@
         },
         {
           "year": 2.2,
-          "soh": 84.653,
+          "soh": 84.654,
           "range_km": 248.0
         },
         {
           "year": 2.3,
-          "soh": 83.895,
+          "soh": 83.896,
           "range_km": 227.5
         },
         {
           "year": 2.4,
-          "soh": 83.013,
+          "soh": 83.014,
           "range_km": 225.1
         },
         {
@@ -3806,7 +4040,7 @@
         },
         {
           "year": 2.6,
-          "soh": 81.511,
+          "soh": 81.512,
           "range_km": 260.9
         },
         {
@@ -3816,7 +4050,7 @@
         },
         {
           "year": 2.8,
-          "soh": 79.893,
+          "soh": 79.894,
           "range_km": 199.4
         },
         {
@@ -3831,7 +4065,7 @@
         },
         {
           "year": 3.1,
-          "soh": 77.227,
+          "soh": 77.228,
           "range_km": 247.1
         },
         {
@@ -3841,32 +4075,32 @@
         },
         {
           "year": 3.3,
-          "soh": 74.978,
+          "soh": 74.979,
           "range_km": 203.3
         },
         {
           "year": 3.4,
-          "soh": 73.968,
+          "soh": 73.969,
           "range_km": 200.6
         },
         {
           "year": 3.5,
-          "soh": 72.817,
+          "soh": 72.818,
           "range_km": 213.3
         },
         {
           "year": 3.6,
-          "soh": 71.535,
+          "soh": 71.536,
           "range_km": 228.9
         },
         {
           "year": 3.7,
-          "soh": 70.507,
+          "soh": 70.508,
           "range_km": 196.8
         },
         {
           "year": 3.8,
-          "soh": 69.325,
+          "soh": 69.326,
           "range_km": 173.0
         }
       ],
@@ -3938,7 +4172,7 @@
         },
         {
           "year": 1.4,
-          "soh": 93.986,
+          "soh": 93.987,
           "range_km": 254.9
         },
         {
@@ -3948,27 +4182,27 @@
         },
         {
           "year": 1.6,
-          "soh": 93.132,
+          "soh": 93.133,
           "range_km": 298.0
         },
         {
           "year": 1.7,
-          "soh": 92.718,
+          "soh": 92.719,
           "range_km": 258.9
         },
         {
           "year": 1.8,
-          "soh": 92.304,
+          "soh": 92.305,
           "range_km": 230.4
         },
         {
           "year": 1.9,
-          "soh": 91.89,
+          "soh": 91.891,
           "range_km": 229.3
         },
         {
           "year": 2.0,
-          "soh": 91.476,
+          "soh": 91.477,
           "range_km": 255.4
         },
         {
@@ -3983,7 +4217,7 @@
         },
         {
           "year": 2.3,
-          "soh": 90.173,
+          "soh": 90.174,
           "range_km": 244.6
         },
         {
@@ -4023,12 +4257,12 @@
         },
         {
           "year": 3.1,
-          "soh": 86.797,
+          "soh": 86.798,
           "range_km": 277.8
         },
         {
           "year": 3.2,
-          "soh": 86.36,
+          "soh": 86.361,
           "range_km": 253.0
         },
         {
@@ -4053,12 +4287,12 @@
         },
         {
           "year": 3.7,
-          "soh": 84.186,
+          "soh": 84.187,
           "range_km": 235.0
         },
         {
           "year": 3.8,
-          "soh": 83.754,
+          "soh": 83.755,
           "range_km": 209.0
         },
         {
@@ -4068,12 +4302,12 @@
         },
         {
           "year": 4.0,
-          "soh": 82.861,
+          "soh": 82.862,
           "range_km": 231.3
         },
         {
           "year": 4.1,
-          "soh": 82.396,
+          "soh": 82.397,
           "range_km": 263.7
         },
         {
@@ -4083,12 +4317,12 @@
         },
         {
           "year": 4.3,
-          "soh": 81.376,
+          "soh": 81.377,
           "range_km": 220.7
         },
         {
           "year": 4.4,
-          "soh": 80.84,
+          "soh": 80.841,
           "range_km": 219.2
         },
         {
@@ -4098,7 +4332,7 @@
         },
         {
           "year": 4.6,
-          "soh": 79.785,
+          "soh": 79.786,
           "range_km": 255.3
         },
         {
@@ -4108,27 +4342,27 @@
         },
         {
           "year": 4.8,
-          "soh": 78.715,
+          "soh": 78.716,
           "range_km": 196.4
         },
         {
           "year": 4.9,
-          "soh": 78.162,
+          "soh": 78.163,
           "range_km": 195.1
         },
         {
           "year": 5.0,
-          "soh": 77.597,
+          "soh": 77.598,
           "range_km": 216.6
         },
         {
           "year": 5.1,
-          "soh": 77.015,
+          "soh": 77.016,
           "range_km": 246.5
         },
         {
           "year": 5.2,
-          "soh": 76.392,
+          "soh": 76.393,
           "range_km": 223.8
         },
         {
@@ -4138,47 +4372,47 @@
         },
         {
           "year": 5.4,
-          "soh": 75.067,
+          "soh": 75.068,
           "range_km": 203.6
         },
         {
           "year": 5.5,
-          "soh": 74.399,
+          "soh": 74.4,
           "range_km": 218.0
         },
         {
           "year": 5.6,
-          "soh": 73.746,
+          "soh": 73.747,
           "range_km": 236.0
         },
         {
           "year": 5.7,
-          "soh": 73.083,
+          "soh": 73.084,
           "range_km": 204.0
         },
         {
           "year": 5.8,
-          "soh": 72.406,
+          "soh": 72.407,
           "range_km": 180.7
         },
         {
           "year": 5.9,
-          "soh": 71.714,
+          "soh": 71.715,
           "range_km": 179.0
         },
         {
           "year": 6.0,
-          "soh": 71.007,
+          "soh": 71.008,
           "range_km": 198.2
         },
         {
           "year": 6.1,
-          "soh": 70.278,
+          "soh": 70.279,
           "range_km": 224.9
         },
         {
           "year": 6.2,
-          "soh": 69.498,
+          "soh": 69.499,
           "range_km": 203.6
         }
       ]
@@ -4392,7 +4626,7 @@
         },
         {
           "year": 4.2,
-          "soh": 87.043,
+          "soh": 87.042,
           "range_km": 255.0
         },
         {
@@ -4582,7 +4816,7 @@
         },
         {
           "year": 8.0,
-          "soh": 72.571,
+          "soh": 72.57,
           "range_km": 202.6
         },
         {
@@ -4699,7 +4933,7 @@
         },
         {
           "year": 1.8,
-          "soh": 95.314,
+          "soh": 95.313,
           "range_km": 237.9
         },
         {
@@ -4979,7 +5213,7 @@
         },
         {
           "year": 7.4,
-          "soh": 80.314,
+          "soh": 80.313,
           "range_km": 217.8
         },
         {
@@ -5034,7 +5268,7 @@
         },
         {
           "year": 8.5,
-          "soh": 76.475,
+          "soh": 76.474,
           "range_km": 224.0
         },
         {
@@ -5054,7 +5288,7 @@
         },
         {
           "year": 8.9,
-          "soh": 75.0,
+          "soh": 74.999,
           "range_km": 187.2
         },
         {
@@ -5064,12 +5298,12 @@
         },
         {
           "year": 9.1,
-          "soh": 74.23,
+          "soh": 74.229,
           "range_km": 237.5
         },
         {
           "year": 9.2,
-          "soh": 73.8,
+          "soh": 73.799,
           "range_km": 216.2
         },
         {
@@ -5084,7 +5318,7 @@
         },
         {
           "year": 9.5,
-          "soh": 72.463,
+          "soh": 72.462,
           "range_km": 212.3
         },
         {
@@ -5099,7 +5333,7 @@
         },
         {
           "year": 9.8,
-          "soh": 71.201,
+          "soh": 71.2,
           "range_km": 177.7
         },
         {
@@ -5531,12 +5765,12 @@
         },
         {
           "year": 8.3,
-          "soh": 79.279,
+          "soh": 79.278,
           "range_km": 215.0
         },
         {
           "year": 8.4,
-          "soh": 78.898,
+          "soh": 78.897,
           "range_km": 214.0
         },
         {
@@ -5616,7 +5850,7 @@
         },
         {
           "year": 10.0,
-          "soh": 73.403,
+          "soh": 73.402,
           "range_km": 204.9
         },
         {
@@ -5641,7 +5875,7 @@
         },
         {
           "year": 10.5,
-          "soh": 71.223,
+          "soh": 71.222,
           "range_km": 208.6
         },
         {
@@ -5788,7 +6022,7 @@
         },
         {
           "year": 2.5,
-          "soh": 92.671,
+          "soh": 92.672,
           "range_km": 271.5
         },
         {
@@ -5798,7 +6032,7 @@
         },
         {
           "year": 2.7,
-          "soh": 92.08,
+          "soh": 92.081,
           "range_km": 257.1
         },
         {
@@ -5863,7 +6097,7 @@
         },
         {
           "year": 4.0,
-          "soh": 88.329,
+          "soh": 88.33,
           "range_km": 246.6
         },
         {
@@ -5898,7 +6132,7 @@
         },
         {
           "year": 4.7,
-          "soh": 86.253,
+          "soh": 86.254,
           "range_km": 240.8
         },
         {
@@ -5943,12 +6177,12 @@
         },
         {
           "year": 5.6,
-          "soh": 83.573,
+          "soh": 83.574,
           "range_km": 267.5
         },
         {
           "year": 5.7,
-          "soh": 83.249,
+          "soh": 83.25,
           "range_km": 232.4
         },
         {
@@ -5988,12 +6222,12 @@
         },
         {
           "year": 6.5,
-          "soh": 80.559,
+          "soh": 80.56,
           "range_km": 236.0
         },
         {
           "year": 6.6,
-          "soh": 80.174,
+          "soh": 80.175,
           "range_km": 256.6
         },
         {
@@ -6003,12 +6237,12 @@
         },
         {
           "year": 6.8,
-          "soh": 79.482,
+          "soh": 79.483,
           "range_km": 198.4
         },
         {
           "year": 6.9,
-          "soh": 79.095,
+          "soh": 79.096,
           "range_km": 197.4
         },
         {
@@ -6038,7 +6272,7 @@
         },
         {
           "year": 7.5,
-          "soh": 76.647,
+          "soh": 76.648,
           "range_km": 224.5
         },
         {
@@ -6068,42 +6302,42 @@
         },
         {
           "year": 8.1,
-          "soh": 74.083,
+          "soh": 74.084,
           "range_km": 237.1
         },
         {
           "year": 8.2,
-          "soh": 73.642,
+          "soh": 73.643,
           "range_km": 215.7
         },
         {
           "year": 8.3,
-          "soh": 73.15,
+          "soh": 73.151,
           "range_km": 198.4
         },
         {
           "year": 8.4,
-          "soh": 72.614,
+          "soh": 72.615,
           "range_km": 196.9
         },
         {
           "year": 8.5,
-          "soh": 72.151,
+          "soh": 72.152,
           "range_km": 211.4
         },
         {
           "year": 8.6,
-          "soh": 71.662,
+          "soh": 71.663,
           "range_km": 229.3
         },
         {
           "year": 8.7,
-          "soh": 71.147,
+          "soh": 71.148,
           "range_km": 198.6
         },
         {
           "year": 8.8,
-          "soh": 70.687,
+          "soh": 70.688,
           "range_km": 176.4
         },
         {
@@ -6113,7 +6347,7 @@
         },
         {
           "year": 9.0,
-          "soh": 69.652,
+          "soh": 69.653,
           "range_km": 194.5
         }
       ],
@@ -6225,7 +6459,7 @@
         },
         {
           "year": 2.2,
-          "soh": 95.648,
+          "soh": 95.649,
           "range_km": 280.2
         },
         {
@@ -6375,7 +6609,7 @@
         },
         {
           "year": 5.2,
-          "soh": 89.715,
+          "soh": 89.716,
           "range_km": 262.8
         },
         {
@@ -6390,7 +6624,7 @@
         },
         {
           "year": 5.5,
-          "soh": 89.102,
+          "soh": 89.103,
           "range_km": 261.0
         },
         {
@@ -6470,7 +6704,7 @@
         },
         {
           "year": 7.1,
-          "soh": 85.961,
+          "soh": 85.962,
           "range_km": 275.1
         },
         {
@@ -6495,27 +6729,27 @@
         },
         {
           "year": 7.6,
-          "soh": 84.952,
+          "soh": 84.953,
           "range_km": 271.9
         },
         {
           "year": 7.7,
-          "soh": 84.758,
+          "soh": 84.759,
           "range_km": 236.6
         },
         {
           "year": 7.8,
-          "soh": 84.562,
+          "soh": 84.563,
           "range_km": 211.0
         },
         {
           "year": 7.9,
-          "soh": 84.364,
+          "soh": 84.365,
           "range_km": 210.5
         },
         {
           "year": 8.0,
-          "soh": 84.164,
+          "soh": 84.165,
           "range_km": 235.0
         },
         {
@@ -6525,7 +6759,7 @@
         },
         {
           "year": 8.2,
-          "soh": 83.748,
+          "soh": 83.749,
           "range_km": 245.3
         },
         {
@@ -6540,7 +6774,7 @@
         },
         {
           "year": 8.5,
-          "soh": 83.087,
+          "soh": 83.088,
           "range_km": 243.4
         },
         {
@@ -6550,7 +6784,7 @@
         },
         {
           "year": 8.7,
-          "soh": 82.657,
+          "soh": 82.658,
           "range_km": 230.8
         },
         {
@@ -6595,7 +6829,7 @@
         },
         {
           "year": 9.6,
-          "soh": 80.563,
+          "soh": 80.564,
           "range_km": 257.8
         },
         {
@@ -6605,7 +6839,7 @@
         },
         {
           "year": 9.8,
-          "soh": 80.082,
+          "soh": 80.083,
           "range_km": 199.9
         },
         {
@@ -6615,22 +6849,22 @@
         },
         {
           "year": 10.0,
-          "soh": 79.591,
+          "soh": 79.592,
           "range_km": 222.2
         },
         {
           "year": 10.1,
-          "soh": 79.34,
+          "soh": 79.341,
           "range_km": 253.9
         },
         {
           "year": 10.2,
-          "soh": 79.078,
+          "soh": 79.079,
           "range_km": 231.7
         },
         {
           "year": 10.3,
-          "soh": 78.807,
+          "soh": 78.808,
           "range_km": 213.7
         },
         {
@@ -6645,7 +6879,7 @@
         },
         {
           "year": 10.6,
-          "soh": 77.998,
+          "soh": 77.999,
           "range_km": 249.6
         },
         {
@@ -6670,7 +6904,7 @@
         },
         {
           "year": 11.1,
-          "soh": 76.64,
+          "soh": 76.641,
           "range_km": 245.3
         },
         {
@@ -6680,32 +6914,32 @@
         },
         {
           "year": 11.3,
-          "soh": 76.048,
+          "soh": 76.049,
           "range_km": 206.2
         },
         {
           "year": 11.4,
-          "soh": 75.744,
+          "soh": 75.745,
           "range_km": 205.4
         },
         {
           "year": 11.5,
-          "soh": 75.443,
+          "soh": 75.444,
           "range_km": 221.0
         },
         {
           "year": 11.6,
-          "soh": 75.149,
+          "soh": 75.15,
           "range_km": 240.5
         },
         {
           "year": 11.7,
-          "soh": 74.854,
+          "soh": 74.855,
           "range_km": 209.0
         },
         {
           "year": 11.8,
-          "soh": 74.556,
+          "soh": 74.557,
           "range_km": 186.1
         },
         {
@@ -6715,17 +6949,17 @@
         },
         {
           "year": 12.0,
-          "soh": 73.95,
+          "soh": 73.951,
           "range_km": 206.5
         },
         {
           "year": 12.1,
-          "soh": 73.641,
+          "soh": 73.642,
           "range_km": 235.7
         },
         {
           "year": 12.2,
-          "soh": 73.317,
+          "soh": 73.318,
           "range_km": 214.8
         },
         {
@@ -6735,17 +6969,17 @@
         },
         {
           "year": 12.4,
-          "soh": 72.646,
+          "soh": 72.647,
           "range_km": 197.0
         },
         {
           "year": 12.5,
-          "soh": 72.312,
+          "soh": 72.313,
           "range_km": 211.8
         },
         {
           "year": 12.6,
-          "soh": 71.985,
+          "soh": 71.986,
           "range_km": 230.4
         },
         {
@@ -6755,12 +6989,12 @@
         },
         {
           "year": 12.8,
-          "soh": 71.326,
+          "soh": 71.327,
           "range_km": 178.0
         },
         {
           "year": 12.9,
-          "soh": 70.992,
+          "soh": 70.993,
           "range_km": 177.2
         },
         {
@@ -6770,16 +7004,269 @@
         },
         {
           "year": 13.1,
-          "soh": 70.31,
+          "soh": 70.311,
           "range_km": 225.0
         },
         {
           "year": 13.2,
-          "soh": 69.951,
+          "soh": 69.952,
           "range_km": 204.9
         }
       ]
     }
   },
-  "guidelines": "Battery preservation guidelines (from simulation results):\n- NMC: unrestricted fast charging reaches end-of-life in 2.1 yrs; best strategy 'full_protection' gives 5.6 yrs (+3.5 yrs).\n- LFP: unrestricted fast charging reaches end-of-life in 5.6 yrs; best strategy 'full_protection' gives 9.4 yrs (+3.8 yrs).\n- Sodium-ion: unrestricted fast charging reaches end-of-life in 3.5 yrs; best strategy 'full_protection' gives 6.2 yrs (+2.7 yrs).\n- Solid-State: unrestricted fast charging reaches end-of-life in 8.5 yrs; best strategy 'full_protection' gives 13.2 yrs (+4.7 yrs).\n- Keep SOC between 20% and 80% for daily use.\n- Avoid DC fast charging when cell temperature would exceed 35C; cap charge rate at 1.5C.\n- Pre-condition the pack before fast charging in hot or cold weather."
+  "sample_negotiation_transcript": [
+    {
+      "cycle": 30,
+      "year": 0.1,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 20C (battery health 100.0%) and I'm in a hurry: charge 5% -> 100% at 2.0C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 2.0C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 20.0,
+      "cell_temp_c": 28.0,
+      "soh": 99.01,
+      "range_km": 316.9,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 60,
+      "year": 0.2,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 26C (battery health 99.0%) and I'm in a hurry: charge 5% -> 100% at 2.5C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 2.5C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 2.5,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 2.5,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 25.9,
+      "cell_temp_c": 35.9,
+      "soh": 97.569,
+      "range_km": 285.8,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 90,
+      "year": 0.3,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 30C (battery health 97.6%) and I'm in a hurry: charge 5% -> 100% at 3.0C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 3.0C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 3.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 3.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 29.5,
+      "cell_temp_c": 41.5,
+      "soh": 95.689,
+      "range_km": 259.5,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 120,
+      "year": 0.4,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 30C (battery health 95.7%) and I'm in a hurry: charge 5% -> 100% at 2.0C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 2.0C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 29.5,
+      "cell_temp_c": 37.5,
+      "soh": 94.401,
+      "range_km": 256.0,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 150,
+      "year": 0.5,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 26C (battery health 94.4%) and I'm in a hurry: charge 5% -> 100% at 2.5C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 2.5C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 2.5,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 2.5,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 25.9,
+      "cell_temp_c": 35.9,
+      "soh": 92.96,
+      "range_km": 272.3,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 180,
+      "year": 0.6,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 20C (battery health 93.0%) and I'm in a hurry: charge 5% -> 100% at 3.0C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 3.0C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 3.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 3.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 20.0,
+      "cell_temp_c": 32.0,
+      "soh": 91.476,
+      "range_km": 292.7,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 210,
+      "year": 0.7,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 14C (battery health 91.5%) and I'm in a hurry: charge 5% -> 100% at 2.0C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 2.0C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 14.1,
+      "cell_temp_c": 22.1,
+      "soh": 90.58,
+      "range_km": 252.9,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 240,
+      "year": 0.8,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 10C (battery health 90.6%) and I'm in a hurry: charge 5% -> 100% at 2.5C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 2.5C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 2.5,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 2.5,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 10.5,
+      "cell_temp_c": 20.5,
+      "soh": 89.537,
+      "range_km": 223.4,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 270,
+      "year": 0.9,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 10C (battery health 89.5%) and I'm in a hurry: charge 5% -> 100% at 3.0C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 3.0C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 3.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 3.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 10.5,
+      "cell_temp_c": 22.5,
+      "soh": 88.345,
+      "range_km": 220.5,
+      "counter_proposal": null
+    },
+    {
+      "cycle": 300,
+      "year": 1.0,
+      "negotiation_round": 1,
+      "driver_message": "Ambient is 14C (battery health 88.3%) and I'm in a hurry: charge 5% -> 100% at 2.0C.",
+      "bms_message": "ROUND 1 APPROVE: Within all safety boundaries. Offered 2.0C, 5-100% SOC.",
+      "requested_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "applied_action": {
+        "c_rate": 2.0,
+        "target_soc": 100.0,
+        "min_soc": 5.0
+      },
+      "decision": "approve",
+      "reason": "Within all safety boundaries",
+      "rules_triggered": [],
+      "ambient_c": 14.1,
+      "cell_temp_c": 22.1,
+      "soh": 87.449,
+      "range_km": 244.1,
+      "counter_proposal": null
+    }
+  ],
+  "guidelines": "Battery Preservation Guidelines (from simulation findings):\nDISCLAIMER: Guidelines derived from hypothetical degradation comparison and BMS safety enforcement.\n- NMC: unrestricted fast charging reaches end-of-life in 2.1 yrs; best strategy 'full_protection' gives 5.6 yrs (+3.5 yrs).\n- LFP: unrestricted fast charging reaches end-of-life in 5.6 yrs; best strategy 'full_protection' gives 9.4 yrs (+3.8 yrs).\n- Sodium-ion: unrestricted fast charging reaches end-of-life in 3.5 yrs; best strategy 'full_protection' gives 6.2 yrs (+2.7 yrs).\n- Solid-State: unrestricted fast charging reaches end-of-life in 8.5 yrs; best strategy 'full_protection' gives 13.2 yrs (+4.7 yrs).\n- Keep SOC between 20% and 80% for daily use.\n- Avoid DC fast charging when cell temperature would exceed 35C; cap charge rate at 1.5C.\n- Pre-condition the pack before fast charging in hot or cold weather.",
+  "disclaimer": "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations computed using assumed comparative coefficients for charging strategy evaluation. Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
 }

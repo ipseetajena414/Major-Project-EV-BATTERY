@@ -130,6 +130,57 @@ def list_available_drive_cycles() -> list:
 
 
 # ---------------- BMS rules (from the blueprint) ----------------
+RULES_CATALOG = {
+    "RULE_SOC_MAX_CEILING": {
+        "id": "RULE_SOC_MAX_CEILING",
+        "name": "High SOC Ceiling Cap",
+        "description": "Caps charging target to 80% to mitigate high-voltage electrolyte oxidation and mechanical stress at cathode.",
+        "parameter": "max_soc",
+        "default_limit": 80.0,
+        "action": "Cap target SOC",
+    },
+    "RULE_SOC_MIN_FLOOR": {
+        "id": "RULE_SOC_MIN_FLOOR",
+        "name": "Deep Discharge Floor Protection",
+        "description": "Raises minimum discharge floor to 20% to prevent copper dissolution and transition metal dissolution at low potential.",
+        "parameter": "min_soc",
+        "default_limit": 20.0,
+        "action": "Raise minimum SOC floor",
+    },
+    "RULE_CRATE_CEILING": {
+        "id": "RULE_CRATE_CEILING",
+        "name": "Maximum C-rate Kinetic Limit",
+        "description": "Restricts fast charging current to 1.5C to prevent localized lithium plating at anode edges and excess resistive heat.",
+        "parameter": "max_c_rate",
+        "default_limit": 1.5,
+        "action": "Cap charge rate",
+    },
+    "RULE_THERMAL_LOCKOUT": {
+        "id": "RULE_THERMAL_LOCKOUT",
+        "name": "High Ambient Fast-Charge Lockout",
+        "description": "Refuses DC fast charging when ambient temperature >= 42°C, reverting to slow AC charging (0.3C) to prevent severe thermal acceleration of cell aging.",
+        "parameter": "refuse_fast_charge_above_ambient_c",
+        "default_limit": 42.0,
+        "action": "Refuse DCFC, fall back to slow AC rate",
+    },
+    "RULE_CELL_OVERHEAT_DERATE": {
+        "id": "RULE_CELL_OVERHEAT_DERATE",
+        "name": "Dynamic Cell Temperature Derating",
+        "description": "Iteratively cuts charge rate when predicted cell temperature exceeds 35°C to preserve cell integrity.",
+        "parameter": "max_temp_c",
+        "default_limit": 35.0,
+        "action": "Step down C-rate incrementally",
+    },
+    "RULE_CATASTROPHIC_SHUTDOWN": {
+        "id": "RULE_CATASTROPHIC_SHUTDOWN",
+        "name": "Critical Overheat Charge Abort",
+        "description": "Completely cuts off charging (0.0C) if predicted cell temperature exceeds 50°C and cannot be mitigated.",
+        "parameter": "critical_shutdown_temp_c",
+        "default_limit": 50.0,
+        "action": "Abort charging (0.0C)",
+    },
+}
+
 BMS_LIMITS = {
     "max_temp_c": 35.0,                      # thermal cutoff
     "max_c_rate": 1.5,                       # C-rate ceiling
@@ -137,7 +188,16 @@ BMS_LIMITS = {
     "min_soc": 20.0,                         # lower SOC bound
     "refuse_fast_charge_above_ambient_c": 42.0,
     "fallback_c_rate": 0.3,                  # slow AC charging when DCFC is refused
+    "critical_shutdown_temp_c": 50.0,        # absolute safety abort limit
 }
+
+
+def get_bms_limits(overrides: dict = None) -> dict:
+    """Return a copy of BMS limits with optional runtime overrides, avoiding shared mutable state."""
+    limits = dict(BMS_LIMITS)
+    if overrides:
+        limits.update({k: float(v) for k, v in overrides.items() if k in limits})
+    return limits
 
 # ---------------- Lifecycle ----------------
 END_OF_LIFE_SOH = 70.0        # blueprint says 70-80%; agree on one number with your team
@@ -146,17 +206,28 @@ CYCLES_PER_YEAR = 300
 CYCLES_PER_BLOCK = 30         # one graph loop = 30 cycles of identical behaviour
 MAX_YEARS = 20
 
-# ---------------- Simple thermal model ----------------
+# ---------------- Thermal model (Heuristic disclaimer) ----------------
+# NOTE: Lumped-parameter heuristic for software simulation only.
+# Not calibrated against calorimeter test benches or certified against automotive safety standards (e.g. ISO 6469 / SAE J1772).
 CELL_HEATING_C_PER_C_RATE = 4.0   # cell temp rise (deg C) per 1C of charge rate
 PRECONDITION_STRENGTH = 0.6       # fraction of the gap to 25 deg C closed by pre-conditioning
 HIGH_SOC_DWELL_HOURS = 6.0        # hours parked at >80% SOC per cycle when charging above 80%
 
-# ---------------- Driver persona (aggressive) ----------------
+# ---------------- Driver persona ----------------
 DRIVER = {
+    "persona": "aggressive",
     "requested_c_rates": [2.0, 2.5, 3.0],   # cycles through these, deterministic
     "target_soc": 100.0,
     "min_soc": 5.0,
+    "concession_c_rate_step": 0.3,          # permitted compromise in negotiation round 2
+    "min_acceptable_c_rate": 1.0,           # lowest rate driver will accept before complaining
 }
+
+HYPOTHETICAL_SIMULATION_DISCLAIMER = (
+    "DISCLAIMER: Multi-year lifecycle trajectories and degradation curves are hypothetical simulations "
+    "computed using assumed comparative coefficients for charging strategy evaluation. "
+    "Member 4 does NOT independently predict cell SOH or RUL. Actual ML predictions require Member 2 models."
+)
 
 # ---------------- Chemistry placeholder coefficients ----------------
 # base_fade: % SOH lost per cycle at ~25C, ~1C, 20-80% SOC
